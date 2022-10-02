@@ -5,7 +5,7 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Atcoder Beginner Contest 271 C-F, Hexo">
-    <meta name="description" content="Atcoder Beginner Contest 271 C-FC - Manga**题意:**给定一个长度为$n(1 \leq n \leq 3e5)$的序列,每个位置有一个值$x(1 \leq x \leq 1e9)$，我们可以进行任意">
+    <meta name="description" content="Atcoder Beginner Contest 271 C-FC - Manga题意: 给定一个长度为$n(1 \leq n \leq 3e5)$的序列,每个位置有一个值$x(1 \leq x \leq 1e9)$，我们可以进行任意多次操">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -380,8 +380,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Atcoder-Beginner-Contest-271-C-F"><a href="#Atcoder-Beginner-Contest-271-C-F" class="headerlink" title="Atcoder Beginner Contest 271 C-F"></a>Atcoder Beginner Contest 271 C-F</h1><h2 id="C-Manga"><a href="#C-Manga" class="headerlink" title="C - Manga"></a>C - Manga</h2><p>**题意:**给定一个长度为$n(1 \leq n \leq 3e5)$的序列,每个位置有一个值$x(1 \leq x \leq 1e9)$，我们可以进行任意多次操作，操作的话是如果序列的长度还大于等于$2$，那么我们可以任意选择$2$个数字去删除，然后加进去任意一个数字进去，问我们最后能够得到一个形似$1,2,3…$的最长序列</p>
-<p>**解题思路:**首先我们分析一下题意，我们可以知道最后的答案最多不会超过$n$，那么我们在读入的时候可以将大于$n$的部分放进一个$vector$里面，然后对于小于$n$的一部分我们可以先给他标记然后放到一个双端队列里面，如果其中的数字有重复的部分我们也需要放进上面的$vector$之中。接着我们模拟这个过程即可。在模拟的时候注意我们优先取$vector$当中的，然后我们取队列后面的即可</p>
+                <h1 id="Atcoder-Beginner-Contest-271-C-F"><a href="#Atcoder-Beginner-Contest-271-C-F" class="headerlink" title="Atcoder Beginner Contest 271 C-F"></a>Atcoder Beginner Contest 271 C-F</h1><h2 id="C-Manga"><a href="#C-Manga" class="headerlink" title="C - Manga"></a>C - Manga</h2><p><strong>题意:</strong> 给定一个长度为$n(1 \leq n \leq 3e5)$的序列,每个位置有一个值$x(1 \leq x \leq 1e9)$，我们可以进行任意多次操作，操作的话是如果序列的长度还大于等于$2$，那么我们可以任意选择$2$个数字去删除，然后加进去任意一个数字进去，问我们最后能够得到一个形似$1,2,3…$的最长序列</p>
+<p><strong>解题思路:</strong> 首先我们分析一下题意，我们可以知道最后的答案最多不会超过$n$，那么我们在读入的时候可以将大于$n$的部分放进一个$vector$里面，然后对于小于$n$的一部分我们可以先给他标记然后放到一个双端队列里面，如果其中的数字有重复的部分我们也需要放进上面的$vector$之中。接着我们模拟这个过程即可。在模拟的时候注意我们优先取$vector$当中的，然后我们取队列后面的即可</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 const int maxn &#x3D; 3e5 + 10;
@@ -441,8 +441,8 @@ int main()
 	return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="D-Flip-and-Adjust"><a href="#D-Flip-and-Adjust" class="headerlink" title="D - Flip and Adjust"></a>D - Flip and Adjust</h2><p>**题意:**给定$n(1 \leq n \leq 100)$张卡片，每张卡片背面和正面有一个数字，现在让我们选择每张卡片的正面或者反面，问是否能够组成$s(1\leq s \leq 10000)$</p>
-<p>**解题思路:**首先我们可以观察数据范围，可能是$O(n ^ 3)$或者$O(ns)$的$dp$</p>
+<h2 id="D-Flip-and-Adjust"><a href="#D-Flip-and-Adjust" class="headerlink" title="D - Flip and Adjust"></a>D - Flip and Adjust</h2><p><strong>题意:</strong> 给定$n(1 \leq n \leq 100)$张卡片，每张卡片背面和正面有一个数字，现在让我们选择每张卡片的正面或者反面，问是否能够组成$s(1\leq s \leq 10000)$</p>
+<p><strong>解题思路:</strong> 首先我们可以观察数据范围，可能是$O(n ^ 3)$或者$O(ns)$的$dp$</p>
 <p>接下来我们考虑这样的一个过程，首先无论如何每张牌都是要取的，那么假定我现在取到第$i - 1$张牌的值有$s_{i - 1}$，那么我取第$i$张牌的时候的值肯定有$s_{i - 1} + mp[i][0]$和$s_{i - 1} + mp[i][1]$$(mp[i][0&#x2F;1]表示第i张牌的正反面的值)$</p>
 <p>那么我们就可以用$dp[i][s]$来表示前$i$张牌可能组成的值</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
@@ -499,8 +499,8 @@ int main()
 	return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="E-Subsequence-Path"><a href="#E-Subsequence-Path" class="headerlink" title="E - Subsequence Path"></a>E - Subsequence Path</h2><p>**题目大意:**给定$n$个点$m$条单向边$(1 \leq n,m \leq 2e5)$，没有重边和自环，每个边有一条权值，接下来给定一个序列$E$，我们走的路径的标号形成的序列必须是这个序列$E$的子序列，问从点$1$到点$n$的最短路径</p>
-<p>**解题思路:**分析题目发现我们的突破口应该在这个给定我们的序列$E$这里，因为考虑我们取到的序列是这个序列的子序列，这里给我们透露到一些信息，就是假设我们当前已经遍历到第$i$条边，那么我们是可以用前面$i - 1$条边来更新这一张图的，那么我们知道这个点之后就可以写啦</p>
+<h2 id="E-Subsequence-Path"><a href="#E-Subsequence-Path" class="headerlink" title="E - Subsequence Path"></a>E - Subsequence Path</h2><p><strong>题目大意:</strong> 给定$n$个点$m$条单向边$(1 \leq n,m \leq 2e5)$，没有重边和自环，每个边有一条权值，接下来给定一个序列$E$，我们走的路径的标号形成的序列必须是这个序列$E$的子序列，问从点$1$到点$n$的最短路径</p>
+<p><strong>解题思路:</strong> 分析题目发现我们的突破口应该在这个给定我们的序列$E$这里，因为考虑我们取到的序列是这个序列的子序列，这里给我们透露到一些信息，就是假设我们当前已经遍历到第$i$条边，那么我们是可以用前面$i - 1$条边来更新这一张图的，那么我们知道这个点之后就可以写啦</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 #define int long long
@@ -535,8 +535,8 @@ signed main()
 	return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="F-XOR-on-Grid-Path"><a href="#F-XOR-on-Grid-Path" class="headerlink" title="F - XOR on Grid Path"></a>F - XOR on Grid Path</h2><p>**题目大意:**给定一个$n * n(1\leq n \leq 20)$的矩阵，我们从点$(1,1)$开始，每次移动可以向$(x + 1,y)$或者$(x,y + 1)$移动，问我们到达$(n,n)$使得异或和为$0$的路径有多少条</p>
-<p>**解题思路:**首先对于这种矩阵的题目我们肯定先去考虑$dp$的，但是如果暴力去枚举所有方案的话方案数实际会非常的大</p>
+<h2 id="F-XOR-on-Grid-Path"><a href="#F-XOR-on-Grid-Path" class="headerlink" title="F - XOR on Grid Path"></a>F - XOR on Grid Path</h2><p><strong>题目大意:</strong> 给定一个$n * n(1\leq n \leq 20)$的矩阵，我们从点$(1,1)$开始，每次移动可以向$(x + 1,y)$或者$(x,y + 1)$移动，问我们到达$(n,n)$使得异或和为$0$的路径有多少条</p>
+<p><strong>解题思路:</strong> 首先对于这种矩阵的题目我们肯定先去考虑$dp$的，但是如果暴力去枚举所有方案的话方案数实际会非常的大</p>
 <p>根据官方题解的思路，建议我们使用$meet$  $in$ $middle$来做</p>
 <p>那$meet$  $in$ $middle$是个什么东西呢？大概就是我从两个点来搜索，搜索到一些具有共同性质的点从而结束，因为这样子会大大减少我们所需要的时间复杂度</p>
 <p>那么对于矩阵来说，我们可以从$(1,1)$点和$(n,n)$点来搜索，对于这两个点来说我们都搜索到对角线上面的点来结束,因为对角线刚好分割两个矩阵</p>
