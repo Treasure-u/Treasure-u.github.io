@@ -4,10 +4,8 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Atcoder Beginner Contest 272, Hexo">
-    <meta name="description" content="Atcoder Beginner Contest 272A - Integer Sum题目大意: 给定$n$个数字，求$n$个数字的和
-#include &amp;lt;bits&amp;#x2F;stdc++.h&amp;gt;
-using namespace ">
+    <meta name="keywords" content="Dytechlab Cup 2022, Hexo">
+    <meta name="description" content="Dytechlab Cup 2022A. Ela Sorting Books题目大意:  给定$n(1 \leq n \leq 200)$本书,每本书有一个首字符，要把这$n$本书放到$k$个书架上，每个书架上面按照字典序第一个没有出现过的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@ using namespace ">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Atcoder Beginner Contest 272 | Hexo</title>
+    <title>Dytechlab Cup 2022 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -313,12 +311,12 @@ using namespace ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Atcoder Beginner Contest 272</h1>
+                    <h1 class="description center-align post-title">Dytechlab Cup 2022</h1>
                 </div>
             </div>
         </div>
@@ -342,12 +340,12 @@ using namespace ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/abc/">
-                                <span class="chip bg-color">abc</span>
-                            </a>
-                        
                             <a href="/tags/%E6%80%9D%E7%BB%B4/">
                                 <span class="chip bg-color">思维</span>
+                            </a>
+                        
+                            <a href="/tags/codeforces/">
+                                <span class="chip bg-color">codeforces</span>
                             </a>
                         
                     </div>
@@ -362,7 +360,7 @@ using namespace ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-10-08
+                    2022-10-09
                 </div>
                 
 
@@ -391,306 +389,252 @@ using namespace ">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Atcoder-Beginner-Contest-272"><a href="#Atcoder-Beginner-Contest-272" class="headerlink" title="Atcoder Beginner Contest 272"></a>Atcoder Beginner Contest 272</h1><h2 id="A-Integer-Sum"><a href="#A-Integer-Sum" class="headerlink" title="A - Integer Sum"></a>A - Integer Sum</h2><p><strong>题目大意:</strong> 给定$n$个数字，求$n$个数字的和</p>
+                <h1 id="Dytechlab-Cup-2022"><a href="#Dytechlab-Cup-2022" class="headerlink" title="Dytechlab Cup 2022"></a>Dytechlab Cup 2022</h1><h2 id="A-Ela-Sorting-Books"><a href="#A-Ela-Sorting-Books" class="headerlink" title="A. Ela Sorting Books"></a>A. Ela Sorting Books</h2><p><strong>题目大意:</strong>  给定$n(1 \leq n \leq 200)$本书,每本书有一个首字符，要把这$n$本书放到$k$个书架上，每个书架上面按照字典序第一个没有出现过的字符加入集合中，问这个集合最大能够构成的字符是什么</p>
+<p><strong>解题思路:</strong> 模拟样例可以发现一件事情，假设我们当前还有若干个字符，那么从第一个字符按顺序放到最后一个可以连续放置的字符肯定是最优秀的放置方法。那么我们怎么写呢？我们可以枚举每个书架可以最终放入集合的字符是多少，然后$check$即可</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
 template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-int n,sum;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1,x;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; x;
-		sum +&#x3D; x;
-	&#125;
-	cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="B-Everyone-is-Friends"><a href="#B-Everyone-is-Friends" class="headerlink" title="B - Everyone is Friends"></a>B - Everyone is Friends</h2><p><strong>题目大意:</strong> 给定$n$个人以及$m$个分组，问是否每两个人都曾经出现在同一组过</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-int n,sum,m;
-set&lt;int&gt; a[maxn];
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m;
-	for(int i &#x3D; 1,num;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; num;
-		for(int j &#x3D; 1,x;j &lt;&#x3D; num;++j)
-		&#123;
-			cin &gt;&gt; x;
-			a[x].insert(i);
-		&#125;
-	&#125;
-	int f &#x3D; 0;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; i + 1;j &lt;&#x3D; n;++j)
-		&#123;
-			int nm &#x3D; 0;
-			for(auto to:a[i])
-			&#123;
-				auto it &#x3D; a[j].find(to);
-				if(it !&#x3D; a[j].end()) 
-				&#123;
-					nm++;
-				&#125;
-			&#125;
-			if(nm &gt;&#x3D; 1) f++;
-		&#125;
-	&#125;
-	if(f &#x3D;&#x3D; n * (n - 1) &#x2F; 2) cout &lt;&lt; &quot;Yes\n&quot;;
-	else cout &lt;&lt; &quot;No\n&quot;;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="C-Max-Even"><a href="#C-Max-Even" class="headerlink" title="C - Max Even"></a>C - Max Even</h2><p><strong>题目大意:</strong> 给定$n(1 \leq n \leq 2e5)$个数字，问两个不相同的数字加起来的最大偶数是多少</p>
-<p><strong>解题思路:</strong> 分析题目我们可以发现一个关键问题就是两个数字加起来是偶数，那么要么是奇数和奇数相加要么是偶数和偶数相加，我们分类一下数字的奇偶性即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-int n,sum,m;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	set&lt;int&gt; odd,even;
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1,x;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; x;
-		if(x &amp; 1) odd.insert(x);
-		else even.insert(x);
-	&#125;
-	int ans &#x3D; -1;
-	if(odd.size() &gt;&#x3D; 2)
-	&#123;
-		int res &#x3D; 0;
-		res +&#x3D; *odd.rbegin();
-		odd.erase(prev(odd.end()));
-		res +&#x3D; *odd.rbegin();
-		ans &#x3D; max(ans,res);
-	&#125;
-	if(even.size() &gt;&#x3D; 2)
-	&#123;
-		int res &#x3D; 0;
-		res +&#x3D; *even.rbegin();
-		even.erase(prev(even.end()));
-		res +&#x3D; *even.rbegin();
-		ans &#x3D; max(ans,res);
-	&#125;
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="D-Root-M-Leaper"><a href="#D-Root-M-Leaper" class="headerlink" title="D - Root M Leaper"></a>D - Root M Leaper</h2><p><strong>题目大意:</strong> 给定一个$n * n(1\leq n \leq 400)$的棋盘，初始点在$(1,1)$，一个点如果在$(i,j)$当且仅当它可以到$(k,l)$存在他们的$\sqrt{(i - k) ^ 2 + (j - l) ^ 2} &#x3D; \sqrt{m} (1 \leq m \leq 1e5)$</p>
-<p>求这个矩阵中的所有点最少需要几步能被走到</p>
-<p><strong>解题思路:</strong> 发现无论怎么走实际上我们是走不出这个棋盘的，那么实际上$m$最多不会超过$n$，那么我们就可以预处理出所有可以走的步数然后进行$BFS$即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 5e2 + 10;
-const int inf &#x3D; 1e9;
-int n,m;
-int tx[] &#x3D; &#123;1,-1,1,-1&#125;;
-int ty[] &#x3D; &#123;1,1,-1,-1&#125;;
-int dis[maxn][maxn];
-int vis[maxn][maxn];
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m;
-	vector&lt;pair&lt;int,int&gt;&gt; stp;
-	int lmt &#x3D; min(n,m) + 100;
-	for(int i &#x3D; 0;i &lt;&#x3D; lmt;++i)
-	&#123;
-		for(int j &#x3D; 0;j &lt;&#x3D; lmt;++j)
-		&#123;
-			if(i * i + j * j &#x3D;&#x3D; m)
-			&#123;
-				stp.push_back(&#123;i,j&#125;);
-				stp.push_back(&#123;j,i&#125;);
-			&#125;
-		&#125;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; 1;j &lt;&#x3D; n;++j) dis[i][j] &#x3D; inf;
-	&#125;
-	queue&lt;array&lt;int,2&gt;&gt; que;
-	que.push(&#123;1,1&#125;);
-	vis[1][1] &#x3D; 1;
-	dis[1][1] &#x3D; 0;
-	while(!que.empty())
-	&#123;
-		auto [x,y] &#x3D; que.front();
-		que.pop();
-		for(auto [spx,spy]:stp)
-		&#123;
-			for(int k &#x3D; 0;k &lt;&#x3D; 3;++k)
-			&#123;
-				auto fx &#x3D; x + spx * tx[k];
-				auto fy &#x3D; y + spy * ty[k];
-				if(fx &gt;&#x3D; 1 &amp;&amp; fx &lt;&#x3D; n &amp;&amp; fy &gt;&#x3D; 1 &amp;&amp; fy &lt;&#x3D; n &amp;&amp; dis[fx][fy] &#x3D;&#x3D; inf &amp;&amp; vis[fx][fy] &#x3D;&#x3D; 0)
-				&#123;
-					dis[fx][fy] &#x3D; dis[x][y] + 1;
-					vis[fx][fy] &#x3D; 1;
-					que.push(&#123;fx,fy&#125;);
-				&#125;
-			&#125;
-		&#125;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-		&#123;
-			if(dis[i][j] &#x3D;&#x3D; inf) dis[i][j] &#x3D; -1;
-		&#125;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-		&#123;
-			cout &lt;&lt; dis[i][j] &lt;&lt; &quot; \n&quot;[j &#x3D;&#x3D; n];
-		&#125;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="E-Add-and-Mex"><a href="#E-Add-and-Mex" class="headerlink" title="E - Add and Mex"></a>E - Add and Mex</h2><p><strong>题目大意:</strong> 给定一个长度为$n (1 \leq n \leq 2e5)$的数组，数组是$int$范围，给定$m$次操作，每次操作第$i$个位置上面的数字都会加上$i$，问这个数组的$mex$是多少</p>
-<p><strong>解题思路:</strong> 首先我们通过模拟样例可以发现一件事情，就是如果这个序列中的数字是负数，那么它实际上是没有用的，其次是考虑$mex$的性质，因为对于长度为$n$的数组来说，$mex$最大就是$n + 1$，那么对于每一个数字来说最多也不会超过$n + 1$，既然这样，因为对于一个下标为$i$的数字来说，最多加$n &#x2F; i$次，那么对于整个序列来说就是一个调和级数，模拟即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-const int inf &#x3D; 1e9;
-int n,m;
-int ans[maxn],a[maxn];
-vector&lt;int&gt; pos[maxn];
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; a[i];
-		int st &#x3D; 0;
-		if(a[i] &lt; 0)
-		&#123;
-			int rd &#x3D; abs(a[i]) &#x2F; i;
-			if(abs(a[i]) % i) rd++;
-			a[i] +&#x3D; i * rd;
-			st &#x3D; rd;
-			if(st &lt;&#x3D; m)
-			&#123;
-				pos[st].push_back(a[i]);
-			&#125;
-		&#125;
-		while(a[i] + i &lt;&#x3D; n &amp;&amp; st &lt;&#x3D; m)
-		&#123;
-			st++;
-			a[i] +&#x3D; i;
-			if(a[i] &gt;&#x3D; 0)
-			&#123;
-				pos[st].push_back(a[i]);
-			&#125;
-		&#125;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-	&#123;
-		sort(pos[i].begin(),pos[i].end());
-		pos[i].erase(unique(pos[i].begin(),pos[i].end()),pos[i].end());
-		int now &#x3D; 0;
-		for(auto to:pos[i])
-		&#123;
-			if(to !&#x3D; now) break;
-			now++;
-		&#125;
-		cout &lt;&lt; now &lt;&lt; &quot;\n&quot;;
-	&#125;
-	
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="G-Yet-Another-mod-M"><a href="#G-Yet-Another-mod-M" class="headerlink" title="G - Yet Another mod M"></a>G - Yet Another mod M</h2><p><strong>题目大意:</strong> 给定一个长度为$n(1 \leq n \leq 5000)$，然后找到一个数字$M$，使得这个序列中每一个数字$mod$ $M$后存在唯一的众数</p>
-<p><strong>解题思路:</strong> 在赛时就在想随机是否可行但是没有一个好的$check$方案，然后参考了一下严格鸽的题解</p>
-<p>首先因为是唯一的众数，那么假设我们在序列中取两个数字，这两个数字$mod$ $M$ 都是$0$的，那么就存在$(x - y) $  $mod$  $m &#x3D;&#x3D; 0$</p>
-<p>那接下来我们去找$(x - y)$的因子就可以了</p>
-<p>这样子做的正确概率是：因为$x,y$都有$\frac{1}{2}$的概率取到，那么总的取到的概率就是$\frac{1}{4}$，那我们选择多次选择不到的概率实际上很小，对赌就可以了</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-&#x2F;&#x2F; #define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-const int inf &#x3D; 1e9;
-int n,m;
-int ans[maxn],a[maxn];
-vector&lt;int&gt; pos[maxn];
+typedef long long ll;
+const int maxn &#x3D; 1e6 + 10;
+int a[maxn],n,k;
+string str;
+map&lt;int,int&gt; mp;
 int check(int x)
 &#123;
-	if(x &lt; 3) return 0;
-	map&lt;int,int&gt; mp;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	if(x &gt; n &#x2F; k) return 0;
+	for(int i &#x3D; 0;i &lt;&#x3D; x - 1;++i)
 	&#123;
-		mp[a[i] % x]++;
-		if(mp[a[i] % x] * 2 &gt; n) return 1;
+		if(mp[i] &lt;&#x3D; 0) return 0; 
 	&#125;
-	return 0;
+	for(int i &#x3D; 0;i &lt;&#x3D; x - 1;++i)
+	&#123;
+		mp[i]--;
+	&#125;
+	return 1;
 &#125;
 signed main()
 &#123;
 	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	srand(time(NULL));
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
 	&#123;
-		cin &gt;&gt; a[i];
-	&#125;
-	int cnt &#x3D; 200;
-	while(cnt--)
-	&#123;
-		int x &#x3D; a[rand() % n + 1];
-		int y &#x3D; a[rand() % n + 1];
-		int d &#x3D; x - y;
-		if(d &#x3D;&#x3D; 0) continue;
-		for(int i &#x3D; 1;i * i &lt;&#x3D; d;++i)
+		cin &gt;&gt; n &gt;&gt; k;
+		cin &gt;&gt; str;
+		mp.clear();
+		for(auto to:str)
 		&#123;
-			if(d % i !&#x3D; 0) continue;
-			if(check(i))
+			int id &#x3D; to - &#39;a&#39;;
+			mp[id]++;
+		&#125;
+		vector&lt;char&gt; ans;
+		for(int i &#x3D; 1;i &lt;&#x3D; k;++i)
+		&#123;
+			for(int j &#x3D; 25;j &gt;&#x3D; 0;--j)
 			&#123;
-				cout &lt;&lt; i &lt;&lt; &quot;\n&quot;;
-				return 0;
-			&#125;
-			if(check(d &#x2F; i))
-			&#123;
-				cout &lt;&lt; d &#x2F; i &lt;&lt; &quot;\n&quot;;
-				return 0;
+				if(check(j))
+				&#123;
+					ans.push_back(&#39;a&#39; + j);
+					break;
+				&#125;
 			&#125;
 		&#125;
+		sort(ans.begin(),ans.end());
+		reverse(ans.begin(),ans.end());
+		for(auto to:ans)
+		&#123;
+			cout &lt;&lt; to;
+		&#125;
+		cout &lt;&lt; &quot;\n&quot;;
 	&#125;
-	cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="B-Ela’s-Fitness-and-the-Luxury-Number"><a href="#B-Ela’s-Fitness-and-the-Luxury-Number" class="headerlink" title="B. Ela’s Fitness and the Luxury Number"></a>B. Ela’s Fitness and the Luxury Number</h2><p><strong>题目大意:</strong> 给定$T (1 \leq T \leq 2e5)$组样例，每组两个数字分别是$l$ 以及$r(1 \leq l,r \leq 1e18)$ ，问在这个区间中美丽数字的个数是多少。美丽数字的定义是$x$可以被$x $  $mod$ $\lfloor\sqrt{x}\rfloor$ $ &#x3D; 0$</p>
+<p><strong>解题思路:</strong> 发现数据范围实际上很大，然后我打了一下表发现了一个规律，就是根据每一个平方数去划分，可以以每个平方数划分成一个块，假设当前的平方数是$x$，当前的平方根是$y$，那么在这一个块中存在的数字分别是$x,x + y,x + 2 * y$</p>
+<p>特别需要注意的是，$floor$存在的一定精度误差，因此在取的时候可以采取一些操作比如$–$来优化</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
+#define int long long
+typedef long long ll;
+const int maxn &#x3D; 1e6 + 10;
+int a[maxn],n,k;
+string str;
+void get()
+&#123;
+	for(int i &#x3D; 1;i &lt;&#x3D; 20;++i)
+	&#123;
+		int div &#x3D; floor(sqrt(1.0 * i));
+		if(i % div &#x3D;&#x3D; 0)
+		&#123;
+			cout &lt;&lt; &quot;i -&gt; &quot; &lt;&lt; i &lt;&lt; &quot;\n&quot;;
+		&#125;
+	&#125;
+&#125;
+int getans(int x)
+&#123;
+	if(x &#x3D;&#x3D; 0) return 0;
+	int rd &#x3D; (sqrt(1.0 * x));
+	if(rd * rd &gt; x) rd--;
+	int haha &#x3D; rd * rd;
+	int ans &#x3D; (rd - 1) * 3;
+	if(x &gt;&#x3D; haha)
+	&#123;
+		ans++;
+	&#125;
+	if(x &gt;&#x3D; haha + rd)
+	&#123;
+		ans++;
+	&#125;
+	if(x &gt;&#x3D; haha + rd * 2)
+	&#123;
+		ans++;
+	&#125;
+	return ans;
+&#125;
+signed main()
+&#123;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		int l,r;
+		cin &gt;&gt; l &gt;&gt; r;
+		&#x2F;&#x2F; cout &lt;&lt; getans(l - 1) &lt;&lt; &quot;\n&quot;;
+		&#x2F;&#x2F; cout &lt;&lt; l &lt;&lt; &quot; &quot; &lt;&lt; getans(l - 1) &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot; &quot; &lt;&lt; getans(r) &lt;&lt; &quot;\n&quot;;
+		cout &lt;&lt; getans(r) - getans(l - 1) &lt;&lt; &quot;\n&quot;;
+	&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="C-Ela-and-Crickets"><a href="#C-Ela-and-Crickets" class="headerlink" title="C. Ela and Crickets"></a>C. Ela and Crickets</h2><p><strong>题目大意:</strong> 给定一个无限大的棋盘，给定一个$L$形状的棋子以及这个棋子刚开始的坐标，给定一个目标坐标，问这个棋子通过跳跃的方式能否到达这个目标点</p>
+<p><strong>解题思路:</strong> 既然在一个棋盘上面，我们可以先考虑本身这个棋盘所带来的性质，也就是考虑存在的$L$形状的奇偶性带来的影响。我们可以模拟样例，发现对于一个$L$形状来说，和那个空着的格子的横纵坐标奇偶性都一样的那么我们是不可达的；然后我们考虑特殊情况，如果那个小角在边缘的话，那么不管怎么样子也只能再这个边缘移动，然后这样子判断即可</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
+#define int long long
+typedef long long ll;
+const int maxn &#x3D; 1e2 + 10;
+int r[maxn],n,k,c[maxn],x,y,sx,sy;
+string str;
+signed main()
+&#123;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n;
+		map&lt;int,int&gt; mpx,mpy;
+		for(int i &#x3D; 1;i &lt;&#x3D; 3;++i)
+		&#123;
+			cin &gt;&gt; r[i] &gt;&gt; c[i];
+			mpx[r[i]]++;
+			mpy[c[i]]++;
+		&#125;
+		cin &gt;&gt; x &gt;&gt; y;
+		sx &#x3D; sy &#x3D; 0;
+		for(auto [to,cs]:mpx)
+		&#123;
+			if(cs &#x3D;&#x3D; 2) sx &#x3D; to;
+		&#125;
+		for(auto [to,cs]:mpy)
+		&#123;
+			if(cs &#x3D;&#x3D; 2) sy &#x3D; to;
+		&#125;
+		&#x2F;&#x2F;边缘
+		if((sx &#x3D;&#x3D; 1 || sx &#x3D;&#x3D; n) &amp;&amp; (sy &#x3D;&#x3D; 1 || sy &#x3D;&#x3D; n))
+		&#123;
+			if(sx &#x3D;&#x3D; x || sy &#x3D;&#x3D; y) cout &lt;&lt; &quot;YES\n&quot;;
+			else cout &lt;&lt; &quot;NO\n&quot;;
+			continue;
+		&#125;
+		if((sx - x + sy - y) % 2 &#x3D;&#x3D; 1)
+		&#123;
+			cout &lt;&lt; &quot;YES\n&quot;;
+			continue;
+		&#125;
+		if((sx - x) % 2 &#x3D;&#x3D; 0) cout &lt;&lt; &quot;YES\n&quot;;
+		else if((sy - y) % 2 &#x3D;&#x3D; 0) cout &lt;&lt; &quot;YES\n&quot;;
+		else cout &lt;&lt; &quot;NO\n&quot;;
+	&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="D-Ela-and-the-Wiring-Wizard"><a href="#D-Ela-and-the-Wiring-Wizard" class="headerlink" title="D. Ela and the Wiring Wizard"></a>D. Ela and the Wiring Wizard</h2><p><strong>题目大意:</strong> 给定一张图，图有$n$个点$m$条边$(2 \leq n \leq 500,n - 1\leq m \leq 100000)$每次可以进行若干次操作，操作如下所示</p>
+<p>选择两条边$(u,v)$和$(v,w)$删除$(u,v)$然后连接$(u,w)$，代价是$(u,v)$的边权</p>
+<p>问从节点$1$到节点$n$最少需要多少次</p>
+<p><strong>解题思路:</strong> 刚开始拿到题目的时候发现没有任何思路，模拟样例可以发现一个性质，就是无论最后怎么样，最后只有一条从$1$到$n$的边使用</p>
+<p>那么我们可以提出猜想，是否从$1$到$n$只需要连接一条路呢？</p>
+<p>接下来的部分参考了$pzr$佬的</p>
+<p>我们可以做出反证感性理解一下，假设我们有多条路到$n$，其中分别是$1 -&gt; u_1 -&gt; u_2 -&gt; n$,设$u_1 -&gt;u_2$的距离是$w_1$，另外一条从$1 -&gt; u_1$权值是$w_2$</p>
+<p>首先就放着这两条边，边权是$w_1 + w_2$</p>
+<p>如果让我们把所有的边都变成$w_1$,那么就是$2w_1$</p>
+<p>或者我们把所有边变成$w_2$，那么就是$2w_2$</p>
+<p>那么进行修改后我们总能贪心取到最小的</p>
+<p>分析样例之后，我们发现建边有成自环和非自环的情况</p>
+<p>分析非自环的情况，那么对于一条边来说，就是去修改$dis(1,u) + dis(v,n)$的次数然后再加上$1$次走到的贡献</p>
+<p>那么接下来考虑自环的情况，如果有自环的话最多可能存在几个自环呢？</p>
+<p>我们可以把自环看成是一个点，设自环点是$x$,那么我们额外花费一个贡献连接$x$,从$1$到$x$再从$x$到$n$的距离相加然后乘贡献，这个$x$相当于中间的一个断点去更新整张图，因此实际上最多也就只有一个</p>
+<p>那么对于这一种题目来说，分析完整道题目我们发现都是对<strong>边</strong> 这一个元素进行考虑</p>
+<p>因为从一开始我们就在思考，从得出结论开始，再到实际上我去取哪条边最优</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#define int long long
+typedef long long ll;
+const int maxn &#x3D; 1e3 + 10;
+const int inf &#x3D; 1e9;
+int dis[maxn][maxn],n,m;
+signed main()
+&#123;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n &gt;&gt; m;
+		vector&lt;array&lt;int,3&gt;&gt; edge;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
+			&#123;
+				dis[i][j] &#x3D; inf;
+			&#125;
+		&#125;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) dis[i][i] &#x3D; 0;
+		for(int i &#x3D; 1,u,v,w;i &lt;&#x3D; m;++i)
+		&#123;
+			cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+			edge.push_back(&#123;u,v,w&#125;);
+			dis[u][v] &#x3D; dis[v][u] &#x3D; 1;
+		&#125;
+		for(int k &#x3D; 1;k &lt;&#x3D; n;++k)
+		&#123;
+			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+			&#123;
+				for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
+				&#123;
+					chkmin(dis[i][j],dis[i][k] + dis[k][j]);
+				&#125;
+			&#125;
+		&#125;
+		int ans &#x3D; 1e18;
+		for(auto [u,v,w]:edge)
+		&#123;
+			chkmin(ans,(dis[1][u] + 1 + dis[v][n]) * w);
+			chkmin(ans,(dis[1][v] + dis[u][n] + 1) * w);
+			for(int x &#x3D; 1;x &lt;&#x3D; n;++x)
+			&#123;
+				chkmin(ans,(min(dis[u][x],dis[v][x]) + dis[1][x] + dis[x][n] + 2) * w);
+			&#125;
+		&#125;
+		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -719,7 +663,7 @@ signed main()
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/10/08/Atcoder-Beginner-Contest-272/">http://example.com/2022/10/08/Atcoder-Beginner-Contest-272/</a>
+                    <a href="http://example.com/2022/10/09/Dytechlab-Cup-2022/">http://example.com/2022/10/09/Dytechlab-Cup-2022/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -757,12 +701,12 @@ signed main()
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/abc/">
-                                    <span class="chip bg-color">abc</span>
-                                </a>
-                            
                                 <a href="/tags/%E6%80%9D%E7%BB%B4/">
                                     <span class="chip bg-color">思维</span>
+                                </a>
+                            
+                                <a href="/tags/codeforces/">
+                                    <span class="chip bg-color">codeforces</span>
                                 </a>
                             
                         </div>
@@ -808,9 +752,60 @@ signed main()
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/10/09/Dytechlab-Cup-2022/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Dytechlab Cup 2022">
+                        
+                        <span class="card-title">Dytechlab Cup 2022</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Treasure
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%80%9D%E7%BB%B4/">
+                        <span class="chip bg-color">思维</span>
+                    </a>
+                    
+                    <a href="/tags/codeforces/">
+                        <span class="chip bg-color">codeforces</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/10/09/hello-world/">
                     <div class="card-image">
@@ -828,9 +823,9 @@ signed main()
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -844,55 +839,6 @@ signed main()
                     
                     <a href="/tags/blog/">
                         <span class="chip bg-color">blog</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/10/02/abc271/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Atcoder Beginner Contest 271 C-F">
-                        
-                        <span class="card-title">Atcoder Beginner Contest 271 C-F</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-02
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Treasure
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/abc/">
-                        <span class="chip bg-color">abc</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%80%9D%E7%BB%B4/">
-                        <span class="chip bg-color">思维</span>
                     </a>
                     
                 </div>
@@ -1016,13 +962,6 @@ signed main()
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
 
 
 

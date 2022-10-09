@@ -366,7 +366,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2.3k
                 </div>
                 
 
@@ -545,6 +545,76 @@ signed main()
     &#125;
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Ela-and-the-Wiring-Wizard"><a href="#Ela-and-the-Wiring-Wizard" class="headerlink" title="Ela and the Wiring Wizard"></a>Ela and the Wiring Wizard</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1737/problem/D">https://codeforces.com/contest/1737/problem/D</a></p>
+<p><strong>题目大意:</strong> 给定一张图，图有$n$个点$m$条边$(2 \leq n \leq 500,n - 1\leq m \leq 100000)$每次可以进行若干次操作，操作如下所示</p>
+<p>选择两条边$(u,v)$和$(v,w)$删除$(u,v)$然后连接$(u,w)$，代价是$(u,v)$的边权</p>
+<p>问从节点$1$到节点$n$最少需要多少次</p>
+<p><strong>解题思路:</strong> 刚开始拿到题目的时候发现没有任何思路，模拟样例可以发现一个性质，就是无论最后怎么样，最后只有一条从$1$到$n$的边使用</p>
+<p>那么我们可以提出猜想，是否从$1$到$n$只需要连接一条路呢？</p>
+<p>接下来的部分参考了$pzr$佬的</p>
+<p>我们可以做出反证感性理解一下，假设我们有多条路到$n$，其中分别是$1 -&gt; u_1 -&gt; u_2 -&gt; n$,设$u_1 -&gt;u_2$的距离是$w_1$，另外一条从$1 -&gt; u_1$权值是$w_2$</p>
+<p>首先就放着这两条边，边权是$w_1 + w_2$</p>
+<p>如果让我们把所有的边都变成$w_1$,那么就是$2w_1$</p>
+<p>或者我们把所有边变成$w_2$，那么就是$2w_2$</p>
+<p>那么进行修改后我们总能贪心取到最小的</p>
+<p>分析样例之后，我们发现建边有成自环和非自环的情况</p>
+<p>分析非自环的情况，那么对于一条边来说，就是去修改$dis(1,u) + dis(v,n)$的次数然后再加上$1$次走到的贡献</p>
+<p>那么接下来考虑自环的情况，如果有自环的话最多可能存在几个自环呢？</p>
+<p>我们可以把自环看成是一个点，设自环点是$x$,那么我们额外花费一个贡献连接$x$,从$1$到$x$再从$x$到$n$的距离相加然后乘贡献，这个$x$相当于中间的一个断点去更新整张图，因此实际上最多也就只有一个</p>
+<p>那么对于这一种题目来说，分析完整道题目我们发现都是对<strong>边</strong> 这一个元素进行考虑</p>
+<p>因为从一开始我们就在思考，从得出结论开始，再到实际上我去取哪条边最优</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#define int long long
+typedef long long ll;
+const int maxn &#x3D; 1e3 + 10;
+const int inf &#x3D; 1e9;
+int dis[maxn][maxn],n,m;
+signed main()
+&#123;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n &gt;&gt; m;
+		vector&lt;array&lt;int,3&gt;&gt; edge;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
+			&#123;
+				dis[i][j] &#x3D; inf;
+			&#125;
+		&#125;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) dis[i][i] &#x3D; 0;
+		for(int i &#x3D; 1,u,v,w;i &lt;&#x3D; m;++i)
+		&#123;
+			cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+			edge.push_back(&#123;u,v,w&#125;);
+			dis[u][v] &#x3D; dis[v][u] &#x3D; 1;
+		&#125;
+		for(int k &#x3D; 1;k &lt;&#x3D; n;++k)
+		&#123;
+			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+			&#123;
+				for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
+				&#123;
+					chkmin(dis[i][j],dis[i][k] + dis[k][j]);
+				&#125;
+			&#125;
+		&#125;
+		int ans &#x3D; 1e18;
+		for(auto [u,v,w]:edge)
+		&#123;
+			chkmin(ans,(dis[1][u] + 1 + dis[v][n]) * w);
+			chkmin(ans,(dis[1][v] + dis[u][n] + 1) * w);
+			for(int x &#x3D; 1;x &lt;&#x3D; n;++x)
+			&#123;
+				chkmin(ans,(min(dis[u][x],dis[v][x]) + dis[1][x] + dis[x][n] + 2) * w);
+			&#125;
+		&#125;
+		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 
                 
@@ -953,7 +1023,7 @@ signed main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">11.2k</span>
+                        class="white-color">14.4k</span>
             
             
             
