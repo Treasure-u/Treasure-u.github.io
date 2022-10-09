@@ -363,7 +363,7 @@ using namespace ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2.3k
                 </div>
                 
 
@@ -622,8 +622,69 @@ signed main()
 	&#125;
 	
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="G-Yet-Another-mod-M"><a href="#G-Yet-Another-mod-M" class="headerlink" title="G - Yet Another mod M"></a>G - Yet Another mod M</h2><p><strong>题目大意:</strong> 给定一个长度为$n(1 \leq n \leq 5000)$，然后找到一个数字$M$，使得这个序列中每一个数字$mod$ $M$后存在唯一的众数</p>
+<p><strong>解题思路:</strong> 在赛时就在想随机是否可行但是没有一个好的$check$方案，然后参考了一下严格鸽的题解</p>
+<p>首先因为是唯一的众数，那么假设我们在序列中取两个数字，这两个数字$mod$ $M$ 都是$0$的，那么就存在$(x - y) $  $mod$  $m &#x3D;&#x3D; 0$</p>
+<p>那接下来我们去找$(x - y)$的因子就可以了</p>
+<p>这样子做的正确概率是：因为$x,y$都有$\frac{1}{2}$的概率取到，那么总的取到的概率就是$\frac{1}{4}$，那我们选择多次选择不到的概率实际上很小，对赌就可以了</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
+&#x2F;&#x2F; #define int long long
+&#x2F;&#x2F; typedef long long ll;
+const int maxn &#x3D; 2e5 + 10;
+const int inf &#x3D; 1e9;
+int n,m;
+int ans[maxn],a[maxn];
+vector&lt;int&gt; pos[maxn];
+int check(int x)
+&#123;
+	if(x &lt; 3) return 0;
+	map&lt;int,int&gt; mp;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		mp[a[i] % x]++;
+		if(mp[a[i] % x] * 2 &gt; n) return 1;
+	&#125;
+	return 0;
+&#125;
+signed main()
+&#123;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	srand(time(NULL));
+	cin &gt;&gt; n;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		cin &gt;&gt; a[i];
+	&#125;
+	int cnt &#x3D; 200;
+	while(cnt--)
+	&#123;
+		int x &#x3D; a[rand() % n + 1];
+		int y &#x3D; a[rand() % n + 1];
+		int d &#x3D; x - y;
+		if(d &#x3D;&#x3D; 0) continue;
+		for(int i &#x3D; 1;i * i &lt;&#x3D; d;++i)
+		&#123;
+			if(d % i !&#x3D; 0) continue;
+			if(check(i))
+			&#123;
+				cout &lt;&lt; i &lt;&lt; &quot;\n&quot;;
+				return 0;
+			&#125;
+			if(check(d &#x2F; i))
+			&#123;
+				cout &lt;&lt; d &#x2F; i &lt;&lt; &quot;\n&quot;;
+				return 0;
+			&#125;
+		&#125;
+	&#125;
+	cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>后面的明天再补吧……</p>
+
 
                 
             </div>
@@ -1001,7 +1062,7 @@ signed main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">10.7k</span>
+                        class="white-color">11.2k</span>
             
             
             
