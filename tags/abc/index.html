@@ -4,9 +4,8 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Graph Traing, Hexo">
-    <meta name="description" content="Graph TraingBoboniu Walks on Graphhttps://codeforces.com/problemset/problem/1394/B
-题目大意: 给定一张图有$n$个点$m$条边，每条边的权值从$1$ ~ $">
+    <meta name="keywords" content="标签: abc, Hexo">
+    <meta name="description" content="Hexo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Graph Traing | Hexo</title>
+    <title>标签: abc | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -308,554 +307,126 @@
 
 </header>
 
-    
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">Graph Traing</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
-    
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
     <div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
                 
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-29
-                </div>
-                
-
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
-                </div>
-                
-
-                
-
+                Treasure&#39;s blog
                 
             </div>
-        </div>
-        <hr class="clearfix">
 
-        
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h1 id="Graph-Traing"><a href="#Graph-Traing" class="headerlink" title="Graph Traing"></a>Graph Traing</h1><h2 id="Boboniu-Walks-on-Graph"><a href="#Boboniu-Walks-on-Graph" class="headerlink" title="Boboniu Walks on Graph"></a>Boboniu Walks on Graph</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1394/B">https://codeforces.com/problemset/problem/1394/B</a></p>
-<p><strong>题目大意:</strong> 给定一张图有$n$个点$m$条边，每条边的权值从$1$ ~ $m$并且每条边的权值互相不相同，这张图中一个点的最大的出度是$k$,然后求$k$元组，这个$k$元组的第$i$个位置代表着出度数为$i$的点走他的边权从小到大为第$c_i$的边，问多元组最多有多少种</p>
-<p><strong>解题思路:</strong> 首先我们可以发现这样子一件事情，因为$k$的范围并不大，因此如果我们暴力去枚举多元组的样子最多也只有$9!$种，那么我们是否可以有一种很快速的$check$方法来检查一种多元组是否合法呢？首先我们可以想这样一件事情，因为对于每一个点最后都能跳回到自己，所以最后的结果必定是一个环，那么对于一个环来说我们可以粗略的将其看成一个集合，然后我们给每个点刚开始随机一个数值。然后我们分析多元组的性质，对于任意一种多元组，第$i$位的跳跃到第$c_i$个，那么我们可以刚开始预处理这个东西，对于当前点的出度和当前去往点的序号记录一个数组然后加起来就可以了</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-typedef long long ll;
-const int maxn &#x3D; 1e6 + 10;
-int n,m,k;
-int sum[15][15];
-int a[maxn],ansha,ans;
-int res;
-vector&lt;pair&lt;int,int&gt;&gt; edge[maxn];
-void dfs(int now)
-&#123;
-	if(now &#x3D;&#x3D; k + 1)
-	&#123;
-		if(res &#x3D;&#x3D; ansha) ans++;
-		return;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; now;++i)
-	&#123;
-		res +&#x3D; sum[now][i];
-		dfs(now + 1);
-		res -&#x3D; sum[now][i];
-	&#125;
-	return;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	srand(time(NULL));
-	cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) a[i] &#x3D; rand() * rand(),ansha +&#x3D; a[i];
-	for(int i &#x3D; 1,u,v,w;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
-		edge[u].push_back(&#123;w,v&#125;);
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) sort(edge[i].begin(),edge[i].end());
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		int sz &#x3D; edge[i].size();
-		for(int j &#x3D; 0;j &lt; sz;++j)
-		&#123;
-			auto to &#x3D; edge[i][j].second;
-			sum[sz][j + 1] +&#x3D; a[to];
-		&#125;
-	&#125;
-	dfs(1);
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="Slipper"><a href="#Slipper" class="headerlink" title="Slipper"></a>Slipper</h2><p>(<a target="_blank" rel="noopener" href="https://vjudge.net/contest/517945#problem/C">https://vjudge.net/contest/517945#problem/C</a>)</p>
-<p><strong>题目大意:</strong> 给定一棵树，结点个数为$n (1 \leq n \leq 1e5)$,给定每条树边连接的两个结点和对应的边权，除此之外可以进行若干次魔法，若$|dep_u - dep_v| &#x3D; k$，那么从$u$到$v$只需要$d$点边权，给定两个点$s$和$t$，求从$s$到$t$最少需要多少边权</p>
-<p><strong>解题思路:</strong> 我们可以刚开始这么思考，如果不考虑任何优化，我们可以将每个点放到对应的一个存储容器中，这个容易用$dep$ 来标记，如果两个容器相差$k$，那么我们对于两个集合中的点进行一一连边即可。但是这样子实际的时间复杂度很大，那么我们考虑优化建边。根据上面的思考，我们可以发现一个性质只有层与层之间才会连接一条边，其实很多边是重复的，那么我们对于每一个层来说我们可以建一个点，表示层，那么我们对于每一个点来说，连向这个层，那么对于层与层之间的，我们可以从$u$往$u + k$建一条边，同时也可以从$u + k$往$u$建边，但是只有一层层点是不够的，因为原来的树点连过来的边权是$0$，那么我们再建一层层点来跑最短路即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-&#x2F;&#x2F; #define int long long
-typedef long long ll;
-const int maxn &#x3D; 6e6 + 10;
-const int maxm &#x3D; 1e6 + 10;
-const ll inf &#x3D; 1e18;
-int tot;
-struct node
-&#123;
-    int u,v,w,nxt;
-&#125;edge[maxn &lt;&lt; 1];
-int head[maxn];
-inline void add(int u,int v,int w)
-&#123;
-    edge[++tot].u &#x3D; u,edge[tot].v &#x3D; v,edge[tot].w &#x3D; w,edge[tot].nxt &#x3D; head[u],head[u] &#x3D; tot;
-&#125;
-int n,dep[maxm],k,p,s,t,mxdep;
-void dfs(int s,int fa)
-&#123;
-    dep[s] &#x3D; dep[fa] + 1;
-    mxdep &#x3D; max(mxdep, dep[s]);
-    for(int i &#x3D; head[s];i;i &#x3D; edge[i].nxt)
-    &#123;
-        int to &#x3D; edge[i].v;
-        if(to &#x3D;&#x3D; fa) continue;
-        dfs(to,s);
-    &#125;
-&#125;
-void dij()
-&#123;
-    vector&lt;int&gt; vis(3 * n + 10, 0);
-    vector&lt;ll&gt; dis(3 * n + 10, inf);
-    dis[s] &#x3D; 0;
-    priority_queue&lt;pair&lt;ll, int&gt;, vector&lt;pair&lt;ll, int&gt;&gt;, greater&lt;pair&lt;ll, int&gt;&gt;&gt; que;
-    que.push(&#123;0, s&#125;);
-    while(!que.empty())
-    &#123;
-        auto now &#x3D; que.top().second;
-        que.pop();
-        if(vis[now])
-            continue;
-        vis[now] &#x3D; 1;
-        for(int i &#x3D; head[now];i;i &#x3D; edge[i].nxt)
-        &#123;
-            int to &#x3D; edge[i].v;
-            ll ww &#x3D; edge[i].w * 1ll;
-            if(dis[to] &gt; dis[now] + ww)
-            &#123;
-                dis[to] &#x3D; dis[now] + ww;
-                que.push(&#123;dis[to], to&#125;);
-            &#125;
-        &#125;
-    &#125;
-    printf(&quot;%lld\n&quot;,dis[t]);
-&#125;
-void solve()
-&#123;
-    tot &#x3D; 0;
-    scanf(&quot;%d&quot;,&amp;n);
-    &#x2F;&#x2F; cin &gt;&gt; n;
-    mxdep &#x3D; 0;
-    for(int i &#x3D; 1;i &lt;&#x3D; n + n + n + 10;++i) head[i] &#x3D; 0;
-    for (int i &#x3D; 1, u, v, w; i &lt;&#x3D; n - 1;++i)
-    &#123;
-        scanf(&quot;%d %d %d&quot;,&amp;u,&amp;v,&amp;w);
-        &#x2F;&#x2F; cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
-        add(u,v,w);
-        add(v,u,w);
-    &#125;
-    dfs(1, 0);
-    scanf(&quot;%d %d&quot;,&amp;k,&amp;p);
-    scanf(&quot;%d %d&quot;,&amp;s,&amp;t);
-    for (int i &#x3D; 1; i &lt;&#x3D; n;++i)
-    &#123;
-        add(i,dep[i] + n,0);
-        add(dep[i] + n + n,i,0);
-    &#125;
-    for (int l &#x3D; 1; l &lt;&#x3D; n;++l)
-    &#123;
-        int r &#x3D; l + k;
-        if(r &gt; mxdep)
-            break;
-        add(l + n,r + n + n,p);
-        add(r + n + n,l + n,p);
-    &#125;
-    dij();
-&#125;
-signed main()
-&#123;
-    ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-    int T;
-    scanf(&quot;%d&quot;, &amp;T);
-    &#x2F;&#x2F; cin &gt;&gt; T;
-    while(T--)
-    &#123;
-        solve();
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+            <div class="description center-align">
                 
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Treasure</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://example.com/2022/09/29/Graph-Traing/">http://example.com/2022/09/29/Graph-Traing/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Treasure</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2022/10/02/abc271/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Atcoder Beginner Contest 271 C-F">
-                        
-                        <span class="card-title">Atcoder Beginner Contest 271 C-F</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
+                <span id="subtitle"></span>
+                <script src="/libs/typed/typed.js"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: [ 
                             
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-02
-                        </span>
-                        <span class="publish-author">
+                                "从来没有真正的绝境, 只有心灵的迷途",
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Treasure
+                                "Never really desperate, only the lost of the soul",
                             
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/abc/">
-                        <span class="chip bg-color">abc</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%80%9D%E7%BB%B4/">
-                        <span class="chip bg-color">思维</span>
-                    </a>
-                    
-                </div>
+                        ],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
                 
             </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/09/29/Flow/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Flow">
-                        
-                        <span class="card-title">Flow</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-29
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Treasure
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
-
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
         </div>
     </div>
 </div>
 
-<!-- TOC 悬浮按钮. -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
 
+
+    </div>
+</div>
+
+<main class="content">
+
     
 
+<div id="tags" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
+            </div>
+            <div class="tag-chips">
+                
+                
+                <a href="/tags/abc/" title="abc: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="abc" style="background-color: #F9EBEA;">abc
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%80%9D%E7%BB%B4/" title="思维: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="思维" style="background-color: #F5EEF8;">思维
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="abc, 思维" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2022/10/02/abc271/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Atcoder Beginner Contest 271 C-F">
+                            
+                            <span class="card-title">Atcoder Beginner Contest 271 C-F</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Treasure
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </article>
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
 
 
 
