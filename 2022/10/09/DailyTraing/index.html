@@ -9,8 +9,8 @@
 题目大意：
 给出一个由字符串ss建图的过程。
 
-字符仅有a,b,ca,b,c三种，建出的图中第ii个顶点表示原来的第ii个字符。
-ii与jj有连边，">
+字符仅有$a,b,c$三种，建出的图中第$i$个顶点表示原来的第$i$个字符。
+$i$与$j$有连边">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -394,10 +394,10 @@ ii与jj有连边，">
 <p>题目大意：</p>
 <p>给出一个由字符串s<em>s</em>建图的过程。</p>
 <ul>
-<li>字符仅有a,b,c<em>a</em>,<em>b</em>,<em>c</em>三种，建出的图中第i<em>i</em>个顶点表示原来的第i<em>i</em>个字符。</li>
-<li>i<em>i</em>与j<em>j</em>有连边，当且仅当s[i]<em>s</em>[<em>i</em>]与s[j]<em>s</em>[<em>j</em>]相同或s[i]<em>s</em>[<em>i</em>]和s[j]<em>s</em>[<em>j</em>]是相邻的字符（a<em>a</em>与b<em>b</em>相邻，b<em>b</em>与c<em>c</em>相邻）</li>
+<li>字符仅有$a,b,c$三种，建出的图中第$i$个顶点表示原来的第$i$个字符。</li>
+<li>$i$与$j$有连边，当且仅当$s[i]$与$s[j]$相同或$s[i]$和$s[j]$是相邻的字符（$a$与$b$相邻，$b$与$c$相邻）</li>
 </ul>
-<p>现给出由某个字符串s<em>s</em>建出的图，构造一个字符串使其符合上面的要求要求，或者回答不存在这样的字符串。</p>
+<p>现给出由某个字符串$s$建出的图，构造一个字符串使其符合上面的要求要求，或者回答不存在这样的字符串。</p>
 <p>解题思路：首先分析题目可以发现这样一件事情，对于出现的$b$来说他是需要连接所有点的，$a$只需要连接相邻的$a$以及$b$即可，$c$的话和$a$同理，那么其实这样子的话我们可以在刚开始的时候处理以下所有和其他点连接的点，赋值为$b$，然后我们可以考虑一件事情，对于$a$和$c$来说相对应的边是不相连的，那么对于原图的补图来说一定是一张二分图，然后我们可以判断二分图并且染色之后再去根据颜色判断，如果两个相邻的边是$a$以及$c$那么就是不行的</p>
 <pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
@@ -481,9 +481,9 @@ int main()
 
 
 <h2 id="Carousel"><a href="#Carousel" class="headerlink" title="Carousel"></a>Carousel</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1328D">CF1328D Carousel - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a> </p>
-<p>**题目大意:**有$q$组询问,每组询问如下:</p>
+<p><strong>题目大意:</strong> 有$q$组询问,每组询问如下:</p>
 <p>已知一个有$n(3\le n\le 2<em>10^5)$个点的*<em>环</em></em>,点$i$的类型为$a_i$,现在需要给每个点进行染色,要求<strong>相邻</strong>不同类型的点的颜色不同且所用颜色数最小.输出颜色数及一种染色方案即可.(颜色从1开始)</p>
-<p>注意: $n ≤2∗10^5$</p>
+<p>注意: $n ≤2*10^5$</p>
 <p><strong>解题思路:</strong></p>
 <p>其实很容易想到环的颜色种类不多，至多只有$3$</p>
 <p>那么我们可以进行这样子的讨论，首先我们可以把这个环分成奇环和偶环，对于偶环来说他有比较好的性质我们直接赋值$1$ $2$交替即可</p>
@@ -575,8 +575,8 @@ int main()
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="What-a-Colorful-Wall"><a href="#What-a-Colorful-Wall" class="headerlink" title="What a Colorful Wall"></a>What a Colorful Wall</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/group/MKpYqfAQQQ/contest/393177/problem/F">Problem - F - Codeforces</a></p>
-<p>**题目大意:**给定$n$个矩形，每个矩形有一定的颜色，矩形之间可以相互覆盖，问在$n$个矩形覆盖之后整个坐标系中最多存在着多少种颜色</p>
-<p>**解题思路:**首先先思考这样子的一件事情，因为矩形具有覆盖性，因此我们可以从后往前去放置矩形，因为后面的矩形总是不会被前面的矩形所覆盖，首先对于相同的$x$坐标的一个区域来说，如果一个矩形的高度小于另外一个的高度并且它的，那么它在这个$x$轴影响的$y$上面是被覆盖的，那么对于其他的$x$呢？我们可以利用一个类似于扫描线的做法，遍历相对应的$x$轴遍历过去即可，然后用并查集维护相对应的$y$是否已经是在同一条线上面</p>
+<p><strong>题目大意:</strong> 给定$n$个矩形，每个矩形有一定的颜色，矩形之间可以相互覆盖，问在$n$个矩形覆盖之后整个坐标系中最多存在着多少种颜色</p>
+<p><strong>解题思路:</strong> 首先先思考这样子的一件事情，因为矩形具有覆盖性，因此我们可以从后往前去放置矩形，因为后面的矩形总是不会被前面的矩形所覆盖，首先对于相同的$x$坐标的一个区域来说，如果一个矩形的高度小于另外一个的高度并且它的，那么它在这个$x$轴影响的$y$上面是被覆盖的，那么对于其他的$x$呢？我们可以利用一个类似于扫描线的做法，遍历相对应的$x$轴遍历过去即可，然后用并查集维护相对应的$y$是否已经是在同一条线上面</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 const int maxn &#x3D; 4e3 + 10;
@@ -656,8 +656,8 @@ int main()
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Chemical-table"><a href="#Chemical-table" class="headerlink" title="Chemical table"></a>Chemical table</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1013/problem/D">Problem - D - Codeforces</a></p>
-<p>**题意:**给定一个$n * m$的棋盘，给定$q$个元素，这些元素在棋盘的上面，如果对于一个$2 * 2$的矩形来说，这个矩形中的三个值都存在但是还有一个值不存在，那么这个值也会自动生成，问最多要加多少个值才能使得这个棋盘最后是满的</p>
-<p>**解题思路:**首先我们先分析最后的棋盘的状态，最后棋盘的状态是一个满的形式，对于棋盘来说我们可以把它看成一个二分图的形式，左边是列右边是行，然后我们去分析最终态，最终态是行和列的点都在一个连通块中；然后我们分析题目给定的条件，每次对于一个行和列连边，然后对于生成那个新点来说，实际上并不会影响当前连通块的情况，那么我们只需要连接所有的边，然后找出连通块的数量是多少，最后再加上相对应的边即可</p>
+<p><strong>题意:</strong> 给定一个$n * m$的棋盘，给定$q$个元素，这些元素在棋盘的上面，如果对于一个$2 * 2$的矩形来说，这个矩形中的三个值都存在但是还有一个值不存在，那么这个值也会自动生成，问最多要加多少个值才能使得这个棋盘最后是满的</p>
+<p><strong>解题思路:</strong> 首先我们先分析最后的棋盘的状态，最后棋盘的状态是一个满的形式，对于棋盘来说我们可以把它看成一个二分图的形式，左边是列右边是行，然后我们去分析最终态，最终态是行和列的点都在一个连通块中；然后我们分析题目给定的条件，每次对于一个行和列连边，然后对于生成那个新点来说，实际上并不会影响当前连通块的情况，那么我们只需要连接所有的边，然后找出连通块的数量是多少，最后再加上相对应的边即可</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 const int maxn &#x3D; 4e5 + 10;
@@ -699,7 +699,7 @@ int main()
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Cross-Swapping"><a href="#Cross-Swapping" class="headerlink" title="Cross Swapping"></a>Cross Swapping</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1713/problem/E">Problem - E - Codeforces</a></p>
-<p>**题意:**给定一个$n * n$的矩阵，可以选定一个$k$，交换所有的$mp[i][k]$和$mp[k][i]$，可以进行这样子的操作若干次，问在进行操作<br>之后这个矩阵字典序最小是什么样子的<br>**解题思路:**模拟每一次交换的过程，我们发现实际上$mp[i][j]$只会和$mp[j][i]$交换，既然这样那么实际上我们就很好去操作了<br>如果我们要交换$mp[i][j]$和$mp[j][i]$，我们只需要选定$k &#x3D; i$ $or$ $k &#x3D; j$,如果不交换我们可以两个都不选或者两个都选偶数次<br>然后的话我们可以用并查集来维护相对应的关系，用类似于敌人朋友的并查集来维护这个东西。</p>
+<p><strong>题意:</strong> 给定一个$n * n$的矩阵，可以选定一个$k$，交换所有的$mp[i][k]$和$mp[k][i]$，可以进行这样子的操作若干次，问在进行操作<br>之后这个矩阵字典序最小是什么样子的<br><strong>解题思路:</strong> 模拟每一次交换的过程，我们发现实际上$mp[i][j]$只会和$mp[j][i]$交换，既然这样那么实际上我们就很好去操作了<br>如果我们要交换$mp[i][j]$和$mp[j][i]$，我们只需要选定$k &#x3D; i$ $or$ $k &#x3D; j$,如果不交换我们可以两个都不选或者两个都选偶数次<br>然后的话我们可以用并查集来维护相对应的关系，用类似于敌人朋友的并查集来维护这个东西。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 const int maxn &#x3D; 2e3 + 10;
@@ -770,8 +770,8 @@ int main()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Mikasa"><a href="#Mikasa" class="headerlink" title="Mikasa"></a>Mikasa</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1554/problem/C">Problem - C - Codeforces</a></p>
-<p>**题意:**给定$T$组数据，每组数据有一个$n$和$m$,给定一个序列从$n \bigoplus 0,n \bigoplus 1,…,n \bigoplus m$问这个序列中没有出现过的最小数字是多少</p>
-<p>**解题思路:**考虑再这个序列中出现过的数字$k$,那么存在$x$使得式子$n \bigoplus x &#x3D; k,x ∈ [0,m]$成立,那么对于上面的式子其实可以等价于$n \bigoplus k &#x3D; x, 0 \leq n \bigoplus k \leq m$，那么我们要求的答案也就是去找一个最小的$k$使得$n \bigoplus k \geq m + 1$，那么这样子的话我们就可以进行按位考虑，假设$p &#x3D; m + 1$,我们从高位开始考虑，如果这个位置上面$n_i &#x3D; 1,p_i &#x3D; 0$,那么直接break掉，如果$n_i &#x3D; 0,p_i &#x3D; 1$,则需要加上这一位的贡献</p>
+<p><strong>题意:</strong> 给定$T$组数据，每组数据有一个$n$和$m$,给定一个序列从$n \bigoplus 0,n \bigoplus 1,…,n \bigoplus m$问这个序列中没有出现过的最小数字是多少</p>
+<p><strong>解题思路:</strong> 考虑再这个序列中出现过的数字$k$,那么存在$x$使得式子$n \bigoplus x &#x3D; k,x ∈ [0,m]$成立,那么对于上面的式子其实可以等价于$n \bigoplus k &#x3D; x, 0 \leq n \bigoplus k \leq m$，那么我们要求的答案也就是去找一个最小的$k$使得$n \bigoplus k \geq m + 1$，那么这样子的话我们就可以进行按位考虑，假设$p &#x3D; m + 1$,我们从高位开始考虑，如果这个位置上面$n_i &#x3D; 1,p_i &#x3D; 0$,那么直接break掉，如果$n_i &#x3D; 0,p_i &#x3D; 1$,则需要加上这一位的贡献</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 #define int long long
@@ -801,8 +801,8 @@ signed main()
 
 
 <h2 id="Count-Triangles"><a href="#Count-Triangles" class="headerlink" title="Count Triangles"></a>Count Triangles</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1355/C">Problem - 1355C - Codeforces</a></p>
-<p>**题意:**给定四个数字$A,B,C,D$使得三角形的三个边$a,b,c$分别满足$A \leq a \leq B, B\leq b \leq C,C \leq c \leq D$,问这样子的三元组$a,b,c$有多少</p>
-<p>**解题思路:**其实拿到题目的时候我们可以直接考虑枚举，但是直接分别枚举$a,b$是否在区间里面时间肯定是有点问题的，但是既然是三角形我们其实如果知道$a + b$是多少我们就能找到对应的第三条边是多少，既然这样的话那么我们只需要枚举$a + b$中有多少个就可以了，然后通过差分数组去维护相对应的数量，那么对应的$a + b$在数据范围中对应的第三条边可能是啥呢？其实是在一个范围中，我们在$a + b - C$和$D + C - 1$中取小的就可以了，当然需要特判一下$a + b - C$小于$0$的情况</p>
+<p><strong>题意:</strong> 给定四个数字$A,B,C,D$使得三角形的三个边$a,b,c$分别满足$A \leq a \leq B, B\leq b \leq C,C \leq c \leq D$,问这样子的三元组$a,b,c$有多少</p>
+<p><strong>解题思路:</strong> 其实拿到题目的时候我们可以直接考虑枚举，但是直接分别枚举$a,b$是否在区间里面时间肯定是有点问题的，但是既然是三角形我们其实如果知道$a + b$是多少我们就能找到对应的第三条边是多少，既然这样的话那么我们只需要枚举$a + b$中有多少个就可以了，然后通过差分数组去维护相对应的数量，那么对应的$a + b$在数据范围中对应的第三条边可能是啥呢？其实是在一个范围中，我们在$a + b - C$和$D + C - 1$中取小的就可以了，当然需要特判一下$a + b - C$小于$0$的情况</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 #define int long long
@@ -827,8 +827,8 @@ signed  main()
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Integers-Have-Friends"><a href="#Integers-Have-Friends" class="headerlink" title="Integers Have Friends"></a>Integers Have Friends</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1548/B">Problem - 1548B - Codeforces</a></p>
-<p>**题意:**给定一个长度为$n$的序列，序列中每个元素的数值各不相同，找一个最长的子序列使得这个子序列中$mod $ $m$都是相同的数字</p>
-<p>**解题思路:**因为题目中需要找到$a[i]$  $mod$ $m$ $&#x3D;$ $a[j]$ $mod$ $m$,那么对于这样子的式子我们可以先进行一个化简，那么就是$(a[i] - a[j])  $ $ mod $</p>
+<p><strong>题意:</strong> 给定一个长度为$n$的序列，序列中每个元素的数值各不相同，找一个最长的子序列使得这个子序列中$mod $ $m$都是相同的数字</p>
+<p><strong>解题思路:</strong> 因为题目中需要找到$a[i]$  $mod$ $m$ $&#x3D;$ $a[j]$ $mod$ $m$,那么对于这样子的式子我们可以先进行一个化简，那么就是$(a[i] - a[j])  $ $ mod $</p>
 <p> $m &#x3D; 0$,然后我们可以对这个序列进行一个处理，处理之后二分找最长的即可</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
@@ -917,7 +917,7 @@ signed main()
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Distance-in-Tree"><a href="#Distance-in-Tree" class="headerlink" title="Distance in Tree"></a>Distance in Tree</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/161/problem/D">Problem - D - Codeforces</a></p>
-<p>**题意:**给定一棵$n$个结点的树，需要找出这个树上面距离严格为$k$的点对有多少个<br>**解题思路:**拿到题目之后看$k$的范围实际上不大，有$500$左右，那么其实$nk$时间复杂度的算法是可以过的<br>那么接下来去思考如何用$nk$的时间复杂度去求<br>那么我们可以考虑这样子的一件事情，假设我们已经知道当前这里的一个点距离它距离为$x$的点都已知道<br>那么对于答案的贡献实际上可以是$ans +&#x3D; dp[now][i] * dp[to][k - i - 1]$<br>然后我们再更新相对应的数量即可</p>
+<p><strong>题意:</strong> 给定一棵$n$个结点的树，需要找出这个树上面距离严格为$k$的点对有多少个<br><strong>解题思路:</strong> 拿到题目之后看$k$的范围实际上不大，有$500$左右，那么其实$nk$时间复杂度的算法是可以过的<br>那么接下来去思考如何用$nk$的时间复杂度去求<br>那么我们可以考虑这样子的一件事情，假设我们已经知道当前这里的一个点距离它距离为$x$的点都已知道<br>那么对于答案的贡献实际上可以是$ans +&#x3D; dp[now][i] * dp[to][k - i - 1]$<br>然后我们再更新相对应的数量即可</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 #define int long long
@@ -954,9 +954,9 @@ signed main()
 
 <h2 id="The-Sports-Festival"><a href="#The-Sports-Festival" class="headerlink" title="The Sports Festival"></a>The Sports Festival</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1509/C">Problem - 1509C - Codeforces</a></p>
 <h2 id="Three-Bags"><a href="#Three-Bags" class="headerlink" title="Three Bags"></a>Three Bags</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1467/C">Problem - 1467C - Codeforces</a></p>
-<p>**题目大意:**给定$3$个集合，可以选定任意两个集合中的元素$a,b$,移走$b$并且让$a$变成$a - b$</p>
+<p><strong>题目大意:</strong> 给定$3$个集合，可以选定任意两个集合中的元素$a,b$,移走$b$并且让$a$变成$a - b$</p>
 <p>问最后剩下的元素最大值是多少</p>
-<p>**解题思路:**首先考虑如果在没有集合限制的情况下，其实我们进行这样子的操作就会使得一个数字没有取到，那么其实对应到集合来说，就是两个不同集合的数字的最小值没有取到是最优的；还有一种取法，就是另外两个集合全部取完，还有一个集合全部不取</p>
+<p><strong>解题思路:</strong> 首先考虑如果在没有集合限制的情况下，其实我们进行这样子的操作就会使得一个数字没有取到，那么其实对应到集合来说，就是两个不同集合的数字的最小值没有取到是最优的；还有一种取法，就是另外两个集合全部取完，还有一个集合全部不取</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 #define int long long
@@ -999,8 +999,8 @@ signed main()
 
 
 <h2 id="Dr-Evil-Underscores"><a href="#Dr-Evil-Underscores" class="headerlink" title="Dr. Evil Underscores"></a>Dr. Evil Underscores</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1285/problem/D">Problem - D - Codeforces</a></p>
-<p>**题意:**给定$n$个数字，需要找到一个数字$x$使得这些数字$\bigoplus x$的最大值最小</p>
-<p>**解题思路:**拿到题目之后我们可以想到拆位去思考，首先我们考虑这样子的一件事情，对于高位来说肯定是能消掉尽可能消掉，不能消掉再看接下来这个高位所带来的影响，然后对于一位来说，如果这一位在所有数字上面都是相同的，那么其实它就可以最后消掉；如果有存在不相同的，对于最终答案来说这一位肯定是取$1$的，但是对于后面的位数还是不确定什么是更优的，因此还是需要找下去</p>
+<p><strong>题意:</strong> 给定$n$个数字，需要找到一个数字$x$使得这些数字$\bigoplus x$的最大值最小</p>
+<p><strong>解题思路:</strong> 拿到题目之后我们可以想到拆位去思考，首先我们考虑这样子的一件事情，对于高位来说肯定是能消掉尽可能消掉，不能消掉再看接下来这个高位所带来的影响，然后对于一位来说，如果这一位在所有数字上面都是相同的，那么其实它就可以最后消掉；如果有存在不相同的，对于最终答案来说这一位肯定是取$1$的，但是对于后面的位数还是不确定什么是更优的，因此还是需要找下去</p>
 <p>所以我们可以建立一棵$tire$树，在$tire$树上面跑$dfs$即可</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
@@ -1051,9 +1051,9 @@ int main()
 
 
 <h2 id="New-Year’s-Problem"><a href="#New-Year’s-Problem" class="headerlink" title="New Year’s Problem"></a>New Year’s Problem</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1619/problem/D">Problem - D - Codeforces</a></p>
-<p>**题目大意:**给定$m$个商店，有$n$个人，最多可以在$n - 1$个商店中买东西，第$i$个人收到第$j$个物品的数值是$A{i,j}$</p>
+<p><strong>题目大意:</strong> 给定$m$个商店，有$n$个人，最多可以在$n - 1$个商店中买东西，第$i$个人收到第$j$个物品的数值是$A{i,j}$</p>
 <p>问如何选择能够让所有人的最小开心值最高</p>
-<p>**解题思路:**其实题目有两个$trick$点，一个是最小的开心值最大，对于这一个点我们可以使用二分来解决，还有一个就是$n - 1$个商店，那么对于$n - 1$来说我们可以思考的一个点也就是鸽巢原理。那么我们在写二分$check$的时候可以这样子，因为我们是选定$n - 1$个，如果对于当前选定的$x$来说，存在对应的人的最大值没有，那么就直接返回$0$，然后对于第二个部分的话我们可以考虑这样子的一个东西，至少要有一个商店带来两个人的贡献，否则就无法使用$n - 1$个</p>
+<p><strong>解题思路:</strong> 其实题目有两个$trick$点，一个是最小的开心值最大，对于这一个点我们可以使用二分来解决，还有一个就是$n - 1$个商店，那么对于$n - 1$来说我们可以思考的一个点也就是鸽巢原理。那么我们在写二分$check$的时候可以这样子，因为我们是选定$n - 1$个，如果对于当前选定的$x$来说，存在对应的人的最大值没有，那么就直接返回$0$，然后对于第二个部分的话我们可以考虑这样子的一个东西，至少要有一个商店带来两个人的贡献，否则就无法使用$n - 1$个</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 const int maxn &#x3D; 1e5 + 10;
@@ -1118,8 +1118,8 @@ int main()
 
 <h2 id="Left-Right-Operation"><a href="#Left-Right-Operation" class="headerlink" title="Left Right Operation"></a><strong>Left Right Operation</strong></h2><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc263/tasks/abc263_d">D - Left Right Operation (atcoder.jp)</a></p>
 <h2 id="Zuma"><a href="#Zuma" class="headerlink" title="Zuma"></a>Zuma</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/607/problem/B">Problem - B - Codeforces</a></p>
-<p>**题目大意:**给定$n$个东西，每个东西有一个颜色，每次可以消除颜色是回文串的一个字串，消除一个字串之后会自动拼接回去，问最少需要几次可以消除完</p>
-<p>**解题思路:**数据很小只有$500$，考虑区间$dp$</p>
+<p><strong>题目大意:</strong> 给定$n$个东西，每个东西有一个颜色，每次可以消除颜色是回文串的一个字串，消除一个字串之后会自动拼接回去，问最少需要几次可以消除完</p>
+<p><strong>解题思路:</strong> 数据很小只有$500$，考虑区间$dp$</p>
 <p>然后接下来我们来思考转移过程，因为每次消去的都是一个回文串，那么对于我们枚举的$l$和$r$来说可以放到上一个回文串中一起删除掉，如果$l &#x3D;&#x3D; r$</p>
 <p>那么$dp[l][r] &#x3D; dp[l - 1][r + 1]$</p>
 <p>否则我们需要考虑一个断点，在这个断点的两边进行$dp$</p>
