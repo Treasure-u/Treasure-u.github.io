@@ -366,7 +366,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    4.2k
                 </div>
                 
 
@@ -614,6 +614,192 @@ signed main()
 		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
 	&#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Session-in-BSU"><a href="#Session-in-BSU" class="headerlink" title="Session in BSU"></a>Session in BSU</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1027/F">Problem - 1027F - Codeforces</a></p>
+<p><strong>题目大意:</strong> 给定$n(1 \leq n \leq 10 ^ 6)$场比赛，每场比赛有两个数字$a_i,b_i(1 \leq a_i ,b_i \leq 10 ^ 9)$ 代表可以在第几天考试，问最早可以在哪一天结束比赛，如果无法结束比赛输出$-1$</p>
+<p><strong>解题思路:</strong> 首先如果我们不看这个数据范围的话，那么是不是实际上可以一眼网络流，建立每个考试点和对应的天数点，跑最大流即可。但是观察一下数据范围实际上很大，那么我们就不能直接跑网络流，不过既然一眼网络流我们可以往建图这一个方向去思考这个问题。假设我对每场考试连一条边，那么是不是就代表着一件事情:我这一条边可以选择这两个点中的任意一个时间。那么整张图是不是就是一个森林了。然后我们来考虑一下每个连通块有什么性质，对于每个连通块中，我们都要让这个连通块的边数(考试场数) 小于等于点数(选择考试的天数)，那么对于每一个连通块中，我们假设边数是$num$,我们是不是选择第$num$大的天数就是这个连通块的答案</p>
+<p>但是实际写起来之后发现这样子直接写会出现一些奇怪的问题，那么我们可以在思考刚刚形成的连通块是什么样子的，因为边数要小于等于点数，所以要么是一颗树，要么是一棵基环树，那么对于这两个来说我们只需要记录一个最大值和次大值即可，对于连通块是树的话输出次大值，基环树的输出最大值</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
+const int maxn &#x3D; 4e6 + 10;
+int f[maxn],n,m,edgenum[maxn],sz[maxn],ansmx2[maxn],ansmx[maxn],val[maxn],cnt;
+int getf(int x)
+&#123;
+	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
+&#125;
+pair&lt;int,int&gt; edge[maxn];
+signed main()
+&#123;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; m;
+	for(int i &#x3D; 1,u,v;i &lt;&#x3D; m;++i)
+	&#123;
+		cin &gt;&gt; u &gt;&gt; v;
+		edge[i] &#x3D; &#123;u,v&#125;;
+		val[++cnt] &#x3D; u,val[++cnt] &#x3D; v;
+	&#125;
+	sort(val + 1,val + 1 + cnt);
+	n &#x3D; unique(val + 1,val + 1 + cnt) - (val + 1);
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i,sz[i] &#x3D; 1,edgenum[i] &#x3D; 0,ansmx[i] &#x3D; i;
+	for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
+	&#123;
+		auto [u,v] &#x3D; edge[i];
+		u &#x3D; lower_bound(val + 1,val + 1 + n,u) - val;
+		v &#x3D; lower_bound(val + 1,val + 1 + n,v) - val;
+		int fu &#x3D; getf(u);
+		int fv &#x3D; getf(v);
+		if(fu &#x3D;&#x3D; fv)
+		&#123;
+			edgenum[fu]++;
+		&#125;
+		else
+		&#123;
+			f[fu] &#x3D; fv;
+			sz[fv] +&#x3D; sz[fu];
+			edgenum[fv] +&#x3D; edgenum[fu] + 1;
+			vector&lt;int&gt; ha;
+			ha.push_back(ansmx2[fu]);ha.push_back(ansmx[fu]);
+			ha.push_back(ansmx2[fv]);ha.push_back(ansmx[fv]);
+			sort(ha.begin(),ha.end());
+			ansmx[fv] &#x3D; ha[3];
+			ansmx2[fv] &#x3D; ha[2];
+		&#125;
+	&#125;
+	int f &#x3D; 1;
+	int res &#x3D; 0;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		int fi &#x3D; getf(i);
+		if(i &#x3D;&#x3D; fi)
+		&#123;
+			if(sz[i] &lt; edgenum[i])
+			&#123; 
+				f &#x3D; 0;
+				break;
+			&#125;
+			if(edgenum[i] &#x3D;&#x3D; sz[i]) chkmax(res,val[ansmx[i]]);
+			else chkmax(res,val[ansmx2[i]]);
+		&#125;
+	&#125;
+	if(!f)
+	&#123;
+		cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+		return 0;
+	&#125;
+	cout &lt;&lt; res &lt;&lt; &quot;\n&quot;;
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Moment-of-Bloom"><a href="#Moment-of-Bloom" class="headerlink" title="Moment of Bloom"></a>Moment of Bloom</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1583/E">Problem - 1583E - Codeforces</a></p>
+<p><strong>题目大意:</strong> 给定一个点数为$n$，边数为$m$的图$(1 \leq n,m \leq 3*10^5)$,初始所有点的点权为$0$。给定$q$次操作，每次操作给定两个点，你可以选择图上这两个点中任意一条简单路径，并且给这一条简单路径上面所有的点权加$1$，问经过$q$次操作这张图所有点的点权是否都是偶数，如果是的话输出$Y!ES$并且输出每次操作应该怎么操作，否则输出$N!O$并且输出最少还需要加几条边，特别注意的是$nq \leq 3 * 10^5$</p>
+<p><strong>解题思路:</strong> 首先遇到这样子的问题在一张图上面会很棘手，因为两个点之间可能有很多的路径，那么既然这样，我们先尝试简化一下这个问题。如果我们把这一个问题放在一棵树上面，那么两点之间的路径是不是就已经确定了。既然这样，什么时候会出现不行的情况呢？我们每次可以对路径的两个端点增加一个值，如果最后在这一棵树上面存在点的点权是奇数，那么是肯定输出$NO$的。然后由于点是成对出现的，那么点也会是成对落单的，我们记录奇数个数的点为$num$个，那么最后需要的边数就是$\frac{num}{2}$个</p>
+<p>然后对于原题来说我们已经把题目化成在树上面了，那么我们直接在树上类似$LCA$找祖先结点沿路径输出即可</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
+const int maxn &#x3D; 3e5 + 10;
+struct graph
+&#123;
+	vector&lt;int&gt; edge[maxn];
+	inline void add(int u,int v)
+	&#123;
+		edge[u].push_back(v);
+		edge[v].push_back(u);
+	&#125;
+&#125;g1,g2;
+int n,m,deg[maxn];
+pair&lt;int,int&gt; op[maxn];
+int f[maxn],p[maxn],dep[maxn];
+int getf(int x)
+&#123;
+	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
+&#125;
+void dfs(int s,int fa)
+&#123;
+	dep[s] &#x3D; dep[fa] + 1;
+	p[s] &#x3D; fa;
+	for(auto to:g2.edge[s])
+	&#123;
+		if(to &#x3D;&#x3D; fa) continue;
+		dfs(to,s);
+	&#125;
+&#125;
+signed main()
+&#123;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; n &gt;&gt; m;
+	for(int i &#x3D; 1,u,v;i &lt;&#x3D; m;++i)
+	&#123;
+		cin &gt;&gt; u &gt;&gt; v;
+		g1.add(u,v);
+	&#125;
+	int q;
+	cin &gt;&gt; q;
+	for(int i &#x3D; 1;i &lt;&#x3D; q;++i) cin &gt;&gt; op[i].first &gt;&gt; op[i].second,deg[op[i].first]++,deg[op[i].second]++;
+	int ct &#x3D; 0;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		ct +&#x3D; (deg[i] &amp; 1);
+	&#125;
+	if(ct)
+	&#123;
+		cout &lt;&lt; &quot;NO\n&quot;;
+		cout &lt;&lt; ct &#x2F; 2 &lt;&lt; &quot;\n&quot;;
+		return 0;
+	&#125;
+	cout &lt;&lt; &quot;YES\n&quot;;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		for(auto to:g1.edge[i])
+		&#123;
+			int fx &#x3D; getf(i);
+			int fy &#x3D; getf(to);
+			if(fx &#x3D;&#x3D; fy) continue;
+			f[fy] &#x3D; fx;
+			g2.add(i,to);
+		&#125;
+	&#125;
+	&#x2F;&#x2F; cout &lt;&lt; &quot;?? &quot; &lt;&lt; &quot;\n&quot;;
+	dfs(1,0);
+	for(int i &#x3D; 1;i &lt;&#x3D; q;++i)
+	&#123;
+		auto [u,v] &#x3D; op[i];
+		vector&lt;int&gt; now;
+		vector&lt;int&gt; now2;
+		&#x2F;&#x2F; cout &lt;&lt; &quot;?? ? &quot; &lt;&lt; u &lt;&lt; &quot; &quot; &lt;&lt; v &lt;&lt; &quot;\n&quot;;
+		while(dep[u] !&#x3D; dep[v])
+		&#123;
+			if(dep[u] &gt; dep[v]) now.push_back(u),u &#x3D; p[u];
+			else now2.push_back(v),v &#x3D; p[v];
+		&#125;
+		while(u !&#x3D; v)
+		&#123;
+			now.push_back(u);
+			now2.push_back(v);
+			u &#x3D; p[u];
+			v &#x3D; p[v];
+		&#125;
+		reverse(now2.begin(),now2.end());
+		now.push_back(u);
+		for(auto to:now2)
+		&#123;
+			now.push_back(to);
+		&#125;
+		cout &lt;&lt; now.size() &lt;&lt; &quot;\n&quot;;
+		for(auto to:now)
+		&#123;
+			cout &lt;&lt; to &lt;&lt; &quot; &quot;;
+		&#125;
+		cout &lt;&lt; &quot;\n&quot;;
+	&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
 
 
@@ -1023,7 +1209,7 @@ signed main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.2k</span>
+                        class="white-color">25k</span>
             
             
             
