@@ -366,7 +366,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.2k
+                    5.1k
                 </div>
                 
 
@@ -801,6 +801,107 @@ signed main()
 
 
 
+<h2 id="Factory-Balls"><a href="#Factory-Balls" class="headerlink" title="Factory Balls"></a>Factory Balls</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103855/problem/A">Problem - A - Codeforces</a></p>
+<p>**题目大意: ** 给定一个球，球被划分成为$n$个区域，然后有$k$种颜色的油漆桶，有$m$个装备，球的每个区域在初始状态都是$1$</p>
+<p>接下来可以进行以下三种操作若干次，一种是将这个球放入油漆桶里面，这个球没有被装备安装的部分全部会感染上这个颜色，一种是在这个球上面安装一个装备，一种是给这个球脱下一种装备</p>
+<p>问这个球的区域是否可以达到给定的目标状态，如果可以的话输出最小的步数，否则输出$-1$</p>
+<p>特别的是$1 \leq n,m,k \leq 10$</p>
+<p><strong>解题思路:</strong>  首先考虑数据范围，因为我们的数据范围实际上其实很小，那么我们可以进行状压来表示 <strong>当前的状态</strong> 和 <strong>目标状态</strong> 是否一致，如果一致是$1$否则就是$0$ 。然后我们就这样子$BFS$，我们进行搜索的时候的状态可以以当前的颜色和目标的颜色的差别以及装备的数目和种类，然后我们思考，当前状态更新一步的操作要么是去不变颜色更新装备状态，不变状态更新装备颜色，然后搜索即可</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
+const int maxn &#x3D; 1111;
+const int inf &#x3D; 1e9 + 7;
+int n,k,m;
+int col[maxn],vis[maxn];
+vector&lt;int&gt; equ[maxn];
+int dis[maxn][maxn];
+int main()
+&#123;
+	&#x2F;&#x2F; ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; n &gt;&gt; k &gt;&gt; m;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; col[i];
+	int s &#x3D; 0;
+	for(int i &#x3D; 0,num;i &lt; m;++i)
+	&#123;
+		cin &gt;&gt; num;
+		for(int j &#x3D; 1,x;j &lt;&#x3D; num;++j)
+		&#123;
+			cin &gt;&gt; x;
+			equ[i].push_back(x);
+		&#125;
+	&#125;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		if(col[i] &#x3D;&#x3D; 1)
+		&#123;
+			s |&#x3D; (1 &lt;&lt; (i - 1));
+		&#125;
+	&#125;
+	queue&lt;pair&lt;int,int&gt;&gt; que;
+	memset(dis,0x3f,sizeof dis);
+	&#x2F;&#x2F; cout &lt;&lt; &quot;?1&quot; &lt;&lt; dis[s][0] &lt;&lt; &quot;??\n&quot;;
+	dis[s][0] &#x3D; 0;
+	que.push(&#123;s,0&#125;);
+	while(!que.empty())
+	&#123;
+		auto [nowcol,nowequ] &#x3D; que.front();
+		que.pop();
+		&#x2F;&#x2F; cout &lt;&lt; &quot;-----------------------------\n&quot;;
+		&#x2F;&#x2F; cout &lt;&lt; &quot;now -&gt; &quot; &lt;&lt; nowcol &lt;&lt; &quot; &quot; &lt;&lt; nowequ &lt;&lt; &quot;\n&quot;;
+		for(int i &#x3D; 0;i &lt; m;++i)
+		&#123;
+			auto toequ &#x3D; nowequ ^ (1 &lt;&lt; i);
+			if(dis[nowcol][toequ] &gt; dis[nowcol][nowequ] + 1)
+			&#123;
+				dis[nowcol][toequ] &#x3D; dis[nowcol][nowequ] + 1;
+				que.push(&#123;nowcol,toequ&#125;);
+			&#125;
+		&#125;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) vis[i] &#x3D; 0;
+		for(int i &#x3D; 0;i &lt; m;++i)
+		&#123;
+			if(nowequ &gt;&gt; i &amp; 1)
+			&#123;
+				for(auto to:equ[i])
+				&#123;
+					vis[to] &#x3D; 1;
+				&#125;
+			&#125;
+		&#125;
+		for(int i &#x3D; 1;i &lt;&#x3D; k;++i)
+		&#123;
+			int tocol &#x3D; nowcol;
+			for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
+			&#123;
+				if(vis[j]) continue;
+				if(col[j] &#x3D;&#x3D; i)
+				&#123;
+					tocol |&#x3D; (1 &lt;&lt; (j - 1));
+				&#125;
+				else
+				&#123;
+					if(tocol &gt;&gt; (j - 1) &amp; 1)
+					&#123;
+						tocol ^&#x3D; (1 &lt;&lt; (j - 1));
+					&#125;
+				&#125;
+			&#125;
+			&#x2F;&#x2F; cout &lt;&lt; i &lt;&lt; &quot; tocol ?? &quot; &lt;&lt; tocol &lt;&lt; &quot;\n&quot;;
+			if(dis[tocol][nowequ]  &gt; dis[nowcol][nowequ] + 1)
+			&#123;
+				dis[tocol][nowequ] &#x3D; dis[nowcol][nowequ] + 1;
+				que.push(&#123;tocol,nowequ&#125;);
+			&#125;
+		&#125;
+	&#125;
+	&#x2F;&#x2F; cout &lt;&lt; (1 &lt;&lt; (m)) - 1 &lt;&lt; &quot; &quot; &lt;&lt; dis[7][0] &lt;&lt; &quot; ??\n&quot;;
+	if(dis[(1 &lt;&lt; (n)) - 1][0] &gt;&#x3D; inf) cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+	else cout &lt;&lt; dis[(1 &lt;&lt; (n)) - 1][0] &lt;&lt; &quot;\n&quot;;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 
                 
@@ -1209,7 +1310,7 @@ signed main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25k</span>
+                        class="white-color">27.2k</span>
             
             
             
