@@ -4,8 +4,13 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Atcoder Beginner Contest 271 C-F, Hexo">
-    <meta name="description" content="Atcoder Beginner Contest 271 C-FC - Manga题意: 给定一个长度为$n(1 \leq n \leq 3e5)$的序列,每个位置有一个值$x(1 \leq x \leq 1e9)$，我们可以进行任意多次操">
+    <meta name="keywords" content="pythonbasic, Hexo">
+    <meta name="description" content="Python基础语法和基本数据标识符号
+第一个字符必须是字母表中字母或下划线 _ 。
+标识符的其他的部分由字母、数字和下划线组成。
+标识符对大小写敏感。
+
+Python保留字保留字即关键字，我们不能把它们用作任何标识符名称。$Python$">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Atcoder Beginner Contest 271 C-F | Hexo</title>
+    <title>pythonbasic | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -311,12 +316,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Atcoder Beginner Contest 271 C-F</h1>
+                    <h1 class="description center-align post-title">pythonbasic</h1>
                 </div>
             </div>
         </div>
@@ -340,12 +345,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/abc/">
-                                <span class="chip bg-color">abc</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%80%9D%E7%BB%B4/">
-                                <span class="chip bg-color">思维</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -360,7 +361,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-10-02
+                    2023-01-03
                 </div>
                 
 
@@ -369,7 +370,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    3k
                 </div>
                 
 
@@ -389,208 +390,392 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Atcoder-Beginner-Contest-271-C-F"><a href="#Atcoder-Beginner-Contest-271-C-F" class="headerlink" title="Atcoder Beginner Contest 271 C-F"></a>Atcoder Beginner Contest 271 C-F</h1><h2 id="C-Manga"><a href="#C-Manga" class="headerlink" title="C - Manga"></a>C - Manga</h2><p><strong>题意:</strong> 给定一个长度为$n(1 \leq n \leq 3e5)$的序列,每个位置有一个值$x(1 \leq x \leq 1e9)$，我们可以进行任意多次操作，操作的话是如果序列的长度还大于等于$2$，那么我们可以任意选择$2$个数字去删除，然后加进去任意一个数字进去，问我们最后能够得到一个形似$1,2,3…$的最长序列</p>
-<p><strong>解题思路:</strong> 首先我们分析一下题意，我们可以知道最后的答案最多不会超过$n$，那么我们在读入的时候可以将大于$n$的部分放进一个$vector$里面，然后对于小于$n$的一部分我们可以先给他标记然后放到一个双端队列里面，如果其中的数字有重复的部分我们也需要放进上面的$vector$之中。接着我们模拟这个过程即可。在模拟的时候注意我们优先取$vector$当中的，然后我们取队列后面的即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 3e5 + 10;
-int vis[maxn],n;
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	vector&lt;int&gt; a;
-	for(int i &#x3D; 1,x;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; x;
-		if(x &lt;&#x3D; n)
-		&#123;
-			if(vis[x]) a.push_back(x);
-			else vis[x] &#x3D; 1;
-		&#125;
-		else a.push_back(x);
-	&#125;
-	deque&lt;int&gt; q;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		if(vis[i]) q.push_back(i);
-	&#125;
-	int ans &#x3D; 0;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		if(vis[i] &amp;&amp; q.size())
-		&#123;
-			ans++;
-			q.pop_front();
-			continue;
-		&#125;
-		if(a.size() &gt;&#x3D; 2)
-		&#123;
-			a.pop_back();
-			a.pop_back();
-		&#125;
-		else if(a.size() &#x3D;&#x3D; 1)
-		&#123;
-			a.pop_back();
-			if(!q.empty()) q.pop_back(); 
-			else break;
-		&#125;
-		else
-		&#123;
-			if(q.size() &gt;&#x3D; 2)
-			&#123;
-				q.pop_back();
-				q.pop_back();
-			&#125;
-			else break;
-		&#125;
-		ans++;
-	&#125;
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="Python基础语法和基本数据"><a href="#Python基础语法和基本数据" class="headerlink" title="Python基础语法和基本数据"></a>Python基础语法和基本数据</h1><h2 id="标识符号"><a href="#标识符号" class="headerlink" title="标识符号"></a>标识符号</h2><ul>
+<li>第一个字符必须是字母表中字母或下划线 <strong>_</strong> 。</li>
+<li>标识符的其他的部分由字母、数字和下划线组成。</li>
+<li>标识符对大小写敏感。</li>
+</ul>
+<h2 id="Python保留字"><a href="#Python保留字" class="headerlink" title="Python保留字"></a>Python保留字</h2><p>保留字即关键字，我们不能把它们用作任何标识符名称。$Python$ 的标准库提供了一个 $keyword$ 模块。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import keyword
+print(keyword.kwlist)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="D-Flip-and-Adjust"><a href="#D-Flip-and-Adjust" class="headerlink" title="D - Flip and Adjust"></a>D - Flip and Adjust</h2><p><strong>题意:</strong> 给定$n(1 \leq n \leq 100)$张卡片，每张卡片背面和正面有一个数字，现在让我们选择每张卡片的正面或者反面，问是否能够组成$s(1\leq s \leq 10000)$</p>
-<p><strong>解题思路:</strong> 首先我们可以观察数据范围，可能是$O(n ^ 3)$或者$O(ns)$的$dp$</p>
-<p>接下来我们考虑这样的一个过程，首先无论如何每张牌都是要取的，那么假定我现在取到第$i - 1$张牌的值有$s_{i - 1}$，那么我取第$i$张牌的时候的值肯定有$s_{i - 1} + mp[i][0]$和$s_{i - 1} + mp[i][1]$$(mp[i][0&#x2F;1]表示第i张牌的正反面的值)$</p>
-<p>那么我们就可以用$dp[i][s]$来表示前$i$张牌可能组成的值</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 2e2 + 10;
-int mp[maxn][2],n,s;
-int dp[maxn][40010];
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; s;
-	dp[0][0] &#x3D; 1;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; mp[i][0] &gt;&gt; mp[i][1];
-		if(i &#x3D;&#x3D; 1)
-		&#123;
-			dp[1][mp[i][0]] &#x3D; 1;
-			dp[1][mp[i][1]] &#x3D; 1;
-			continue;
-		&#125;
-		for(int j &#x3D; 0;j &lt;&#x3D; s;++j)
-		&#123;
-			if(!dp[i - 1][j]) continue;
-			if(j + mp[i][0] &lt;&#x3D; s) dp[i][j + mp[i][0]] &#x3D; 1;
-			if(j + mp[i][1] &lt;&#x3D; s) dp[i][j + mp[i][1]] &#x3D; 1;
-		&#125;
-	&#125;
-	if(dp[n][s])
-	&#123;
-		cout &lt;&lt; &quot;Yes\n&quot;;
-		string ans &#x3D; &quot;&quot;;
-		for(int i &#x3D; n;i &gt;&#x3D; 1;--i)
-		&#123;
-			if(s - mp[i][0] &gt;&#x3D; 0 &amp;&amp; dp[i - 1][s - mp[i][0]])
-			&#123;
-				s -&#x3D; mp[i][0];
-				ans.push_back(&#39;H&#39;);
-			&#125;
-			else
-			&#123;
-				s -&#x3D; mp[i][1];
-				ans.push_back(&#39;T&#39;);
-			&#125;
-		&#125;
-		assert(ans.length() &#x3D;&#x3D; n);
-		reverse(ans.begin(),ans.end());
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-	else
-	&#123;
-		cout &lt;&lt; &quot;No\n&quot;;
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="E-Subsequence-Path"><a href="#E-Subsequence-Path" class="headerlink" title="E - Subsequence Path"></a>E - Subsequence Path</h2><p><strong>题目大意:</strong> 给定$n$个点$m$条单向边$(1 \leq n,m \leq 2e5)$，没有重边和自环，每个边有一条权值，接下来给定一个序列$E$，我们走的路径的标号形成的序列必须是这个序列$E$的子序列，问从点$1$到点$n$的最短路径</p>
-<p><strong>解题思路:</strong> 分析题目发现我们的突破口应该在这个给定我们的序列$E$这里，因为考虑我们取到的序列是这个序列的子序列，这里给我们透露到一些信息，就是假设我们当前已经遍历到第$i$条边，那么我们是可以用前面$i - 1$条边来更新这一张图的，那么我们知道这个点之后就可以写啦</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-#define int long long
-const int maxn &#x3D; 2e5 + 10;
-const int inf &#x3D; 1e18;
-struct node
-&#123;
-	int u,v,w;
-&#125;edge[maxn];
-int n,m,k;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;
-	vector&lt;int&gt; dis(n + 1,inf);
-	for(int i &#x3D; 1,u,v,w;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
-		edge[i] &#x3D; &#123;u,v,w&#125;;
-	&#125;
-	dis[1] &#x3D; 0;
-	for(int i &#x3D; 1,x;i &lt;&#x3D; k;++i)
-	&#123;
-		cin &gt;&gt; x;
-		int u &#x3D; edge[x].u;
-		int v &#x3D; edge[x].v;
-		int w &#x3D; edge[x].w;
-		dis[v] &#x3D; min(dis[v],dis[u] + w);
-	&#125;
-	if(dis[n] !&#x3D; inf) cout &lt;&lt; dis[n] &lt;&lt; &quot;\n&quot;;
-	else cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="F-XOR-on-Grid-Path"><a href="#F-XOR-on-Grid-Path" class="headerlink" title="F - XOR on Grid Path"></a>F - XOR on Grid Path</h2><p><strong>题目大意:</strong> 给定一个$n * n(1\leq n \leq 20)$的矩阵，我们从点$(1,1)$开始，每次移动可以向$(x + 1,y)$或者$(x,y + 1)$移动，问我们到达$(n,n)$使得异或和为$0$的路径有多少条</p>
-<p><strong>解题思路:</strong> 首先对于这种矩阵的题目我们肯定先去考虑$dp$的，但是如果暴力去枚举所有方案的话方案数实际会非常的大</p>
-<p>根据官方题解的思路，建议我们使用$meet$  $in$ $middle$来做</p>
-<p>那$meet$  $in$ $middle$是个什么东西呢？大概就是我从两个点来搜索，搜索到一些具有共同性质的点从而结束，因为这样子会大大减少我们所需要的时间复杂度</p>
-<p>那么对于矩阵来说，我们可以从$(1,1)$点和$(n,n)$点来搜索，对于这两个点来说我们都搜索到对角线上面的点来结束,因为对角线刚好分割两个矩阵</p>
-<p>那么我们对于$(1,1)$点来说，我们可以直接搜索下去到对角线来记录当前异或和的数值，那么对于$(n,n)$点来说，我们可以往上面搜索，搜到对角线的话就加上之前前面遍历到这一点的值，因为我们需要异或和是$0$嘛</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-#define int long long
-int mp[30][30],n;
-unordered_map&lt;int,int&gt; dp[30][30];
-int ans;
-void dfs1(int x,int y,int now)
-&#123;
-	if(x + y &#x3D;&#x3D; n)
-	&#123;
-		dp[x][y][now]++;
-		return;
-	&#125;
-	if(x + y &gt; n) return;
-	dfs1(x + 1,y,now ^ mp[x + 1][y]);
-	dfs1(x,y + 1,now ^ mp[x][y + 1]);
-&#125;
-void dfs2(int x,int y,int now)
-&#123;
-	if(x + y &#x3D;&#x3D; n)
-	&#123;
-		ans +&#x3D; dp[x][y][now ^ mp[x][y]];
-		return;
-	&#125;
-	if(x + y &lt; n) return;
-	dfs2(x - 1,y,now ^ mp[x - 1][y]);
-	dfs2(x,y - 1,now ^ mp[x][y - 1]);
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; 1;j &lt;&#x3D; n;++j) cin &gt;&gt; mp[i][j];
-	&#125;
-	dfs1(1,1,mp[1][1]);
-	dfs2(n,n,mp[n][n]);
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>$python$中单行注释以 <strong>#</strong> 开头</p>
+<p>多行注释可以用多个 <strong>#</strong> 号，还有 <strong>‘’’</strong> 和 **”””**：</p>
+<h2 id="Python多行语句"><a href="#Python多行语句" class="headerlink" title="Python多行语句"></a>Python多行语句</h2><p>$Python$ 通常是一行写完一条语句，但如果语句很长，我们可以使用反斜杠 *<em>*</em> 来实现多行语句，例如:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">total &#x3D; item_one + \
+        item_two + \
+        item_three<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>用 <code>**</code> 运算符来计算乘方</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(5 ** 2)
+#25<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>在交互模式下，可以用变量 <code>_</code> 表示上一次的值</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul>
+<li><p>$Python$中单引号 <strong>‘</strong> 和双引号 <strong>“</strong> 使用完全相同。</p>
+</li>
+<li><p>使用三引号(<strong>‘’’</strong> 或 <strong>“””</strong>)可以指定一个多行字符串。</p>
+</li>
+<li><p>按字面意义级联字符串，如 <strong>“this “ “is “ “string”</strong> 会被自动转换为 <strong>this is string</strong>。</p>
+</li>
+<li><p>字符串可以用 <strong>+</strong> 运算符连接在一起，用 ***** 运算符重复。</p>
+</li>
+<li><p>$Python$ 中的字符串有两种索引方式，从左往右以 <strong>0</strong> 开始，从右往左以 <strong>-1</strong> 开始。</p>
+</li>
+<li><p>$Python$ 中的字符串不能改变。</p>
+</li>
+<li><p>$Python$ 没有单独的字符类型，一个字符就是长度为 1 的字符串。</p>
+</li>
+<li><p>字符串的截取的语法格式如下：<strong>变量[头下标:尾下标:步长]</strong></p>
+</li>
+</ul>
+<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>$Python$中单引号 <code>&#39;</code> 和双引号 <code>&quot;</code>使用完全相同。</p>
+<p>反斜杠 <code>\</code> 可以用来转义，或者如果我们想要使用单引号我们外面可以加一个双引号</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(&#39;this is test1&#39;)
+print(&#39;this is \&#39; test2&#39;)
+print(&quot;this is test &#39;3 &quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">this is test1
+this is &#39; test2
+this is test &#39;3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>注意如果我们不需要使用到转义的话我们可以在字符串前面加一个<code>r</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(&#39;\hahah\tese&#39;)
+print(r&#39;\hahah\tese&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">\hahah	ese
+\hahah\tese<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="跨行连续输入"><a href="#跨行连续输入" class="headerlink" title="跨行连续输入"></a>跨行连续输入</h3><p>使用三引号<code>&quot;&quot;&quot;</code> 或 <code>&#39;&#39;&#39;</code>可以指定一个多行字符串。</p>
+<h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><p>字符串可以用 <strong>+</strong> 运算符连接在一起，用 ***** 运算符重复</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(3 * &#39;ha&#39; + &#39;uhuh&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">hahahauhuh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>或者说可以按照字面意思连接字符串，比如相邻多个字符串会自动连接到一起</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(&#39;114514&#39;&#39;1919810&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">1145141919810<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>因此我们在输出较长字符串的时候我们可以使用按照字面意思连接的方法来输出</p>
+<h3 id="字符串只读"><a href="#字符串只读" class="headerlink" title="字符串只读"></a>字符串只读</h3><p>$python$中的字符串不能被修改，如果我们需要强行修改的话会错掉</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
+test[3] &#x3D; &#39;i&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-none"><code class="language-none">Traceback (most recent call last):
+  File &quot;e:\Sublime Text\code\codeforces\traing\test.py&quot;, line 2, in &lt;module&gt;
+    test[3] &#x3D; &#39;i&#39;
+TypeError: &#39;str&#39; object does not support item assignment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>如果需要一个新的字符串我们只能通过新建的方式来，同时我们可以使用$len$来获取字符串的长度</p>
+<h3 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h3><pre class="line-numbers language-none"><code class="language-none">文本序列类型 --- str
+     字符串是一种 *序列类型* ，因此也支持序列类型的各种操作。
+
+  字符串的方法
+     字符串支持许多变换和查找的方法。
+
+  格式化字符串字面值
+     内嵌表达式的字符串字面值。
+
+  格式字符串语法
+     使用 &quot;str.format()&quot; 进行字符串格式化。
+
+  printf 风格的字符串格式化
+     这里详述了使用 &quot;%&quot; 运算符进行字符串格式化。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="字符串索引"><a href="#字符串索引" class="headerlink" title="字符串索引"></a>字符串索引</h2><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>字符串是可以被索引 (下标) 访问的，字符串的第一个字母的索引是 $0$</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
+print(test[0])
+print(test[2])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">t
+s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="负索引"><a href="#负索引" class="headerlink" title="负索引"></a>负索引</h3><p>索引使用负数的话说明是从右边往左边开始数，因为我们考虑到0的负数还是本身所以我们从 $-1$开始数</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
+print(test[-1])
+print(test[-3])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">d
+o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><p>索引可以获得单个字符，切片可以获得一个字符串的字串，切片的形式是$[l:r]$，对于切片来说$l$是被包含在输出的字符串当中但是$r$不会</p>
+<p>切片的索引有默认值；省略开始索引时默认为0，省略结束索引时默认为到字符 串的结束:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
+print(test[0:2])
+print(test[2:5])
+print(test[:2] + test[2:])
+print(test[:3])
+print(test[-3:])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">te
+stw
+testword
+tes
+ord<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们可以发现一个性质就是对于一个字符串来说$s[:i] + s[i:] &#x3D; s$</p>
+<h3 id="索引越界"><a href="#索引越界" class="headerlink" title="索引越界"></a>索引越界</h3><p>在我们使用过大的索引的时候会出现以下的错误:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
+print(test[114514])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">Traceback (most recent call last):
+  File &quot;e:\Sublime Text\code\codeforces\traing\test.py&quot;, line 2, in &lt;module&gt;
+    print(test[114514])
+IndexError: string index out of range<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>但是对于切片中的越界索引他会自动去取到相对应的边界</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
+print(test[2:114514])
+print(test[114514:])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">stword
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
+<h3 id="List（列表）"><a href="#List（列表）" class="headerlink" title="List（列表）"></a>List（列表）</h3><p>列表是写在<code>[]</code>之间用有道分隔开的元素列表，和字符串一样列表也可以被索引和截取，列表被截取后返回一个包含所需元素的新列表，注意列表中的元素类型可以不相同</p>
+<p>我们可以通过和字符串类似的写法$[a:b:c]$来表示从坐标$a$开始到坐标$b - 1$每次相间隔$c$去一个列表中的元素，特别需要注意的是，当$c &lt; 0$的时候，截取字符是从后往前的，那么我们可以采用如下的写法来进行对一个列表逆序</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def reverseWords(input):
+     
+    # 通过空格将字符串分隔符，把各个单词分隔为列表
+    inputWords &#x3D; input.split(&quot; &quot;)
+ 
+    # 翻转字符串
+    # 假设列表 list &#x3D; [1,2,3,4],  
+    # list[0]&#x3D;1, list[1]&#x3D;2 ，而 -1 表示最后一个元素 list[-1]&#x3D;4 ( 与 list[3]&#x3D;4 一样)
+    # inputWords[-1::-1] 有三个参数
+    # 第一个参数 -1 表示最后一个元素
+    # 第二个参数为空，表示移动到列表末尾
+    # 第三个参数为步长，-1 表示逆向
+    inputWords&#x3D;inputWords[-1::-1]
+ 
+    # 重新组合字符串
+    output &#x3D; &#39; &#39;.join(inputWords)
+     
+    return output
+ 
+if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
+    input &#x3D; &#39;I like runoob&#39;
+    rw &#x3D; reverseWords(input)
+    print(rw)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>列表还可以通过$append$来添加元素</p>
+<h2 id="多个语句构成代码组"><a href="#多个语句构成代码组" class="headerlink" title="多个语句构成代码组"></a>多个语句构成代码组</h2><p>缩进相同的一组语句构成一个代码块，我们称之代码组。</p>
+<p>像$ if $、$ while $ 、$ def $ 和$ class$ 这样的复合语句，首行以关键字开始，以冒号( : )结束，该行之后的一行或多行代码构成代码组。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">if expression : 
+   suite
+elif expression : 
+   suite 
+else : 
+   suite<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+<h3 id="Tuple（元组）"><a href="#Tuple（元组）" class="headerlink" title="Tuple（元组）"></a>Tuple（元组）</h3><p>元组（tuple）与列表类似，不同之处在于元组的元素不能修改。元组写在小括号 <strong>()</strong> 里，元素之间用逗号隔开。</p>
+<p>元组中的类型也可以不相同</p>
+<h3 id="Set（集合）"><a href="#Set（集合）" class="headerlink" title="Set（集合）"></a>Set（集合）</h3><p>集合（set）是由一个或数个形态各异的大小整体组成的，构成集合的事物或对象称作元素或是成员。</p>
+<p>基本功能是进行成员关系测试和删除重复元素。</p>
+<p>可以使用大括号 ${ }$ 或者 $set()$ 函数创建集合，注意：创建一个空集合必须用 $set()$ 而不是 ${ }$，因为 ${ }$ 是用来创建一个空字典。</p>
+<p>创建格式：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">st &#x3D; &#123;1,2,3,4,5&#125;
+a &#x3D; set(&quot;1234567&quot;)
+print(&quot;a:&quot;,a)
+print(&quot;st:&quot;,st)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">a: &#123;&#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;4&#39;, &#39;6&#39;, &#39;5&#39;, &#39;7&#39;&#125;
+st: &#123;1, 2, 3, 4, 5&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>当然，对于一个已有元素的$set$,如果我们需要往这个里面添加元素的话，我们可以使用$add$函数来进行添加</p>
+<p>注意这里的集合是一个 <strong>没有顺序</strong> 的集合</p>
+<p>对于集合来说我们通常还需要判断一个集合和另外一个集合之间的关系，那么实际上 $python$也为我们提供了这些方法</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">print(a - b)     # a 和 b 的差集
+
+print(a | b)     # a 和 b 的并集
+
+print(a &amp; b)     # a 和 b 的交集
+
+print(a ^ b)     # a 和 b 中不同时存在的元素，即只在一个集合中出现<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">a &#x3D; set(&quot;145296&quot;)
+b &#x3D; set(&quot;256789&quot;)
+print(a - b)
+print(a | b)
+print(a &amp; b)
+print(a ^ b)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">&#123;&#39;1&#39;, &#39;4&#39;&#125;
+&#123;&#39;1&#39;, &#39;5&#39;, &#39;8&#39;, &#39;9&#39;, &#39;2&#39;, &#39;4&#39;, &#39;6&#39;, &#39;7&#39;&#125;
+&#123;&#39;9&#39;, &#39;5&#39;, &#39;2&#39;, &#39;6&#39;&#125;
+&#123;&#39;1&#39;, &#39;4&#39;, &#39;8&#39;, &#39;7&#39;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="Dictionary（字典）"><a href="#Dictionary（字典）" class="headerlink" title="Dictionary（字典）"></a>Dictionary（字典）</h3><p>字典是一种映射类型，字典用 ${ }$标识，它是一个无序的 键$(key)$ : 值$(value)$ 的集合。</p>
+<p>键$(key)$必须使用不可变类型。</p>
+<p>在同一个字典中，键$(key)$必须是唯一的。</p>
+<p>注意对于字典的构造函数$dict()$也可以直接从键值对序列中构建字典如下</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">&gt;&gt;&gt; dict([(&#39;Runoob&#39;, 1), (&#39;Google&#39;, 2), (&#39;Taobao&#39;, 3)])
+&#123;&#39;Runoob&#39;: 1, &#39;Google&#39;: 2, &#39;Taobao&#39;: 3&#125;
+&gt;&gt;&gt; &#123;x: x**2 for x in (2, 4, 6)&#125;
+&#123;2: 4, 4: 16, 6: 36&#125;
+&gt;&gt;&gt; dict(Runoob&#x3D;1, Google&#x3D;2, Taobao&#x3D;3)
+&#123;&#39;Runoob&#39;: 1, &#39;Google&#39;: 2, &#39;Taobao&#39;: 3&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><h3 id="读取键盘输入"><a href="#读取键盘输入" class="headerlink" title="读取键盘输入"></a>读取键盘输入</h3><p>$python$提供$input()$函数从标准输入中读入一行 <strong>文本</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">str &#x3D; input()
+print(str)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="读取一行中的多个数字"><a href="#读取一行中的多个数字" class="headerlink" title="读取一行中的多个数字"></a>读取一行中的多个数字</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"># 读取一行中的两个整数
+a, b &#x3D; map(float, input().split())
+print(a,b)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="读取一行中的数字，两个数字类型不一样"><a href="#读取一行中的数字，两个数字类型不一样" class="headerlink" title="读取一行中的数字，两个数字类型不一样"></a>读取一行中的数字，两个数字类型不一样</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"># 读取一行中的两个数字
+a, b &#x3D; input().split()
+a &#x3D; int(a)
+b &#x3D; float(b)
+print(a,b)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="读取一个文件直到末尾"><a href="#读取一个文件直到末尾" class="headerlink" title="读取一个文件直到末尾"></a>读取一个文件直到末尾</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"># 打开文件
+with open(&quot;test.txt&quot;, &quot;r&quot;) as f:
+    # 读取文件的每一行
+    for line in f:
+        # 在这里处理每一行的数据
+        print(line)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="Python循环语句"><a href="#Python循环语句" class="headerlink" title="Python循环语句"></a>Python循环语句</h2><h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p>$python$中并不存在$do…while$的语法，因此我们可以直接用$while$来写。</p>
+<p>除此之外$python$还存在在一个$while$后面跟着$else$</p>
+<p>一般来说是如果我当前的$while$不执行的话那么我就会直接走后面的$else$</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">n &#x3D; 10
+now &#x3D; 0
+sum &#x3D; 0
+while now &lt;&#x3D; n:
+    sum +&#x3D; now
+    now +&#x3D; 1
+else:
+    print(&quot;sum??&quot;,sum)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>比如上面的程序就是先去计算$1…10$的和然后跳出循环之后直接输出这个和是多少</p>
+<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p>我们需要注意的是，对于$python$来说，$for$循环可以遍历任何可以迭代的对象，比如一个列表或者一个字符串</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">a &#x3D; [1,2,3,4,5]
+for i in a:
+    if(i &#x3D;&#x3D; 3):
+        print(&quot;Good number&quot;)
+        break
+    print(&quot;now number is&quot;,i)
+else:
+    print(&quot;no good number&quot;)
+print(&quot;finish&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对于上述程序我们跑出来的结果是</p>
+<pre class="line-numbers language-none"><code class="language-none">now number is 1
+now number is 2
+Good number
+finish<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>更改成以下内容跑出来的数据相对应的是</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">a &#x3D; [1,2,7,4,5]
+for i in a:
+    if(i &#x3D;&#x3D; 3):
+        print(&quot;Good number&quot;)
+        break
+    print(&quot;now number is&quot;,i)
+else:
+    print(&quot;no good number&quot;)
+print(&quot;finish&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-none"><code class="language-none">now number is 1
+now number is 2
+now number is 7
+now number is 4
+now number is 5
+no good number
+finish<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="range函数"><a href="#range函数" class="headerlink" title="range函数"></a>range函数</h4><p>遍历数字序列的时候我们可以使用内置的$range$函数</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">for i in range(5):
+    print(i,end &#x3D; &quot; &quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">0 1 2 3 4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如何指定区间的话，假设$range(l,r)$，那么我们获得的数字就是从$l$然后一直到$r - 1$</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">for i in range(5,10):
+    print(i,end &#x3D; &quot; &quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">5 6 7 8 9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>当然$range$还具有第三个参数步长，可以通过给这个步长一些指定的参数来进行循环</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">sum &#x3D; 0
+for i in range(0,10,2):
+    print(i)
+    sum +&#x3D; i
+print(sum)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>比如上述程序就会从$0 - 8$逐个相加</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">sum &#x3D; 0
+for i in range(0,10,2):
+    print(i)
+    sum +&#x3D; i
+print(sum)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>同时我们也可以通过$range$和$len$函数去遍历一个序列的索引</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">a &#x3D; [1,2,3,4,55,666,7777]
+for i in range(len(a)):
+    print(i,a[i])
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">0 1
+1 2
+2 3
+3 4
+4 55
+5 666
+6 7777<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
 
 
@@ -619,7 +804,7 @@ signed main()
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/10/02/abc271/">http://example.com/2022/10/02/abc271/</a>
+                    <a href="http://example.com/2023/01/03/pythonbasic/">http://example.com/2023/01/03/pythonbasic/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -657,12 +842,8 @@ signed main()
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/abc/">
-                                    <span class="chip bg-color">abc</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%80%9D%E7%BB%B4/">
-                                    <span class="chip bg-color">思维</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
                         </div>
@@ -708,17 +889,18 @@ signed main()
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/10/08/Atcoder-Beginner-Contest-272/">
+                <a href="/2023/01/03/pythonbasic/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Atcoder Beginner Contest 272">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="pythonbasic">
                         
-                        <span class="card-title">Atcoder Beginner Contest 272</span>
+                        <span class="card-title">pythonbasic</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -728,9 +910,9 @@ signed main()
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -739,15 +921,12 @@ signed main()
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/abc/">
-                        <span class="chip bg-color">abc</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%80%9D%E7%BB%B4/">
-                        <span class="chip bg-color">思维</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -761,13 +940,13 @@ signed main()
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/29/Graph-Traing/">
+                <a href="/2023/01/03/goodbye2022/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Graph Traing">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="goodbye2022">
                         
-                        <span class="card-title">Graph Traing</span>
+                        <span class="card-title">goodbye2022</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -778,7 +957,7 @@ signed main()
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-03
                             </span>
                         <span class="publish-author">
                             
@@ -791,8 +970,8 @@ signed main()
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%9B%BE%E8%AE%BA/">
-                        <span class="chip bg-color">图论</span>
+                    <a href="/tags/cf/">
+                        <span class="chip bg-color">cf</span>
                     </a>
                     
                 </div>

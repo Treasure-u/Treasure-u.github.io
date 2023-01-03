@@ -4,9 +4,9 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Graph Traing, Hexo">
-    <meta name="description" content="Graph TraingBoboniu Walks on Graphhttps://codeforces.com/problemset/problem/1394/B
-题目大意: 给定一张图有$n$个点$m$条边，每条边的权值从$1$ ~ $">
+    <meta name="keywords" content="goodbye2022, Hexo">
+    <meta name="description" content="Good Bye 2022A.Koxia and Whiteboards**题目大意: ** 给定一个长度为$n$的序列，接下来进行$m$次操作，问操作之后序列值最大是多少
+解题思路: 数量级很小考虑暴力即可，每次把$a$序列中最小的元素换">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Graph Traing | Hexo</title>
+    <title>goodbye2022 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Graph Traing</h1>
+                    <h1 class="description center-align post-title">goodbye2022</h1>
                 </div>
             </div>
         </div>
@@ -341,8 +341,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%9B%BE%E8%AE%BA/">
-                                <span class="chip bg-color">图论</span>
+                            <a href="/tags/cf/">
+                                <span class="chip bg-color">cf</span>
                             </a>
                         
                     </div>
@@ -357,7 +357,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-29
+                    2023-01-03
                 </div>
                 
 
@@ -366,7 +366,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.1k
+                    1.8k
                 </div>
                 
 
@@ -386,188 +386,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Graph-Traing"><a href="#Graph-Traing" class="headerlink" title="Graph Traing"></a>Graph Traing</h1><h2 id="Boboniu-Walks-on-Graph"><a href="#Boboniu-Walks-on-Graph" class="headerlink" title="Boboniu Walks on Graph"></a>Boboniu Walks on Graph</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1394/B">https://codeforces.com/problemset/problem/1394/B</a></p>
-<p><strong>题目大意:</strong> 给定一张图有$n$个点$m$条边，每条边的权值从$1$ ~ $m$并且每条边的权值互相不相同，这张图中一个点的最大的出度是$k$,然后求$k$元组，这个$k$元组的第$i$个位置代表着出度数为$i$的点走他的边权从小到大为第$c_i$的边，问多元组最多有多少种</p>
-<p><strong>解题思路:</strong> 首先我们可以发现这样子一件事情，因为$k$的范围并不大，因此如果我们暴力去枚举多元组的样子最多也只有$9!$种，那么我们是否可以有一种很快速的$check$方法来检查一种多元组是否合法呢？首先我们可以想这样一件事情，因为对于每一个点最后都能跳回到自己，所以最后的结果必定是一个环，那么对于一个环来说我们可以粗略的将其看成一个集合，然后我们给每个点刚开始随机一个数值。然后我们分析多元组的性质，对于任意一种多元组，第$i$位的跳跃到第$c_i$个，那么我们可以刚开始预处理这个东西，对于当前点的出度和当前去往点的序号记录一个数组然后加起来就可以了</p>
+                <h1 id="Good-Bye-2022"><a href="#Good-Bye-2022" class="headerlink" title="Good Bye 2022"></a>Good Bye 2022</h1><h2 id="A-Koxia-and-Whiteboards"><a href="#A-Koxia-and-Whiteboards" class="headerlink" title="A.Koxia and Whiteboards"></a>A.Koxia and Whiteboards</h2><p>**题目大意: ** 给定一个长度为$n$的序列，接下来进行$m$次操作，问操作之后序列值最大是多少</p>
+<p><strong>解题思路:</strong> 数量级很小考虑暴力即可，每次把$a$序列中最小的元素换下来</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
 template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-typedef long long ll;
 const int maxn &#x3D; 1e6 + 10;
-int n,m,k;
-int sum[15][15];
-int a[maxn],ansha,ans;
-int res;
-vector&lt;pair&lt;int,int&gt;&gt; edge[maxn];
-void dfs(int now)
-&#123;
-	if(now &#x3D;&#x3D; k + 1)
-	&#123;
-		if(res &#x3D;&#x3D; ansha) ans++;
-		return;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; now;++i)
-	&#123;
-		res +&#x3D; sum[now][i];
-		dfs(now + 1);
-		res -&#x3D; sum[now][i];
-	&#125;
-	return;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	srand(time(NULL));
-	cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) a[i] &#x3D; rand() * rand(),ansha +&#x3D; a[i];
-	for(int i &#x3D; 1,u,v,w;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
-		edge[u].push_back(&#123;w,v&#125;);
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) sort(edge[i].begin(),edge[i].end());
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		int sz &#x3D; edge[i].size();
-		for(int j &#x3D; 0;j &lt; sz;++j)
-		&#123;
-			auto to &#x3D; edge[i][j].second;
-			sum[sz][j + 1] +&#x3D; a[to];
-		&#125;
-	&#125;
-	dfs(1);
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="Slipper"><a href="#Slipper" class="headerlink" title="Slipper"></a>Slipper</h2><p>(<a target="_blank" rel="noopener" href="https://vjudge.net/contest/517945#problem/C">https://vjudge.net/contest/517945#problem/C</a>)</p>
-<p><strong>题目大意:</strong> 给定一棵树，结点个数为$n (1 \leq n \leq 1e5)$,给定每条树边连接的两个结点和对应的边权，除此之外可以进行若干次魔法，若$|dep_u - dep_v| &#x3D; k$，那么从$u$到$v$只需要$d$点边权，给定两个点$s$和$t$，求从$s$到$t$最少需要多少边权</p>
-<p><strong>解题思路:</strong> 我们可以刚开始这么思考，如果不考虑任何优化，我们可以将每个点放到对应的一个存储容器中，这个容易用$dep$ 来标记，如果两个容器相差$k$，那么我们对于两个集合中的点进行一一连边即可。但是这样子实际的时间复杂度很大，那么我们考虑优化建边。根据上面的思考，我们可以发现一个性质只有层与层之间才会连接一条边，其实很多边是重复的，那么我们对于每一个层来说我们可以建一个点，表示层，那么我们对于每一个点来说，连向这个层，那么对于层与层之间的，我们可以从$u$往$u + k$建一条边，同时也可以从$u + k$往$u$建边，但是只有一层层点是不够的，因为原来的树点连过来的边权是$0$，那么我们再建一层层点来跑最短路即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-&#x2F;&#x2F; #define int long long
-typedef long long ll;
-const int maxn &#x3D; 6e6 + 10;
-const int maxm &#x3D; 1e6 + 10;
-const ll inf &#x3D; 1e18;
-int tot;
-struct node
-&#123;
-    int u,v,w,nxt;
-&#125;edge[maxn &lt;&lt; 1];
-int head[maxn];
-inline void add(int u,int v,int w)
-&#123;
-    edge[++tot].u &#x3D; u,edge[tot].v &#x3D; v,edge[tot].w &#x3D; w,edge[tot].nxt &#x3D; head[u],head[u] &#x3D; tot;
-&#125;
-int n,dep[maxm],k,p,s,t,mxdep;
-void dfs(int s,int fa)
-&#123;
-    dep[s] &#x3D; dep[fa] + 1;
-    mxdep &#x3D; max(mxdep, dep[s]);
-    for(int i &#x3D; head[s];i;i &#x3D; edge[i].nxt)
-    &#123;
-        int to &#x3D; edge[i].v;
-        if(to &#x3D;&#x3D; fa) continue;
-        dfs(to,s);
-    &#125;
-&#125;
-void dij()
-&#123;
-    vector&lt;int&gt; vis(3 * n + 10, 0);
-    vector&lt;ll&gt; dis(3 * n + 10, inf);
-    dis[s] &#x3D; 0;
-    priority_queue&lt;pair&lt;ll, int&gt;, vector&lt;pair&lt;ll, int&gt;&gt;, greater&lt;pair&lt;ll, int&gt;&gt;&gt; que;
-    que.push(&#123;0, s&#125;);
-    while(!que.empty())
-    &#123;
-        auto now &#x3D; que.top().second;
-        que.pop();
-        if(vis[now])
-            continue;
-        vis[now] &#x3D; 1;
-        for(int i &#x3D; head[now];i;i &#x3D; edge[i].nxt)
-        &#123;
-            int to &#x3D; edge[i].v;
-            ll ww &#x3D; edge[i].w * 1ll;
-            if(dis[to] &gt; dis[now] + ww)
-            &#123;
-                dis[to] &#x3D; dis[now] + ww;
-                que.push(&#123;dis[to], to&#125;);
-            &#125;
-        &#125;
-    &#125;
-    printf(&quot;%lld\n&quot;,dis[t]);
-&#125;
-void solve()
-&#123;
-    tot &#x3D; 0;
-    scanf(&quot;%d&quot;,&amp;n);
-    &#x2F;&#x2F; cin &gt;&gt; n;
-    mxdep &#x3D; 0;
-    for(int i &#x3D; 1;i &lt;&#x3D; n + n + n + 10;++i) head[i] &#x3D; 0;
-    for (int i &#x3D; 1, u, v, w; i &lt;&#x3D; n - 1;++i)
-    &#123;
-        scanf(&quot;%d %d %d&quot;,&amp;u,&amp;v,&amp;w);
-        &#x2F;&#x2F; cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
-        add(u,v,w);
-        add(v,u,w);
-    &#125;
-    dfs(1, 0);
-    scanf(&quot;%d %d&quot;,&amp;k,&amp;p);
-    scanf(&quot;%d %d&quot;,&amp;s,&amp;t);
-    for (int i &#x3D; 1; i &lt;&#x3D; n;++i)
-    &#123;
-        add(i,dep[i] + n,0);
-        add(dep[i] + n + n,i,0);
-    &#125;
-    for (int l &#x3D; 1; l &lt;&#x3D; n;++l)
-    &#123;
-        int r &#x3D; l + k;
-        if(r &gt; mxdep)
-            break;
-        add(l + n,r + n + n,p);
-        add(r + n + n,l + n,p);
-    &#125;
-    dij();
-&#125;
-signed main()
-&#123;
-    ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-    int T;
-    scanf(&quot;%d&quot;, &amp;T);
-    &#x2F;&#x2F; cin &gt;&gt; T;
-    while(T--)
-    &#123;
-        solve();
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="Ela-and-the-Wiring-Wizard"><a href="#Ela-and-the-Wiring-Wizard" class="headerlink" title="Ela and the Wiring Wizard"></a>Ela and the Wiring Wizard</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1737/problem/D">https://codeforces.com/contest/1737/problem/D</a></p>
-<p><strong>题目大意:</strong> 给定一张图，图有$n$个点$m$条边$(2 \leq n \leq 500,n - 1\leq m \leq 100000)$每次可以进行若干次操作，操作如下所示</p>
-<p>选择两条边$(u,v)$和$(v,w)$删除$(u,v)$然后连接$(u,w)$，代价是$(u,v)$的边权</p>
-<p>问从节点$1$到节点$n$最少需要多少次</p>
-<p><strong>解题思路:</strong> 刚开始拿到题目的时候发现没有任何思路，模拟样例可以发现一个性质，就是无论最后怎么样，最后只有一条从$1$到$n$的边使用</p>
-<p>那么我们可以提出猜想，是否从$1$到$n$只需要连接一条路呢？</p>
-<p>接下来的部分参考了$pzr$佬的</p>
-<p>我们可以做出反证感性理解一下，假设我们有多条路到$n$，其中分别是$1 -&gt; u_1 -&gt; u_2 -&gt; n$,设$u_1 -&gt;u_2$的距离是$w_1$，另外一条从$1 -&gt; u_1$权值是$w_2$</p>
-<p>首先就放着这两条边，边权是$w_1 + w_2$</p>
-<p>如果让我们把所有的边都变成$w_1$,那么就是$2w_1$</p>
-<p>或者我们把所有边变成$w_2$，那么就是$2w_2$</p>
-<p>那么进行修改后我们总能贪心取到最小的</p>
-<p>分析样例之后，我们发现建边有成自环和非自环的情况</p>
-<p>分析非自环的情况，那么对于一条边来说，就是去修改$dis(1,u) + dis(v,n)$的次数然后再加上$1$次走到的贡献</p>
-<p>那么接下来考虑自环的情况，如果有自环的话最多可能存在几个自环呢？</p>
-<p>我们可以把自环看成是一个点，设自环点是$x$,那么我们额外花费一个贡献连接$x$,从$1$到$x$再从$x$到$n$的距离相加然后乘贡献，这个$x$相当于中间的一个断点去更新整张图，因此实际上最多也就只有一个</p>
-<p>那么对于这一种题目来说，分析完整道题目我们发现都是对<strong>边</strong> 这一个元素进行考虑</p>
-<p>因为从一开始我们就在思考，从得出结论开始，再到实际上我去取哪条边最优</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#define int long long
-typedef long long ll;
-const int maxn &#x3D; 1e3 + 10;
-const int inf &#x3D; 1e9;
-int dis[maxn][maxn],n,m;
+int n,m,a[maxn],b[maxn];
 signed main()
 &#123;
 	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
@@ -576,332 +403,193 @@ signed main()
 	while(T--)
 	&#123;
 		cin &gt;&gt; n &gt;&gt; m;
-		vector&lt;array&lt;int,3&gt;&gt; edge;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		multiset&lt;int&gt; st;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i],st.insert(a[i]);
+		for(int i &#x3D; 1;i &lt;&#x3D; m;++i) cin &gt;&gt; b[i];
+		for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
 		&#123;
-			for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-			&#123;
-				dis[i][j] &#x3D; inf;
-			&#125;
+			st.erase(st.begin());
+			st.insert(b[i]);
 		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) dis[i][i] &#x3D; 0;
-		for(int i &#x3D; 1,u,v,w;i &lt;&#x3D; m;++i)
-		&#123;
-			cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
-			edge.push_back(&#123;u,v,w&#125;);
-			dis[u][v] &#x3D; dis[v][u] &#x3D; 1;
-		&#125;
-		for(int k &#x3D; 1;k &lt;&#x3D; n;++k)
-		&#123;
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-				&#123;
-					chkmin(dis[i][j],dis[i][k] + dis[k][j]);
-				&#125;
-			&#125;
-		&#125;
-		int ans &#x3D; 1e18;
-		for(auto [u,v,w]:edge)
-		&#123;
-			chkmin(ans,(dis[1][u] + 1 + dis[v][n]) * w);
-			chkmin(ans,(dis[1][v] + dis[u][n] + 1) * w);
-			for(int x &#x3D; 1;x &lt;&#x3D; n;++x)
-			&#123;
-				chkmin(ans,(min(dis[u][x],dis[v][x]) + dis[1][x] + dis[x][n] + 2) * w);
-			&#125;
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+		int sum &#x3D; 0;
+		for(auto to:st) sum +&#x3D; to;
+		cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;
 	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	return 0;
+	
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Session-in-BSU"><a href="#Session-in-BSU" class="headerlink" title="Session in BSU"></a>Session in BSU</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1027/F">Problem - 1027F - Codeforces</a></p>
-<p><strong>题目大意:</strong> 给定$n(1 \leq n \leq 10 ^ 6)$场比赛，每场比赛有两个数字$a_i,b_i(1 \leq a_i ,b_i \leq 10 ^ 9)$ 代表可以在第几天考试，问最早可以在哪一天结束比赛，如果无法结束比赛输出$-1$</p>
-<p><strong>解题思路:</strong> 首先如果我们不看这个数据范围的话，那么是不是实际上可以一眼网络流，建立每个考试点和对应的天数点，跑最大流即可。但是观察一下数据范围实际上很大，那么我们就不能直接跑网络流，不过既然一眼网络流我们可以往建图这一个方向去思考这个问题。假设我对每场考试连一条边，那么是不是就代表着一件事情:我这一条边可以选择这两个点中的任意一个时间。那么整张图是不是就是一个森林了。然后我们来考虑一下每个连通块有什么性质，对于每个连通块中，我们都要让这个连通块的边数(考试场数) 小于等于点数(选择考试的天数)，那么对于每一个连通块中，我们假设边数是$num$,我们是不是选择第$num$大的天数就是这个连通块的答案</p>
-<p>但是实际写起来之后发现这样子直接写会出现一些奇怪的问题，那么我们可以在思考刚刚形成的连通块是什么样子的，因为边数要小于等于点数，所以要么是一颗树，要么是一棵基环树，那么对于这两个来说我们只需要记录一个最大值和次大值即可，对于连通块是树的话输出次大值，基环树的输出最大值</p>
+
+
+<h2 id="B-Koxia-and-Permutation"><a href="#B-Koxia-and-Permutation" class="headerlink" title="B. Koxia and Permutation"></a>B. Koxia and Permutation</h2><p><strong>题目大意:</strong> 构造一个长度为$n$的序列，进行$n - k + 1$次划分，第$i$次划分获得的是从$i$开始$k$个数字的最大值和最小值相加，一个排列$p$的代价是划分中的值的最大值，问这个最大值最小的序列是什么样的</p>
+<p><strong>解题思路:</strong> 因为最后要让我们的最大值最小，考虑值的构成是一个区域内的最大值加上最小值，如果一段区域里面都是连续的大数是肯定不行的，因此我们可以从$1-n$的数字头尾顺序取即可</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
 template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-const int maxn &#x3D; 4e6 + 10;
-int f[maxn],n,m,edgenum[maxn],sz[maxn],ansmx2[maxn],ansmx[maxn],val[maxn],cnt;
-int getf(int x)
-&#123;
-	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-&#125;
-pair&lt;int,int&gt; edge[maxn];
+#define int long long
+const int maxn &#x3D; 1e6 + 10;
+int n,m,a[maxn],b[maxn];
 signed main()
 &#123;
 	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; m;
-	for(int i &#x3D; 1,u,v;i &lt;&#x3D; m;++i)
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
 	&#123;
-		cin &gt;&gt; u &gt;&gt; v;
-		edge[i] &#x3D; &#123;u,v&#125;;
-		val[++cnt] &#x3D; u,val[++cnt] &#x3D; v;
-	&#125;
-	sort(val + 1,val + 1 + cnt);
-	n &#x3D; unique(val + 1,val + 1 + cnt) - (val + 1);
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i,sz[i] &#x3D; 1,edgenum[i] &#x3D; 0,ansmx[i] &#x3D; i;
-	for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-	&#123;
-		auto [u,v] &#x3D; edge[i];
-		u &#x3D; lower_bound(val + 1,val + 1 + n,u) - val;
-		v &#x3D; lower_bound(val + 1,val + 1 + n,v) - val;
-		int fu &#x3D; getf(u);
-		int fv &#x3D; getf(v);
-		if(fu &#x3D;&#x3D; fv)
+		cin &gt;&gt; n &gt;&gt; m;
+		vector&lt;int&gt; ans;
+		for(int i &#x3D; 1,j &#x3D; n;i &lt; j;++i,--j)
 		&#123;
-			edgenum[fu]++;
+			ans.push_back(j);
+			ans.push_back(i);
+			&#x2F;&#x2F; cout &lt;&lt; &quot;??? &quot; &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot;\n&quot;;
 		&#125;
-		else
-		&#123;
-			f[fu] &#x3D; fv;
-			sz[fv] +&#x3D; sz[fu];
-			edgenum[fv] +&#x3D; edgenum[fu] + 1;
-			vector&lt;int&gt; ha;
-			ha.push_back(ansmx2[fu]);ha.push_back(ansmx[fu]);
-			ha.push_back(ansmx2[fv]);ha.push_back(ansmx[fv]);
-			sort(ha.begin(),ha.end());
-			ansmx[fv] &#x3D; ha[3];
-			ansmx2[fv] &#x3D; ha[2];
-		&#125;
-	&#125;
-	int f &#x3D; 1;
-	int res &#x3D; 0;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		int fi &#x3D; getf(i);
-		if(i &#x3D;&#x3D; fi)
-		&#123;
-			if(sz[i] &lt; edgenum[i])
-			&#123; 
-				f &#x3D; 0;
-				break;
-			&#125;
-			if(edgenum[i] &#x3D;&#x3D; sz[i]) chkmax(res,val[ansmx[i]]);
-			else chkmax(res,val[ansmx2[i]]);
-		&#125;
-	&#125;
-	if(!f)
-	&#123;
-		cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
-		return 0;
-	&#125;
-	cout &lt;&lt; res &lt;&lt; &quot;\n&quot;;
-
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="Moment-of-Bloom"><a href="#Moment-of-Bloom" class="headerlink" title="Moment of Bloom"></a>Moment of Bloom</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1583/E">Problem - 1583E - Codeforces</a></p>
-<p><strong>题目大意:</strong> 给定一个点数为$n$，边数为$m$的图$(1 \leq n,m \leq 3*10^5)$,初始所有点的点权为$0$。给定$q$次操作，每次操作给定两个点，你可以选择图上这两个点中任意一条简单路径，并且给这一条简单路径上面所有的点权加$1$，问经过$q$次操作这张图所有点的点权是否都是偶数，如果是的话输出$Y!ES$并且输出每次操作应该怎么操作，否则输出$N!O$并且输出最少还需要加几条边，特别注意的是$nq \leq 3 * 10^5$</p>
-<p><strong>解题思路:</strong> 首先遇到这样子的问题在一张图上面会很棘手，因为两个点之间可能有很多的路径，那么既然这样，我们先尝试简化一下这个问题。如果我们把这一个问题放在一棵树上面，那么两点之间的路径是不是就已经确定了。既然这样，什么时候会出现不行的情况呢？我们每次可以对路径的两个端点增加一个值，如果最后在这一棵树上面存在点的点权是奇数，那么是肯定输出$NO$的。然后由于点是成对出现的，那么点也会是成对落单的，我们记录奇数个数的点为$num$个，那么最后需要的边数就是$\frac{num}{2}$个</p>
-<p>然后对于原题来说我们已经把题目化成在树上面了，那么我们直接在树上类似$LCA$找祖先结点沿路径输出即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-const int maxn &#x3D; 3e5 + 10;
-struct graph
-&#123;
-	vector&lt;int&gt; edge[maxn];
-	inline void add(int u,int v)
-	&#123;
-		edge[u].push_back(v);
-		edge[v].push_back(u);
-	&#125;
-&#125;g1,g2;
-int n,m,deg[maxn];
-pair&lt;int,int&gt; op[maxn];
-int f[maxn],p[maxn],dep[maxn];
-int getf(int x)
-&#123;
-	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-&#125;
-void dfs(int s,int fa)
-&#123;
-	dep[s] &#x3D; dep[fa] + 1;
-	p[s] &#x3D; fa;
-	for(auto to:g2.edge[s])
-	&#123;
-		if(to &#x3D;&#x3D; fa) continue;
-		dfs(to,s);
-	&#125;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m;
-	for(int i &#x3D; 1,u,v;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; u &gt;&gt; v;
-		g1.add(u,v);
-	&#125;
-	int q;
-	cin &gt;&gt; q;
-	for(int i &#x3D; 1;i &lt;&#x3D; q;++i) cin &gt;&gt; op[i].first &gt;&gt; op[i].second,deg[op[i].first]++,deg[op[i].second]++;
-	int ct &#x3D; 0;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		ct +&#x3D; (deg[i] &amp; 1);
-	&#125;
-	if(ct)
-	&#123;
-		cout &lt;&lt; &quot;NO\n&quot;;
-		cout &lt;&lt; ct &#x2F; 2 &lt;&lt; &quot;\n&quot;;
-		return 0;
-	&#125;
-	cout &lt;&lt; &quot;YES\n&quot;;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(auto to:g1.edge[i])
-		&#123;
-			int fx &#x3D; getf(i);
-			int fy &#x3D; getf(to);
-			if(fx &#x3D;&#x3D; fy) continue;
-			f[fy] &#x3D; fx;
-			g2.add(i,to);
-		&#125;
-	&#125;
-	&#x2F;&#x2F; cout &lt;&lt; &quot;?? &quot; &lt;&lt; &quot;\n&quot;;
-	dfs(1,0);
-	for(int i &#x3D; 1;i &lt;&#x3D; q;++i)
-	&#123;
-		auto [u,v] &#x3D; op[i];
-		vector&lt;int&gt; now;
-		vector&lt;int&gt; now2;
-		&#x2F;&#x2F; cout &lt;&lt; &quot;?? ? &quot; &lt;&lt; u &lt;&lt; &quot; &quot; &lt;&lt; v &lt;&lt; &quot;\n&quot;;
-		while(dep[u] !&#x3D; dep[v])
-		&#123;
-			if(dep[u] &gt; dep[v]) now.push_back(u),u &#x3D; p[u];
-			else now2.push_back(v),v &#x3D; p[v];
-		&#125;
-		while(u !&#x3D; v)
-		&#123;
-			now.push_back(u);
-			now2.push_back(v);
-			u &#x3D; p[u];
-			v &#x3D; p[v];
-		&#125;
-		reverse(now2.begin(),now2.end());
-		now.push_back(u);
-		for(auto to:now2)
-		&#123;
-			now.push_back(to);
-		&#125;
-		cout &lt;&lt; now.size() &lt;&lt; &quot;\n&quot;;
-		for(auto to:now)
+		if(n &amp; 1) ans.push_back((n + 1) &#x2F; 2);
+		for(auto to:ans)
 		&#123;
 			cout &lt;&lt; to &lt;&lt; &quot; &quot;;
 		&#125;
 		cout &lt;&lt; &quot;\n&quot;;
 	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	return 0;
+	
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h2 id="Factory-Balls"><a href="#Factory-Balls" class="headerlink" title="Factory Balls"></a>Factory Balls</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103855/problem/A">Problem - A - Codeforces</a></p>
-<p>**题目大意: ** 给定一个球，球被划分成为$n$个区域，然后有$k$种颜色的油漆桶，有$m$个装备，球的每个区域在初始状态都是$1$</p>
-<p>接下来可以进行以下三种操作若干次，一种是将这个球放入油漆桶里面，这个球没有被装备安装的部分全部会感染上这个颜色，一种是在这个球上面安装一个装备，一种是给这个球脱下一种装备</p>
-<p>问这个球的区域是否可以达到给定的目标状态，如果可以的话输出最小的步数，否则输出$-1$</p>
-<p>特别的是$1 \leq n,m,k \leq 10$</p>
-<p><strong>解题思路:</strong>  首先考虑数据范围，因为我们的数据范围实际上其实很小，那么我们可以进行状压来表示 <strong>当前的状态</strong> 和 <strong>目标状态</strong> 是否一致，如果一致是$1$否则就是$0$ 。然后我们就这样子$BFS$，我们进行搜索的时候的状态可以以当前的颜色和目标的颜色的差别以及装备的数目和种类，然后我们思考，当前状态更新一步的操作要么是去不变颜色更新装备状态，不变状态更新装备颜色，然后搜索即可</p>
+<h2 id="C-Koxia-and-Number-Theory"><a href="#C-Koxia-and-Number-Theory" class="headerlink" title="C. Koxia and Number Theory"></a>C. Koxia and Number Theory</h2><p><strong>题目大意:</strong> 给定一个长度为$n$的序列,问是否存在一个$x$使得每一对$gcd(a_i+ x ,a_j + x) &#x3D; 1$</p>
+<p><strong>解题思路:</strong> 不懂数学，感觉可以看严格鸽的</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
 template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-const int maxn &#x3D; 1111;
-const int inf &#x3D; 1e9 + 7;
-int n,k,m;
-int col[maxn],vis[maxn];
-vector&lt;int&gt; equ[maxn];
-int dis[maxn][maxn];
-int main()
+#define int long long
+const int maxn &#x3D; 1e6 + 10;
+int n,m,a[maxn],b[maxn];
+signed main()
 &#123;
-	&#x2F;&#x2F; ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; k &gt;&gt; m;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; col[i];
-	int s &#x3D; 0;
-	for(int i &#x3D; 0,num;i &lt; m;++i)
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
 	&#123;
-		cin &gt;&gt; num;
-		for(int j &#x3D; 1,x;j &lt;&#x3D; num;++j)
+		cin &gt;&gt; n;
+		set&lt;int&gt; st;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i],st.insert(a[i]);
+		if(st.size() !&#x3D; n)
 		&#123;
-			cin &gt;&gt; x;
-			equ[i].push_back(x);
+			cout &lt;&lt; &quot;No\n&quot;;
+			continue;
 		&#125;
+		int f &#x3D; 1;
+		for(int p &#x3D; 2;p &lt;&#x3D; n;++p)
+		&#123;
+			map&lt;int,int&gt; mp;
+			for(int i &#x3D; 1;i &lt;&#x3D; n;++i) mp[a[i] % p]++;
+			int mi &#x3D; n + n;
+			int ha &#x3D; 0;
+			for(auto to:mp)
+			&#123;
+				if(to.second &gt;&#x3D; 2) ha++;
+			&#125;
+			if(ha &gt;&#x3D; p) f &#x3D; 0;
+		&#125;
+		if(f) cout &lt;&lt; &quot;Yes\n&quot;;
+		else cout &lt;&lt; &quot;No\n&quot;;
+
 	&#125;
+	return 0;
+	
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="D-Koxia-and-Game"><a href="#D-Koxia-and-Game" class="headerlink" title="D. Koxia and Game"></a>D. Koxia and Game</h2><p><strong>题目大意:</strong> 有三个长度为$n$的序列$a,b,c$</p>
+<p>$Alice$和$Bob$玩游戏，一共进行$n$个回合，游戏规则如下：</p>
+<ul>
+<li>选定$a_i,b_i,c_i$</li>
+<li>$Alice$从这三个数字选择一个数字删掉</li>
+<li>$Bob$从这三个数字选择一个数字</li>
+</ul>
+<p>我们让$Bob$每回合选择的数字是$d_i$,如果序列$d$是一个排列那么$Alice$获胜否则$Bob$获胜</p>
+<p>现在给定$a,b$两个数组，问有多少个$c$数组可以使得$Bob$获胜，结果对$998244353$取模</p>
+<p><strong>解题思路:</strong> 首先我们先考虑$Alice$会选择什么数字删掉，假设对于第$i$次操作来说，$a_i &#x3D; b_i$,那么我们可以选择任意的$c_i$并且最终把$c_i$删掉，这样子$Bob$一定取到的是$a_i$这个数字表示的值(因为$a_i &#x3D; b_i$)</p>
+<p>然后我们考虑如果$a_i \neq b_i$那么我们选择的$c_i$就非常重要，因为$c_i$决定着我们可以选择$a_i$或者$b_i$中的哪个数字，只需要让$c_i &#x3D; a_i \ or \ c_i &#x3D; b_i$即可</p>
+<p>那么选择某一个位置的思路就很清晰了，我们只需要考虑构造大于等于两个相同的并且把其中一个不需要的值删掉即可</p>
+<p>接下来我们再考虑位置之间带来的因素</p>
+<p>假设我们没有$a_i &#x3D; b_i$的情况，那么我们现在的问题可以转换为给定两个序列分别是$a,b$，每个位置上面取一个看是否可以构成一个排序</p>
+<p>对于这一个问题来说，因为每一个位置做一个选择，同时也相同与每一个位置的两个数字相互制衡，那么我们可以用图论的语言来表达，在他们之间建一条边</p>
+<p>我们可以发现只有基环树的形式是可以的，而基环树的形式实际上就是点数等于边数</p>
+<p>那么我们最终只需要使用并查集取维护每个环中存在点数和边数即可</p>
+<p>那么最后再思考答案贡献，对于一个基环树来说，如果这个树里面没有自环，那么贡献就是$2$，因为考虑每条边有两个选择，如果里面有自环的话，贡献就是$n$</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
+#define int long long
+const int maxn &#x3D; 1e6 + 10;
+const int mod &#x3D; 998244353;
+int n,m,a[maxn],b[maxn];
+int f[maxn],szv[maxn],sze[maxn],loop[maxn];
+void init()
+&#123;
 	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
 	&#123;
-		if(col[i] &#x3D;&#x3D; 1)
-		&#123;
-			s |&#x3D; (1 &lt;&lt; (i - 1));
-		&#125;
+		f[i] &#x3D; i;
+		szv[i] &#x3D; 1;
+		sze[i] &#x3D; 0;
+		loop[i] &#x3D; 0;
 	&#125;
-	queue&lt;pair&lt;int,int&gt;&gt; que;
-	memset(dis,0x3f,sizeof dis);
-	&#x2F;&#x2F; cout &lt;&lt; &quot;?1&quot; &lt;&lt; dis[s][0] &lt;&lt; &quot;??\n&quot;;
-	dis[s][0] &#x3D; 0;
-	que.push(&#123;s,0&#125;);
-	while(!que.empty())
+&#125;
+int getf(int x)
+&#123;
+	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
+&#125;
+void merge(int x,int y)
+&#123;
+	int fx &#x3D; getf(x);
+	int fy &#x3D; getf(y);
+	if(fx !&#x3D; fy)
 	&#123;
-		auto [nowcol,nowequ] &#x3D; que.front();
-		que.pop();
-		&#x2F;&#x2F; cout &lt;&lt; &quot;-----------------------------\n&quot;;
-		&#x2F;&#x2F; cout &lt;&lt; &quot;now -&gt; &quot; &lt;&lt; nowcol &lt;&lt; &quot; &quot; &lt;&lt; nowequ &lt;&lt; &quot;\n&quot;;
-		for(int i &#x3D; 0;i &lt; m;++i)
-		&#123;
-			auto toequ &#x3D; nowequ ^ (1 &lt;&lt; i);
-			if(dis[nowcol][toequ] &gt; dis[nowcol][nowequ] + 1)
-			&#123;
-				dis[nowcol][toequ] &#x3D; dis[nowcol][nowequ] + 1;
-				que.push(&#123;nowcol,toequ&#125;);
-			&#125;
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) vis[i] &#x3D; 0;
-		for(int i &#x3D; 0;i &lt; m;++i)
-		&#123;
-			if(nowequ &gt;&gt; i &amp; 1)
-			&#123;
-				for(auto to:equ[i])
-				&#123;
-					vis[to] &#x3D; 1;
-				&#125;
-			&#125;
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; k;++i)
-		&#123;
-			int tocol &#x3D; nowcol;
-			for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-			&#123;
-				if(vis[j]) continue;
-				if(col[j] &#x3D;&#x3D; i)
-				&#123;
-					tocol |&#x3D; (1 &lt;&lt; (j - 1));
-				&#125;
-				else
-				&#123;
-					if(tocol &gt;&gt; (j - 1) &amp; 1)
-					&#123;
-						tocol ^&#x3D; (1 &lt;&lt; (j - 1));
-					&#125;
-				&#125;
-			&#125;
-			&#x2F;&#x2F; cout &lt;&lt; i &lt;&lt; &quot; tocol ?? &quot; &lt;&lt; tocol &lt;&lt; &quot;\n&quot;;
-			if(dis[tocol][nowequ]  &gt; dis[nowcol][nowequ] + 1)
-			&#123;
-				dis[tocol][nowequ] &#x3D; dis[nowcol][nowequ] + 1;
-				que.push(&#123;tocol,nowequ&#125;);
-			&#125;
-		&#125;
+		f[fy] &#x3D; fx;
+		sze[fx] +&#x3D; sze[fy];
+		szv[fx] +&#x3D; szv[fy];
+		loop[fx] +&#x3D; loop[fy];
 	&#125;
-	&#x2F;&#x2F; cout &lt;&lt; (1 &lt;&lt; (m)) - 1 &lt;&lt; &quot; &quot; &lt;&lt; dis[7][0] &lt;&lt; &quot; ??\n&quot;;
-	if(dis[(1 &lt;&lt; (n)) - 1][0] &gt;&#x3D; inf) cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
-	else cout &lt;&lt; dis[(1 &lt;&lt; (n)) - 1][0] &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;
+signed main()
+&#123;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n;
+		init();
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; b[i];
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			merge(a[i],b[i]);
+			sze[getf(a[i])]++;
+			if(a[i] &#x3D;&#x3D; b[i]) loop[getf(a[i])]++;
+		&#125;
+		int ans &#x3D; 1;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			if(i &#x3D;&#x3D; getf(i))
+			&#123;
+				if(sze[i] !&#x3D; szv[i]) ans &#x3D; 0;
 
+                else ans &#x3D; ans * 2 % mod;
+			&#125;
+		&#125;
+		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+	&#125;
+	return 0;
+	
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -929,7 +617,7 @@ int main()
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/09/29/Graph-Traing/">http://example.com/2022/09/29/Graph-Traing/</a>
+                    <a href="http://example.com/2023/01/03/goodbye2022/">http://example.com/2023/01/03/goodbye2022/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -967,8 +655,8 @@ int main()
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%9B%BE%E8%AE%BA/">
-                                    <span class="chip bg-color">图论</span>
+                                <a href="/tags/cf/">
+                                    <span class="chip bg-color">cf</span>
                                 </a>
                             
                         </div>
@@ -1018,13 +706,13 @@ int main()
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/10/02/abc271/">
+                <a href="/2023/01/03/pythonbasic/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Atcoder Beginner Contest 271 C-F">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="pythonbasic">
                         
-                        <span class="card-title">Atcoder Beginner Contest 271 C-F</span>
+                        <span class="card-title">pythonbasic</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1035,7 +723,7 @@ int main()
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-03
                         </span>
                         <span class="publish-author">
                             
@@ -1048,12 +736,8 @@ int main()
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/abc/">
-                        <span class="chip bg-color">abc</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%80%9D%E7%BB%B4/">
-                        <span class="chip bg-color">思维</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -1067,13 +751,13 @@ int main()
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/29/Flow/">
+                <a href="/2022/11/11/ICPC-2021-EC-J/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Flow">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="ICPC-2021-EC-J">
                         
-                        <span class="card-title">Flow</span>
+                        <span class="card-title">ICPC-2021-EC-J</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1084,7 +768,7 @@ int main()
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-11
                             </span>
                         <span class="publish-author">
                             
@@ -1101,12 +785,8 @@ int main()
                         <span class="chip bg-color">图论</span>
                     </a>
                     
-                    <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/">
-                        <span class="chip bg-color">网络流</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%BB%BA%E5%9B%BE/">
-                        <span class="chip bg-color">建图</span>
+                    <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">
+                        <span class="chip bg-color">最短路</span>
                     </a>
                     
                 </div>
