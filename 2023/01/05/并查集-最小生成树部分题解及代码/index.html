@@ -372,7 +372,7 @@ D解题思路: $MST$模板题，先加">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    2.9k
                 </div>
                 
 
@@ -384,9 +384,6 @@ D解题思路: $MST$模板题，先加">
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
 
         
 
@@ -397,256 +394,17 @@ D解题思路: $MST$模板题，先加">
 <h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p><strong>解题思路:</strong> 最小生成树模板题</p>
 <h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p><strong>解题思路:</strong> $MST$模板题，先加上已经选择的边，再加上没有选择的边即可</p>
 <h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p><strong>解题思路:</strong> 判断是否只有一个$MST$，那么我们可以先找到一棵$MST$，记录这一棵$MST$的边，然后我们暴力去枚举去掉这条边之后是否还存在一棵和之前权值一样的$MST$</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxn &#x3D; 1e5 + 10;
-struct node
-&#123;
-	int x,y,r;
-&#125;a[maxn];
-int flag[maxn],n,m;
-struct DSU
-&#123;
-	int f[maxn],num;
-	int getf(int x)
-	&#123;
-		return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-	&#125;
-	int merge(int x,int y)
-	&#123;
-		int fx &#x3D; getf(x);
-		int fy &#x3D; getf(y);
-		f[fx] &#x3D; fy;
-		if(fx !&#x3D; fy)
-		&#123;
-			num++;
-			return 1;
-		&#125;
-		else return 0;
-	&#125;
-	void init()
-	&#123;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i;
-		num &#x3D; 0;
-	&#125;
-&#125;dsu;
-struct kruskal
-&#123;
-	DSU now;
-	int nowres;
-	void init()
-	&#123;
-		now.init();
-		nowres &#x3D; 0;
-	&#125;
-&#125;kru;
-int cmp(node A,node B)
-&#123;
-	return A.r &lt; B.r;
-&#125;
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n &gt;&gt; m;
-		dsu.init();
-		for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-		&#123;
-			cin &gt;&gt; a[i].x &gt;&gt; a[i].y &gt;&gt; a[i].r;
-			flag[i] &#x3D; 0;
-		&#125;
-		sort(a + 1,a + 1 + m,cmp);
-		int ans &#x3D; 0;
-		for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-		&#123;
-			if(dsu.merge(a[i].x,a[i].y))
-			&#123;
-				ans +&#x3D; a[i].r;
-				flag[i] &#x3D; 1;
-			&#125;
-		&#125;
-		int f &#x3D; 1;
-		for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-		&#123;
-			if(!flag[i]) continue;
-			kru.init();
-			for(int j &#x3D; 1;j &lt;&#x3D; m;++j)
-			&#123;
-				if(j &#x3D;&#x3D; i) continue;
-				if(kru.now.merge(a[j].x,a[j].y))
-				&#123;
-					kru.nowres +&#x3D; a[j].r;
-				&#125;
-			&#125;
-			if(kru.nowres &#x3D;&#x3D; ans &amp;&amp; kru.now.num &#x3D;&#x3D; n - 1) f &#x3D; 0;
-		&#125;
-		if(f) cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-		else cout &lt;&lt; &quot;Not Unique!\n&quot;;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x,y,r;</span><br><span class="line">&#125;a[maxn];</span><br><span class="line"><span class="type">int</span> flag[maxn],n,m;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">DSU</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> f[maxn],num;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getf</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x == f[x] ? x : f[x] = <span class="built_in">getf</span>(f[x]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> fx = <span class="built_in">getf</span>(x);</span><br><span class="line">		<span class="type">int</span> fy = <span class="built_in">getf</span>(y);</span><br><span class="line">		f[fx] = fy;</span><br><span class="line">		<span class="keyword">if</span>(fx != fy)</span><br><span class="line">		&#123;</span><br><span class="line">			num++;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) f[i] = i;</span><br><span class="line">		num = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;dsu;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">kruskal</span></span><br><span class="line">&#123;</span><br><span class="line">	DSU now;</span><br><span class="line">	<span class="type">int</span> nowres;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		now.<span class="built_in">init</span>();</span><br><span class="line">		nowres = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;kru;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cmp</span><span class="params">(node A,node B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> A.r &lt; B.r;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">		dsu.<span class="built_in">init</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= m;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; a[i].x &gt;&gt; a[i].y &gt;&gt; a[i].r;</span><br><span class="line">			flag[i] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">sort</span>(a + <span class="number">1</span>,a + <span class="number">1</span> + m,cmp);</span><br><span class="line">		<span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= m;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dsu.<span class="built_in">merge</span>(a[i].x,a[i].y))</span><br><span class="line">			&#123;</span><br><span class="line">				ans += a[i].r;</span><br><span class="line">				flag[i] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> f = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= m;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!flag[i]) <span class="keyword">continue</span>;</span><br><span class="line">			kru.<span class="built_in">init</span>();</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= m;++j)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(j == i) <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span>(kru.now.<span class="built_in">merge</span>(a[j].x,a[j].y))</span><br><span class="line">				&#123;</span><br><span class="line">					kru.nowres += a[j].r;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(kru.nowres == ans &amp;&amp; kru.now.num == n - <span class="number">1</span>) f = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(f) cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		<span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;Not Unique!\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><p><strong>解题思路:</strong> 首先先把免费的边连接起来，然后对$n$个点建立点对，排序之后求最小生成树，直接用$Kruskal$记录边即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-const int maxn &#x3D; 1e6 + 10;
-int p[maxn][2],tot,n,m;
-struct node
-&#123;
-	int x,y;
-	double r;
-	node()&#123;&#125;;
-	node(int _x,int _y,double _r): x(_x),y(_y),r(_r)&#123;&#125;
-&#125;a[maxn];
-struct DSU
-&#123;
-	int f[maxn];
-	int getf(int x)
-	&#123;
-		return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-	&#125;
-	void merge(int x,int y,int op)
-	&#123;
-		int fx &#x3D; getf(x);
-		int fy &#x3D; getf(y);
-		if(fx !&#x3D; fy)
-		&#123;
-			f[fx] &#x3D; fy;
-			if(op) cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
-		&#125;
-	&#125;
-	void init()
-	&#123;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i;
-	&#125;
-&#125;dsu;
-int pow2(int x)
-&#123;
-	return x * x;
-&#125;
-double cal(int i,int j)
-&#123;
-	return sqrt(1.0 * pow2(p[i][0] - p[j][0]) + 1.0 * pow2(p[i][1] - p[j][1]));
-&#125;
-int cmp(node A,node B)
-&#123;
-	return A.r &lt; B.r;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; p[i][0] &gt;&gt; p[i][1];
-	&#125;
-	cin &gt;&gt; m;
-	dsu.init();
-	for(int i &#x3D; 1,u,v;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; u &gt;&gt; v;
-		dsu.merge(u,v,0);
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; i + 1;j &lt;&#x3D; n;++j)
-		&#123;
-			double dis &#x3D; cal(i,j);
-			a[++tot] &#x3D; node(i,j,dis);
-		&#125;
-	&#125;
-	sort(a + 1,a + 1 + tot,cmp);
-	for(int i &#x3D; 1;i &lt;&#x3D; tot;++i)
-	&#123;
-		dsu.merge(a[i].x,a[i].y,1);
-	&#125;
-	return 0;
-	
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmin</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmax</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> p[maxn][<span class="number">2</span>],tot,n,m;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> x,y;</span><br><span class="line">	<span class="type">double</span> r;</span><br><span class="line">	<span class="built_in">node</span>()&#123;&#125;;</span><br><span class="line">	<span class="built_in">node</span>(<span class="type">int</span> _x,<span class="type">int</span> _y,<span class="type">double</span> _r): <span class="built_in">x</span>(_x),<span class="built_in">y</span>(_y),<span class="built_in">r</span>(_r)&#123;&#125;</span><br><span class="line">&#125;a[maxn];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">DSU</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> f[maxn];</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getf</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x == f[x] ? x : f[x] = <span class="built_in">getf</span>(f[x]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y,<span class="type">int</span> op)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> fx = <span class="built_in">getf</span>(x);</span><br><span class="line">		<span class="type">int</span> fy = <span class="built_in">getf</span>(y);</span><br><span class="line">		<span class="keyword">if</span>(fx != fy)</span><br><span class="line">		&#123;</span><br><span class="line">			f[fx] = fy;</span><br><span class="line">			<span class="keyword">if</span>(op) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) f[i] = i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;dsu;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">pow2</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">sqrt</span>(<span class="number">1.0</span> * <span class="built_in">pow2</span>(p[i][<span class="number">0</span>] - p[j][<span class="number">0</span>]) + <span class="number">1.0</span> * <span class="built_in">pow2</span>(p[i][<span class="number">1</span>] - p[j][<span class="number">1</span>]));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cmp</span><span class="params">(node A,node B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> A.r &lt; B.r;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; p[i][<span class="number">0</span>] &gt;&gt; p[i][<span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	cin &gt;&gt; m;</span><br><span class="line">	dsu.<span class="built_in">init</span>();</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,u,v;i &lt;= m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">		dsu.<span class="built_in">merge</span>(u,v,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>;j &lt;= n;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">double</span> dis = <span class="built_in">cal</span>(i,j);</span><br><span class="line">			a[++tot] = <span class="built_in">node</span>(i,j,dis);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(a + <span class="number">1</span>,a + <span class="number">1</span> + tot,cmp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= tot;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		dsu.<span class="built_in">merge</span>(a[i].x,a[i].y,<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="G"><a href="#G" class="headerlink" title="G"></a>G</h2><p><strong>解题思路:</strong> 和上课讲的基本类似，同时需要注意的是这里存在位置固定的问题，如果位置固定的话那么对于他所存在的连通块只会带来$1$的贡献</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-#define int long long
-const int maxn &#x3D; 5e5 + 10;
-const int mod &#x3D; 1e9 + 7;
-int a[maxn],b[maxn],c[maxn],n;
-struct DSU
-&#123;
-	int f[maxn],sz[maxn];
-	int getf(int x)
-	&#123;
-		return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-	&#125;
-	void merge(int x,int y)
-	&#123;
-		int fx &#x3D; getf(x);
-		int fy &#x3D; getf(y);
-		if(fx !&#x3D; fy)
-		&#123;
-			f[fy] &#x3D; fx;
-			sz[fx] +&#x3D; sz[fy];
-		&#125;
-	&#125;
-	void init()
-	&#123;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i,sz[i] &#x3D; 1;
-	&#125;
-&#125;dsu;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; b[i];
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; c[i];
-		dsu.init();
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			dsu.merge(a[i],b[i]);
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			if(c[i])
-			&#123;
-				dsu.sz[dsu.getf(c[i])] &#x3D; 0;
-			&#125;
-		&#125;
-		int ans &#x3D; 1;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			if(dsu.f[i] &#x3D;&#x3D; i)
-			&#123;
-				if(dsu.sz[i] &gt;&#x3D; 2) ans &#x3D; ans * 2 % mod;
-			&#125;
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">5e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="type">int</span> a[maxn],b[maxn],c[maxn],n;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">DSU</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> f[maxn],sz[maxn];</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getf</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x == f[x] ? x : f[x] = <span class="built_in">getf</span>(f[x]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> fx = <span class="built_in">getf</span>(x);</span><br><span class="line">		<span class="type">int</span> fy = <span class="built_in">getf</span>(y);</span><br><span class="line">		<span class="keyword">if</span>(fx != fy)</span><br><span class="line">		&#123;</span><br><span class="line">			f[fy] = fx;</span><br><span class="line">			sz[fx] += sz[fy];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) f[i] = i,sz[i] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;dsu;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) cin &gt;&gt; a[i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) cin &gt;&gt; b[i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) cin &gt;&gt; c[i];</span><br><span class="line">		dsu.<span class="built_in">init</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			dsu.<span class="built_in">merge</span>(a[i],b[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(c[i])</span><br><span class="line">			&#123;</span><br><span class="line">				dsu.sz[dsu.<span class="built_in">getf</span>(c[i])] = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> ans = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dsu.f[i] == i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(dsu.sz[i] &gt;= <span class="number">2</span>) ans = ans * <span class="number">2</span> % mod;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -654,135 +412,12 @@ signed main()
 <p>然后我们考虑这样一件事情，假设$a$可以吃$b,c$，那么$b,c$实际上是同族；同理如果$b,c$可以吃$a$，那么$b,c$也是同族。那么也就是说 <strong>敌人的敌人是朋友</strong></p>
 <p>那么接下来考虑什么时候不合法，首先是在$x$和$y$合并的时候，如果$x$是$y$的敌人或者$y$是$x$的敌人就不行</p>
 <p>然后考虑$x$可以吃$y$的情况下，首先是题目告诉如果相同就不行，然后是如果$x$是$y$的同族或者$y$可以吃$x$不行</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxn &#x3D; 1e5 + 10;
-&#x2F;&#x2F; const int inf &#x3D; 1e18;
-int f[maxn * 3],n,m,ans;
-int getf(int x)
-&#123;
-	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-&#125;
-void merge(int x,int y)
-&#123;
-	int fx &#x3D; getf(x);
-	int fy &#x3D; getf(y);
-	f[fx] &#x3D; fy;
-&#125;
-signed main()
-&#123;
-	&#x2F;&#x2F; ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	&#x2F;&#x2F; cin &gt;&gt; n &gt;&gt; m;
-	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-	for(int i &#x3D; 1;i &lt;&#x3D; 3 * n;++i) f[i] &#x3D; i;
-	&#x2F;&#x2F;A -&gt; B -&gt; C -&gt; A
-	for(int i &#x3D; 1,op,x,y;i &lt;&#x3D; m;++i)
-	&#123;
-		scanf(&quot;%d %d %d&quot;,&amp;op,&amp;x,&amp;y);
-		if(x &gt; n || y &gt; n)
-		&#123;
-			ans++;
-			continue;
-		&#125;
-		if(op &#x3D;&#x3D; 1)
-		&#123;
-			if(getf(x) &#x3D;&#x3D; getf(y + 2 * n) || getf(x + 2 * n) &#x3D;&#x3D; getf(y))
-			&#123;
-				ans++;
-			&#125;
-			else
-			&#123;
-				merge(x,y);
-				merge(x + n,y + n);
-				merge(x + 2 * n,y + 2 * n);
-			&#125;
-		&#125;
-		else
-		&#123;
-			if(x &#x3D;&#x3D; y)
-			&#123;
-				ans++;
-			&#125;
-			else if(getf(x) &#x3D;&#x3D; getf(y) || getf(x + 2 * n) &#x3D;&#x3D; getf(y))
-			&#123;
-				ans++;
-			&#125;
-			else
-			&#123;
-				merge(x,y + 2 * n);
-				merge(x + n,y);
-				merge(x + 2 * n,y + n);
-			&#125;
-
-		&#125;
-	&#125;
-	printf(&quot;%d\n&quot;,ans);
-	return 0;
-	
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="comment">// const int inf = 1e18;</span></span><br><span class="line"><span class="type">int</span> f[maxn * <span class="number">3</span>],n,m,ans;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getf</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x == f[x] ? x : f[x] = <span class="built_in">getf</span>(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> fx = <span class="built_in">getf</span>(x);</span><br><span class="line">	<span class="type">int</span> fy = <span class="built_in">getf</span>(y);</span><br><span class="line">	f[fx] = fy;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);</span></span><br><span class="line">	<span class="comment">// cin &gt;&gt; n &gt;&gt; m;</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">3</span> * n;++i) f[i] = i;</span><br><span class="line">	<span class="comment">//A -&gt; B -&gt; C -&gt; A</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,op,x,y;i &lt;= m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d&quot;</span>,&amp;op,&amp;x,&amp;y);</span><br><span class="line">		<span class="keyword">if</span>(x &gt; n || y &gt; n)</span><br><span class="line">		&#123;</span><br><span class="line">			ans++;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(op == <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">getf</span>(x) == <span class="built_in">getf</span>(y + <span class="number">2</span> * n) || <span class="built_in">getf</span>(x + <span class="number">2</span> * n) == <span class="built_in">getf</span>(y))</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">merge</span>(x,y);</span><br><span class="line">				<span class="built_in">merge</span>(x + n,y + n);</span><br><span class="line">				<span class="built_in">merge</span>(x + <span class="number">2</span> * n,y + <span class="number">2</span> * n);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(x == y)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">getf</span>(x) == <span class="built_in">getf</span>(y) || <span class="built_in">getf</span>(x + <span class="number">2</span> * n) == <span class="built_in">getf</span>(y))</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">merge</span>(x,y + <span class="number">2</span> * n);</span><br><span class="line">				<span class="built_in">merge</span>(x + n,y);</span><br><span class="line">				<span class="built_in">merge</span>(x + <span class="number">2</span> * n,y + n);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="I"><a href="#I" class="headerlink" title="I"></a>I</h2><p><strong>解题思路:</strong> 求一个连通块最大是多少，但是由于标号很大所以我们先需要离散化再进行并查集查找即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 1e6 + 10;
-int ans,n;
-struct DSU
-&#123;
-	unordered_map&lt;int,int&gt; f;
-	unordered_map&lt;int,int&gt; sz;
-	int getf(int x)
-	&#123;
-		return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-	&#125;
-	void merge(int x,int y)
-	&#123;
-		int fx &#x3D; getf(x);
-		int fy &#x3D; getf(y);
-		if(fx !&#x3D; fy)
-		&#123;
-			f[fx] &#x3D; fy;
-			sz[fy] +&#x3D; sz[fx];
-			ans &#x3D; max(ans,sz[fy]);
-		&#125;
-	&#125;
-	void init()
-	&#123;
-		f.clear();
-		sz.clear();
-		ans &#x3D; 0;
-	&#125;
-&#125;dsu;
-array&lt;int,2&gt; p[maxn];
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		dsu.init();
-		cin &gt;&gt; n;
-		for(int i &#x3D; 1,u,v;i &lt;&#x3D; n;++i)
-		&#123;
-			cin &gt;&gt; u &gt;&gt; v;
-			p[i] &#x3D; &#123;u,v&#125;;
-			dsu.f[u] &#x3D; u,dsu.sz[u] &#x3D; 1;
-			dsu.f[v] &#x3D; v,dsu.sz[v] &#x3D; 1;
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			auto [u,v] &#x3D; p[i];
-			dsu.merge(u,v);
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> ans,n;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">DSU</span></span><br><span class="line">&#123;</span><br><span class="line">	unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; f;</span><br><span class="line">	unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; sz;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getf</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x == f[x] ? x : f[x] = <span class="built_in">getf</span>(f[x]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> fx = <span class="built_in">getf</span>(x);</span><br><span class="line">		<span class="type">int</span> fy = <span class="built_in">getf</span>(y);</span><br><span class="line">		<span class="keyword">if</span>(fx != fy)</span><br><span class="line">		&#123;</span><br><span class="line">			f[fx] = fy;</span><br><span class="line">			sz[fy] += sz[fx];</span><br><span class="line">			ans = <span class="built_in">max</span>(ans,sz[fy]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		f.<span class="built_in">clear</span>();</span><br><span class="line">		sz.<span class="built_in">clear</span>();</span><br><span class="line">		ans = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;dsu;</span><br><span class="line">array&lt;<span class="type">int</span>,2&gt; p[maxn];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		dsu.<span class="built_in">init</span>();</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,u,v;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">			p[i] = &#123;u,v&#125;;</span><br><span class="line">			dsu.f[u] = u,dsu.sz[u] = <span class="number">1</span>;</span><br><span class="line">			dsu.f[v] = v,dsu.sz[v] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">auto</span> [u,v] = p[i];</span><br><span class="line">			dsu.<span class="built_in">merge</span>(u,v);</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -804,73 +439,7 @@ signed main()
 <p>我们可以发现只有基环树的形式是可以的，而基环树的形式实际上就是点数等于边数</p>
 <p>那么我们最终只需要使用并查集取维护每个环中存在点数和边数即可</p>
 <p>那么最后再思考答案贡献，对于一个基环树来说，如果这个树里面没有自环，那么贡献就是$2$，因为考虑每条边有两个选择，如果里面有自环的话，贡献就是$n$</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-const int maxn &#x3D; 1e6 + 10;
-const int mod &#x3D; 998244353;
-int n,m,a[maxn],b[maxn];
-int f[maxn],szv[maxn],sze[maxn],loop[maxn];
-void init()
-&#123;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		f[i] &#x3D; i;
-		szv[i] &#x3D; 1;
-		sze[i] &#x3D; 0;
-		loop[i] &#x3D; 0;
-	&#125;
-&#125;
-int getf(int x)
-&#123;
-	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-&#125;
-void merge(int x,int y)
-&#123;
-	int fx &#x3D; getf(x);
-	int fy &#x3D; getf(y);
-	if(fx !&#x3D; fy)
-	&#123;
-		f[fy] &#x3D; fx;
-		sze[fx] +&#x3D; sze[fy];
-		szv[fx] +&#x3D; szv[fy];
-		loop[fx] +&#x3D; loop[fy];
-	&#125;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		init();
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; b[i];
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			merge(a[i],b[i]);
-			sze[getf(a[i])]++;
-			if(a[i] &#x3D;&#x3D; b[i]) loop[getf(a[i])]++;
-		&#125;
-		int ans &#x3D; 1;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			if(i &#x3D;&#x3D; getf(i))
-			&#123;
-				if(sze[i] !&#x3D; szv[i]) ans &#x3D; 0;
-
-                else ans &#x3D; ans * 2 % mod;
-			&#125;
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-	return 0;
-	
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmin</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmax</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">998244353</span>;</span><br><span class="line"><span class="type">int</span> n,m,a[maxn],b[maxn];</span><br><span class="line"><span class="type">int</span> f[maxn],szv[maxn],sze[maxn],loop[maxn];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		f[i] = i;</span><br><span class="line">		szv[i] = <span class="number">1</span>;</span><br><span class="line">		sze[i] = <span class="number">0</span>;</span><br><span class="line">		loop[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getf</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x == f[x] ? x : f[x] = <span class="built_in">getf</span>(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> fx = <span class="built_in">getf</span>(x);</span><br><span class="line">	<span class="type">int</span> fy = <span class="built_in">getf</span>(y);</span><br><span class="line">	<span class="keyword">if</span>(fx != fy)</span><br><span class="line">	&#123;</span><br><span class="line">		f[fy] = fx;</span><br><span class="line">		sze[fx] += sze[fy];</span><br><span class="line">		szv[fx] += szv[fy];</span><br><span class="line">		loop[fx] += loop[fy];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		<span class="built_in">init</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) cin &gt;&gt; a[i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) cin &gt;&gt; b[i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">merge</span>(a[i],b[i]);</span><br><span class="line">			sze[<span class="built_in">getf</span>(a[i])]++;</span><br><span class="line">			<span class="keyword">if</span>(a[i] == b[i]) loop[<span class="built_in">getf</span>(a[i])]++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> ans = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i == <span class="built_in">getf</span>(i))</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(sze[i] != szv[i]) ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">else</span> ans = ans * <span class="number">2</span> % mod;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -1093,9 +662,6 @@ signed main()
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
-
 
 <!-- 代码语言 -->
 
@@ -1278,7 +844,7 @@ signed main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">44.9k</span>
+                        class="white-color">42.4k</span>
             
             
             

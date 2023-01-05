@@ -382,9 +382,6 @@ Python保留字保留字即关键字，我们不能把它们用作任何标识�
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
 
         
 
@@ -396,23 +393,19 @@ Python保留字保留字即关键字，我们不能把它们用作任何标识�
 <li>标识符对大小写敏感。</li>
 </ul>
 <h2 id="Python保留字"><a href="#Python保留字" class="headerlink" title="Python保留字"></a>Python保留字</h2><p>保留字即关键字，我们不能把它们用作任何标识符名称。$Python$ 的标准库提供了一个 $keyword$ 模块。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import keyword
-print(keyword.kwlist)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> keyword</span><br><span class="line"><span class="built_in">print</span>(keyword.kwlist)</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>$python$中单行注释以 <strong>#</strong> 开头</p>
 <p>多行注释可以用多个 <strong>#</strong> 号，还有 <strong>‘’’</strong> 和 **”””**：</p>
 <h2 id="Python多行语句"><a href="#Python多行语句" class="headerlink" title="Python多行语句"></a>Python多行语句</h2><p>$Python$ 通常是一行写完一条语句，但如果语句很长，我们可以使用反斜杠 *<em>*</em> 来实现多行语句，例如:</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">total &#x3D; item_one + \
-        item_two + \
-        item_three<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">total = item_one + \</span><br><span class="line">        item_two + \</span><br><span class="line">        item_three</span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>用 <code>**</code> 运算符来计算乘方</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(5 ** 2)
-#25<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">5</span> ** <span class="number">2</span>)</span><br><span class="line"><span class="comment">#25</span></span><br></pre></td></tr></table></figure>
 
 <p>在交互模式下，可以用变量 <code>_</code> 表示上一次的值</p>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul>
@@ -435,114 +428,69 @@ print(keyword.kwlist)<span aria-hidden="true" class="line-numbers-rows"><span></
 </ul>
 <h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>$Python$中单引号 <code>&#39;</code> 和双引号 <code>&quot;</code>使用完全相同。</p>
 <p>反斜杠 <code>\</code> 可以用来转义，或者如果我们想要使用单引号我们外面可以加一个双引号</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(&#39;this is test1&#39;)
-print(&#39;this is \&#39; test2&#39;)
-print(&quot;this is test &#39;3 &quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;this is test1&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;this is \&#x27; test2&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;this is test &#x27;3 &quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">this is test1
-this is &#39; test2
-this is test &#39;3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this is test1</span><br><span class="line">this is &#x27; test2</span><br><span class="line">this is test &#x27;3</span><br></pre></td></tr></table></figure>
 
 <p>注意如果我们不需要使用到转义的话我们可以在字符串前面加一个<code>r</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(&#39;\hahah\tese&#39;)
-print(r&#39;\hahah\tese&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\hahah\tese&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">r&#x27;\hahah\tese&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 
 
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">\hahah	ese
-\hahah\tese<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\hahah	ese</span><br><span class="line">\hahah\tese</span><br></pre></td></tr></table></figure>
 
 <h3 id="跨行连续输入"><a href="#跨行连续输入" class="headerlink" title="跨行连续输入"></a>跨行连续输入</h3><p>使用三引号<code>&quot;&quot;&quot;</code> 或 <code>&#39;&#39;&#39;</code>可以指定一个多行字符串。</p>
 <h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><p>字符串可以用 <strong>+</strong> 运算符连接在一起，用 ***** 运算符重复</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(3 * &#39;ha&#39; + &#39;uhuh&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">3</span> * <span class="string">&#x27;ha&#x27;</span> + <span class="string">&#x27;uhuh&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">hahahauhuh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hahahauhuh</span><br></pre></td></tr></table></figure>
 
 <p>或者说可以按照字面意思连接字符串，比如相邻多个字符串会自动连接到一起</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(&#39;114514&#39;&#39;1919810&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;114514&#x27;</span><span class="string">&#x27;1919810&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">1145141919810<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1145141919810</span><br></pre></td></tr></table></figure>
 
 <p>因此我们在输出较长字符串的时候我们可以使用按照字面意思连接的方法来输出</p>
 <h3 id="字符串只读"><a href="#字符串只读" class="headerlink" title="字符串只读"></a>字符串只读</h3><p>$python$中的字符串不能被修改，如果我们需要强行修改的话会错掉</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
-test[3] &#x3D; &#39;i&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test = <span class="string">&quot;testword&quot;</span></span><br><span class="line">test[<span class="number">3</span>] = <span class="string">&#x27;i&#x27;</span></span><br></pre></td></tr></table></figure>
 
 
 
-<pre class="line-numbers language-none"><code class="language-none">Traceback (most recent call last):
-  File &quot;e:\Sublime Text\code\codeforces\traing\test.py&quot;, line 2, in &lt;module&gt;
-    test[3] &#x3D; &#39;i&#39;
-TypeError: &#39;str&#39; object does not support item assignment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;e:\Sublime Text\code\codeforces\traing\test.py&quot;, line 2, in &lt;module&gt;</span><br><span class="line">    test[3] = &#x27;i&#x27;</span><br><span class="line">TypeError: &#x27;str&#x27; object does not support item assignment</span><br></pre></td></tr></table></figure>
 
 
 
 <p>如果需要一个新的字符串我们只能通过新建的方式来，同时我们可以使用$len$来获取字符串的长度</p>
-<h3 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h3><pre class="line-numbers language-none"><code class="language-none">文本序列类型 --- str
-     字符串是一种 *序列类型* ，因此也支持序列类型的各种操作。
-
-  字符串的方法
-     字符串支持许多变换和查找的方法。
-
-  格式化字符串字面值
-     内嵌表达式的字符串字面值。
-
-  格式字符串语法
-     使用 &quot;str.format()&quot; 进行字符串格式化。
-
-  printf 风格的字符串格式化
-     这里详述了使用 &quot;%&quot; 运算符进行字符串格式化。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">文本序列类型 --- str</span><br><span class="line">     字符串是一种 *序列类型* ，因此也支持序列类型的各种操作。</span><br><span class="line"></span><br><span class="line">  字符串的方法</span><br><span class="line">     字符串支持许多变换和查找的方法。</span><br><span class="line"></span><br><span class="line">  格式化字符串字面值</span><br><span class="line">     内嵌表达式的字符串字面值。</span><br><span class="line"></span><br><span class="line">  格式字符串语法</span><br><span class="line">     使用 &quot;str.format()&quot; 进行字符串格式化。</span><br><span class="line"></span><br><span class="line">  printf 风格的字符串格式化</span><br><span class="line">     这里详述了使用 &quot;%&quot; 运算符进行字符串格式化。</span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="字符串索引"><a href="#字符串索引" class="headerlink" title="字符串索引"></a>字符串索引</h2><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>字符串是可以被索引 (下标) 访问的，字符串的第一个字母的索引是 $0$</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
-print(test[0])
-print(test[2])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test = <span class="string">&quot;testword&quot;</span></span><br><span class="line"><span class="built_in">print</span>(test[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(test[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">t
-s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
 
 <h3 id="负索引"><a href="#负索引" class="headerlink" title="负索引"></a>负索引</h3><p>索引使用负数的话说明是从右边往左边开始数，因为我们考虑到0的负数还是本身所以我们从 $-1$开始数</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
-print(test[-1])
-print(test[-3])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test = <span class="string">&quot;testword&quot;</span></span><br><span class="line"><span class="built_in">print</span>(test[-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(test[-<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">d
-o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d</span><br><span class="line">o</span><br></pre></td></tr></table></figure>
 
 <h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><p>索引可以获得单个字符，切片可以获得一个字符串的字串，切片的形式是$[l:r]$，对于切片来说$l$是被包含在输出的字符串当中但是$r$不会</p>
 <p>切片的索引有默认值；省略开始索引时默认为0，省略结束索引时默认为到字符 串的结束:</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
-print(test[0:2])
-print(test[2:5])
-print(test[:2] + test[2:])
-print(test[:3])
-print(test[-3:])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">test = <span class="string">&quot;testword&quot;</span></span><br><span class="line"><span class="built_in">print</span>(test[<span class="number">0</span>:<span class="number">2</span>])</span><br><span class="line"><span class="built_in">print</span>(test[<span class="number">2</span>:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(test[:<span class="number">2</span>] + test[<span class="number">2</span>:])</span><br><span class="line"><span class="built_in">print</span>(test[:<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(test[-<span class="number">3</span>:])</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">te
-stw
-testword
-tes
-ord<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">te</span><br><span class="line">stw</span><br><span class="line">testword</span><br><span class="line">tes</span><br><span class="line">ord</span><br></pre></td></tr></table></figure>
 
 <p>我们可以发现一个性质就是对于一个字符串来说$s[:i] + s[i:] &#x3D; s$</p>
 <h3 id="索引越界"><a href="#索引越界" class="headerlink" title="索引越界"></a>索引越界</h3><p>在我们使用过大的索引的时候会出现以下的错误:</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
-print(test[114514])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test = <span class="string">&quot;testword&quot;</span></span><br><span class="line"><span class="built_in">print</span>(test[<span class="number">114514</span>])</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">Traceback (most recent call last):
-  File &quot;e:\Sublime Text\code\codeforces\traing\test.py&quot;, line 2, in &lt;module&gt;
-    print(test[114514])
-IndexError: string index out of range<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;e:\Sublime Text\code\codeforces\traing\test.py&quot;, line 2, in &lt;module&gt;</span><br><span class="line">    print(test[114514])</span><br><span class="line">IndexError: string index out of range</span><br></pre></td></tr></table></figure>
 
 <p>但是对于切片中的越界索引他会自动去取到相对应的边界</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">test &#x3D; &quot;testword&quot;
-print(test[2:114514])
-print(test[114514:])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test = <span class="string">&quot;testword&quot;</span></span><br><span class="line"><span class="built_in">print</span>(test[<span class="number">2</span>:<span class="number">114514</span>])</span><br><span class="line"><span class="built_in">print</span>(test[<span class="number">114514</span>:])</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">stword
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stword</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -550,41 +498,14 @@ print(test[114514:])<span aria-hidden="true" class="line-numbers-rows"><span></s
 
 <h3 id="List（列表）"><a href="#List（列表）" class="headerlink" title="List（列表）"></a>List（列表）</h3><p>列表是写在<code>[]</code>之间用有道分隔开的元素列表，和字符串一样列表也可以被索引和截取，列表被截取后返回一个包含所需元素的新列表，注意列表中的元素类型可以不相同</p>
 <p>我们可以通过和字符串类似的写法$[a:b:c]$来表示从坐标$a$开始到坐标$b - 1$每次相间隔$c$去一个列表中的元素，特别需要注意的是，当$c &lt; 0$的时候，截取字符是从后往前的，那么我们可以采用如下的写法来进行对一个列表逆序</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def reverseWords(input):
-     
-    # 通过空格将字符串分隔符，把各个单词分隔为列表
-    inputWords &#x3D; input.split(&quot; &quot;)
- 
-    # 翻转字符串
-    # 假设列表 list &#x3D; [1,2,3,4],  
-    # list[0]&#x3D;1, list[1]&#x3D;2 ，而 -1 表示最后一个元素 list[-1]&#x3D;4 ( 与 list[3]&#x3D;4 一样)
-    # inputWords[-1::-1] 有三个参数
-    # 第一个参数 -1 表示最后一个元素
-    # 第二个参数为空，表示移动到列表末尾
-    # 第三个参数为步长，-1 表示逆向
-    inputWords&#x3D;inputWords[-1::-1]
- 
-    # 重新组合字符串
-    output &#x3D; &#39; &#39;.join(inputWords)
-     
-    return output
- 
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    input &#x3D; &#39;I like runoob&#39;
-    rw &#x3D; reverseWords(input)
-    print(rw)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">reverseWords</span>(<span class="params"><span class="built_in">input</span></span>):</span><br><span class="line">     </span><br><span class="line">    <span class="comment"># 通过空格将字符串分隔符，把各个单词分隔为列表</span></span><br><span class="line">    inputWords = <span class="built_in">input</span>.split(<span class="string">&quot; &quot;</span>)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 翻转字符串</span></span><br><span class="line">    <span class="comment"># 假设列表 list = [1,2,3,4],  </span></span><br><span class="line">    <span class="comment"># list[0]=1, list[1]=2 ，而 -1 表示最后一个元素 list[-1]=4 ( 与 list[3]=4 一样)</span></span><br><span class="line">    <span class="comment"># inputWords[-1::-1] 有三个参数</span></span><br><span class="line">    <span class="comment"># 第一个参数 -1 表示最后一个元素</span></span><br><span class="line">    <span class="comment"># 第二个参数为空，表示移动到列表末尾</span></span><br><span class="line">    <span class="comment"># 第三个参数为步长，-1 表示逆向</span></span><br><span class="line">    inputWords=inputWords[-<span class="number">1</span>::-<span class="number">1</span>]</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 重新组合字符串</span></span><br><span class="line">    output = <span class="string">&#x27; &#x27;</span>.join(inputWords)</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="built_in">input</span> = <span class="string">&#x27;I like runoob&#x27;</span></span><br><span class="line">    rw = reverseWords(<span class="built_in">input</span>)</span><br><span class="line">    <span class="built_in">print</span>(rw)</span><br></pre></td></tr></table></figure>
 
 
 
 <p>列表还可以通过$append$来添加元素</p>
 <h2 id="多个语句构成代码组"><a href="#多个语句构成代码组" class="headerlink" title="多个语句构成代码组"></a>多个语句构成代码组</h2><p>缩进相同的一组语句构成一个代码块，我们称之代码组。</p>
 <p>像$ if $、$ while $ 、$ def $ 和$ class$ 这样的复合语句，首行以关键字开始，以冒号( : )结束，该行之后的一行或多行代码构成代码组。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">if expression : 
-   suite
-elif expression : 
-   suite 
-else : 
-   suite<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> expression : </span><br><span class="line">   suite</span><br><span class="line"><span class="keyword">elif</span> expression : </span><br><span class="line">   suite </span><br><span class="line"><span class="keyword">else</span> : </span><br><span class="line">   suite</span><br></pre></td></tr></table></figure>
 
 
 
@@ -598,42 +519,22 @@ else :
 <p>基本功能是进行成员关系测试和删除重复元素。</p>
 <p>可以使用大括号 ${ }$ 或者 $set()$ 函数创建集合，注意：创建一个空集合必须用 $set()$ 而不是 ${ }$，因为 ${ }$ 是用来创建一个空字典。</p>
 <p>创建格式：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">st &#x3D; &#123;1,2,3,4,5&#125;
-a &#x3D; set(&quot;1234567&quot;)
-print(&quot;a:&quot;,a)
-print(&quot;st:&quot;,st)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">st = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">a = <span class="built_in">set</span>(<span class="string">&quot;1234567&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;a:&quot;</span>,a)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;st:&quot;</span>,st)</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">a: &#123;&#39;2&#39;, &#39;3&#39;, &#39;1&#39;, &#39;4&#39;, &#39;6&#39;, &#39;5&#39;, &#39;7&#39;&#125;
-st: &#123;1, 2, 3, 4, 5&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a: &#123;<span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;7&#x27;</span>&#125;</span><br><span class="line">st: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>当然，对于一个已有元素的$set$,如果我们需要往这个里面添加元素的话，我们可以使用$add$函数来进行添加</p>
 <p>注意这里的集合是一个 <strong>没有顺序</strong> 的集合</p>
 <p>对于集合来说我们通常还需要判断一个集合和另外一个集合之间的关系，那么实际上 $python$也为我们提供了这些方法</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">print(a - b)     # a 和 b 的差集
-
-print(a | b)     # a 和 b 的并集
-
-print(a &amp; b)     # a 和 b 的交集
-
-print(a ^ b)     # a 和 b 中不同时存在的元素，即只在一个集合中出现<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(a - b)     <span class="meta"># a 和 b 的差集</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a | b)     <span class="meta"># a 和 b 的并集</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a &amp; b)     <span class="meta"># a 和 b 的交集</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a ^ b)     <span class="meta"># a 和 b 中不同时存在的元素，即只在一个集合中出现</span></span><br></pre></td></tr></table></figure>
 
 
 
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">a &#x3D; set(&quot;145296&quot;)
-b &#x3D; set(&quot;256789&quot;)
-print(a - b)
-print(a | b)
-print(a &amp; b)
-print(a ^ b)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">set</span>(<span class="string">&quot;145296&quot;</span>)</span><br><span class="line">b = <span class="built_in">set</span>(<span class="string">&quot;256789&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(a - b)</span><br><span class="line"><span class="built_in">print</span>(a | b)</span><br><span class="line"><span class="built_in">print</span>(a &amp; b)</span><br><span class="line"><span class="built_in">print</span>(a ^ b)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">&#123;&#39;1&#39;, &#39;4&#39;&#125;
-&#123;&#39;1&#39;, &#39;5&#39;, &#39;8&#39;, &#39;9&#39;, &#39;2&#39;, &#39;4&#39;, &#39;6&#39;, &#39;7&#39;&#125;
-&#123;&#39;9&#39;, &#39;5&#39;, &#39;2&#39;, &#39;6&#39;&#125;
-&#123;&#39;1&#39;, &#39;4&#39;, &#39;8&#39;, &#39;7&#39;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;4&#x27;</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;6&#x27;</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;7&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -641,139 +542,70 @@ print(a ^ b)
 <p>键$(key)$必须使用不可变类型。</p>
 <p>在同一个字典中，键$(key)$必须是唯一的。</p>
 <p>注意对于字典的构造函数$dict()$也可以直接从键值对序列中构建字典如下</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">&gt;&gt;&gt; dict([(&#39;Runoob&#39;, 1), (&#39;Google&#39;, 2), (&#39;Taobao&#39;, 3)])
-&#123;&#39;Runoob&#39;: 1, &#39;Google&#39;: 2, &#39;Taobao&#39;: 3&#125;
-&gt;&gt;&gt; &#123;x: x**2 for x in (2, 4, 6)&#125;
-&#123;2: 4, 4: 16, 6: 36&#125;
-&gt;&gt;&gt; dict(Runoob&#x3D;1, Google&#x3D;2, Taobao&#x3D;3)
-&#123;&#39;Runoob&#39;: 1, &#39;Google&#39;: 2, &#39;Taobao&#39;: 3&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>([(<span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;Google&#x27;</span>, <span class="number">2</span>), (<span class="string">&#x27;Taobao&#x27;</span>, <span class="number">3</span>)])</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;x: x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> (<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>)&#125;</span><br><span class="line">&#123;<span class="number">2</span>: <span class="number">4</span>, <span class="number">4</span>: <span class="number">16</span>, <span class="number">6</span>: <span class="number">36</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>(Runoob=<span class="number">1</span>, Google=<span class="number">2</span>, Taobao=<span class="number">3</span>)</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><h3 id="读取键盘输入"><a href="#读取键盘输入" class="headerlink" title="读取键盘输入"></a>读取键盘输入</h3><p>$python$提供$input()$函数从标准输入中读入一行 <strong>文本</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">str &#x3D; input()
-print(str)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="built_in">input</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="读取一行中的多个数字"><a href="#读取一行中的多个数字" class="headerlink" title="读取一行中的多个数字"></a>读取一行中的多个数字</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"># 读取一行中的两个整数
-a, b &#x3D; map(float, input().split())
-print(a,b)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="读取一行中的多个数字"><a href="#读取一行中的多个数字" class="headerlink" title="读取一行中的多个数字"></a>读取一行中的多个数字</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取一行中的两个整数</span></span><br><span class="line">a, b = <span class="built_in">map</span>(<span class="built_in">float</span>, <span class="built_in">input</span>().split())</span><br><span class="line"><span class="built_in">print</span>(a,b)</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="读取一行中的数字，两个数字类型不一样"><a href="#读取一行中的数字，两个数字类型不一样" class="headerlink" title="读取一行中的数字，两个数字类型不一样"></a>读取一行中的数字，两个数字类型不一样</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"># 读取一行中的两个数字
-a, b &#x3D; input().split()
-a &#x3D; int(a)
-b &#x3D; float(b)
-print(a,b)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="读取一行中的数字，两个数字类型不一样"><a href="#读取一行中的数字，两个数字类型不一样" class="headerlink" title="读取一行中的数字，两个数字类型不一样"></a>读取一行中的数字，两个数字类型不一样</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取一行中的两个数字</span></span><br><span class="line">a, b = <span class="built_in">input</span>().split()</span><br><span class="line">a = <span class="built_in">int</span>(a)</span><br><span class="line">b = <span class="built_in">float</span>(b)</span><br><span class="line"><span class="built_in">print</span>(a,b)</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="读取一个文件直到末尾"><a href="#读取一个文件直到末尾" class="headerlink" title="读取一个文件直到末尾"></a>读取一个文件直到末尾</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"># 打开文件
-with open(&quot;test.txt&quot;, &quot;r&quot;) as f:
-    # 读取文件的每一行
-    for line in f:
-        # 在这里处理每一行的数据
-        print(line)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="读取一个文件直到末尾"><a href="#读取一个文件直到末尾" class="headerlink" title="读取一个文件直到末尾"></a>读取一个文件直到末尾</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;test.txt&quot;</span>, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 读取文件的每一行</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="comment"># 在这里处理每一行的数据</span></span><br><span class="line">        <span class="built_in">print</span>(line)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="Python循环语句"><a href="#Python循环语句" class="headerlink" title="Python循环语句"></a>Python循环语句</h2><h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p>$python$中并不存在$do…while$的语法，因此我们可以直接用$while$来写。</p>
 <p>除此之外$python$还存在在一个$while$后面跟着$else$</p>
 <p>一般来说是如果我当前的$while$不执行的话那么我就会直接走后面的$else$</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">n &#x3D; 10
-now &#x3D; 0
-sum &#x3D; 0
-while now &lt;&#x3D; n:
-    sum +&#x3D; now
-    now +&#x3D; 1
-else:
-    print(&quot;sum??&quot;,sum)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">10</span></span><br><span class="line">now = <span class="number">0</span></span><br><span class="line"><span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> now &lt;= n:</span><br><span class="line">    <span class="built_in">sum</span> += now</span><br><span class="line">    now += <span class="number">1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;sum??&quot;</span>,<span class="built_in">sum</span>)</span><br></pre></td></tr></table></figure>
 
 <p>比如上面的程序就是先去计算$1…10$的和然后跳出循环之后直接输出这个和是多少</p>
 <h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p>我们需要注意的是，对于$python$来说，$for$循环可以遍历任何可以迭代的对象，比如一个列表或者一个字符串</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">a &#x3D; [1,2,3,4,5]
-for i in a:
-    if(i &#x3D;&#x3D; 3):
-        print(&quot;Good number&quot;)
-        break
-    print(&quot;now number is&quot;,i)
-else:
-    print(&quot;no good number&quot;)
-print(&quot;finish&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">3</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Good number&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;now number is&quot;</span>,i)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;no good number&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;finish&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>对于上述程序我们跑出来的结果是</p>
-<pre class="line-numbers language-none"><code class="language-none">now number is 1
-now number is 2
-Good number
-finish<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">now number is 1</span><br><span class="line">now number is 2</span><br><span class="line">Good number</span><br><span class="line">finish</span><br></pre></td></tr></table></figure>
 
 
 
 <p>更改成以下内容跑出来的数据相对应的是</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">a &#x3D; [1,2,7,4,5]
-for i in a:
-    if(i &#x3D;&#x3D; 3):
-        print(&quot;Good number&quot;)
-        break
-    print(&quot;now number is&quot;,i)
-else:
-    print(&quot;no good number&quot;)
-print(&quot;finish&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">3</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Good number&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;now number is&quot;</span>,i)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;no good number&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;finish&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 
 
-<pre class="line-numbers language-none"><code class="language-none">now number is 1
-now number is 2
-now number is 7
-now number is 4
-now number is 5
-no good number
-finish<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">now number is 1</span><br><span class="line">now number is 2</span><br><span class="line">now number is 7</span><br><span class="line">now number is 4</span><br><span class="line">now number is 5</span><br><span class="line">no good number</span><br><span class="line">finish</span><br></pre></td></tr></table></figure>
 
 
 
 <h4 id="range函数"><a href="#range函数" class="headerlink" title="range函数"></a>range函数</h4><p>遍历数字序列的时候我们可以使用内置的$range$函数</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">for i in range(5):
-    print(i,end &#x3D; &quot; &quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    <span class="built_in">print</span>(i,end = <span class="string">&quot; &quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">0 1 2 3 4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 1 2 3 4</span><br></pre></td></tr></table></figure>
 
 <p>如何指定区间的话，假设$range(l,r)$，那么我们获得的数字就是从$l$然后一直到$r - 1$</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">for i in range(5,10):
-    print(i,end &#x3D; &quot; &quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(i,end = <span class="string">&quot; &quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">5 6 7 8 9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5 6 7 8 9</span><br></pre></td></tr></table></figure>
 
 <p>当然$range$还具有第三个参数步长，可以通过给这个步长一些指定的参数来进行循环</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">sum &#x3D; 0
-for i in range(0,10,2):
-    print(i)
-    sum +&#x3D; i
-print(sum)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">10</span>,<span class="number">2</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="built_in">sum</span> += i</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>)</span><br></pre></td></tr></table></figure>
 
 <p>比如上述程序就会从$0 - 8$逐个相加</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">sum &#x3D; 0
-for i in range(0,10,2):
-    print(i)
-    sum +&#x3D; i
-print(sum)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">10</span>,<span class="number">2</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="built_in">sum</span> += i</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>)</span><br></pre></td></tr></table></figure>
 
 <p>同时我们也可以通过$range$和$len$函数去遍历一个序列的索引</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">a &#x3D; [1,2,3,4,55,666,7777]
-for i in range(len(a)):
-    print(i,a[i])
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">55</span>,<span class="number">666</span>,<span class="number">7777</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(a)):</span><br><span class="line">    <span class="built_in">print</span>(i,a[i])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">0 1
-1 2
-2 3
-3 4
-4 55
-5 666
-6 7777<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">0 1</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br><span class="line">3 4</span><br><span class="line">4 55</span><br><span class="line">5 666</span><br><span class="line">6 7777</span><br></pre></td></tr></table></figure>
 
 
 
@@ -992,9 +824,6 @@ for i in range(len(a)):
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
-
 
 <!-- 代码语言 -->
 
@@ -1177,7 +1006,7 @@ for i in range(len(a)):
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">44.9k</span>
+                        class="white-color">42.4k</span>
             
             
             
