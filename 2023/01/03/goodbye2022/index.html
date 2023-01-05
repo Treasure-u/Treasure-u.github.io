@@ -51,8 +51,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
@@ -366,7 +365,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    223
+                    1.8k
                 </div>
                 
 
@@ -378,6 +377,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -385,117 +387,123 @@
             <div id="articleContent">
                 <h1 id="Good-Bye-2022"><a href="#Good-Bye-2022" class="headerlink" title="Good Bye 2022"></a>Good Bye 2022</h1><h2 id="A-Koxia-and-Whiteboards"><a href="#A-Koxia-and-Whiteboards" class="headerlink" title="A.Koxia and Whiteboards"></a>A.Koxia and Whiteboards</h2><p>**题目大意: ** 给定一个长度为$n$的序列，接下来进行$m$次操作，问操作之后序列值最大是多少</p>
 <p><strong>解题思路:</strong> 数量级很小考虑暴力即可，每次把$a$序列中最小的元素换下来</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-const int maxn = 1e6 + 10;
+const int maxn &#x3D; 1e6 + 10;
 int n,m,a[maxn],b[maxn];
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    int T;
-    cin >> T;
-    while(T--)
-    &#123;
-        cin >> n >> m;
-        multiset<int> st;
-        for(int i = 1;i <= n;++i) cin >> a[i],st.insert(a[i]);
-        for(int i = 1;i <= m;++i) cin >> b[i];
-        for(int i = 1;i <= m;++i)
-        &#123;
-            st.erase(st.begin());
-            st.insert(b[i]);
-        &#125;
-        int sum = 0;
-        for(auto to:st) sum += to;
-        cout << sum << "\n";
-    &#125;
-    return 0;
-    
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n &gt;&gt; m;
+		multiset&lt;int&gt; st;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i],st.insert(a[i]);
+		for(int i &#x3D; 1;i &lt;&#x3D; m;++i) cin &gt;&gt; b[i];
+		for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
+		&#123;
+			st.erase(st.begin());
+			st.insert(b[i]);
+		&#125;
+		int sum &#x3D; 0;
+		for(auto to:st) sum +&#x3D; to;
+		cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;
+	&#125;
+	return 0;
+	
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="B-Koxia-and-Permutation"><a href="#B-Koxia-and-Permutation" class="headerlink" title="B. Koxia and Permutation"></a>B. Koxia and Permutation</h2><p><strong>题目大意:</strong> 构造一个长度为$n$的序列，进行$n - k + 1$次划分，第$i$次划分获得的是从$i$开始$k$个数字的最大值和最小值相加，一个排列$p$的代价是划分中的值的最大值，问这个最大值最小的序列是什么样的</p>
 <p><strong>解题思路:</strong> 因为最后要让我们的最大值最小，考虑值的构成是一个区域内的最大值加上最小值，如果一段区域里面都是连续的大数是肯定不行的，因此我们可以从$1-n$的数字头尾顺序取即可</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-const int maxn = 1e6 + 10;
+const int maxn &#x3D; 1e6 + 10;
 int n,m,a[maxn],b[maxn];
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    int T;
-    cin >> T;
-    while(T--)
-    &#123;
-        cin >> n >> m;
-        vector<int> ans;
-        for(int i = 1,j = n;i < j;++i,--j)
-        &#123;
-            ans.push_back(j);
-            ans.push_back(i);
-            // cout << "??? " << i << " " << j << "\n";
-        &#125;
-        if(n & 1) ans.push_back((n + 1) / 2);
-        for(auto to:ans)
-        &#123;
-            cout << to << " ";
-        &#125;
-        cout << "\n";
-    &#125;
-    return 0;
-    
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n &gt;&gt; m;
+		vector&lt;int&gt; ans;
+		for(int i &#x3D; 1,j &#x3D; n;i &lt; j;++i,--j)
+		&#123;
+			ans.push_back(j);
+			ans.push_back(i);
+			&#x2F;&#x2F; cout &lt;&lt; &quot;??? &quot; &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot;\n&quot;;
+		&#125;
+		if(n &amp; 1) ans.push_back((n + 1) &#x2F; 2);
+		for(auto to:ans)
+		&#123;
+			cout &lt;&lt; to &lt;&lt; &quot; &quot;;
+		&#125;
+		cout &lt;&lt; &quot;\n&quot;;
+	&#125;
+	return 0;
+	
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="C-Koxia-and-Number-Theory"><a href="#C-Koxia-and-Number-Theory" class="headerlink" title="C. Koxia and Number Theory"></a>C. Koxia and Number Theory</h2><p><strong>题目大意:</strong> 给定一个长度为$n$的序列,问是否存在一个$x$使得每一对$gcd(a_i+ x ,a_j + x) &#x3D; 1$</p>
 <p><strong>解题思路:</strong> 不懂数学，感觉可以看严格鸽的</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-const int maxn = 1e6 + 10;
+const int maxn &#x3D; 1e6 + 10;
 int n,m,a[maxn],b[maxn];
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    int T;
-    cin >> T;
-    while(T--)
-    &#123;
-        cin >> n;
-        set<int> st;
-        for(int i = 1;i <= n;++i) cin >> a[i],st.insert(a[i]);
-        if(st.size() != n)
-        &#123;
-            cout << "No\n";
-            continue;
-        &#125;
-        int f = 1;
-        for(int p = 2;p <= n;++p)
-        &#123;
-            map<int,int> mp;
-            for(int i = 1;i <= n;++i) mp[a[i] % p]++;
-            int mi = n + n;
-            int ha = 0;
-            for(auto to:mp)
-            &#123;
-                if(to.second >= 2) ha++;
-            &#125;
-            if(ha >= p) f = 0;
-        &#125;
-        if(f) cout << "Yes\n";
-        else cout << "No\n";
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n;
+		set&lt;int&gt; st;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i],st.insert(a[i]);
+		if(st.size() !&#x3D; n)
+		&#123;
+			cout &lt;&lt; &quot;No\n&quot;;
+			continue;
+		&#125;
+		int f &#x3D; 1;
+		for(int p &#x3D; 2;p &lt;&#x3D; n;++p)
+		&#123;
+			map&lt;int,int&gt; mp;
+			for(int i &#x3D; 1;i &lt;&#x3D; n;++i) mp[a[i] % p]++;
+			int mi &#x3D; n + n;
+			int ha &#x3D; 0;
+			for(auto to:mp)
+			&#123;
+				if(to.second &gt;&#x3D; 2) ha++;
+			&#125;
+			if(ha &gt;&#x3D; p) f &#x3D; 0;
+		&#125;
+		if(f) cout &lt;&lt; &quot;Yes\n&quot;;
+		else cout &lt;&lt; &quot;No\n&quot;;
 
-    &#125;
-    return 0;
-    
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	&#125;
+	return 0;
+	
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="D-Koxia-and-Game"><a href="#D-Koxia-and-Game" class="headerlink" title="D. Koxia and Game"></a>D. Koxia and Game</h2><p><strong>题目大意:</strong> 有三个长度为$n$的序列$a,b,c$</p>
 <p>$Alice$和$Bob$玩游戏，一共进行$n$个回合，游戏规则如下：</p>
 <ul>
@@ -514,74 +522,74 @@ signed main()
 <p>我们可以发现只有基环树的形式是可以的，而基环树的形式实际上就是点数等于边数</p>
 <p>那么我们最终只需要使用并查集取维护每个环中存在点数和边数即可</p>
 <p>那么最后再思考答案贡献，对于一个基环树来说，如果这个树里面没有自环，那么贡献就是$2$，因为考虑每条边有两个选择，如果里面有自环的话，贡献就是$n$</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-const int maxn = 1e6 + 10;
-const int mod = 998244353;
+const int maxn &#x3D; 1e6 + 10;
+const int mod &#x3D; 998244353;
 int n,m,a[maxn],b[maxn];
 int f[maxn],szv[maxn],sze[maxn],loop[maxn];
 void init()
 &#123;
-    for(int i = 1;i <= n;++i)
-    &#123;
-        f[i] = i;
-        szv[i] = 1;
-        sze[i] = 0;
-        loop[i] = 0;
-    &#125;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		f[i] &#x3D; i;
+		szv[i] &#x3D; 1;
+		sze[i] &#x3D; 0;
+		loop[i] &#x3D; 0;
+	&#125;
 &#125;
 int getf(int x)
 &#123;
-    return x == f[x] ? x : f[x] = getf(f[x]);
+	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
 &#125;
 void merge(int x,int y)
 &#123;
-    int fx = getf(x);
-    int fy = getf(y);
-    if(fx != fy)
-    &#123;
-        f[fy] = fx;
-        sze[fx] += sze[fy];
-        szv[fx] += szv[fy];
-        loop[fx] += loop[fy];
-    &#125;
+	int fx &#x3D; getf(x);
+	int fy &#x3D; getf(y);
+	if(fx !&#x3D; fy)
+	&#123;
+		f[fy] &#x3D; fx;
+		sze[fx] +&#x3D; sze[fy];
+		szv[fx] +&#x3D; szv[fy];
+		loop[fx] +&#x3D; loop[fy];
+	&#125;
 &#125;
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    int T;
-    cin >> T;
-    while(T--)
-    &#123;
-        cin >> n;
-        init();
-        for(int i = 1;i <= n;++i) cin >> a[i];
-        for(int i = 1;i <= n;++i) cin >> b[i];
-        for(int i = 1;i <= n;++i)
-        &#123;
-            merge(a[i],b[i]);
-            sze[getf(a[i])]++;
-            if(a[i] == b[i]) loop[getf(a[i])]++;
-        &#125;
-        int ans = 1;
-        for(int i = 1;i <= n;++i)
-        &#123;
-            if(i == getf(i))
-            &#123;
-                if(sze[i] != szv[i]) ans = 0;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n;
+		init();
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; b[i];
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			merge(a[i],b[i]);
+			sze[getf(a[i])]++;
+			if(a[i] &#x3D;&#x3D; b[i]) loop[getf(a[i])]++;
+		&#125;
+		int ans &#x3D; 1;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			if(i &#x3D;&#x3D; getf(i))
+			&#123;
+				if(sze[i] !&#x3D; szv[i]) ans &#x3D; 0;
 
-                else ans = ans * 2 % mod;
-            &#125;
-        &#125;
-        cout << ans << "\n";
-    &#125;
-    return 0;
-    
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                else ans &#x3D; ans * 2 % mod;
+			&#125;
+		&#125;
+		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+	&#125;
+	return 0;
+	
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -796,6 +804,9 @@ signed main()
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -978,7 +989,7 @@ signed main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">6.9k</span>
+                        class="white-color">44.7k</span>
             
             
             

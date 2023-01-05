@@ -6,9 +6,8 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Atcoder Beginner Contest 272, Hexo">
     <meta name="description" content="Atcoder Beginner Contest 272A - Integer Sum题目大意: 给定$n$个数字，求$n$个数字的和
-#include 
-using namespace std;
-template inline bool ">
+#include &amp;lt;bits&amp;#x2F;stdc++.h&amp;gt;
+using namespace ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -53,8 +52,7 @@ template inline bool ">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
@@ -372,7 +370,7 @@ template inline bool ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    179
+                    2.3k
                 </div>
                 
 
@@ -384,313 +382,316 @@ template inline bool ">
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Atcoder-Beginner-Contest-272"><a href="#Atcoder-Beginner-Contest-272" class="headerlink" title="Atcoder Beginner Contest 272"></a>Atcoder Beginner Contest 272</h1><h2 id="A-Integer-Sum"><a href="#A-Integer-Sum" class="headerlink" title="A - Integer Sum"></a>A - Integer Sum</h2><p><strong>题目大意:</strong> 给定$n$个数字，求$n$个数字的和</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-// typedef long long ll;
-const int maxn = 2e5 + 10;
+&#x2F;&#x2F; typedef long long ll;
+const int maxn &#x3D; 2e5 + 10;
 int n,sum;
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    cin >> n;
-    for(int i = 1,x;i <= n;++i)
-    &#123;
-        cin >> x;
-        sum += x;
-    &#125;
-    cout << sum << "\n";
-    return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; n;
+	for(int i &#x3D; 1,x;i &lt;&#x3D; n;++i)
+	&#123;
+		cin &gt;&gt; x;
+		sum +&#x3D; x;
+	&#125;
+	cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="B-Everyone-is-Friends"><a href="#B-Everyone-is-Friends" class="headerlink" title="B - Everyone is Friends"></a>B - Everyone is Friends</h2><p><strong>题目大意:</strong> 给定$n$个人以及$m$个分组，问是否每两个人都曾经出现在同一组过</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-// typedef long long ll;
-const int maxn = 2e5 + 10;
+&#x2F;&#x2F; typedef long long ll;
+const int maxn &#x3D; 2e5 + 10;
 int n,sum,m;
-set<int> a[maxn];
+set&lt;int&gt; a[maxn];
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    cin >> n >> m;
-    for(int i = 1,num;i <= m;++i)
-    &#123;
-        cin >> num;
-        for(int j = 1,x;j <= num;++j)
-        &#123;
-            cin >> x;
-            a[x].insert(i);
-        &#125;
-    &#125;
-    int f = 0;
-    for(int i = 1;i <= n;++i)
-    &#123;
-        for(int j = i + 1;j <= n;++j)
-        &#123;
-            int nm = 0;
-            for(auto to:a[i])
-            &#123;
-                auto it = a[j].find(to);
-                if(it != a[j].end()) 
-                &#123;
-                    nm++;
-                &#125;
-            &#125;
-            if(nm >= 1) f++;
-        &#125;
-    &#125;
-    if(f == n * (n - 1) / 2) cout << "Yes\n";
-    else cout << "No\n";
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; n &gt;&gt; m;
+	for(int i &#x3D; 1,num;i &lt;&#x3D; m;++i)
+	&#123;
+		cin &gt;&gt; num;
+		for(int j &#x3D; 1,x;j &lt;&#x3D; num;++j)
+		&#123;
+			cin &gt;&gt; x;
+			a[x].insert(i);
+		&#125;
+	&#125;
+	int f &#x3D; 0;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		for(int j &#x3D; i + 1;j &lt;&#x3D; n;++j)
+		&#123;
+			int nm &#x3D; 0;
+			for(auto to:a[i])
+			&#123;
+				auto it &#x3D; a[j].find(to);
+				if(it !&#x3D; a[j].end()) 
+				&#123;
+					nm++;
+				&#125;
+			&#125;
+			if(nm &gt;&#x3D; 1) f++;
+		&#125;
+	&#125;
+	if(f &#x3D;&#x3D; n * (n - 1) &#x2F; 2) cout &lt;&lt; &quot;Yes\n&quot;;
+	else cout &lt;&lt; &quot;No\n&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="C-Max-Even"><a href="#C-Max-Even" class="headerlink" title="C - Max Even"></a>C - Max Even</h2><p><strong>题目大意:</strong> 给定$n(1 \leq n \leq 2e5)$个数字，问两个不相同的数字加起来的最大偶数是多少</p>
 <p><strong>解题思路:</strong> 分析题目我们可以发现一个关键问题就是两个数字加起来是偶数，那么要么是奇数和奇数相加要么是偶数和偶数相加，我们分类一下数字的奇偶性即可</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-// typedef long long ll;
-const int maxn = 2e5 + 10;
+&#x2F;&#x2F; typedef long long ll;
+const int maxn &#x3D; 2e5 + 10;
 int n,sum,m;
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    set<int> odd,even;
-    cin >> n;
-    for(int i = 1,x;i <= n;++i)
-    &#123;
-        cin >> x;
-        if(x & 1) odd.insert(x);
-        else even.insert(x);
-    &#125;
-    int ans = -1;
-    if(odd.size() >= 2)
-    &#123;
-        int res = 0;
-        res += *odd.rbegin();
-        odd.erase(prev(odd.end()));
-        res += *odd.rbegin();
-        ans = max(ans,res);
-    &#125;
-    if(even.size() >= 2)
-    &#123;
-        int res = 0;
-        res += *even.rbegin();
-        even.erase(prev(even.end()));
-        res += *even.rbegin();
-        ans = max(ans,res);
-    &#125;
-    cout << ans << "\n";
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	set&lt;int&gt; odd,even;
+	cin &gt;&gt; n;
+	for(int i &#x3D; 1,x;i &lt;&#x3D; n;++i)
+	&#123;
+		cin &gt;&gt; x;
+		if(x &amp; 1) odd.insert(x);
+		else even.insert(x);
+	&#125;
+	int ans &#x3D; -1;
+	if(odd.size() &gt;&#x3D; 2)
+	&#123;
+		int res &#x3D; 0;
+		res +&#x3D; *odd.rbegin();
+		odd.erase(prev(odd.end()));
+		res +&#x3D; *odd.rbegin();
+		ans &#x3D; max(ans,res);
+	&#125;
+	if(even.size() &gt;&#x3D; 2)
+	&#123;
+		int res &#x3D; 0;
+		res +&#x3D; *even.rbegin();
+		even.erase(prev(even.end()));
+		res +&#x3D; *even.rbegin();
+		ans &#x3D; max(ans,res);
+	&#125;
+	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="D-Root-M-Leaper"><a href="#D-Root-M-Leaper" class="headerlink" title="D - Root M Leaper"></a>D - Root M Leaper</h2><p><strong>题目大意:</strong> 给定一个$n * n(1\leq n \leq 400)$的棋盘，初始点在$(1,1)$，一个点如果在$(i,j)$当且仅当它可以到$(k,l)$存在他们的$\sqrt{(i - k) ^ 2 + (j - l) ^ 2} &#x3D; \sqrt{m} (1 \leq m \leq 1e5)$</p>
 <p>求这个矩阵中的所有点最少需要几步能被走到</p>
 <p><strong>解题思路:</strong> 发现无论怎么走实际上我们是走不出这个棋盘的，那么实际上$m$最多不会超过$n$，那么我们就可以预处理出所有可以走的步数然后进行$BFS$即可</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-// typedef long long ll;
-const int maxn = 5e2 + 10;
-const int inf = 1e9;
+&#x2F;&#x2F; typedef long long ll;
+const int maxn &#x3D; 5e2 + 10;
+const int inf &#x3D; 1e9;
 int n,m;
-int tx[] = &#123;1,-1,1,-1&#125;;
-int ty[] = &#123;1,1,-1,-1&#125;;
+int tx[] &#x3D; &#123;1,-1,1,-1&#125;;
+int ty[] &#x3D; &#123;1,1,-1,-1&#125;;
 int dis[maxn][maxn];
 int vis[maxn][maxn];
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    cin >> n >> m;
-    vector<pair<int,int>> stp;
-    int lmt = min(n,m) + 100;
-    for(int i = 0;i <= lmt;++i)
-    &#123;
-        for(int j = 0;j <= lmt;++j)
-        &#123;
-            if(i * i + j * j == m)
-            &#123;
-                stp.push_back(&#123;i,j&#125;);
-                stp.push_back(&#123;j,i&#125;);
-            &#125;
-        &#125;
-    &#125;
-    for(int i = 1;i <= n;++i)
-    &#123;
-        for(int j = 1;j <= n;++j) dis[i][j] = inf;
-    &#125;
-    queue<array<int,2>> que;
-    que.push(&#123;1,1&#125;);
-    vis[1][1] = 1;
-    dis[1][1] = 0;
-    while(!que.empty())
-    &#123;
-        auto [x,y] = que.front();
-        que.pop();
-        for(auto [spx,spy]:stp)
-        &#123;
-            for(int k = 0;k <= 3;++k)
-            &#123;
-                auto fx = x + spx * tx[k];
-                auto fy = y + spy * ty[k];
-                if(fx >= 1 && fx <= n && fy >= 1 && fy <= n && dis[fx][fy] == inf && vis[fx][fy] == 0)
-                &#123;
-                    dis[fx][fy] = dis[x][y] + 1;
-                    vis[fx][fy] = 1;
-                    que.push(&#123;fx,fy&#125;);
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-    for(int i = 1;i <= n;++i)
-    &#123;
-        for(int j = 1;j <= n;++j)
-        &#123;
-            if(dis[i][j] == inf) dis[i][j] = -1;
-        &#125;
-    &#125;
-    for(int i = 1;i <= n;++i)
-    &#123;
-        for(int j = 1;j <= n;++j)
-        &#123;
-            cout << dis[i][j] << " \n"[j == n];
-        &#125;
-    &#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; n &gt;&gt; m;
+	vector&lt;pair&lt;int,int&gt;&gt; stp;
+	int lmt &#x3D; min(n,m) + 100;
+	for(int i &#x3D; 0;i &lt;&#x3D; lmt;++i)
+	&#123;
+		for(int j &#x3D; 0;j &lt;&#x3D; lmt;++j)
+		&#123;
+			if(i * i + j * j &#x3D;&#x3D; m)
+			&#123;
+				stp.push_back(&#123;i,j&#125;);
+				stp.push_back(&#123;j,i&#125;);
+			&#125;
+		&#125;
+	&#125;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		for(int j &#x3D; 1;j &lt;&#x3D; n;++j) dis[i][j] &#x3D; inf;
+	&#125;
+	queue&lt;array&lt;int,2&gt;&gt; que;
+	que.push(&#123;1,1&#125;);
+	vis[1][1] &#x3D; 1;
+	dis[1][1] &#x3D; 0;
+	while(!que.empty())
+	&#123;
+		auto [x,y] &#x3D; que.front();
+		que.pop();
+		for(auto [spx,spy]:stp)
+		&#123;
+			for(int k &#x3D; 0;k &lt;&#x3D; 3;++k)
+			&#123;
+				auto fx &#x3D; x + spx * tx[k];
+				auto fy &#x3D; y + spy * ty[k];
+				if(fx &gt;&#x3D; 1 &amp;&amp; fx &lt;&#x3D; n &amp;&amp; fy &gt;&#x3D; 1 &amp;&amp; fy &lt;&#x3D; n &amp;&amp; dis[fx][fy] &#x3D;&#x3D; inf &amp;&amp; vis[fx][fy] &#x3D;&#x3D; 0)
+				&#123;
+					dis[fx][fy] &#x3D; dis[x][y] + 1;
+					vis[fx][fy] &#x3D; 1;
+					que.push(&#123;fx,fy&#125;);
+				&#125;
+			&#125;
+		&#125;
+	&#125;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
+		&#123;
+			if(dis[i][j] &#x3D;&#x3D; inf) dis[i][j] &#x3D; -1;
+		&#125;
+	&#125;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
+		&#123;
+			cout &lt;&lt; dis[i][j] &lt;&lt; &quot; \n&quot;[j &#x3D;&#x3D; n];
+		&#125;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="E-Add-and-Mex"><a href="#E-Add-and-Mex" class="headerlink" title="E - Add and Mex"></a>E - Add and Mex</h2><p><strong>题目大意:</strong> 给定一个长度为$n (1 \leq n \leq 2e5)$的数组，数组是$int$范围，给定$m$次操作，每次操作第$i$个位置上面的数字都会加上$i$，问这个数组的$mex$是多少</p>
 <p><strong>解题思路:</strong> 首先我们通过模拟样例可以发现一件事情，就是如果这个序列中的数字是负数，那么它实际上是没有用的，其次是考虑$mex$的性质，因为对于长度为$n$的数组来说，$mex$最大就是$n + 1$，那么对于每一个数字来说最多也不会超过$n + 1$，既然这样，因为对于一个下标为$i$的数字来说，最多加$n &#x2F; i$次，那么对于整个序列来说就是一个调和级数，模拟即可</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-// typedef long long ll;
-const int maxn = 2e5 + 10;
-const int inf = 1e9;
+&#x2F;&#x2F; typedef long long ll;
+const int maxn &#x3D; 2e5 + 10;
+const int inf &#x3D; 1e9;
 int n,m;
 int ans[maxn],a[maxn];
-vector<int> pos[maxn];
+vector&lt;int&gt; pos[maxn];
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    cin >> n >> m;
-    for(int i = 1;i <= n;++i)
-    &#123;
-        cin >> a[i];
-        int st = 0;
-        if(a[i] < 0)
-        &#123;
-            int rd = abs(a[i]) / i;
-            if(abs(a[i]) % i) rd++;
-            a[i] += i * rd;
-            st = rd;
-            if(st <= m)
-            &#123;
-                pos[st].push_back(a[i]);
-            &#125;
-        &#125;
-        while(a[i] + i <= n && st <= m)
-        &#123;
-            st++;
-            a[i] += i;
-            if(a[i] >= 0)
-            &#123;
-                pos[st].push_back(a[i]);
-            &#125;
-        &#125;
-    &#125;
-    for(int i = 1;i <= m;++i)
-    &#123;
-        sort(pos[i].begin(),pos[i].end());
-        pos[i].erase(unique(pos[i].begin(),pos[i].end()),pos[i].end());
-        int now = 0;
-        for(auto to:pos[i])
-        &#123;
-            if(to != now) break;
-            now++;
-        &#125;
-        cout << now << "\n";
-    &#125;
-    
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; n &gt;&gt; m;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		cin &gt;&gt; a[i];
+		int st &#x3D; 0;
+		if(a[i] &lt; 0)
+		&#123;
+			int rd &#x3D; abs(a[i]) &#x2F; i;
+			if(abs(a[i]) % i) rd++;
+			a[i] +&#x3D; i * rd;
+			st &#x3D; rd;
+			if(st &lt;&#x3D; m)
+			&#123;
+				pos[st].push_back(a[i]);
+			&#125;
+		&#125;
+		while(a[i] + i &lt;&#x3D; n &amp;&amp; st &lt;&#x3D; m)
+		&#123;
+			st++;
+			a[i] +&#x3D; i;
+			if(a[i] &gt;&#x3D; 0)
+			&#123;
+				pos[st].push_back(a[i]);
+			&#125;
+		&#125;
+	&#125;
+	for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
+	&#123;
+		sort(pos[i].begin(),pos[i].end());
+		pos[i].erase(unique(pos[i].begin(),pos[i].end()),pos[i].end());
+		int now &#x3D; 0;
+		for(auto to:pos[i])
+		&#123;
+			if(to !&#x3D; now) break;
+			now++;
+		&#125;
+		cout &lt;&lt; now &lt;&lt; &quot;\n&quot;;
+	&#125;
+	
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="G-Yet-Another-mod-M"><a href="#G-Yet-Another-mod-M" class="headerlink" title="G - Yet Another mod M"></a>G - Yet Another mod M</h2><p><strong>题目大意:</strong> 给定一个长度为$n(1 \leq n \leq 5000)$，然后找到一个数字$M$，使得这个序列中每一个数字$mod$ $M$后存在唯一的众数</p>
 <p><strong>解题思路:</strong> 在赛时就在想随机是否可行但是没有一个好的$check$方案，然后参考了一下严格鸽的题解</p>
 <p>首先因为是唯一的众数，那么假设我们在序列中取两个数字，这两个数字$mod$ $M$ 都是$0$的，那么就存在$(x - y) $  $mod$  $m &#x3D;&#x3D; 0$</p>
 <p>那接下来我们去找$(x - y)$的因子就可以了</p>
 <p>这样子做的正确概率是：因为$x,y$都有$\frac{1}{2}$的概率取到，那么总的取到的概率就是$\frac{1}{4}$，那我们选择多次选择不到的概率实际上很小，对赌就可以了</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
-// #define int long long
-// typedef long long ll;
-const int maxn = 2e5 + 10;
-const int inf = 1e9;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
+&#x2F;&#x2F; #define int long long
+&#x2F;&#x2F; typedef long long ll;
+const int maxn &#x3D; 2e5 + 10;
+const int inf &#x3D; 1e9;
 int n,m;
 int ans[maxn],a[maxn];
-vector<int> pos[maxn];
+vector&lt;int&gt; pos[maxn];
 int check(int x)
 &#123;
-    if(x < 3) return 0;
-    map<int,int> mp;
-    for(int i = 1;i <= n;++i)
-    &#123;
-        mp[a[i] % x]++;
-        if(mp[a[i] % x] * 2 > n) return 1;
-    &#125;
-    return 0;
+	if(x &lt; 3) return 0;
+	map&lt;int,int&gt; mp;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		mp[a[i] % x]++;
+		if(mp[a[i] % x] * 2 &gt; n) return 1;
+	&#125;
+	return 0;
 &#125;
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    srand(time(NULL));
-    cin >> n;
-    for(int i = 1;i <= n;++i)
-    &#123;
-        cin >> a[i];
-    &#125;
-    int cnt = 200;
-    while(cnt--)
-    &#123;
-        int x = a[rand() % n + 1];
-        int y = a[rand() % n + 1];
-        int d = x - y;
-        if(d == 0) continue;
-        for(int i = 1;i * i <= d;++i)
-        &#123;
-            if(d % i != 0) continue;
-            if(check(i))
-            &#123;
-                cout << i << "\n";
-                return 0;
-            &#125;
-            if(check(d / i))
-            &#123;
-                cout << d / i << "\n";
-                return 0;
-            &#125;
-        &#125;
-    &#125;
-    cout << -1 << "\n";
-    return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	srand(time(NULL));
+	cin &gt;&gt; n;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		cin &gt;&gt; a[i];
+	&#125;
+	int cnt &#x3D; 200;
+	while(cnt--)
+	&#123;
+		int x &#x3D; a[rand() % n + 1];
+		int y &#x3D; a[rand() % n + 1];
+		int d &#x3D; x - y;
+		if(d &#x3D;&#x3D; 0) continue;
+		for(int i &#x3D; 1;i * i &lt;&#x3D; d;++i)
+		&#123;
+			if(d % i !&#x3D; 0) continue;
+			if(check(i))
+			&#123;
+				cout &lt;&lt; i &lt;&lt; &quot;\n&quot;;
+				return 0;
+			&#125;
+			if(check(d &#x2F; i))
+			&#123;
+				cout &lt;&lt; d &#x2F; i &lt;&lt; &quot;\n&quot;;
+				return 0;
+			&#125;
+		&#125;
+	&#125;
+	cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
                 
             </div>
@@ -909,6 +910,9 @@ signed main()
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -1091,7 +1095,7 @@ signed main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">6.9k</span>
+                        class="white-color">44.7k</span>
             
             
             

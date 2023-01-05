@@ -50,8 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
@@ -369,7 +368,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    300
+                    1.5k
                 </div>
                 
 
@@ -381,6 +380,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -388,162 +390,165 @@
             <div id="articleContent">
                 <h1 id="Codeforces-Round-825-Div-2-A-C1-D"><a href="#Codeforces-Round-825-Div-2-A-C1-D" class="headerlink" title="Codeforces Round #825 (Div. 2) A-C1 D"></a>Codeforces Round #825 (Div. 2) A-C1 D</h1><h2 id="A-Make-A-Equal-to-B"><a href="#A-Make-A-Equal-to-B" class="headerlink" title="A. Make A Equal to B"></a>A. Make A Equal to B</h2><p><strong>题目大意:</strong>  给定两个$01$序列$a$,$b$长度为$n(1\leq n\leq 1e2)$，现在有两种操作，第一种操作是选择一个位置进行反转，第二个操作是任意排序$a$序列，问最少需要几次操作能让序列$a$等于序列$b$</p>
 <p><strong>解题思路:</strong> 首先我们先思考一下，我们刚开始一定要让序列$a$和$b$中的$01$个数相同，然后在这个前提下，如果两个序列在增加$1$的过程中相同了，就不进行二操作，否则就进行二操作。如何判断两个序列是否在过程中就相同了呢？我们可以考虑将序列中的$0$变成$1$，然后看哪个序列中原本的$1$多，如果$b$中多就变$a$，$a$中多实际上就是变$b$</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">signed main()
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    int T;
-    cin >> T;
-    while(T--)
-    &#123;
-        int na,nb;
-        na = nb = 0;
-        cin >> n;
-        for(int i = 1;i <= n;++i)
-        &#123;
-            cin >> a[i];
-            if(a[i]) na++;
-        &#125;
-        for(int i = 1;i <= n;++i)
-        &#123;
-            cin >> b[i];
-            if(b[i]) nb++;
-        &#125;
-        int f = 1;
-        int ck = 0;
-        if(na > nb) ck = 1;
-        if(na < nb)
-        &#123;
-            for(int i = 1;i <= n;++i)
-            &#123;
-                if(!a[i]) continue;
-                if(a[i] != b[i]) f = 0;
-            &#125;
-        &#125;
-        else
-        &#123;
-            for(int i = 1;i <= n;++i)
-            &#123;
-                if(!b[i]) continue;
-                if(a[i] != b[i]) f = 0;
-            &#125;
-        &#125;
-        cout << abs(na - nb) + (1 - f) << "\n";
-    &#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		int na,nb;
+		na &#x3D; nb &#x3D; 0;
+		cin &gt;&gt; n;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			cin &gt;&gt; a[i];
+			if(a[i]) na++;
+		&#125;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			cin &gt;&gt; b[i];
+			if(b[i]) nb++;
+		&#125;
+		int f &#x3D; 1;
+		int ck &#x3D; 0;
+		if(na &gt; nb) ck &#x3D; 1;
+		if(na &lt; nb)
+		&#123;
+			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+			&#123;
+				if(!a[i]) continue;
+				if(a[i] !&#x3D; b[i]) f &#x3D; 0;
+			&#125;
+		&#125;
+		else
+		&#123;
+			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+			&#123;
+				if(!b[i]) continue;
+				if(a[i] !&#x3D; b[i]) f &#x3D; 0;
+			&#125;
+		&#125;
+		cout &lt;&lt; abs(na - nb) + (1 - f) &lt;&lt; &quot;\n&quot;;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="B-Playing-with-GCD"><a href="#B-Playing-with-GCD" class="headerlink" title="B. Playing with GCD"></a>B. Playing with GCD</h2><p><strong>题目大意:</strong> 给定一个长度为$n(1\leq n \leq 2e5)$的序列，问是否存在一个长度为$n + 1$的序列$b$，满足$a_i &#x3D; gcd(b_i,b_{i + 1})$</p>
 <p><strong>解题思路:</strong> 观察样例可得我们可以对原序列中的$a_{i - 1}$,$a_i$和$a_{i + 1}$进行分析，这三个数字分别由$b_{i - 1}$,$b_i$,$b_{i + 1}$,$b_{i + 2}$</p>
 <p>考虑$b_i$和$b_{i + 1}$实际上还在$a_{i - 1}$和$a_{i + 1}$中，我们考虑$gcd$的性质实际上是去求若干个数字的质因子取$min$</p>
 <p>那么我们可以对$a_{i- 1}$和$a_{i + 1}$取$gcd$，如果$a_i$不能和他们的$gcd$取余获得$0$的话，那么实际上就是不可以的，说明还有其他的质因子存在</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">signed main()
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    int T;
-    cin >> T;
-    while(T--)
-    &#123;
-        cin >> n;
-        for(int i = 1;i <= n;++i) cin >> a[i];
-        int f = 1;
-        for(int i = 2;i <= n - 1;++i)
-        &#123;
-            int gd = __gcd(a[i - 1],a[i + 1]);
-            if(a[i] % gd) f = 0;
-        &#125;
-        if(f) cout << "YES\n";
-        else cout << "NO\n";
-    &#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
+		int f &#x3D; 1;
+		for(int i &#x3D; 2;i &lt;&#x3D; n - 1;++i)
+		&#123;
+			int gd &#x3D; __gcd(a[i - 1],a[i + 1]);
+			if(a[i] % gd) f &#x3D; 0;
+		&#125;
+		if(f) cout &lt;&lt; &quot;YES\n&quot;;
+		else cout &lt;&lt; &quot;NO\n&quot;;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="C1-Good-Subarrays-Easy-Version"><a href="#C1-Good-Subarrays-Easy-Version" class="headerlink" title="C1. Good Subarrays (Easy Version)"></a>C1. Good Subarrays (Easy Version)</h2><p><strong>题目大意:</strong> 给定一个长度为$n(1\leq n \leq 2e5)$的序列，找出这个序列中有多少个序列满足好序列，好序列的要求是对于一段序列第$i$个元素大于等于$i$</p>
 <p><strong>解题思路:</strong> 固定左端点取计算右端点在哪里。我们可以发现这样一件事情，如果我在当前这个位置$i$右端点到达$j$,那么我到$i + 1$的话，我可以继续从$j$往右边移动，满足双指针的性质，直接写就可以。</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">signed main()
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    int T;
-    cin >> T;
-    while(T--)
-    &#123;
-        cin >> n;
-        for(int i = 1;i <= n;++i) cin >> a[i];
-        int ans = 0;
-        int j = 1;
-        int now = 1;
-        for(int i = 1;i <= n;++i)
-        &#123;
-            if(j < i)
-            &#123;
-                j = i;
-                now = 1;
-            &#125;
-            while(a[j] >= now && j <= n)
-            &#123;
-                // cout << "i -> "<< i << " " << j << " " << now<< "\n";
-                j++;
-                now++;
-            &#125;
-            j--,now--;
-            int num = j - i + 1;
-            ans += num;
-            now--;
-            // cout << i << " " << j << "\n";
-        &#125;
-        cout << ans << "\n";
-    &#125;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
+		int ans &#x3D; 0;
+		int j &#x3D; 1;
+		int now &#x3D; 1;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			if(j &lt; i)
+			&#123;
+				j &#x3D; i;
+				now &#x3D; 1;
+			&#125;
+			while(a[j] &gt;&#x3D; now &amp;&amp; j &lt;&#x3D; n)
+			&#123;
+				&#x2F;&#x2F; cout &lt;&lt; &quot;i -&gt; &quot;&lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot; &quot; &lt;&lt; now&lt;&lt; &quot;\n&quot;;
+				j++;
+				now++;
+			&#125;
+			j--,now--;
+			int num &#x3D; j - i + 1;
+			ans +&#x3D; num;
+			now--;
+			&#x2F;&#x2F; cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot;\n&quot;;
+		&#125;
+		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+	&#125;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="D-Equal-Binary-Subsequences"><a href="#D-Equal-Binary-Subsequences" class="headerlink" title="D. Equal Binary Subsequences"></a>D. Equal Binary Subsequences</h2><p><strong>题目大意:</strong> 给定一个长度为$2n(1\leq n \leq 1e5)$的$01$串，可以进行以下的操作一次，选择一个子序列，并且把这个子序列中的数字往前移动一个，如果是第一个就移动到最后一个，问是否能够将这个$01$串分割成两个子序列，使得这两个子序列相同</p>
 <p><strong>解题思路:</strong> 首先我们先考虑无法构成的情况，如果$0$的个数或者$1$的个数是奇数，那么这个序列肯定就无法构成</p>
 <p>做一个大胆的猜想，假设目前剩下的情况下所有情况都是有解的，那么剩下的串可能是由若干个$00$ $01$ $10$ $11$组成的</p>
 <p>我们从前往后对于一个子序列来说$00$和$11$肯定是可以直接放进去的，那么对于$01$和$10$呢？</p>
 <p>我们可以考虑把他们放到操作里面去变换，那么实际上我们只需要把奇数位置上面的$1$放到偶数位置上去，把偶数位置上面的$1$放到奇数位置上去</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">signed main()
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    int T;
-    cin >> T;
-    while(T--)
-    &#123;
-        cin >> n;
-        cin >> str;
-        str = " " + str;
-        int num = 0;
-        n <<= 1;
-        for(int i = 1;i <= n;++i)
-        &#123;
-            num += (str[i] == '1');
-        &#125;
-        if(num & 1)
-        &#123;
-            cout << -1 << "\n";
-            continue;
-        &#125;
-        vector<int> pos;
-        for(int i = 1;i <= n;i += 2)
-        &#123;
-            if(str[i] == str[i + 1]) continue;
-            pos.push_back(i);
-        &#125;
-        vector<int> ans;
-        for(int i = 0;i < pos.size();++i)
-        &#123;
-            int now = pos[i];
-            if((i & 1) == str[now] - '0')
-            &#123;
-                ans.push_back(now);
-            &#125;
-            else ans.push_back(now + 1);
-        &#125;
-        cout << ans.size() << "\n";
-        for(auto to:ans)
-        &#123;
-            cout << to << " ";
-        &#125;
-        cout << "\n";
-        for(int i = 1;i <= n;i += 2) cout << i << " \n"[i == n - 1];
-    &#125;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	while(T--)
+	&#123;
+		cin &gt;&gt; n;
+		cin &gt;&gt; str;
+		str &#x3D; &quot; &quot; + str;
+		int num &#x3D; 0;
+		n &lt;&lt;&#x3D; 1;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			num +&#x3D; (str[i] &#x3D;&#x3D; &#39;1&#39;);
+		&#125;
+		if(num &amp; 1)
+		&#123;
+			cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+			continue;
+		&#125;
+		vector&lt;int&gt; pos;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;i +&#x3D; 2)
+		&#123;
+			if(str[i] &#x3D;&#x3D; str[i + 1]) continue;
+			pos.push_back(i);
+		&#125;
+		vector&lt;int&gt; ans;
+		for(int i &#x3D; 0;i &lt; pos.size();++i)
+		&#123;
+			int now &#x3D; pos[i];
+			if((i &amp; 1) &#x3D;&#x3D; str[now] - &#39;0&#39;)
+			&#123;
+				ans.push_back(now);
+			&#125;
+			else ans.push_back(now + 1);
+		&#125;
+		cout &lt;&lt; ans.size() &lt;&lt; &quot;\n&quot;;
+		for(auto to:ans)
+		&#123;
+			cout &lt;&lt; to &lt;&lt; &quot; &quot;;
+		&#125;
+		cout &lt;&lt; &quot;\n&quot;;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;i +&#x3D; 2) cout &lt;&lt; i &lt;&lt; &quot; \n&quot;[i &#x3D;&#x3D; n - 1];
+	&#125;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
                 
             </div>
@@ -758,6 +763,9 @@
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -940,7 +948,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">6.9k</span>
+                        class="white-color">44.7k</span>
             
             
             

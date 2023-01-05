@@ -51,8 +51,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
@@ -370,7 +369,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    802
+                    1.2k
                 </div>
                 
 
@@ -381,6 +380,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
         
 
         
@@ -395,126 +397,128 @@
 <p>最后我们来分析$A &gt; B$的情况，因为$A &gt; B$，所以我们的战力值是在不断增加的。在不断增加的时候我们实际上是可以开放很多点的，那么对于原来的跑图来说我们处理的要么是本身可以到达的，要么是处理因为一些条件不能到达的，因此对于这一张新图来说我们先跑一遍最短路来处理什么点在这种情况下可以先到达。</p>
 <p>对于处理这一张新图来说我们首先先把$1$号节点给放进去，然后我们再跑$dij$，优先队列里面放的是当前点的权值和这个点，维护一个小数字在前面的队列。因为小数字在前面，那么我们可以不断增加自己的战力值，因此最后有可能达到一些权值更大的情况。</p>
 <p>然后在跑实际天数的时候我们可以直接跑$dij$，但是这里的话使用的是从$1$号节点到当前这个$now$节点所需要的天数,然后对当前的值进行分析，如果比转移点要小的话直接$+1$即可，否则计算以下从$1$号节点转移过来的权值</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 typedef long long ll;
-const int maxn = 2e5 + 10;
-const ll inf = 1e18;
-vector<int> edge[maxn];
+const int maxn &#x3D; 2e5 + 10;
+const ll inf &#x3D; 1e18;
+vector&lt;int&gt; edge[maxn];
 ll n,m,A,B;
 ll dis[maxn],vis[maxn],val[maxn];
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    int T;
-    cin >> T;
-    for(int Case = 1;Case <= T;++Case)
-    &#123;
-        cin >> n >> m >> A >> B;
-        for(int i = 1;i <= n;++i)
-        &#123;
-            edge[i].clear();
-            dis[i] = inf;
-            vis[i] = 0;
-        &#125;
-        for(int i = 1,u,v;i <= m;++i)
-        &#123;
-            cin >> u >> v;
-            edge[u].push_back(v);
-            edge[v].push_back(u);
-        &#125;
-        for(int i = 1;i <= n;++i) cin >> val[i],val[i] += B;
-        val[1] -= B;
-        if(A == B)
-        &#123;
-            queue<int> que;
-            que.push(1);
-            dis[1] = 0;
-            while(!que.empty())
-            &#123;
-                auto now = que.front();
-                que.pop();
-                for(auto to:edge[now])
-                &#123;
-                    if(val[to] < val[1] && dis[to] > dis[now])
-                    &#123;
-                        que.push(to);
-                        dis[to] = dis[now] + 1;
-                    &#125;
-                &#125;
-            &#125;
-            cout << (dis[n] == inf ? -1 : dis[n]) << "\n";
-        &#125;
-        else if(A < B)
-        &#123;
-            queue<int> que;
-            que.push(1);
-            dis[1] = 0;
-            while(!que.empty())
-            &#123;
-                auto now = que.front();
-                que.pop();
-                for(auto to:edge[now])
-                &#123;
-                    if(1ll * val[to] + dis[now] * (B - A) * 1ll < val[1] && dis[to] > dis[now])
-                    &#123;
-                        dis[to] = dis[now] + 1;
-                        que.push(to);
-                    &#125;
-                &#125;
-            &#125;
-            cout << (dis[n] == inf ? -1 : dis[n]) << "\n";
-        &#125;
-        else
-        &#123;
-            priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> que;
-            int day = -1;
-            que.push(&#123;0,1&#125;);
-            while(!que.empty())
-            &#123;
-                auto [nowd,now] = que.top();
-                que.pop();
-                if(vis[now]) continue;
-                if(day != -1 && val[now] >= val[1] + (A - B) * day)
-                &#123;
-                    break;
-                &#125;
-                vis[now] = 1;
-                day++;
-                for(auto to:edge[now])
-                &#123;
-                    if(!vis[to]) que.push(&#123;val[to],to&#125;);
-                &#125;
-            &#125;
-            dis[1] = 0;
-            while(!que.empty()) que.pop();
-            que.push(&#123;dis[1],1&#125;);
-            while(!que.empty())
-            &#123;
-                auto [nowd,now] = que.top();
-                que.pop();
-                if(nowd > dis[now]) continue;
-                for(auto to:edge[now])
-                &#123;
-                    if(!vis[to]) continue;
-                    if(val[to] < val[now] && dis[to] > nowd + 1)
-                    &#123;
-                        dis[to] = nowd + 1;
-                        que.push(&#123;dis[to],to&#125;);
-                        continue;
-                    &#125;
-                    if(dis[to] > max(nowd + 1ll,(val[to] - val[1]) / (A - B) + 2))
-                    &#123;
-                        dis[to] = max(nowd + 1ll,(val[to] - val[1]) / (A - B) + 2);
-                        que.push(&#123;dis[to],to&#125;);
-                    &#125;
-                &#125;
-            &#125;
-            cout << (dis[n] == inf ? -1 : dis[n]) << "\n";
-        &#125;
-    &#125;
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	int T;
+	cin &gt;&gt; T;
+	for(int Case &#x3D; 1;Case &lt;&#x3D; T;++Case)
+	&#123;
+		cin &gt;&gt; n &gt;&gt; m &gt;&gt; A &gt;&gt; B;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+		&#123;
+			edge[i].clear();
+			dis[i] &#x3D; inf;
+			vis[i] &#x3D; 0;
+		&#125;
+		for(int i &#x3D; 1,u,v;i &lt;&#x3D; m;++i)
+		&#123;
+			cin &gt;&gt; u &gt;&gt; v;
+			edge[u].push_back(v);
+			edge[v].push_back(u);
+		&#125;
+		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; val[i],val[i] +&#x3D; B;
+		val[1] -&#x3D; B;
+		if(A &#x3D;&#x3D; B)
+		&#123;
+			queue&lt;int&gt; que;
+			que.push(1);
+			dis[1] &#x3D; 0;
+			while(!que.empty())
+			&#123;
+				auto now &#x3D; que.front();
+				que.pop();
+				for(auto to:edge[now])
+				&#123;
+					if(val[to] &lt; val[1] &amp;&amp; dis[to] &gt; dis[now])
+					&#123;
+						que.push(to);
+						dis[to] &#x3D; dis[now] + 1;
+					&#125;
+				&#125;
+			&#125;
+			cout &lt;&lt; (dis[n] &#x3D;&#x3D; inf ? -1 : dis[n]) &lt;&lt; &quot;\n&quot;;
+		&#125;
+		else if(A &lt; B)
+		&#123;
+			queue&lt;int&gt; que;
+			que.push(1);
+			dis[1] &#x3D; 0;
+			while(!que.empty())
+			&#123;
+				auto now &#x3D; que.front();
+				que.pop();
+				for(auto to:edge[now])
+				&#123;
+					if(1ll * val[to] + dis[now] * (B - A) * 1ll &lt; val[1] &amp;&amp; dis[to] &gt; dis[now])
+					&#123;
+						dis[to] &#x3D; dis[now] + 1;
+						que.push(to);
+					&#125;
+				&#125;
+			&#125;
+			cout &lt;&lt; (dis[n] &#x3D;&#x3D; inf ? -1 : dis[n]) &lt;&lt; &quot;\n&quot;;
+		&#125;
+		else
+		&#123;
+			priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;,greater&lt;pair&lt;int,int&gt;&gt;&gt; que;
+			int day &#x3D; -1;
+			que.push(&#123;0,1&#125;);
+			while(!que.empty())
+			&#123;
+				auto [nowd,now] &#x3D; que.top();
+				que.pop();
+				if(vis[now]) continue;
+				if(day !&#x3D; -1 &amp;&amp; val[now] &gt;&#x3D; val[1] + (A - B) * day)
+				&#123;
+					break;
+				&#125;
+				vis[now] &#x3D; 1;
+				day++;
+				for(auto to:edge[now])
+				&#123;
+					if(!vis[to]) que.push(&#123;val[to],to&#125;);
+				&#125;
+			&#125;
+			dis[1] &#x3D; 0;
+			while(!que.empty()) que.pop();
+			que.push(&#123;dis[1],1&#125;);
+			while(!que.empty())
+			&#123;
+				auto [nowd,now] &#x3D; que.top();
+				que.pop();
+				if(nowd &gt; dis[now]) continue;
+				for(auto to:edge[now])
+				&#123;
+					if(!vis[to]) continue;
+					if(val[to] &lt; val[now] &amp;&amp; dis[to] &gt; nowd + 1)
+					&#123;
+						dis[to] &#x3D; nowd + 1;
+						que.push(&#123;dis[to],to&#125;);
+						continue;
+					&#125;
+					if(dis[to] &gt; max(nowd + 1ll,(val[to] - val[1]) &#x2F; (A - B) + 2))
+					&#123;
+						dis[to] &#x3D; max(nowd + 1ll,(val[to] - val[1]) &#x2F; (A - B) + 2);
+						que.push(&#123;dis[to],to&#125;);
+					&#125;
+				&#125;
+			&#125;
+			cout &lt;&lt; (dis[n] &#x3D;&#x3D; inf ? -1 : dis[n]) &lt;&lt; &quot;\n&quot;;
+		&#125;
+	&#125;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
                 
             </div>
@@ -733,6 +737,9 @@ signed main()
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -915,7 +922,7 @@ signed main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">6.9k</span>
+                        class="white-color">44.7k</span>
             
             
             

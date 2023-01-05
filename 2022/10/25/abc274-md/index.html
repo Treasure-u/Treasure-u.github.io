@@ -50,8 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
@@ -365,7 +364,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    137
+                    1.3k
                 </div>
                 
 
@@ -377,6 +376,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -384,137 +386,138 @@
             <div id="articleContent">
                 <h1 id="Atcoder-Beginner-Contest-274-C-E"><a href="#Atcoder-Beginner-Contest-274-C-E" class="headerlink" title="Atcoder Beginner Contest 274 ( C - E )"></a>Atcoder Beginner Contest 274 ( C - E )</h1><h2 id="C-Ameba"><a href="#C-Ameba" class="headerlink" title="C - Ameba"></a>C - Ameba</h2><p><strong>题目大意:</strong> 刚开始有一个生物序号为$1$，有$n$次记录，在第$i$次记录中第$a_i$个生物消失会生成第$2i$和$2i+1$个生物，问对于生物从$1$到$2N+1$他们距离$1$有多少代</p>
 <p><strong>解题思路:</strong> 按照题意模拟即可</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">signed main()
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    cin >> n;
-    for(int i = 1;i <= n;++i) cin >> a[i];
-    for(int i = 1;i <= n;++i)
-    &#123;
-        int to1 = i * 2;
-        int to2 = i * 2 + 1;
-        dis[to1] = dis[to2] = dis[a[i]] + 1;
-    &#125;
-    for(int i = 1;i <= 2 * n + 1;++i)
-    &#123;
-        cout << dis[i] << "\n";
-    &#125;
-    return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; n;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
+	&#123;
+		int to1 &#x3D; i * 2;
+		int to2 &#x3D; i * 2 + 1;
+		dis[to1] &#x3D; dis[to2] &#x3D; dis[a[i]] + 1;
+	&#125;
+	for(int i &#x3D; 1;i &lt;&#x3D; 2 * n + 1;++i)
+	&#123;
+		cout &lt;&lt; dis[i] &lt;&lt; &quot;\n&quot;;
+	&#125;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="D-Robot-Arms-2"><a href="#D-Robot-Arms-2" class="headerlink" title="D - Robot Arms 2"></a>D - Robot Arms 2</h2><p><strong>题目大意:</strong> 给定一个长度为$n$的序列以及$x,y$,问是否存在$n + 1$个点$p_1,p_2,…,p_n,p_{n + 1}$在二维坐标系中满足$p_1 &#x3D; (0,0),p_2 &#x3D; (a_1,0),p_{n + 1} &#x3D; (x,y)$相邻两个点距离是$a_i$并且是$90$度</p>
 <p><strong>解题思路:</strong> 分析后发现实际上$x$和$y$是相互不干扰的，那么我们可以分开来处理，注意到$a$的范围很小那么我们可以枚举遍历到的数值是多少</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
 #define int long long
-// typedef long long ll;
-const int maxn = 4e5 + 10;
+&#x2F;&#x2F; typedef long long ll;
+const int maxn &#x3D; 4e5 + 10;
 int n,x,y;
 int a[maxn],dis[maxn];
 int dp[2][maxn],pre[2][maxn];
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    cin >> n >> x >> y;
-    for(int i = 1;i <= n;++i) cin >> a[i];
-    int midp = 10000;
-    pre[1][midp + a[1]] = 1;
-    pre[0][midp] = 1;
-    for(int i = 2;i <= n;++i)
-    &#123;
-        int now = i & 1;
-        for(int j = 0;j <= 20000;++j)
-        &#123;
-            if(pre[now][j])
-            &#123;
-                dp[now][j + a[i]] = 1;
-                if(j - a[i] >= 0) dp[now][j - a[i]] = 1;
-                // cout << "?? now-> " << now << " " << j << "\n";
-            &#125;
-        &#125;
-        for(int j = 0;j <= 20000;++j) pre[now][j] = dp[now][j],dp[now][j] = 0;
-    &#125;
-    if(pre[1][midp + x] && pre[0][midp + y]) cout << "Yes\n";
-    else cout << "No\n";
-    return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; n &gt;&gt; x &gt;&gt; y;
+	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
+	int midp &#x3D; 10000;
+	pre[1][midp + a[1]] &#x3D; 1;
+	pre[0][midp] &#x3D; 1;
+	for(int i &#x3D; 2;i &lt;&#x3D; n;++i)
+	&#123;
+		int now &#x3D; i &amp; 1;
+		for(int j &#x3D; 0;j &lt;&#x3D; 20000;++j)
+		&#123;
+			if(pre[now][j])
+			&#123;
+				dp[now][j + a[i]] &#x3D; 1;
+				if(j - a[i] &gt;&#x3D; 0) dp[now][j - a[i]] &#x3D; 1;
+				&#x2F;&#x2F; cout &lt;&lt; &quot;?? now-&gt; &quot; &lt;&lt; now &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot;\n&quot;;
+			&#125;
+		&#125;
+		for(int j &#x3D; 0;j &lt;&#x3D; 20000;++j) pre[now][j] &#x3D; dp[now][j],dp[now][j] &#x3D; 0;
+	&#125;
+	if(pre[1][midp + x] &amp;&amp; pre[0][midp + y]) cout &lt;&lt; &quot;Yes\n&quot;;
+	else cout &lt;&lt; &quot;No\n&quot;;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="E-Booster"><a href="#E-Booster" class="headerlink" title="E - Booster"></a>E - Booster</h2><p><strong>题目大意:</strong> 给定一个二维平面其中有$n$个城镇和$m$个加速点$(1 \leq n + m \leq 17)$，初始点在$(0,0)$，问必须经理过所有城镇点需要的时间最短是多少，没必要经过所有加速点但是我们每经过一次加速点我们当前的速度就会翻倍</p>
 <p><strong>解题思路:</strong> 看到题目数据的时候我们就会自然而然的考虑到状态压缩，如何存在当前的状态呢？我们可以用$dp[i][j]$来表示$i$的二进制位状态表示经过了哪些点，然后末尾点是$j$</p>
 <p>那么我们思考转移的过程，假设我们当前位置$j$存在$1$,并且当前$k$也是$1$</p>
 <p>那么我们可以从$k$点转移到$j$点，那么相对应的方程就是$dp[i][j] &#x3D; min(dp[i][j],dp[i - (1 &lt;&lt; j)][k] + d &#x2F; v)$</p>
 <p>然后我们可以在最后枚举从哪个点最后来以及最后的状态获得答案</p>
-<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
-template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
-template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
-double dp[1 << 18][20];
-pair<double,double> p[20];
+template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
+template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
+double dp[1 &lt;&lt; 18][20];
+pair&lt;double,double&gt; p[20];
 double getdis(int i,int j)
 &#123;
-    return sqrt((p[i].first - p[j].first) * (p[i].first - p[j].first) + (p[i].second - p[j].second) * (p[i].second - p[j].second));
+	return sqrt((p[i].first - p[j].first) * (p[i].first - p[j].first) + (p[i].second - p[j].second) * (p[i].second - p[j].second));
 &#125;
 int n,m;
 int countx(int x)
 &#123;
-    int now = 0;
-    for(int i = n;i < n + m;++i)
-    &#123;
-        if(x >> i & 1) now++;
-    &#125;
-    return now;
+	int now &#x3D; 0;
+	for(int i &#x3D; n;i &lt; n + m;++i)
+	&#123;
+		if(x &gt;&gt; i &amp; 1) now++;
+	&#125;
+	return now;
 &#125;
 signed main()
 &#123;
-    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-    cin >> n >> m;
-    p[0] = &#123;0,0&#125;;
-    n++;
-    for(int i = 1;i < n + m;++i)
-    &#123;
-        cin >> p[i].first >> p[i].second;
-    &#125;
-    for(int i = 0;i < (1 << (n + m));++i)
-    &#123;
-        for(int j = 0;j < n + m;++j) dp[i][j] = 1e18;
-    &#125;
-    dp[1][0] = 0;
-    cout << fixed << setprecision(10);
-    for(int i = 0;i < (1 << (n + m));++i)
-    &#123;
-        for(int j = 0;j < (n + m);++j)
-        &#123;
-            if(i >> j & 1)
-            &#123;
-                for(int k = 0;k < (n + m);++k)
-                &#123;
-                    if((i - (1 << j)) >> k & 1)
-                    &#123;
-                        double d = getdis(j,k);
-                        int nowcnt = countx(i - (1 << j));
-                        int v = (1 << nowcnt);
-                        dp[i][j] = min(dp[i][j],dp[i - (1 << j)][k] + d / (1.0 * v));
-                    &#125;
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-    double ans = 1e18;
-    for(int i = (1 << n) - 1;i < (1 << (n + m));i += (1 << n))
-    &#123;
-        for(int j = 0;j < n + m;++j)
-        &#123;
-            double d = getdis(0,j);
-            int v = 1 << countx(i);
-            ans = min(ans,dp[i][j] + d / (1.0 * v));
-        &#125;
-    &#125;
-    cout << fixed << setprecision(10) << ans << "\n";
-    return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin &gt;&gt; n &gt;&gt; m;
+	p[0] &#x3D; &#123;0,0&#125;;
+	n++;
+	for(int i &#x3D; 1;i &lt; n + m;++i)
+	&#123;
+		cin &gt;&gt; p[i].first &gt;&gt; p[i].second;
+	&#125;
+	for(int i &#x3D; 0;i &lt; (1 &lt;&lt; (n + m));++i)
+	&#123;
+		for(int j &#x3D; 0;j &lt; n + m;++j) dp[i][j] &#x3D; 1e18;
+	&#125;
+	dp[1][0] &#x3D; 0;
+	cout &lt;&lt; fixed &lt;&lt; setprecision(10);
+	for(int i &#x3D; 0;i &lt; (1 &lt;&lt; (n + m));++i)
+	&#123;
+		for(int j &#x3D; 0;j &lt; (n + m);++j)
+		&#123;
+			if(i &gt;&gt; j &amp; 1)
+			&#123;
+				for(int k &#x3D; 0;k &lt; (n + m);++k)
+				&#123;
+					if((i - (1 &lt;&lt; j)) &gt;&gt; k &amp; 1)
+					&#123;
+						double d &#x3D; getdis(j,k);
+						int nowcnt &#x3D; countx(i - (1 &lt;&lt; j));
+						int v &#x3D; (1 &lt;&lt; nowcnt);
+						dp[i][j] &#x3D; min(dp[i][j],dp[i - (1 &lt;&lt; j)][k] + d &#x2F; (1.0 * v));
+					&#125;
+				&#125;
+			&#125;
+		&#125;
+	&#125;
+	double ans &#x3D; 1e18;
+	for(int i &#x3D; (1 &lt;&lt; n) - 1;i &lt; (1 &lt;&lt; (n + m));i +&#x3D; (1 &lt;&lt; n))
+	&#123;
+		for(int j &#x3D; 0;j &lt; n + m;++j)
+		&#123;
+			double d &#x3D; getdis(0,j);
+			int v &#x3D; 1 &lt;&lt; countx(i);
+			ans &#x3D; min(ans,dp[i][j] + d &#x2F; (1.0 * v));
+		&#125;
+	&#125;
+	cout &lt;&lt; fixed &lt;&lt; setprecision(10) &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
                 
             </div>
@@ -729,6 +732,9 @@ signed main()
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -911,7 +917,7 @@ signed main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">6.9k</span>
+                        class="white-color">44.7k</span>
             
             
             
