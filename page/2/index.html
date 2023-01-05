@@ -1,2186 +1,1046 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Treasure">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="Hexo">
+    <meta name="description" content="Hexo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
-  
+
+    <title>Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-  
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
 <meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
+
 <body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Treasure&#39;s blog</a>
-        </h2>
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
       
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+
+    <ul class="menu-list mobile-menu-list">
         
-          <a class="main-nav-link" href="/">Home</a>
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
         
-      </nav>
-      <nav id="sub-nav">
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
 </header>
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-abc274-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/25/abc274-md/" class="article-date">
-  <time class="dt-published" datetime="2022-10-25T15:54:37.000Z" itemprop="datePublished">2022-10-25</time>
-</a>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/25/abc274-md/">abc274.md</a>
-    </h1>
-  
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                Treasure&#39;s blog
+                
+            </div>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Atcoder-Beginner-Contest-274-C-E"><a href="#Atcoder-Beginner-Contest-274-C-E" class="headerlink" title="Atcoder Beginner Contest 274 ( C - E )"></a>Atcoder Beginner Contest 274 ( C - E )</h1><h2 id="C-Ameba"><a href="#C-Ameba" class="headerlink" title="C - Ameba"></a>C - Ameba</h2><p><strong>题目大意:</strong> 刚开始有一个生物序号为$1$，有$n$次记录，在第$i$次记录中第$a_i$个生物消失会生成第$2i$和$2i+1$个生物，问对于生物从$1$到$2N+1$他们距离$1$有多少代</p>
-<p><strong>解题思路:</strong> 按照题意模拟即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		int to1 &#x3D; i * 2;
-		int to2 &#x3D; i * 2 + 1;
-		dis[to1] &#x3D; dis[to2] &#x3D; dis[a[i]] + 1;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; 2 * n + 1;++i)
-	&#123;
-		cout &lt;&lt; dis[i] &lt;&lt; &quot;\n&quot;;
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="D-Robot-Arms-2"><a href="#D-Robot-Arms-2" class="headerlink" title="D - Robot Arms 2"></a>D - Robot Arms 2</h2><p><strong>题目大意:</strong> 给定一个长度为$n$的序列以及$x,y$,问是否存在$n + 1$个点$p_1,p_2,…,p_n,p_{n + 1}$在二维坐标系中满足$p_1 &#x3D; (0,0),p_2 &#x3D; (a_1,0),p_{n + 1} &#x3D; (x,y)$相邻两个点距离是$a_i$并且是$90$度</p>
-<p><strong>解题思路:</strong> 分析后发现实际上$x$和$y$是相互不干扰的，那么我们可以分开来处理，注意到$a$的范围很小那么我们可以枚举遍历到的数值是多少</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 4e5 + 10;
-int n,x,y;
-int a[maxn],dis[maxn];
-int dp[2][maxn],pre[2][maxn];
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; x &gt;&gt; y;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
-	int midp &#x3D; 10000;
-	pre[1][midp + a[1]] &#x3D; 1;
-	pre[0][midp] &#x3D; 1;
-	for(int i &#x3D; 2;i &lt;&#x3D; n;++i)
-	&#123;
-		int now &#x3D; i &amp; 1;
-		for(int j &#x3D; 0;j &lt;&#x3D; 20000;++j)
-		&#123;
-			if(pre[now][j])
-			&#123;
-				dp[now][j + a[i]] &#x3D; 1;
-				if(j - a[i] &gt;&#x3D; 0) dp[now][j - a[i]] &#x3D; 1;
-				&#x2F;&#x2F; cout &lt;&lt; &quot;?? now-&gt; &quot; &lt;&lt; now &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot;\n&quot;;
-			&#125;
-		&#125;
-		for(int j &#x3D; 0;j &lt;&#x3D; 20000;++j) pre[now][j] &#x3D; dp[now][j],dp[now][j] &#x3D; 0;
-	&#125;
-	if(pre[1][midp + x] &amp;&amp; pre[0][midp + y]) cout &lt;&lt; &quot;Yes\n&quot;;
-	else cout &lt;&lt; &quot;No\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="E-Booster"><a href="#E-Booster" class="headerlink" title="E - Booster"></a>E - Booster</h2><p><strong>题目大意:</strong> 给定一个二维平面其中有$n$个城镇和$m$个加速点$(1 \leq n + m \leq 17)$，初始点在$(0,0)$，问必须经理过所有城镇点需要的时间最短是多少，没必要经过所有加速点但是我们每经过一次加速点我们当前的速度就会翻倍</p>
-<p><strong>解题思路:</strong> 看到题目数据的时候我们就会自然而然的考虑到状态压缩，如何存在当前的状态呢？我们可以用$dp[i][j]$来表示$i$的二进制位状态表示经过了哪些点，然后末尾点是$j$</p>
-<p>那么我们思考转移的过程，假设我们当前位置$j$存在$1$,并且当前$k$也是$1$</p>
-<p>那么我们可以从$k$点转移到$j$点，那么相对应的方程就是$dp[i][j] &#x3D; min(dp[i][j],dp[i - (1 &lt;&lt; j)][k] + d &#x2F; v)$</p>
-<p>然后我们可以在最后枚举从哪个点最后来以及最后的状态获得答案</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-double dp[1 &lt;&lt; 18][20];
-pair&lt;double,double&gt; p[20];
-double getdis(int i,int j)
-&#123;
-	return sqrt((p[i].first - p[j].first) * (p[i].first - p[j].first) + (p[i].second - p[j].second) * (p[i].second - p[j].second));
-&#125;
-int n,m;
-int countx(int x)
-&#123;
-	int now &#x3D; 0;
-	for(int i &#x3D; n;i &lt; n + m;++i)
-	&#123;
-		if(x &gt;&gt; i &amp; 1) now++;
-	&#125;
-	return now;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m;
-	p[0] &#x3D; &#123;0,0&#125;;
-	n++;
-	for(int i &#x3D; 1;i &lt; n + m;++i)
-	&#123;
-		cin &gt;&gt; p[i].first &gt;&gt; p[i].second;
-	&#125;
-	for(int i &#x3D; 0;i &lt; (1 &lt;&lt; (n + m));++i)
-	&#123;
-		for(int j &#x3D; 0;j &lt; n + m;++j) dp[i][j] &#x3D; 1e18;
-	&#125;
-	dp[1][0] &#x3D; 0;
-	cout &lt;&lt; fixed &lt;&lt; setprecision(10);
-	for(int i &#x3D; 0;i &lt; (1 &lt;&lt; (n + m));++i)
-	&#123;
-		for(int j &#x3D; 0;j &lt; (n + m);++j)
-		&#123;
-			if(i &gt;&gt; j &amp; 1)
-			&#123;
-				for(int k &#x3D; 0;k &lt; (n + m);++k)
-				&#123;
-					if((i - (1 &lt;&lt; j)) &gt;&gt; k &amp; 1)
-					&#123;
-						double d &#x3D; getdis(j,k);
-						int nowcnt &#x3D; countx(i - (1 &lt;&lt; j));
-						int v &#x3D; (1 &lt;&lt; nowcnt);
-						dp[i][j] &#x3D; min(dp[i][j],dp[i - (1 &lt;&lt; j)][k] + d &#x2F; (1.0 * v));
-					&#125;
-				&#125;
-			&#125;
-		&#125;
-	&#125;
-	double ans &#x3D; 1e18;
-	for(int i &#x3D; (1 &lt;&lt; n) - 1;i &lt; (1 &lt;&lt; (n + m));i +&#x3D; (1 &lt;&lt; n))
-	&#123;
-		for(int j &#x3D; 0;j &lt; n + m;++j)
-		&#123;
-			double d &#x3D; getdis(0,j);
-			int v &#x3D; 1 &lt;&lt; countx(i);
-			ans &#x3D; min(ans,dp[i][j] + d &#x2F; (1.0 * v));
-		&#125;
-	&#125;
-	cout &lt;&lt; fixed &lt;&lt; setprecision(10) &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-      
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="/libs/typed/typed.js"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: [ 
+                            
+                                "从来没有真正的绝境, 只有心灵的迷途",
+                            
+                                "Never really desperate, only the lost of the soul",
+                            
+                        ],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
+            </div>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/25/abc274-md/" data-id="clcisub03000k5vwlh8qcdkpb" data-title="abc274.md" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/abc/" rel="tag">abc</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
-
-  
-    <article id="post-cf825" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/11/cf825/" class="article-date">
-  <time class="dt-published" datetime="2022-10-11T02:50:49.000Z" itemprop="datePublished">2022-10-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/11/cf825/">Codeforces Round 825 A-C1 D</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Codeforces-Round-825-Div-2-A-C1-D"><a href="#Codeforces-Round-825-Div-2-A-C1-D" class="headerlink" title="Codeforces Round #825 (Div. 2) A-C1 D"></a>Codeforces Round #825 (Div. 2) A-C1 D</h1><h2 id="A-Make-A-Equal-to-B"><a href="#A-Make-A-Equal-to-B" class="headerlink" title="A. Make A Equal to B"></a>A. Make A Equal to B</h2><p><strong>题目大意:</strong>  给定两个$01$序列$a$,$b$长度为$n(1\leq n\leq 1e2)$，现在有两种操作，第一种操作是选择一个位置进行反转，第二个操作是任意排序$a$序列，问最少需要几次操作能让序列$a$等于序列$b$</p>
-<p><strong>解题思路:</strong> 首先我们先思考一下，我们刚开始一定要让序列$a$和$b$中的$01$个数相同，然后在这个前提下，如果两个序列在增加$1$的过程中相同了，就不进行二操作，否则就进行二操作。如何判断两个序列是否在过程中就相同了呢？我们可以考虑将序列中的$0$变成$1$，然后看哪个序列中原本的$1$多，如果$b$中多就变$a$，$a$中多实际上就是变$b$</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		int na,nb;
-		na &#x3D; nb &#x3D; 0;
-		cin &gt;&gt; n;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			cin &gt;&gt; a[i];
-			if(a[i]) na++;
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			cin &gt;&gt; b[i];
-			if(b[i]) nb++;
-		&#125;
-		int f &#x3D; 1;
-		int ck &#x3D; 0;
-		if(na &gt; nb) ck &#x3D; 1;
-		if(na &lt; nb)
-		&#123;
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				if(!a[i]) continue;
-				if(a[i] !&#x3D; b[i]) f &#x3D; 0;
-			&#125;
-		&#125;
-		else
-		&#123;
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				if(!b[i]) continue;
-				if(a[i] !&#x3D; b[i]) f &#x3D; 0;
-			&#125;
-		&#125;
-		cout &lt;&lt; abs(na - nb) + (1 - f) &lt;&lt; &quot;\n&quot;;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="B-Playing-with-GCD"><a href="#B-Playing-with-GCD" class="headerlink" title="B. Playing with GCD"></a>B. Playing with GCD</h2><p><strong>题目大意:</strong> 给定一个长度为$n(1\leq n \leq 2e5)$的序列，问是否存在一个长度为$n + 1$的序列$b$，满足$a_i &#x3D; gcd(b_i,b_{i + 1})$</p>
-<p><strong>解题思路:</strong> 观察样例可得我们可以对原序列中的$a_{i - 1}$,$a_i$和$a_{i + 1}$进行分析，这三个数字分别由$b_{i - 1}$,$b_i$,$b_{i + 1}$,$b_{i + 2}$</p>
-<p>考虑$b_i$和$b_{i + 1}$实际上还在$a_{i - 1}$和$a_{i + 1}$中，我们考虑$gcd$的性质实际上是去求若干个数字的质因子取$min$</p>
-<p>那么我们可以对$a_{i- 1}$和$a_{i + 1}$取$gcd$，如果$a_i$不能和他们的$gcd$取余获得$0$的话，那么实际上就是不可以的，说明还有其他的质因子存在</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
-		int f &#x3D; 1;
-		for(int i &#x3D; 2;i &lt;&#x3D; n - 1;++i)
-		&#123;
-			int gd &#x3D; __gcd(a[i - 1],a[i + 1]);
-			if(a[i] % gd) f &#x3D; 0;
-		&#125;
-		if(f) cout &lt;&lt; &quot;YES\n&quot;;
-		else cout &lt;&lt; &quot;NO\n&quot;;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="C1-Good-Subarrays-Easy-Version"><a href="#C1-Good-Subarrays-Easy-Version" class="headerlink" title="C1. Good Subarrays (Easy Version)"></a>C1. Good Subarrays (Easy Version)</h2><p><strong>题目大意:</strong> 给定一个长度为$n(1\leq n \leq 2e5)$的序列，找出这个序列中有多少个序列满足好序列，好序列的要求是对于一段序列第$i$个元素大于等于$i$</p>
-<p><strong>解题思路:</strong> 固定左端点取计算右端点在哪里。我们可以发现这样一件事情，如果我在当前这个位置$i$右端点到达$j$,那么我到$i + 1$的话，我可以继续从$j$往右边移动，满足双指针的性质，直接写就可以。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
-		int ans &#x3D; 0;
-		int j &#x3D; 1;
-		int now &#x3D; 1;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			if(j &lt; i)
-			&#123;
-				j &#x3D; i;
-				now &#x3D; 1;
-			&#125;
-			while(a[j] &gt;&#x3D; now &amp;&amp; j &lt;&#x3D; n)
-			&#123;
-				&#x2F;&#x2F; cout &lt;&lt; &quot;i -&gt; &quot;&lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot; &quot; &lt;&lt; now&lt;&lt; &quot;\n&quot;;
-				j++;
-				now++;
-			&#125;
-			j--,now--;
-			int num &#x3D; j - i + 1;
-			ans +&#x3D; num;
-			now--;
-			&#x2F;&#x2F; cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot;\n&quot;;
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="D-Equal-Binary-Subsequences"><a href="#D-Equal-Binary-Subsequences" class="headerlink" title="D. Equal Binary Subsequences"></a>D. Equal Binary Subsequences</h2><p><strong>题目大意:</strong> 给定一个长度为$2n(1\leq n \leq 1e5)$的$01$串，可以进行以下的操作一次，选择一个子序列，并且把这个子序列中的数字往前移动一个，如果是第一个就移动到最后一个，问是否能够将这个$01$串分割成两个子序列，使得这两个子序列相同</p>
-<p><strong>解题思路:</strong> 首先我们先考虑无法构成的情况，如果$0$的个数或者$1$的个数是奇数，那么这个序列肯定就无法构成</p>
-<p>做一个大胆的猜想，假设目前剩下的情况下所有情况都是有解的，那么剩下的串可能是由若干个$00$ $01$ $10$ $11$组成的</p>
-<p>我们从前往后对于一个子序列来说$00$和$11$肯定是可以直接放进去的，那么对于$01$和$10$呢？</p>
-<p>我们可以考虑把他们放到操作里面去变换，那么实际上我们只需要把奇数位置上面的$1$放到偶数位置上去，把偶数位置上面的$1$放到奇数位置上去</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		cin &gt;&gt; str;
-		str &#x3D; &quot; &quot; + str;
-		int num &#x3D; 0;
-		n &lt;&lt;&#x3D; 1;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			num +&#x3D; (str[i] &#x3D;&#x3D; &#39;1&#39;);
-		&#125;
-		if(num &amp; 1)
-		&#123;
-			cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
-			continue;
-		&#125;
-		vector&lt;int&gt; pos;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;i +&#x3D; 2)
-		&#123;
-			if(str[i] &#x3D;&#x3D; str[i + 1]) continue;
-			pos.push_back(i);
-		&#125;
-		vector&lt;int&gt; ans;
-		for(int i &#x3D; 0;i &lt; pos.size();++i)
-		&#123;
-			int now &#x3D; pos[i];
-			if((i &amp; 1) &#x3D;&#x3D; str[now] - &#39;0&#39;)
-			&#123;
-				ans.push_back(now);
-			&#125;
-			else ans.push_back(now + 1);
-		&#125;
-		cout &lt;&lt; ans.size() &lt;&lt; &quot;\n&quot;;
-		for(auto to:ans)
-		&#123;
-			cout &lt;&lt; to &lt;&lt; &quot; &quot;;
-		&#125;
-		cout &lt;&lt; &quot;\n&quot;;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;i +&#x3D; 2) cout &lt;&lt; i &lt;&lt; &quot; \n&quot;[i &#x3D;&#x3D; n - 1];
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+</script>
 
 
-
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/11/cf825/" data-id="clcisub05000m5vwl2esi84ik" data-title="Codeforces Round 825 A-C1 D" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cf/" rel="tag">cf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
+<main class="content">
 
-  
-    <article id="post-DailyTraing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/09/DailyTraing/" class="article-date">
-  <time class="dt-published" datetime="2022-10-09T14:38:09.000Z" itemprop="datePublished">2022-10-09</time>
-</a>
     
-  </div>
-  <div class="article-inner">
+
     
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/09/DailyTraing/">DailyTraing</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="每日思维题"><a href="#每日思维题" class="headerlink" title="每日思维题"></a>每日思维题</h1><h2 id="Graph-and-String"><a href="#Graph-and-String" class="headerlink" title="Graph and String"></a>Graph and String</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/623/problem/A">Problem - A - Codeforces</a></p>
-<p>题目大意：</p>
-<p>给出一个由字符串s<em>s</em>建图的过程。</p>
-<ul>
-<li>字符仅有$a,b,c$三种，建出的图中第$i$个顶点表示原来的第$i$个字符。</li>
-<li>$i$与$j$有连边，当且仅当$s[i]$与$s[j]$相同或$s[i]$和$s[j]$是相邻的字符（$a$与$b$相邻，$b$与$c$相邻）</li>
-</ul>
-<p>现给出由某个字符串$s$建出的图，构造一个字符串使其符合上面的要求要求，或者回答不存在这样的字符串。</p>
-<p>解题思路：首先分析题目可以发现这样一件事情，对于出现的$b$来说他是需要连接所有点的，$a$只需要连接相邻的$a$以及$b$即可，$c$的话和$a$同理，那么其实这样子的话我们可以在刚开始的时候处理以下所有和其他点连接的点，赋值为$b$，然后我们可以考虑一件事情，对于$a$和$c$来说相对应的边是不相连的，那么对于原图的补图来说一定是一张二分图，然后我们可以判断二分图并且染色之后再去根据颜色判断，如果两个相邻的边是$a$以及$c$那么就是不行的</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 5e2 + 10;
-int mp[maxn][maxn],n,m;
-int deg[maxn],col[maxn];
-char ans[maxn];
-vector&lt;int&gt; edge[maxn];
-int flag &#x3D; 1;
-void dfs(int s,int fa)
-&#123;
-	for(auto to:edge[s])
-	&#123;
-		if(to &#x3D;&#x3D; fa) continue;
-		if(col[to] &#x3D;&#x3D; -1)
-		&#123;
-			col[to] &#x3D; col[s] ^ 1;
-			dfs(to,s);
-		&#125;
-		else if(col[to] &#x3D;&#x3D; col[s]) flag &#x3D; 0;
-	&#125;
-&#125;
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) mp[i][i] &#x3D; 1,col[i] &#x3D; -1;
-	for(int i &#x3D; 1,u,v;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; u &gt;&gt; v;
-		mp[u][v] &#x3D; mp[v][u] &#x3D; 1;
-		deg[u]++;
-		deg[v]++;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; i + 1;j &lt;&#x3D; n;++j)
-		&#123;
-			if(mp[i][j]) continue;
-			edge[i].emplace_back(j);
-			edge[j].emplace_back(i);
-		&#125;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		if(deg[i] &#x3D;&#x3D; n - 1) ans[i] &#x3D; &#39;b&#39;;
-		else
-		&#123;
-			if(col[i] &#x3D;&#x3D; -1) col[i] &#x3D; 0,dfs(i,0);
-		&#125;
-	&#125;
-	if(!flag)
-	&#123;
-		cout &lt;&lt; &quot;No\n&quot;;
-		return 0;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; i + 1;j &lt;&#x3D; n;++j)
-		&#123;
-			if(mp[i][j] &amp;&amp; col[i] + col[j] &#x3D;&#x3D; 1)
-			&#123;
-				cout &lt;&lt; &quot;No\n&quot;;
-				return 0;
-			&#125;
-		&#125;
-	&#125;
-	cout &lt;&lt; &quot;Yes\n&quot;;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		if(deg[i] &#x3D;&#x3D; n - 1)
-		&#123;
-			cout &lt;&lt; &quot;b&quot;;
-		&#125;
-		else if(col[i] &#x3D;&#x3D; 0) cout &lt;&lt; &quot;a&quot;;
-		else cout &lt;&lt; &quot;c&quot;;
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/10/25/abc274-md/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="abc274.md">
+                            
+                            <span class="card-title">abc274.md</span>
+                        </div>
+                    </a>
 
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Atcoder Beginner Contest 274 ( C - E )C - Ameba题目大意: 刚开始有一个生物序号为$1$，有$n$次记录，在第$i$次记录中第$a_i$个生物消失会生成第$2i$和$2i+1$个生物，问对于生物
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-25
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Treasure
+                                
+                            </span>
+                        </div>
+                    </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/abc/">
+                            <span class="chip bg-color">abc</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/10/11/cf825/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Codeforces Round 825 A-C1 D">
+                            
+                            <span class="card-title">Codeforces Round 825 A-C1 D</span>
+                        </div>
+                    </a>
 
-<h2 id="Carousel"><a href="#Carousel" class="headerlink" title="Carousel"></a>Carousel</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1328D">CF1328D Carousel - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a> </p>
-<p><strong>题目大意:</strong> 有$q$组询问,每组询问如下:</p>
-<p>已知一个有$n(3\le n\le 2<em>10^5)$个点的*<em>环</em></em>,点$i$的类型为$a_i$,现在需要给每个点进行染色,要求<strong>相邻</strong>不同类型的点的颜色不同且所用颜色数最小.输出颜色数及一种染色方案即可.(颜色从1开始)</p>
-<p>注意: $n ≤2*10^5$</p>
-<p><strong>解题思路:</strong></p>
-<p>其实很容易想到环的颜色种类不多，至多只有$3$</p>
-<p>那么我们可以进行这样子的讨论，首先我们可以把这个环分成奇环和偶环，对于偶环来说他有比较好的性质我们直接赋值$1$ $2$交替即可</p>
-<p>那奇环呢？分析样例我们可以得出对于两两之间不一样的都是$3$种，反之就是$2$种</p>
-<p>同时我们需要特判以下情况，在这个序列中只存在$1$种或者$2$种数字的情况</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 2e5 + 10;
-int a[maxn],num[maxn],n;
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		int cnt &#x3D; 0;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			cin &gt;&gt; a[i];
-			num[a[i]]++;
-			if(num[a[i]] &#x3D;&#x3D; 1) cnt++;
-		&#125;
-		if(cnt &#x3D;&#x3D; 1)
-		&#123;
-			cout &lt;&lt; &quot;1\n&quot;;
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				cout &lt;&lt; &quot;1 &quot;;
-			&#125;
-			cout &lt;&lt; &quot;\n&quot;;
-		&#125;
-		else if(cnt &#x3D;&#x3D; 2)
-		&#123;
-			cout &lt;&lt; 2 &lt;&lt; &quot;\n&quot;;
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				if(a[i] &#x3D;&#x3D; a[1]) cout &lt;&lt; &quot;1 &quot;;
-				else cout &lt;&lt; &quot;2 &quot;;
-			&#125;
-			cout &lt;&lt; &quot;\n&quot;;
-		&#125;
-		else if(n % 2 &#x3D;&#x3D; 0)
-		&#123;
-			cout &lt;&lt; 2 &lt;&lt; &quot;\n&quot;;
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				cout &lt;&lt; (i &amp; 1)  + 1&lt;&lt; &quot; &quot;;
-			&#125;
-			cout &lt;&lt; &quot;\n&quot;;
-		&#125;
-		else
-		&#123;
-			int flag &#x3D; -1;
-			for(int i &#x3D; 1;i &lt;&#x3D; n - 1;++i)
-			&#123;
-				if(a[i] &#x3D;&#x3D; a[i + 1]) flag &#x3D; i;
-			&#125;
-			if(a[n] &#x3D;&#x3D; a[1]) flag &#x3D; n;
-			if(flag &#x3D;&#x3D; -1)
-			&#123;
-				cout &lt;&lt; &quot;3\n&quot;;
-				for(int i &#x3D; 1;i &lt;&#x3D; n - 1;++i)
-				&#123;
-					cout &lt;&lt; (i &amp; 1) + 1 &lt;&lt; &quot; &quot;; 
-				&#125;
-				cout &lt;&lt; &quot;3\n&quot;;
-			&#125;
-			else
-			&#123;
-				cout &lt;&lt; &quot;2\n&quot;;
-				for(int i &#x3D; 1;i &lt;&#x3D; flag;++i)
-				&#123;
-					if(i % 2) cout &lt;&lt; 1 &lt;&lt; &quot; &quot;;
-					else cout &lt;&lt; 2 &lt;&lt; &quot; &quot;;
-				&#125;
-				for(int i &#x3D; flag + 1;i &lt;&#x3D; n;++i)
-				&#123;
-					if(i % 2) cout &lt;&lt; 2 &lt;&lt; &quot; &quot;;
-					else cout &lt;&lt; 1 &lt;&lt; &quot; &quot;;
-				&#125;
-				cout &lt;&lt; &quot;\n&quot;;
-			&#125;
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) num[a[i]] &#x3D; 0;
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Codeforces Round #825 (Div. 2) A-C1 DA. Make A Equal to B题目大意:  给定两个$01$序列$a$,$b$长度为$n(1\leq n\leq 1e2)$，现在有两种操作，第一种操作是选
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Treasure
+                                
+                            </span>
+                        </div>
+                    </div>
 
-<h2 id="What-a-Colorful-Wall"><a href="#What-a-Colorful-Wall" class="headerlink" title="What a Colorful Wall"></a>What a Colorful Wall</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/group/MKpYqfAQQQ/contest/393177/problem/F">Problem - F - Codeforces</a></p>
-<p><strong>题目大意:</strong> 给定$n$个矩形，每个矩形有一定的颜色，矩形之间可以相互覆盖，问在$n$个矩形覆盖之后整个坐标系中最多存在着多少种颜色</p>
-<p><strong>解题思路:</strong> 首先先思考这样子的一件事情，因为矩形具有覆盖性，因此我们可以从后往前去放置矩形，因为后面的矩形总是不会被前面的矩形所覆盖，首先对于相同的$x$坐标的一个区域来说，如果一个矩形的高度小于另外一个的高度并且它的，那么它在这个$x$轴影响的$y$上面是被覆盖的，那么对于其他的$x$呢？我们可以利用一个类似于扫描线的做法，遍历相对应的$x$轴遍历过去即可，然后用并查集维护相对应的$y$是否已经是在同一条线上面</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 4e3 + 10;
-int fa[maxn * 2],n,ans[maxn];
-vector&lt;int&gt; posx,posy;
-vector&lt;array&lt;int,5&gt;&gt; pos;
-void init()
-&#123;
-	for(int i &#x3D; 0;i &lt;&#x3D; 8010;++i) fa[i] &#x3D; i;
-&#125;
-int getf(int x)
-&#123;
-	if(x &#x3D;&#x3D; fa[x]) return x;
-	fa[x] &#x3D; getf(fa[x]);
-	return fa[x];
-&#125;
-void merge(int x,int y)
-&#123;
-	x &#x3D; getf(x);
-	y &#x3D; getf(y);
-	fa[x] &#x3D; y;
-&#125;
-int getx(int x)
-&#123;
-	int px &#x3D; lower_bound(posx.begin(),posx.end(),x) - posx.begin();
-	return px;
-&#125;
-int gety(int y)
-&#123;
-	int py &#x3D; lower_bound(posy.begin(),posy.end(),y) - posy.begin();
-	return py;
-&#125;
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1,x1,y1,x2,y2,col;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2 &gt;&gt; col;
-		posx.push_back(x1),posx.push_back(x2);
-		posy.push_back(y1),posy.push_back(y2);
-		pos.push_back(&#123;x1,y1,x2,y2,col&#125;);
-	&#125;
-	sort(posx.begin(),posx.end());
-	sort(posy.begin(),posy.end());
-	posx.erase(unique(posx.begin(),posx.end()),posx.end());
-	posy.erase(unique(posy.begin(),posy.end()),posy.end());
-	for(auto &amp;now:pos)
-	&#123;
-		now[0] &#x3D; getx(now[0]),now[2] &#x3D; getx(now[2]);
-		now[1] &#x3D; gety(now[1]),now[3] &#x3D; gety(now[3]); 
-		&#x2F;&#x2F; cout &lt;&lt; now[0] &lt;&lt; &quot; &quot;
-	&#125;
-	int tot &#x3D; posx.size();
-	for(int i &#x3D; 0;i &lt;&#x3D; tot;++i)
-	&#123;
-		init();
-		for(int j &#x3D; n - 1;j &gt;&#x3D; 0;--j)
-		&#123;
-			auto now &#x3D; pos[j];
-			if(now[0] &lt;&#x3D; i &amp;&amp; now[2] &gt; i)
-			&#123;
-				int ny &#x3D; getf(now[1]);
-				while(ny &gt; now[3])
-				&#123;
-					merge(ny,ny - 1);
-					ans[now[4]] &#x3D; 1;
-					ny &#x3D; getf(ny);
-				&#125;
-			&#125;
-		&#125;
-	&#125;
-	int res &#x3D; 0;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) res +&#x3D; ans[i];
-	cout &lt;&lt; res &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%80%9D%E7%BB%B4/">
+                            <span class="chip bg-color">思维</span>
+                        </a>
+                        
+                        <a href="/tags/cf/">
+                            <span class="chip bg-color">cf</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/10/09/DailyTraing/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="DailyTraing">
+                            
+                            <span class="card-title">DailyTraing</span>
+                        </div>
+                    </a>
 
-<h2 id="Chemical-table"><a href="#Chemical-table" class="headerlink" title="Chemical table"></a>Chemical table</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1013/problem/D">Problem - D - Codeforces</a></p>
-<p><strong>题意:</strong> 给定一个$n * m$的棋盘，给定$q$个元素，这些元素在棋盘的上面，如果对于一个$2 * 2$的矩形来说，这个矩形中的三个值都存在但是还有一个值不存在，那么这个值也会自动生成，问最多要加多少个值才能使得这个棋盘最后是满的</p>
-<p><strong>解题思路:</strong> 首先我们先分析最后的棋盘的状态，最后棋盘的状态是一个满的形式，对于棋盘来说我们可以把它看成一个二分图的形式，左边是列右边是行，然后我们去分析最终态，最终态是行和列的点都在一个连通块中；然后我们分析题目给定的条件，每次对于一个行和列连边，然后对于生成那个新点来说，实际上并不会影响当前连通块的情况，那么我们只需要连接所有的边，然后找出连通块的数量是多少，最后再加上相对应的边即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 4e5 + 10;
-int f[maxn],n,m,q;
-int getf(int x)
-&#123;
-	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-&#125;
-void merge(int x,int y)
-&#123;
-	x &#x3D; getf(x);
-	y &#x3D; getf(y);
-	f[x] &#x3D; y;
-&#125;
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                每日思维题Graph and StringProblem - A - Codeforces
+题目大意：
+给出一个由字符串ss建图的过程。
 
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;
-	for(int i &#x3D; 1;i &lt;&#x3D; n + m;++i)
-	&#123;
-		f[i] &#x3D; i;
-	&#125;
-	for(int i &#x3D; 1,x,y;i &lt;&#x3D; q;++i)
-	&#123;
-		cin &gt;&gt; x &gt;&gt; y;
-		merge(x,y + n);
-	&#125;
-	int ans &#x3D; 0;
-	for(int i &#x3D; 1;i &lt;&#x3D; n + m;++i)
-	&#123;
-		if(getf(i) &#x3D;&#x3D; i)
-		&#123;
-			ans++;
-		&#125;
-	&#125;
-	cout &lt;&lt; ans - 1 &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+字符仅有$a,b,c$三种，建出的图中第$i$个顶点表示原来的第$i$个字符。
+$i$与$j$有连边
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Treasure
+                                
+                            </span>
+                        </div>
+                    </div>
 
-<h2 id="Cross-Swapping"><a href="#Cross-Swapping" class="headerlink" title="Cross Swapping"></a>Cross Swapping</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1713/problem/E">Problem - E - Codeforces</a></p>
-<p><strong>题意:</strong> 给定一个$n * n$的矩阵，可以选定一个$k$，交换所有的$mp[i][k]$和$mp[k][i]$，可以进行这样子的操作若干次，问在进行操作<br>之后这个矩阵字典序最小是什么样子的<br><strong>解题思路:</strong> 模拟每一次交换的过程，我们发现实际上$mp[i][j]$只会和$mp[j][i]$交换，既然这样那么实际上我们就很好去操作了<br>如果我们要交换$mp[i][j]$和$mp[j][i]$，我们只需要选定$k &#x3D; i$ $or$ $k &#x3D; j$,如果不交换我们可以两个都不选或者两个都选偶数次<br>然后的话我们可以用并查集来维护相对应的关系，用类似于敌人朋友的并查集来维护这个东西。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 2e3 + 10;
-int mp[maxn][maxn],n;
-int f[maxn];
-int getf(int x)
-&#123;
-	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-&#125;
-void merge(int x,int y)
-&#123;
-	x &#x3D; getf(x);
-	y &#x3D; getf(y);
-	f[x] &#x3D; y;
-&#125;
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-			&#123;
-				cin &gt;&gt; mp[i][j];
-			&#125;
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; 2 * n;++i) f[i] &#x3D; i;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			for(int j &#x3D; i;j &lt;&#x3D; n;++j)
-			&#123;
-				if(mp[i][j] &lt; mp[j][i])
-				&#123;
-					&#x2F;&#x2F;not change
-					if(getf(i) &#x3D;&#x3D; getf(j + n)) continue;
-					merge(i,j),merge(i + n,j + n);
-				&#125;
-				else if(mp[i][j] &gt; mp[j][i])
-				&#123;
-					&#x2F;&#x2F;change
-					if(getf(i) &#x3D;&#x3D; getf(j)) continue;
-					merge(i,j + n),merge(i + n,j);
-				&#125;
-			&#125;
-		&#125;
-		for(int k &#x3D; 1;k &lt;&#x3D; n;++k)
-		&#123;
-			if(getf(k) &gt; n) continue;
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				swap(mp[i][k],mp[k][i]);
-			&#125;
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-			&#123;
-				cout &lt;&lt; mp[i][j] &lt;&lt; &quot; \n&quot;[j &#x3D;&#x3D; n];
-			&#125;
-		&#125;
-	&#125;
-	return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%80%9D%E7%BB%B4/">
+                            <span class="chip bg-color">思维</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/10/09/Dytechlab-Cup-2022/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Dytechlab Cup 2022">
+                            
+                            <span class="card-title">Dytechlab Cup 2022</span>
+                        </div>
+                    </a>
 
-<h2 id="Mikasa"><a href="#Mikasa" class="headerlink" title="Mikasa"></a>Mikasa</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1554/problem/C">Problem - C - Codeforces</a></p>
-<p><strong>题意:</strong> 给定$T$组数据，每组数据有一个$n$和$m$,给定一个序列从$n \bigoplus 0,n \bigoplus 1,…,n \bigoplus m$问这个序列中没有出现过的最小数字是多少</p>
-<p><strong>解题思路:</strong> 考虑再这个序列中出现过的数字$k$,那么存在$x$使得式子$n \bigoplus x &#x3D; k,x ∈ [0,m]$成立,那么对于上面的式子其实可以等价于$n \bigoplus k &#x3D; x, 0 \leq n \bigoplus k \leq m$，那么我们要求的答案也就是去找一个最小的$k$使得$n \bigoplus k \geq m + 1$，那么这样子的话我们就可以进行按位考虑，假设$p &#x3D; m + 1$,我们从高位开始考虑，如果这个位置上面$n_i &#x3D; 1,p_i &#x3D; 0$,那么直接break掉，如果$n_i &#x3D; 0,p_i &#x3D; 1$,则需要加上这一位的贡献</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-#define int long long
-int n,m;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n &gt;&gt; m;
-		int p &#x3D; m + 1;
-		int ans &#x3D; 0;
-		for(int i &#x3D; 30;i &gt;&#x3D; 0;--i)
-		&#123;
-			int ni &#x3D; (n &gt;&gt; i &amp; 1);
-			int pi &#x3D; (p &gt;&gt; i &amp; 1);
-			if(ni &#x3D;&#x3D; 1 &amp;&amp; pi &#x3D;&#x3D; 0) break;
-			if(ni &#x3D;&#x3D; 0 &amp;&amp; pi &#x3D;&#x3D; 1) ans +&#x3D; (1 &lt;&lt; i);
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Dytechlab Cup 2022A. Ela Sorting Books题目大意:  给定$n(1 \leq n \leq 200)$本书,每本书有一个首字符，要把这$n$本书放到$k$个书架上，每个书架上面按照字典序第一个没有出现过的
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Treasure
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%80%9D%E7%BB%B4/">
+                            <span class="chip bg-color">思维</span>
+                        </a>
+                        
+                        <a href="/tags/codeforces/">
+                            <span class="chip bg-color">codeforces</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/10/09/hello-world/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                            
+                            <span class="card-title">Hello World</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Treasure
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/blog/">
+                            <span class="chip bg-color">blog</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/10/08/Atcoder-Beginner-Contest-272/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Atcoder Beginner Contest 272">
+                            
+                            <span class="card-title">Atcoder Beginner Contest 272</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Atcoder Beginner Contest 272A - Integer Sum题目大意: 给定$n$个数字，求$n$个数字的和
+#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-08
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Treasure
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/abc/">
+                            <span class="chip bg-color">abc</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%80%9D%E7%BB%B4/">
+                            <span class="chip bg-color">思维</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+        </div>
+    </article>
+
+</main>
 
 
-
-<h2 id="Count-Triangles"><a href="#Count-Triangles" class="headerlink" title="Count Triangles"></a>Count Triangles</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1355/C">Problem - 1355C - Codeforces</a></p>
-<p><strong>题意:</strong> 给定四个数字$A,B,C,D$使得三角形的三个边$a,b,c$分别满足$A \leq a \leq B, B\leq b \leq C,C \leq c \leq D$,问这样子的三元组$a,b,c$有多少</p>
-<p><strong>解题思路:</strong> 其实拿到题目的时候我们可以直接考虑枚举，但是直接分别枚举$a,b$是否在区间里面时间肯定是有点问题的，但是既然是三角形我们其实如果知道$a + b$是多少我们就能找到对应的第三条边是多少，既然这样的话那么我们只需要枚举$a + b$中有多少个就可以了，然后通过差分数组去维护相对应的数量，那么对应的$a + b$在数据范围中对应的第三条边可能是啥呢？其实是在一个范围中，我们在$a + b - C$和$D + C - 1$中取小的就可以了，当然需要特判一下$a + b - C$小于$0$的情况</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-#define int long long
-typedef long long ll;
-vector&lt;int&gt; pa,pb,pc;
-int A,B,C,D;
-const int maxn &#x3D; 2e6 + 10;
-int sum[maxn];
-signed  main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; A &gt;&gt; B &gt;&gt; C &gt;&gt; D;
-	for(int i &#x3D; A;i &lt;&#x3D; B;++i) sum[i + B]++,sum[i + C + 1]--;
-	for(int i &#x3D; 1;i &lt;&#x3D; 3 * D;++i) sum[i] +&#x3D; sum[i - 1];
-	int ans &#x3D; 0;
-	for(int i &#x3D; 1;i &lt;&#x3D; 3 * D;++i)
-	&#123;
-		ans +&#x3D; sum[i] * max(0ll,min(i - C,D - C + 1));
-	&#125;
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="Integers-Have-Friends"><a href="#Integers-Have-Friends" class="headerlink" title="Integers Have Friends"></a>Integers Have Friends</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1548/B">Problem - 1548B - Codeforces</a></p>
-<p><strong>题意:</strong> 给定一个长度为$n$的序列，序列中每个元素的数值各不相同，找一个最长的子序列使得这个子序列中$mod $ $m$都是相同的数字</p>
-<p><strong>解题思路:</strong> 因为题目中需要找到$a[i]$  $mod$ $m$ $&#x3D;$ $a[j]$ $mod$ $m$,那么对于这样子的式子我们可以先进行一个化简，那么就是$(a[i] - a[j])  $ $ mod $</p>
-<p> $m &#x3D; 0$,然后我们可以对这个序列进行一个处理，处理之后二分找最长的即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-#define int long long
-typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-int a[maxn],n;
-int b[maxn],tree[maxn &lt;&lt; 2];
-inline void build(int k,int l,int r)
-&#123;
-	if(l &#x3D;&#x3D; r)
-	&#123;
-		tree[k] &#x3D; b[l];
-		return;
-	&#125;
-	int mid &#x3D; (l + r) &gt;&gt; 1;
-	build(k &lt;&lt; 1,l,mid);
-	build(k &lt;&lt; 1 | 1,mid + 1,r);
-	tree[k] &#x3D; __gcd(tree[k &lt;&lt; 1],tree[k &lt;&lt; 1 | 1]);
-	return;
-&#125;
-inline int query(int k,int l,int r,int lx,int rx)
-&#123;
-	if(l &#x3D;&#x3D; lx &amp;&amp; r &#x3D;&#x3D; rx)
-	&#123;
-		return tree[k];
-	&#125;
-	int mid &#x3D; (l + r) &gt;&gt; 1;
-	int ans &#x3D; 0;
-	if(rx &lt;&#x3D; mid) ans &#x3D; __gcd(ans,query(k &lt;&lt; 1,l,mid,lx,rx));
-	else
-	&#123;
-		if(lx &gt; mid) ans &#x3D; __gcd(ans,query(k &lt;&lt; 1 | 1,mid + 1,r,lx,rx));
-		else ans &#x3D;__gcd(ans,__gcd(query(k &lt;&lt; 1,l,mid,lx,mid),query(k &lt;&lt; 1 | 1,mid + 1,r,mid + 1,rx)));
-	&#125;
-	return ans;
-&#125;
-int check(int x)
-&#123;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		if(i + x - 1 &gt; n) break;
-		if(abs(query(1,1,n,i + 1,i + x - 1)) !&#x3D; 1)
-		&#123;
-			return 1;
-		&#125;
-	&#125;
-	return 0;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			cin &gt;&gt; a[i];
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			b[i] &#x3D; a[i] - a[i - 1];
-		&#125;
-		build(1,1,n);
-		int ans &#x3D; 1;
-		int L &#x3D; 2;
-		int R &#x3D; n;
-		while(L &lt;&#x3D; R)
-		&#123;
-			int mid &#x3D; (L + R) &gt;&gt; 1;
-			if(check(mid))
-			&#123;
-				L &#x3D; mid + 1;
-				ans &#x3D; max(ans,mid);
-			&#125;
-			else
-			&#123;
-				R &#x3D; mid - 1;
-			&#125;
-		&#125;
-		cout &lt;&lt; ans&lt;&lt; &quot;\n&quot;;
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="Distance-in-Tree"><a href="#Distance-in-Tree" class="headerlink" title="Distance in Tree"></a>Distance in Tree</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/161/problem/D">Problem - D - Codeforces</a></p>
-<p><strong>题意:</strong> 给定一棵$n$个结点的树，需要找出这个树上面距离严格为$k$的点对有多少个<br><strong>解题思路:</strong> 拿到题目之后看$k$的范围实际上不大，有$500$左右，那么其实$nk$时间复杂度的算法是可以过的<br>那么接下来去思考如何用$nk$的时间复杂度去求<br>那么我们可以考虑这样子的一件事情，假设我们已经知道当前这里的一个点距离它距离为$x$的点都已知道<br>那么对于答案的贡献实际上可以是$ans +&#x3D; dp[now][i] * dp[to][k - i - 1]$<br>然后我们再更新相对应的数量即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-#define int long long
-const int maxn &#x3D; 5e4 + 10;
-int dp[maxn][520];
-int n,ans,k;
-vector&lt;int&gt; edge[maxn];
-void dfs(int s,int fa)
-&#123;
-	dp[s][0] &#x3D; 1;
-	for(auto to:edge[s])
-	&#123;
-		if(to &#x3D;&#x3D; fa) continue;
-		dfs(to,s);
-		for(int i &#x3D; 0;i &lt; k;++i) ans +&#x3D; dp[s][i] * dp[to][k - i - 1];
-		for(int i &#x3D; 0;i &lt; k;++i) dp[s][i + 1] +&#x3D; dp[to][i];
-	&#125;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; k;
-	for(int i &#x3D; 1,u,v;i &lt;&#x3D; n - 1;++i)
-	&#123;
-		cin &gt;&gt; u &gt;&gt; v;
-		edge[u].emplace_back(v);
-		edge[v].emplace_back(u);
-	&#125;
-	dfs(1,0);
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="The-Sports-Festival"><a href="#The-Sports-Festival" class="headerlink" title="The Sports Festival"></a>The Sports Festival</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1509/C">Problem - 1509C - Codeforces</a></p>
-<h2 id="Three-Bags"><a href="#Three-Bags" class="headerlink" title="Three Bags"></a>Three Bags</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1467/C">Problem - 1467C - Codeforces</a></p>
-<p><strong>题目大意:</strong> 给定$3$个集合，可以选定任意两个集合中的元素$a,b$,移走$b$并且让$a$变成$a - b$</p>
-<p>问最后剩下的元素最大值是多少</p>
-<p><strong>解题思路:</strong> 首先考虑如果在没有集合限制的情况下，其实我们进行这样子的操作就会使得一个数字没有取到，那么其实对应到集合来说，就是两个不同集合的数字的最小值没有取到是最优的；还有一种取法，就是另外两个集合全部取完，还有一个集合全部不取</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-#define int long long
-const int maxn &#x3D; 1e6 + 10;
-int n,m,k;
-int sum;
-int a[maxn],b[maxn],c[maxn],sa,sb,sc;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;
-	int ma,mb,mc;
-	ma &#x3D; mb &#x3D; mc &#x3D; 1e9 + 7;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; a[i];
-		sum +&#x3D; a[i];
-		sa +&#x3D; a[i];
-		ma &#x3D; min(ma,a[i]);
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; b[i];
-		sum +&#x3D; b[i];
-		sb +&#x3D; b[i];
-		mb &#x3D; min(mb,b[i]);
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; k;++i)
-	&#123;
-		cin &gt;&gt; c[i];
-		sum +&#x3D; c[i];
-		sc +&#x3D; c[i];
-		mc &#x3D; min(mc,c[i]);
-	&#125;
-	int ans &#x3D; max(&#123;sum - 2 * (ma + mb),sum - 2 * (mb + mc),sum - 2 * (mc + ma),sum - 2 * sa,sum - 2 * sb,sum - 2 * sc&#125;);
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h2 id="Dr-Evil-Underscores"><a href="#Dr-Evil-Underscores" class="headerlink" title="Dr. Evil Underscores"></a>Dr. Evil Underscores</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1285/problem/D">Problem - D - Codeforces</a></p>
-<p><strong>题意:</strong> 给定$n$个数字，需要找到一个数字$x$使得这些数字$\bigoplus x$的最大值最小</p>
-<p><strong>解题思路:</strong> 拿到题目之后我们可以想到拆位去思考，首先我们考虑这样子的一件事情，对于高位来说肯定是能消掉尽可能消掉，不能消掉再看接下来这个高位所带来的影响，然后对于一位来说，如果这一位在所有数字上面都是相同的，那么其实它就可以最后消掉；如果有存在不相同的，对于最终答案来说这一位肯定是取$1$的，但是对于后面的位数还是不确定什么是更优的，因此还是需要找下去</p>
-<p>所以我们可以建立一棵$tire$树，在$tire$树上面跑$dfs$即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 2e6 + 10;
-int tire[maxn][2],cnt,n;
-void insert(int x)
-&#123;
-	int root &#x3D; 0;
-	for(int i &#x3D; 30;i &gt;&#x3D; 0;--i)
-	&#123;
-		int id &#x3D; (x &gt;&gt; i &amp; 1);
-		if(!tire[root][id]) tire[root][id] &#x3D; ++cnt;
-		root &#x3D; tire[root][id];
-	&#125;
-&#125;
-int dfs(int pos,int now)
-&#123;
-	if(now &lt; 0) return 0;
-	int ans &#x3D; 0;
-	if(tire[pos][0] &amp;&amp; tire[pos][1])
-	&#123;
-		ans +&#x3D; (1 &lt;&lt; now);
-		ans +&#x3D; min(dfs(tire[pos][0],now - 1),dfs(tire[pos][1],now - 1)); 
-	&#125;
-	else if(tire[pos][0])
-	&#123;
-		ans +&#x3D; dfs(tire[pos][0],now - 1);
-	&#125;
-	else if(tire[pos][1])
-	&#123;
-		ans +&#x3D; dfs(tire[pos][1],now - 1);
-	&#125;
-	return ans;
-&#125;
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1,x;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; x;
-		insert(x);
-	&#125;
-	cout &lt;&lt; dfs(0,30) &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h2 id="New-Year’s-Problem"><a href="#New-Year’s-Problem" class="headerlink" title="New Year’s Problem"></a>New Year’s Problem</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1619/problem/D">Problem - D - Codeforces</a></p>
-<p><strong>题目大意:</strong> 给定$m$个商店，有$n$个人，最多可以在$n - 1$个商店中买东西，第$i$个人收到第$j$个物品的数值是$A{i,j}$</p>
-<p>问如何选择能够让所有人的最小开心值最高</p>
-<p><strong>解题思路:</strong> 其实题目有两个$trick$点，一个是最小的开心值最大，对于这一个点我们可以使用二分来解决，还有一个就是$n - 1$个商店，那么对于$n - 1$来说我们可以思考的一个点也就是鸽巢原理。那么我们在写二分$check$的时候可以这样子，因为我们是选定$n - 1$个，如果对于当前选定的$x$来说，存在对应的人的最大值没有，那么就直接返回$0$，然后对于第二个部分的话我们可以考虑这样子的一个东西，至少要有一个商店带来两个人的贡献，否则就无法使用$n - 1$个</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 1e5 + 10;
-int n,m;
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n &gt;&gt; m;
-		vector&lt;vector&lt;int&gt;&gt; mp(n + 1,vector&lt;int&gt;(m + 1));
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			for(int j &#x3D; 1;j &lt;&#x3D; m;++j)
-			&#123;
-				cin &gt;&gt; mp[i][j];
-			&#125;
-		&#125;
-
-		auto check &#x3D; [](int x,vector&lt;vector&lt;int&gt;&gt; &amp;mp)
-		&#123;
-			for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-			&#123;
-				int f &#x3D; 0;
-				for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-				&#123;
-					if(mp[j][i] &gt;&#x3D; x) f &#x3D; 1;
-				&#125;
-				if(!f) return 0;
-			&#125;
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				int ct &#x3D; 0;
-				for(int j &#x3D; 1;j &lt;&#x3D; m;++j)
-				&#123;
-					ct +&#x3D; (mp[i][j] &gt;&#x3D; x);
-				&#125;
-				if(ct &gt;&#x3D; 2) return 1;
-			&#125;
-			return 0;
-		&#125;;
-		int L &#x3D; 0;
-		int R &#x3D; 1000000000;
-		int ans &#x3D; 0;
-		while(L &lt;&#x3D; R)
-		&#123;
-			int mid &#x3D; (L + R) &gt;&gt; 1;
-			if(check(mid,mp))
-			&#123;
-				L &#x3D; mid + 1;
-				ans &#x3D; max(ans,mid);
-			&#125;
-			else R &#x3D; mid - 1;
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h2 id="Left-Right-Operation"><a href="#Left-Right-Operation" class="headerlink" title="Left Right Operation"></a><strong>Left Right Operation</strong></h2><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc263/tasks/abc263_d">D - Left Right Operation (atcoder.jp)</a></p>
-<h2 id="Zuma"><a href="#Zuma" class="headerlink" title="Zuma"></a>Zuma</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/607/problem/B">Problem - B - Codeforces</a></p>
-<p><strong>题目大意:</strong> 给定$n$个东西，每个东西有一个颜色，每次可以消除颜色是回文串的一个字串，消除一个字串之后会自动拼接回去，问最少需要几次可以消除完</p>
-<p><strong>解题思路:</strong> 数据很小只有$500$，考虑区间$dp$</p>
-<p>然后接下来我们来思考转移过程，因为每次消去的都是一个回文串，那么对于我们枚举的$l$和$r$来说可以放到上一个回文串中一起删除掉，如果$l &#x3D;&#x3D; r$</p>
-<p>那么$dp[l][r] &#x3D; dp[l - 1][r + 1]$</p>
-<p>否则我们需要考虑一个断点，在这个断点的两边进行$dp$</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-const int maxn &#x3D; 5e2 + 10;
-int dp[maxn][maxn];
-int a[maxn],n;
-int check(int l,int r)
-&#123;
-	string s &#x3D; &quot;&quot;;
-	for(int i &#x3D; l;i &lt;&#x3D; r;++i)
-	&#123;
-		char id &#x3D; &#39;0&#39; + a[i];
-		s.push_back(id);
-	&#125;
-	string ss &#x3D; s;
-	reverse(ss.begin(),ss.end());
-	return ss &#x3D;&#x3D; s;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; a[i];
-		dp[i][i] &#x3D; 1;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		int r &#x3D; i + 2 - 1;
-		if(r &gt; n) break;
-		if(a[i] !&#x3D; a[r])
-		&#123;
-			dp[i][r] &#x3D; 2;
-		&#125;
-		else dp[i][r] &#x3D; 1;
-	&#125;
-	for(int len &#x3D; 3;len &lt;&#x3D; n;++len)
-	&#123;
-		for(int l &#x3D; 1;l &lt;&#x3D; n;++l)
-		&#123;
-			int r &#x3D; l + len - 1;
-			if(r &gt; n) break;
-			if(a[l] &#x3D;&#x3D; a[r]) dp[l][r] &#x3D; dp[l + 1][r - 1];
-			else dp[l][r] &#x3D; min(dp[l + 1][r],dp[l][r - 1]) + 1;
-			for(int mid &#x3D; l;mid &lt;&#x3D; r;++mid)
-			&#123;
-				chkmin(dp[l][r],dp[l][mid] + dp[mid + 1][r]);
-			&#125;
-		&#125;
-	&#125;
-	cout &lt;&lt; dp[1][n] &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="Book-of-Evil"><a href="#Book-of-Evil" class="headerlink" title="Book of Evil"></a>Book of Evil</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/337/D">Problem - 337D - Codeforces</a></p>
-<h2 id="Empty-Graph"><a href="#Empty-Graph" class="headerlink" title="Empty Graph"></a>Empty Graph</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1712/D">https://codeforces.com/problemset/problem/1712/D</a></p>
-<p><strong>题目大意:</strong> 给定一个长度为$n(1\leq n \leq 2e5)$的序列,对于任意的$(l,r),1 \leq l &lt; r \leq n$存在一条边连接$l$以及$r$，边权是$min(a_l,a_{l + 1},…,a_r)$</p>
-<p>我们有$k$次操作机会可以将一个位置上的数字变成任意数字$x(1\leq x \leq 1e9)$,问这张图的直径是多少</p>
-<p>一张图的直径定义如下所示: $max_{1 \leq u &lt; v \leq n}d(u,v)$,$d(u,v)$是从$u$到$v$的最短路</p>
-<p><strong>解题思路:</strong>  首先我们先分析一下$d(u,v)$在这种情况下可能由什么组成，要么我是走两条最小的从$u$到$v$，如果是两个相邻的情况，那么我实际上$u$到$v$是只需要取$min(a_u,a_v)$</p>
-<p>然后考虑这$k$次操作我们怎么使用，因为次数肯定是使用越多我最后的答案趋向于越大，具有一定的单调性，因此我们可以使用二分来写</p>
-<p>我们去遍历整个序列，对于我们当前$check$的$x$来说，如果当前的数字小于$\frac{x}{2}$，那么我们需要一次机会将其变大</p>
-<p>如果当前所需要的次数大于$k$的话，那么是不行的，我们就不要这一种情况</p>
-<p>如果相同的话，我们看一下整个序列最大的$d$是多少，看看是否大于等于$x$即可</p>
-<p>如果小于$k$次的话，找序列中最大的数字即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-const int maxn &#x3D; 2e5 + 10;
-int a[maxn],n,k,use[maxn];
-int cal()
-&#123;
-	int now1 &#x3D; min(use[1],use[2]);
-	for(int i &#x3D; 1;i &lt;&#x3D; n - 1;++i)
-	&#123;
-		now1 &#x3D; max(now1,min(use[i],use[i + 1]));
-	&#125;
-	int mi &#x3D; use[1];
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		chkmin(mi,use[i]);
-	&#125;
-	return min(2 * mi,now1);
-&#125;
-int check(int x)
-&#123;
-	int cs &#x3D; 0;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i) use[i] &#x3D; a[i];
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		if(use[i] * 2 &lt; x)
-		&#123;
-			cs++;
-			use[i] &#x3D; 1e9;
-		&#125;
-	&#125;
-	if(cs &gt; k) return 0;
-	else if(cs &#x3D;&#x3D; k)
-	&#123;
-		int now &#x3D; cal();
-		&#x2F;&#x2F; cout &lt;&lt; &quot;??? &quot; &lt;&lt; now &lt;&lt; &quot;\n&quot;;
-		if(now &gt;&#x3D; x) return 1;
-		return 0;
-	&#125;
-	else
-	&#123;
-		&#x2F;&#x2F; cout &lt;&lt; 33 &lt;&lt; &quot;\n&quot;;
-		if(k &#x3D;&#x3D; 1)
-		&#123;
-			int now &#x3D; use[1];
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				chkmax(now,use[i]);
-			&#125;
-			&#x2F;&#x2F; cout &lt;&lt; &quot;now -&gt; &quot; &lt;&lt; now &lt;&lt; &quot; x -&gt; &quot; &lt;&lt; x &lt;&lt; &quot;\n&quot;;
-			if(now &gt;&#x3D; x) return 1;
-			return 0;
-		&#125;
-		return 1;
-	&#125;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n &gt;&gt; k;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
-		int L &#x3D; 1,R &#x3D; 1e9;
-		int ans &#x3D; 0;
-		&#x2F;&#x2F; cout &lt;&lt; &quot;?? &quot; &lt;&lt; check(4) &lt;&lt; &quot;\n&quot;;
-		while(L &lt;&#x3D; R)
-		&#123;
-			int mid &#x3D; (L + R) &gt;&gt; 1;
-			if(check(mid))
-			&#123;
-				L &#x3D; mid + 1;
-				ans &#x3D; mid;
-			&#125;
-			else R &#x3D; mid - 1;
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>在异或运算中，若$x \bigoplus y &#x3D; z$则有$x \bigoplus z &#x3D; y$</li>
-<li>在两个数字取余需要相等的时候，可以转移一下位置变成一个等式</li>
-<li>注意模拟样例的时候样例给定的特殊性质</li>
-<li>对于$n - 1$这个数字我们要特殊考虑一下$trick$点</li>
-<li>边着色考虑特殊情况比如有一些情况只需要两种颜色即可$(CF1217D)$</li>
-</ul>
-
-      
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a href="/"
+               class="left btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">2 / 3</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/3/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/09/DailyTraing/" data-id="clcisuazt00085vwlgdooa36l" data-title="DailyTraing" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
 
-  
-    <article id="post-Dytechlab-Cup-2022" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/09/Dytechlab-Cup-2022/" class="article-date">
-  <time class="dt-published" datetime="2022-10-09T07:29:24.000Z" itemprop="datePublished">2022-10-09</time>
-</a>
+
+    <footer class="page-footer bg-color">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/09/Dytechlab-Cup-2022/">Dytechlab Cup 2022</a>
-    </h1>
-  
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
 
-      </header>
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Dytechlab-Cup-2022"><a href="#Dytechlab-Cup-2022" class="headerlink" title="Dytechlab Cup 2022"></a>Dytechlab Cup 2022</h1><h2 id="A-Ela-Sorting-Books"><a href="#A-Ela-Sorting-Books" class="headerlink" title="A. Ela Sorting Books"></a>A. Ela Sorting Books</h2><p><strong>题目大意:</strong>  给定$n(1 \leq n \leq 200)$本书,每本书有一个首字符，要把这$n$本书放到$k$个书架上，每个书架上面按照字典序第一个没有出现过的字符加入集合中，问这个集合最大能够构成的字符是什么</p>
-<p><strong>解题思路:</strong> 模拟样例可以发现一件事情，假设我们当前还有若干个字符，那么从第一个字符按顺序放到最后一个可以连续放置的字符肯定是最优秀的放置方法。那么我们怎么写呢？我们可以枚举每个书架可以最终放入集合的字符是多少，然后$check$即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-typedef long long ll;
-const int maxn &#x3D; 1e6 + 10;
-int a[maxn],n,k;
-string str;
-map&lt;int,int&gt; mp;
-int check(int x)
-&#123;
-	if(x &gt; n &#x2F; k) return 0;
-	for(int i &#x3D; 0;i &lt;&#x3D; x - 1;++i)
-	&#123;
-		if(mp[i] &lt;&#x3D; 0) return 0; 
-	&#125;
-	for(int i &#x3D; 0;i &lt;&#x3D; x - 1;++i)
-	&#123;
-		mp[i]--;
-	&#125;
-	return 1;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n &gt;&gt; k;
-		cin &gt;&gt; str;
-		mp.clear();
-		for(auto to:str)
-		&#123;
-			int id &#x3D; to - &#39;a&#39;;
-			mp[id]++;
-		&#125;
-		vector&lt;char&gt; ans;
-		for(int i &#x3D; 1;i &lt;&#x3D; k;++i)
-		&#123;
-			for(int j &#x3D; 25;j &gt;&#x3D; 0;--j)
-			&#123;
-				if(check(j))
-				&#123;
-					ans.push_back(&#39;a&#39; + j);
-					break;
-				&#125;
-			&#125;
-		&#125;
-		sort(ans.begin(),ans.end());
-		reverse(ans.begin(),ans.end());
-		for(auto to:ans)
-		&#123;
-			cout &lt;&lt; to;
-		&#125;
-		cout &lt;&lt; &quot;\n&quot;;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
 
-<h2 id="B-Ela’s-Fitness-and-the-Luxury-Number"><a href="#B-Ela’s-Fitness-and-the-Luxury-Number" class="headerlink" title="B. Ela’s Fitness and the Luxury Number"></a>B. Ela’s Fitness and the Luxury Number</h2><p><strong>题目大意:</strong> 给定$T (1 \leq T \leq 2e5)$组样例，每组两个数字分别是$l$ 以及$r(1 \leq l,r \leq 1e18)$ ，问在这个区间中美丽数字的个数是多少。美丽数字的定义是$x$可以被$x $  $mod$ $\lfloor\sqrt{x}\rfloor$ $ &#x3D; 0$</p>
-<p><strong>解题思路:</strong> 发现数据范围实际上很大，然后我打了一下表发现了一个规律，就是根据每一个平方数去划分，可以以每个平方数划分成一个块，假设当前的平方数是$x$，当前的平方根是$y$，那么在这一个块中存在的数字分别是$x,x + y,x + 2 * y$</p>
-<p>特别需要注意的是，$floor$存在的一定精度误差，因此在取的时候可以采取一些操作比如$–$来优化</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-typedef long long ll;
-const int maxn &#x3D; 1e6 + 10;
-int a[maxn],n,k;
-string str;
-void get()
-&#123;
-	for(int i &#x3D; 1;i &lt;&#x3D; 20;++i)
-	&#123;
-		int div &#x3D; floor(sqrt(1.0 * i));
-		if(i % div &#x3D;&#x3D; 0)
-		&#123;
-			cout &lt;&lt; &quot;i -&gt; &quot; &lt;&lt; i &lt;&lt; &quot;\n&quot;;
-		&#125;
-	&#125;
-&#125;
-int getans(int x)
-&#123;
-	if(x &#x3D;&#x3D; 0) return 0;
-	int rd &#x3D; (sqrt(1.0 * x));
-	if(rd * rd &gt; x) rd--;
-	int haha &#x3D; rd * rd;
-	int ans &#x3D; (rd - 1) * 3;
-	if(x &gt;&#x3D; haha)
-	&#123;
-		ans++;
-	&#125;
-	if(x &gt;&#x3D; haha + rd)
-	&#123;
-		ans++;
-	&#125;
-	if(x &gt;&#x3D; haha + rd * 2)
-	&#123;
-		ans++;
-	&#125;
-	return ans;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		int l,r;
-		cin &gt;&gt; l &gt;&gt; r;
-		&#x2F;&#x2F; cout &lt;&lt; getans(l - 1) &lt;&lt; &quot;\n&quot;;
-		&#x2F;&#x2F; cout &lt;&lt; l &lt;&lt; &quot; &quot; &lt;&lt; getans(l - 1) &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot; &quot; &lt;&lt; getans(r) &lt;&lt; &quot;\n&quot;;
-		cout &lt;&lt; getans(r) - getans(l - 1) &lt;&lt; &quot;\n&quot;;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
 
-<h2 id="C-Ela-and-Crickets"><a href="#C-Ela-and-Crickets" class="headerlink" title="C. Ela and Crickets"></a>C. Ela and Crickets</h2><p><strong>题目大意:</strong> 给定一个无限大的棋盘，给定一个$L$形状的棋子以及这个棋子刚开始的坐标，给定一个目标坐标，问这个棋子通过跳跃的方式能否到达这个目标点</p>
-<p><strong>解题思路:</strong> 既然在一个棋盘上面，我们可以先考虑本身这个棋盘所带来的性质，也就是考虑存在的$L$形状的奇偶性带来的影响。我们可以模拟样例，发现对于一个$L$形状来说，和那个空着的格子的横纵坐标奇偶性都一样的那么我们是不可达的；然后我们考虑特殊情况，如果那个小角在边缘的话，那么不管怎么样子也只能再这个边缘移动，然后这样子判断即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-typedef long long ll;
-const int maxn &#x3D; 1e2 + 10;
-int r[maxn],n,k,c[maxn],x,y,sx,sy;
-string str;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		map&lt;int,int&gt; mpx,mpy;
-		for(int i &#x3D; 1;i &lt;&#x3D; 3;++i)
-		&#123;
-			cin &gt;&gt; r[i] &gt;&gt; c[i];
-			mpx[r[i]]++;
-			mpy[c[i]]++;
-		&#125;
-		cin &gt;&gt; x &gt;&gt; y;
-		sx &#x3D; sy &#x3D; 0;
-		for(auto [to,cs]:mpx)
-		&#123;
-			if(cs &#x3D;&#x3D; 2) sx &#x3D; to;
-		&#125;
-		for(auto [to,cs]:mpy)
-		&#123;
-			if(cs &#x3D;&#x3D; 2) sy &#x3D; to;
-		&#125;
-		&#x2F;&#x2F;边缘
-		if((sx &#x3D;&#x3D; 1 || sx &#x3D;&#x3D; n) &amp;&amp; (sy &#x3D;&#x3D; 1 || sy &#x3D;&#x3D; n))
-		&#123;
-			if(sx &#x3D;&#x3D; x || sy &#x3D;&#x3D; y) cout &lt;&lt; &quot;YES\n&quot;;
-			else cout &lt;&lt; &quot;NO\n&quot;;
-			continue;
-		&#125;
-		if((sx - x + sy - y) % 2 &#x3D;&#x3D; 1)
-		&#123;
-			cout &lt;&lt; &quot;YES\n&quot;;
-			continue;
-		&#125;
-		if((sx - x) % 2 &#x3D;&#x3D; 0) cout &lt;&lt; &quot;YES\n&quot;;
-		else if((sy - y) % 2 &#x3D;&#x3D; 0) cout &lt;&lt; &quot;YES\n&quot;;
-		else cout &lt;&lt; &quot;NO\n&quot;;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="D-Ela-and-the-Wiring-Wizard"><a href="#D-Ela-and-the-Wiring-Wizard" class="headerlink" title="D. Ela and the Wiring Wizard"></a>D. Ela and the Wiring Wizard</h2><p><strong>题目大意:</strong> 给定一张图，图有$n$个点$m$条边$(2 \leq n \leq 500,n - 1\leq m \leq 100000)$每次可以进行若干次操作，操作如下所示</p>
-<p>选择两条边$(u,v)$和$(v,w)$删除$(u,v)$然后连接$(u,w)$，代价是$(u,v)$的边权</p>
-<p>问从节点$1$到节点$n$最少需要多少次</p>
-<p><strong>解题思路:</strong> 刚开始拿到题目的时候发现没有任何思路，模拟样例可以发现一个性质，就是无论最后怎么样，最后只有一条从$1$到$n$的边使用</p>
-<p>那么我们可以提出猜想，是否从$1$到$n$只需要连接一条路呢？</p>
-<p>接下来的部分参考了$pzr$佬的</p>
-<p>我们可以做出反证感性理解一下，假设我们有多条路到$n$，其中分别是$1 -&gt; u_1 -&gt; u_2 -&gt; n$,设$u_1 -&gt;u_2$的距离是$w_1$，另外一条从$1 -&gt; u_1$权值是$w_2$</p>
-<p>首先就放着这两条边，边权是$w_1 + w_2$</p>
-<p>如果让我们把所有的边都变成$w_1$,那么就是$2w_1$</p>
-<p>或者我们把所有边变成$w_2$，那么就是$2w_2$</p>
-<p>那么进行修改后我们总能贪心取到最小的</p>
-<p>分析样例之后，我们发现建边有成自环和非自环的情况</p>
-<p>分析非自环的情况，那么对于一条边来说，就是去修改$dis(1,u) + dis(v,n)$的次数然后再加上$1$次走到的贡献</p>
-<p>那么接下来考虑自环的情况，如果有自环的话最多可能存在几个自环呢？</p>
-<p>我们可以把自环看成是一个点，设自环点是$x$,那么我们额外花费一个贡献连接$x$,从$1$到$x$再从$x$到$n$的距离相加然后乘贡献，这个$x$相当于中间的一个断点去更新整张图，因此实际上最多也就只有一个</p>
-<p>那么对于这一种题目来说，分析完整道题目我们发现都是对<strong>边</strong> 这一个元素进行考虑</p>
-<p>因为从一开始我们就在思考，从得出结论开始，再到实际上我去取哪条边最优</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#define int long long
-typedef long long ll;
-const int maxn &#x3D; 1e3 + 10;
-const int inf &#x3D; 1e9;
-int dis[maxn][maxn],n,m;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n &gt;&gt; m;
-		vector&lt;array&lt;int,3&gt;&gt; edge;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-			&#123;
-				dis[i][j] &#x3D; inf;
-			&#125;
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) dis[i][i] &#x3D; 0;
-		for(int i &#x3D; 1,u,v,w;i &lt;&#x3D; m;++i)
-		&#123;
-			cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
-			edge.push_back(&#123;u,v,w&#125;);
-			dis[u][v] &#x3D; dis[v][u] &#x3D; 1;
-		&#125;
-		for(int k &#x3D; 1;k &lt;&#x3D; n;++k)
-		&#123;
-			for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-			&#123;
-				for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-				&#123;
-					chkmin(dis[i][j],dis[i][k] + dis[k][j]);
-				&#125;
-			&#125;
-		&#125;
-		int ans &#x3D; 1e18;
-		for(auto [u,v,w]:edge)
-		&#123;
-			chkmin(ans,(dis[1][u] + 1 + dis[v][n]) * w);
-			chkmin(ans,(dis[1][v] + dis[u][n] + 1) * w);
-			for(int x &#x3D; 1;x &lt;&#x3D; n;++x)
-			&#123;
-				chkmin(ans,(min(dis[u][x],dis[v][x]) + dis[1][x] + dis[x][n] + 2) * w);
-			&#125;
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-      
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/09/Dytechlab-Cup-2022/" data-id="clcisuazu000a5vwl1mgv2wme" data-title="Dytechlab Cup 2022" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codeforces/" rel="tag">codeforces</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a></li></ul>
+</div>
 
-    </footer>
-  </div>
-  
-</article>
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
 
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/09/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-10-09T03:44:29.854Z" itemprop="datePublished">2022-10-09</time>
-</a>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/09/hello-world/">Hello World</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">Treasure</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
 
-      
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/09/hello-world/" data-id="clcisub08000r5vwlfehw5v7e" data-title="Hello World" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Atcoder-Beginner-Contest-272" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/08/Atcoder-Beginner-Contest-272/" class="article-date">
-  <time class="dt-published" datetime="2022-10-08T13:57:16.000Z" itemprop="datePublished">2022-10-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/08/Atcoder-Beginner-Contest-272/">Atcoder Beginner Contest 272</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Atcoder-Beginner-Contest-272"><a href="#Atcoder-Beginner-Contest-272" class="headerlink" title="Atcoder Beginner Contest 272"></a>Atcoder Beginner Contest 272</h1><h2 id="A-Integer-Sum"><a href="#A-Integer-Sum" class="headerlink" title="A - Integer Sum"></a>A - Integer Sum</h2><p><strong>题目大意:</strong> 给定$n$个数字，求$n$个数字的和</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-int n,sum;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1,x;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; x;
-		sum +&#x3D; x;
-	&#125;
-	cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="B-Everyone-is-Friends"><a href="#B-Everyone-is-Friends" class="headerlink" title="B - Everyone is Friends"></a>B - Everyone is Friends</h2><p><strong>题目大意:</strong> 给定$n$个人以及$m$个分组，问是否每两个人都曾经出现在同一组过</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-int n,sum,m;
-set&lt;int&gt; a[maxn];
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m;
-	for(int i &#x3D; 1,num;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; num;
-		for(int j &#x3D; 1,x;j &lt;&#x3D; num;++j)
-		&#123;
-			cin &gt;&gt; x;
-			a[x].insert(i);
-		&#125;
-	&#125;
-	int f &#x3D; 0;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; i + 1;j &lt;&#x3D; n;++j)
-		&#123;
-			int nm &#x3D; 0;
-			for(auto to:a[i])
-			&#123;
-				auto it &#x3D; a[j].find(to);
-				if(it !&#x3D; a[j].end()) 
-				&#123;
-					nm++;
-				&#125;
-			&#125;
-			if(nm &gt;&#x3D; 1) f++;
-		&#125;
-	&#125;
-	if(f &#x3D;&#x3D; n * (n - 1) &#x2F; 2) cout &lt;&lt; &quot;Yes\n&quot;;
-	else cout &lt;&lt; &quot;No\n&quot;;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="C-Max-Even"><a href="#C-Max-Even" class="headerlink" title="C - Max Even"></a>C - Max Even</h2><p><strong>题目大意:</strong> 给定$n(1 \leq n \leq 2e5)$个数字，问两个不相同的数字加起来的最大偶数是多少</p>
-<p><strong>解题思路:</strong> 分析题目我们可以发现一个关键问题就是两个数字加起来是偶数，那么要么是奇数和奇数相加要么是偶数和偶数相加，我们分类一下数字的奇偶性即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-int n,sum,m;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	set&lt;int&gt; odd,even;
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1,x;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; x;
-		if(x &amp; 1) odd.insert(x);
-		else even.insert(x);
-	&#125;
-	int ans &#x3D; -1;
-	if(odd.size() &gt;&#x3D; 2)
-	&#123;
-		int res &#x3D; 0;
-		res +&#x3D; *odd.rbegin();
-		odd.erase(prev(odd.end()));
-		res +&#x3D; *odd.rbegin();
-		ans &#x3D; max(ans,res);
-	&#125;
-	if(even.size() &gt;&#x3D; 2)
-	&#123;
-		int res &#x3D; 0;
-		res +&#x3D; *even.rbegin();
-		even.erase(prev(even.end()));
-		res +&#x3D; *even.rbegin();
-		ans &#x3D; max(ans,res);
-	&#125;
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="D-Root-M-Leaper"><a href="#D-Root-M-Leaper" class="headerlink" title="D - Root M Leaper"></a>D - Root M Leaper</h2><p><strong>题目大意:</strong> 给定一个$n * n(1\leq n \leq 400)$的棋盘，初始点在$(1,1)$，一个点如果在$(i,j)$当且仅当它可以到$(k,l)$存在他们的$\sqrt{(i - k) ^ 2 + (j - l) ^ 2} &#x3D; \sqrt{m} (1 \leq m \leq 1e5)$</p>
-<p>求这个矩阵中的所有点最少需要几步能被走到</p>
-<p><strong>解题思路:</strong> 发现无论怎么走实际上我们是走不出这个棋盘的，那么实际上$m$最多不会超过$n$，那么我们就可以预处理出所有可以走的步数然后进行$BFS$即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 5e2 + 10;
-const int inf &#x3D; 1e9;
-int n,m;
-int tx[] &#x3D; &#123;1,-1,1,-1&#125;;
-int ty[] &#x3D; &#123;1,1,-1,-1&#125;;
-int dis[maxn][maxn];
-int vis[maxn][maxn];
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m;
-	vector&lt;pair&lt;int,int&gt;&gt; stp;
-	int lmt &#x3D; min(n,m) + 100;
-	for(int i &#x3D; 0;i &lt;&#x3D; lmt;++i)
-	&#123;
-		for(int j &#x3D; 0;j &lt;&#x3D; lmt;++j)
-		&#123;
-			if(i * i + j * j &#x3D;&#x3D; m)
-			&#123;
-				stp.push_back(&#123;i,j&#125;);
-				stp.push_back(&#123;j,i&#125;);
-			&#125;
-		&#125;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; 1;j &lt;&#x3D; n;++j) dis[i][j] &#x3D; inf;
-	&#125;
-	queue&lt;array&lt;int,2&gt;&gt; que;
-	que.push(&#123;1,1&#125;);
-	vis[1][1] &#x3D; 1;
-	dis[1][1] &#x3D; 0;
-	while(!que.empty())
-	&#123;
-		auto [x,y] &#x3D; que.front();
-		que.pop();
-		for(auto [spx,spy]:stp)
-		&#123;
-			for(int k &#x3D; 0;k &lt;&#x3D; 3;++k)
-			&#123;
-				auto fx &#x3D; x + spx * tx[k];
-				auto fy &#x3D; y + spy * ty[k];
-				if(fx &gt;&#x3D; 1 &amp;&amp; fx &lt;&#x3D; n &amp;&amp; fy &gt;&#x3D; 1 &amp;&amp; fy &lt;&#x3D; n &amp;&amp; dis[fx][fy] &#x3D;&#x3D; inf &amp;&amp; vis[fx][fy] &#x3D;&#x3D; 0)
-				&#123;
-					dis[fx][fy] &#x3D; dis[x][y] + 1;
-					vis[fx][fy] &#x3D; 1;
-					que.push(&#123;fx,fy&#125;);
-				&#125;
-			&#125;
-		&#125;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-		&#123;
-			if(dis[i][j] &#x3D;&#x3D; inf) dis[i][j] &#x3D; -1;
-		&#125;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; 1;j &lt;&#x3D; n;++j)
-		&#123;
-			cout &lt;&lt; dis[i][j] &lt;&lt; &quot; \n&quot;[j &#x3D;&#x3D; n];
-		&#125;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="E-Add-and-Mex"><a href="#E-Add-and-Mex" class="headerlink" title="E - Add and Mex"></a>E - Add and Mex</h2><p><strong>题目大意:</strong> 给定一个长度为$n (1 \leq n \leq 2e5)$的数组，数组是$int$范围，给定$m$次操作，每次操作第$i$个位置上面的数字都会加上$i$，问这个数组的$mex$是多少</p>
-<p><strong>解题思路:</strong> 首先我们通过模拟样例可以发现一件事情，就是如果这个序列中的数字是负数，那么它实际上是没有用的，其次是考虑$mex$的性质，因为对于长度为$n$的数组来说，$mex$最大就是$n + 1$，那么对于每一个数字来说最多也不会超过$n + 1$，既然这样，因为对于一个下标为$i$的数字来说，最多加$n &#x2F; i$次，那么对于整个序列来说就是一个调和级数，模拟即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-const int inf &#x3D; 1e9;
-int n,m;
-int ans[maxn],a[maxn];
-vector&lt;int&gt; pos[maxn];
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n &gt;&gt; m;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; a[i];
-		int st &#x3D; 0;
-		if(a[i] &lt; 0)
-		&#123;
-			int rd &#x3D; abs(a[i]) &#x2F; i;
-			if(abs(a[i]) % i) rd++;
-			a[i] +&#x3D; i * rd;
-			st &#x3D; rd;
-			if(st &lt;&#x3D; m)
-			&#123;
-				pos[st].push_back(a[i]);
-			&#125;
-		&#125;
-		while(a[i] + i &lt;&#x3D; n &amp;&amp; st &lt;&#x3D; m)
-		&#123;
-			st++;
-			a[i] +&#x3D; i;
-			if(a[i] &gt;&#x3D; 0)
-			&#123;
-				pos[st].push_back(a[i]);
-			&#125;
-		&#125;
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-	&#123;
-		sort(pos[i].begin(),pos[i].end());
-		pos[i].erase(unique(pos[i].begin(),pos[i].end()),pos[i].end());
-		int now &#x3D; 0;
-		for(auto to:pos[i])
-		&#123;
-			if(to !&#x3D; now) break;
-			now++;
-		&#125;
-		cout &lt;&lt; now &lt;&lt; &quot;\n&quot;;
-	&#125;
-	
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="G-Yet-Another-mod-M"><a href="#G-Yet-Another-mod-M" class="headerlink" title="G - Yet Another mod M"></a>G - Yet Another mod M</h2><p><strong>题目大意:</strong> 给定一个长度为$n(1 \leq n \leq 5000)$，然后找到一个数字$M$，使得这个序列中每一个数字$mod$ $M$后存在唯一的众数</p>
-<p><strong>解题思路:</strong> 在赛时就在想随机是否可行但是没有一个好的$check$方案，然后参考了一下严格鸽的题解</p>
-<p>首先因为是唯一的众数，那么假设我们在序列中取两个数字，这两个数字$mod$ $M$ 都是$0$的，那么就存在$(x - y) $  $mod$  $m &#x3D;&#x3D; 0$</p>
-<p>那接下来我们去找$(x - y)$的因子就可以了</p>
-<p>这样子做的正确概率是：因为$x,y$都有$\frac{1}{2}$的概率取到，那么总的取到的概率就是$\frac{1}{4}$，那我们选择多次选择不到的概率实际上很小，对赌就可以了</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-&#x2F;&#x2F; #define int long long
-&#x2F;&#x2F; typedef long long ll;
-const int maxn &#x3D; 2e5 + 10;
-const int inf &#x3D; 1e9;
-int n,m;
-int ans[maxn],a[maxn];
-vector&lt;int&gt; pos[maxn];
-int check(int x)
-&#123;
-	if(x &lt; 3) return 0;
-	map&lt;int,int&gt; mp;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		mp[a[i] % x]++;
-		if(mp[a[i] % x] * 2 &gt; n) return 1;
-	&#125;
-	return 0;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	srand(time(NULL));
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; a[i];
-	&#125;
-	int cnt &#x3D; 200;
-	while(cnt--)
-	&#123;
-		int x &#x3D; a[rand() % n + 1];
-		int y &#x3D; a[rand() % n + 1];
-		int d &#x3D; x - y;
-		if(d &#x3D;&#x3D; 0) continue;
-		for(int i &#x3D; 1;i * i &lt;&#x3D; d;++i)
-		&#123;
-			if(d % i !&#x3D; 0) continue;
-			if(check(i))
-			&#123;
-				cout &lt;&lt; i &lt;&lt; &quot;\n&quot;;
-				return 0;
-			&#125;
-			if(check(d &#x2F; i))
-			&#123;
-				cout &lt;&lt; d &#x2F; i &lt;&lt; &quot;\n&quot;;
-				return 0;
-			&#125;
-		&#125;
-	&#125;
-	cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/08/Atcoder-Beginner-Contest-272/" data-id="clcisuazj00015vwl2pyfev96" data-title="Atcoder Beginner Contest 272" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/abc/" rel="tag">abc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/abc/" rel="tag">abc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cf/" rel="tag">cf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codeforces/" rel="tag">codeforces</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dsu/" rel="tag">dsu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mst/" rel="tag">mst</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BB%BA%E5%9B%BE/" rel="tag">建图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="tag">最短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag">网络流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/abc/" style="font-size: 15px;">abc</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cf/" style="font-size: 15px;">cf</a> <a href="/tags/codeforces/" style="font-size: 10px;">codeforces</a> <a href="/tags/dsu/" style="font-size: 10px;">dsu</a> <a href="/tags/mst/" style="font-size: 10px;">mst</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 15px;">图论</a> <a href="/tags/%E5%BB%BA%E5%9B%BE/" style="font-size: 10px;">建图</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 20px;">思维</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 10px;">最短路</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" style="font-size: 10px;">网络流</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" style="font-size: 10px;">计算几何</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/01/05/%E5%B9%B6%E6%9F%A5%E9%9B%86-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%83%A8%E5%88%86%E9%A2%98%E8%A7%A3%E5%8F%8A%E4%BB%A3%E7%A0%81/">并查集&amp;最小生成树部分题解及代码</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/03/pythonbasic/">pythonbasic</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/03/goodbye2022/">goodbye2022</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/11/ICPC-2021-EC-J/">ICPC-2021-EC-J</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/01/Codeforces-Round-831-A-E/">Codeforces Round 831 A - E</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2023 Treasure<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
 
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
     
 
+    
+    
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    <!-- 雪花特效 -->
+    
 
+    <!-- 鼠标星星特效 -->
+    
 
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
 
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <!-- Baidu Analytics -->
 
+    <!-- Baidu Push -->
 
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
 
-<script src="/js/script.js"></script>
+    
 
+    
 
+    <!--腾讯兔小巢-->
+    
+    
 
+    
 
+    
 
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
 </body>
+
 </html>
