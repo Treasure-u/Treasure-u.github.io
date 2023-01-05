@@ -242,7 +242,7 @@ mark {
 
 .bg-color {
    /* background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);*/
-    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+   background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
 }
 
 .text-color {
@@ -258,7 +258,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
     opacity: 0.8;
 }
 
@@ -1807,7 +1807,7 @@ thead {
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
     border: 1px solid #4cbf30;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
