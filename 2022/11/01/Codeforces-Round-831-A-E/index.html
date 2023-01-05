@@ -370,7 +370,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    308
                 </div>
                 
 
@@ -389,28 +389,137 @@
             <div id="articleContent">
                 <h1 id="Codeforces-Round-831-A-E"><a href="#Codeforces-Round-831-A-E" class="headerlink" title="Codeforces Round 831 A - E"></a>Codeforces Round 831 A - E</h1><h2 id="A-Factorise-N-M"><a href="#A-Factorise-N-M" class="headerlink" title="A. Factorise N+M"></a>A. Factorise N+M</h2><p><strong>题目大意:</strong> 给定一个质数$n$，找到一个质数$m$ ，使得$n + m$是一个非质数</p>
 <p><strong>解题思路:</strong> 对于非$2$的质数来说其他质数全部都是奇数，那么我们可以对于这些质数加上一个$3$，然后对于$2$特判加上$5$即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		<span class="keyword">if</span>(n == <span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="number">7</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> cout &lt;&lt; <span class="number">3</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    int T;
+    cin >> T;
+    while(T--)
+    &#123;
+        cin >> n;
+        if(n == 2)
+        &#123;
+            cout << 7 << "\n";
+        &#125;
+        else cout << 3 << "\n";
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="B-Jumbo-Extra-Cheese-2"><a href="#B-Jumbo-Extra-Cheese-2" class="headerlink" title="B. Jumbo Extra Cheese 2"></a>B. Jumbo Extra Cheese 2</h2><p><strong>题目大意:</strong> 给定$n$个矩阵，我们需要把矩阵放到$x$轴上面，一个矩阵不能放在另外一个矩阵的上面，问这个矩阵的形成的一个图形的周长是多少</p>
 <p><strong>解题思路:</strong> 将这个图形拿出来在颅内思考一下，发现因为很多个矩形会贴在一起，那么对于形成的这个图形的 <strong>高</strong> 实际上就是最长的矩形的高，同时对于每个矩形来说他们的宽都要计算两边，那么我们对于每一个矩形来说我们可以选定较小的那一部分作为宽，较高的那一部分作为高，然后找一个最长的高即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt; a[maxn];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,u,v;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">			<span class="keyword">if</span>(u &lt; v) <span class="built_in">swap</span>(u,v);</span><br><span class="line">			a[i] = &#123;u,v&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">sort</span>(a + <span class="number">1</span>,a + <span class="number">1</span> + n);</span><br><span class="line">		<span class="type">int</span> ans = <span class="number">2</span> * a[n].first;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			ans += a[i].second * <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">pair<int,int> a[maxn];
+signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    int T;
+    cin >> T;
+    while(T--)
+    &#123;
+        cin >> n;
+        for(int i = 1,u,v;i <= n;++i)
+        &#123;
+            cin >> u >> v;
+            if(u < v) swap(u,v);
+            a[i] = &#123;u,v&#125;;
+        &#125;
+        sort(a + 1,a + 1 + n);
+        int ans = 2 * a[n].first;
+        for(int i = 1;i <= n;++i)
+        &#123;
+            ans += a[i].second * 2;
+        &#125;
+        cout << ans << "\n";
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="C-Bricks-and-Bags"><a href="#C-Bricks-and-Bags" class="headerlink" title="C. Bricks and Bags"></a>C. Bricks and Bags</h2><p><strong>题目大意:</strong> 给定$n(1 \leq n \leq 10^5)$个数字，将他们放在$a,b,c$三个背包中，玩家需要从这三个背包中各选择一个数字，并且计算$|w_1 - w_2| + |w_2 - w_3|$ $(w_1 \in a,w_2 \in b,w_3 \in c)$的值是多少，然后玩家想要让值尽可能的小，放置者想要让值尽可能的大，问如何放置才能使得这个值最大</p>
 <p><strong>解题思路:</strong> 首先先放在数轴上面考虑这个问题，我们假设$w_3 &gt; w_1$，如果$w_2$在$w_1$和$w_3$之间，那么值就是$w_3 - w_1$，如果$w_2 &lt; w_1$，那么对应的值就是$w_1 - w_2 + w_3 - w_2$，若$w_2 &gt; w_3$，那么对应的值就是$w_2 - w_3 + w_2 - w_1$</p>
 <p>对于夹在中间的情况，我们可以直接计算，也就是整个序列的最大值减去整个序列的最小值</p>
 <p>如果是第一种情况$w_2 &lt; w_1$，那么实际上我们是去取若干个小值给放在$b$中，为了让权值最大我们可以把$a_n$给单独拉出来当作$w_3$，假设目前取到的小值已经到了第$i$位，那么权值就是$a_n - a_i + a_{i + 1} - a_i$</p>
 <p>如果是第二种情况$w_2 &gt; w_3$，那么实际上我们就是去取若干个大值给放在$b$中，为了让权值最大我们可以把$a_1$给单独拉出来当作$w_1$，假设目前取到的大值已经到了第$i$位，那么权值实际上就是$a_i - a_1 + a_i - a_{i - 1}$</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) cin &gt;&gt; a[i];</span><br><span class="line">		<span class="built_in">sort</span>(a + <span class="number">1</span>,a + <span class="number">1</span> + n);</span><br><span class="line">		<span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt; n - <span class="number">1</span>;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">chkmax</span>(ans,a[n] - a[i] + a[i + <span class="number">1</span>] - a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = n;i &gt; <span class="number">2</span>;--i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">chkmax</span>(ans,a[i] - a[i - <span class="number">1</span>] + a[i] - a[<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    int T;
+    cin >> T;
+    while(T--)
+    &#123;
+        cin >> n;
+        for(int i = 1;i <= n;++i) cin >> a[i];
+        sort(a + 1,a + 1 + n);
+        int ans = 0;
+        for(int i = 1;i < n - 1;++i)
+        &#123;
+            chkmax(ans,a[n] - a[i] + a[i + 1] - a[i]);
+        &#125;
+        for(int i = n;i > 2;--i)
+        &#123;
+            chkmax(ans,a[i] - a[i - 1] + a[i] - a[1]);
+        &#125;
+        cout << ans << "\n";	
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="D-Knowledge-Cards"><a href="#D-Knowledge-Cards" class="headerlink" title="D. Knowledge Cards"></a>D. Knowledge Cards</h2><p><strong>题目大意:</strong> 给定一个$n * m(n * m \leq 10^6)$的矩阵，刚开始在矩阵$(1,1)$堆积着$k$张牌，从顶部到底部分别是$a_1,a_2,…,a_k$，接下来我们可以把牌移动到别的格子中，注意除了$(1,1)$和$(n,m)$这两个格子其他格子放置的牌数不能超过一张，然后$(1,1)$不能被重复放置牌，也不能从$(n,m)$移出去一张牌，问堆在$(n,m)$上面的牌从顶部到底部牌的排列是否可以是$1,2,3,…k$</p>
 <p><strong>解题思路:</strong> 直接移动牌即可，因为我们在移动牌的时候肯定需要给当前一张牌留出一点位置的，所以除了$(1,1)$和$(n,m)$我们另外留出一个位置就能随便移动了，否则就是不能构成的情况</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= k;++i) cin &gt;&gt; a[i];</span><br><span class="line"><span class="type">int</span> nowcnt = k;</span><br><span class="line">priority_queue&lt;<span class="type">int</span>,vector&lt;<span class="type">int</span>&gt;,less&lt;<span class="type">int</span>&gt;&gt; q;</span><br><span class="line"><span class="type">int</span> f = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= k;++i)</span><br><span class="line">&#123;</span><br><span class="line">    q.<span class="built_in">push</span>(a[i]);</span><br><span class="line">    <span class="keyword">if</span>(q.<span class="built_in">size</span>() &gt;= n * m - <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        f = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>() &amp;&amp; q.<span class="built_in">top</span>() == nowcnt)</span><br><span class="line">    &#123;</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        nowcnt--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(f) cout &lt;&lt; <span class="string">&quot;YA\n&quot;</span>;</span><br><span class="line"><span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;TIDAK\n&quot;</span>;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">cin >> n >> m >> k;
+for(int i = 1;i <= k;++i) cin >> a[i];
+int nowcnt = k;
+priority_queue<int,vector<int>,less<int>> q;
+int f = 1;
+for(int i = 1;i <= k;++i)
+&#123;
+    q.push(a[i]);
+    if(q.size() >= n * m - 2)
+    &#123;
+        f = 0;
+        break;
+    &#125;
+    while(!q.empty() && q.top() == nowcnt)
+    &#123;
+        q.pop();
+        nowcnt--;
+    &#125;
+&#125;
+if(f) cout << "YA\n";
+else cout << "TIDAK\n";
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="E-Hanging-Hearts"><a href="#E-Hanging-Hearts" class="headerlink" title="E. Hanging Hearts"></a>E. Hanging Hearts</h2><p><strong>题目大意:</strong> 给定一棵树，我们需要给这棵树分配一些权值，这些权值属于一个排列。然后我们从叶子开始取，取的时候会构成一个序列。我们每次取叶子的时候判断他的父节点是否大于叶子结点如果大于叶子结点那么父节点的权值也变成叶子结点的权值，问构成的序列中形成的最大非递减子序列长度是多少</p>
 <p><strong>解题思路:</strong> 考虑拿取叶子的性质实际上我们将小的权值放在下面更好一点，因为小的权值会把权值赋值给上面的父亲节点，那么对于一个节点来说她下面可能有很多条链，我这个节点要么作为子序列的终点要么作为子序列的中转点。如果作为终点的话那么也需要从下面的终点转移过来，如果作为中转点的话就可以将下面的节点选择他们的中转点或者是终点取最大然后把权值全部加起来</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n,m,k;</span><br><span class="line"><span class="type">int</span> dp[maxn][<span class="number">2</span>];</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; edge[maxn];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> s,<span class="type">int</span> fa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	dp[s][<span class="number">0</span>] = dp[s][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> mx = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> to:edge[s])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(to == fa) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">dfs</span>(to,s);</span><br><span class="line">		dp[s][<span class="number">0</span>] += <span class="built_in">max</span>(dp[to][<span class="number">0</span>],dp[to][<span class="number">1</span>]);</span><br><span class="line">		<span class="built_in">chkmax</span>(mx,dp[to][<span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	dp[s][<span class="number">1</span>] = mx + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>,x;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; x;</span><br><span class="line">		edge[i].<span class="built_in">push_back</span>(x);</span><br><span class="line">		edge[x].<span class="built_in">push_back</span>(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	cout &lt;&lt; <span class="built_in">max</span>(dp[<span class="number">1</span>][<span class="number">0</span>],dp[<span class="number">1</span>][<span class="number">1</span>]) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">int n,m,k;
+int dp[maxn][2];
+vector<int> edge[maxn];
+void dfs(int s,int fa)
+&#123;
+    dp[s][0] = dp[s][1] = 0;
+    int mx = 0;
+    for(auto to:edge[s])
+    &#123;
+        if(to == fa) continue;
+        dfs(to,s);
+        dp[s][0] += max(dp[to][0],dp[to][1]);
+        chkmax(mx,dp[to][1]);
+    &#125;
+    dp[s][1] = mx + 1;
+&#125;
+signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> n;
+    for(int i = 2,x;i <= n;++i)
+    &#123;
+        cin >> x;
+        edge[i].push_back(x);
+        edge[x].push_back(i);
+    &#125;
+    dfs(1,0);
+    cout << max(dp[1][0],dp[1][1]) << "\n";
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -811,7 +920,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.4k</span>
+                        class="white-color">6.9k</span>
             
             
             

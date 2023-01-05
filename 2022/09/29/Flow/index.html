@@ -379,7 +379,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.1k
+                    324
                 </div>
                 
 
@@ -409,19 +409,436 @@
 <li><p>所以我们每次开始的边其实都是$etot$</p>
 </li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> V = <span class="number">1210</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> E = <span class="number">121000</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FlowGraph</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> s,t,vtot;</span><br><span class="line">	<span class="type">int</span> head[V],etot;</span><br><span class="line">	<span class="type">int</span> dis[V],cur[V];</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">edge</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v,nxt;</span><br><span class="line">		T f;</span><br><span class="line">	&#125;e[E * <span class="number">2</span>];</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">addedge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,T f)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		e[etot] = &#123;v,head[u],f&#125;; head[u] = etot++;</span><br><span class="line">		e[etot] = &#123;u,head[v],<span class="number">0</span>&#125;; head[v] = etot++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= vtot;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			dis[i] = <span class="number">0</span>;</span><br><span class="line">			cur[i] = head[i];</span><br><span class="line">		&#125;</span><br><span class="line">		queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">		q.<span class="built_in">push</span>(s);dis[s] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(!q.<span class="built_in">empty</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> u = q.<span class="built_in">front</span>();q.<span class="built_in">pop</span>();</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i = head[u];~i;i = e[i].nxt)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(e[i].f &amp;&amp; !dis[e[i].v])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="type">int</span> v = e[i].v;</span><br><span class="line">					dis[v] = dis[u] + <span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span>(v == t) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">					q.<span class="built_in">push</span>(v);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">dfs</span><span class="params">(<span class="type">int</span> u,T m)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(u == t) <span class="keyword">return</span> m;</span><br><span class="line">		T flow = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = cur[u];~i;cur[u] = i = e[i].nxt)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(e[i].f &amp;&amp; dis[e[i].v] == dis[u] + <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				T f = <span class="built_in">dfs</span>(e[i].v,<span class="built_in">min</span>(e[i].f,m));</span><br><span class="line">				e[i].f -= f;</span><br><span class="line">				e[i ^ <span class="number">1</span>].f += f;</span><br><span class="line">				m -= f;</span><br><span class="line">				flow += f;</span><br><span class="line">				<span class="keyword">if</span>(!m) <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!flow) dis[u] = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">return</span> flow;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">dinic</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T flow = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="built_in">bfs</span>()) flow += <span class="built_in">dfs</span>(s,numeric_limits&lt;T&gt;::<span class="built_in">max</span>());</span><br><span class="line">		<span class="keyword">return</span> flow;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> s_,<span class="type">int</span> t_,<span class="type">int</span> vtot_)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		s = s_;</span><br><span class="line">		t = t_;</span><br><span class="line">		vtot = vtot_;</span><br><span class="line">        etot = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= vtot;++i) head[i] = <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> n,m,s,t;</span><br><span class="line">FlowGraph&lt;ll&gt; g;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m &gt;&gt; s &gt;&gt; t;</span><br><span class="line">	g.<span class="built_in">init</span>(s,t,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,u,v,w;i &lt;= m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">		g.<span class="built_in">addedge</span>(u,v,w);</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; g.<span class="built_in">dinic</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int V = 1210;
+const int E = 121000;
+template<typename T>
+struct FlowGraph
+&#123;
+    int s,t,vtot;
+    int head[V],etot;
+    int dis[V],cur[V];
+    struct edge
+    &#123;
+        int v,nxt;
+        T f;
+    &#125;e[E * 2];
+    void addedge(int u,int v,T f)
+    &#123;
+        e[etot] = &#123;v,head[u],f&#125;; head[u] = etot++;
+        e[etot] = &#123;u,head[v],0&#125;; head[v] = etot++;
+    &#125;
+    bool bfs()
+    &#123;
+        for(int i = 1;i <= vtot;++i)
+        &#123;
+            dis[i] = 0;
+            cur[i] = head[i];
+        &#125;
+        queue<int> q;
+        q.push(s);dis[s] = 1;
+        while(!q.empty())
+        &#123;
+            int u = q.front();q.pop();
+            for(int i = head[u];~i;i = e[i].nxt)
+            &#123;
+                if(e[i].f && !dis[e[i].v])
+                &#123;
+                    int v = e[i].v;
+                    dis[v] = dis[u] + 1;
+                    if(v == t) return true;
+                    q.push(v);
+                &#125;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+    T dfs(int u,T m)
+    &#123;
+        if(u == t) return m;
+        T flow = 0;
+        for(int i = cur[u];~i;cur[u] = i = e[i].nxt)
+        &#123;
+            if(e[i].f && dis[e[i].v] == dis[u] + 1)
+            &#123;
+                T f = dfs(e[i].v,min(e[i].f,m));
+                e[i].f -= f;
+                e[i ^ 1].f += f;
+                m -= f;
+                flow += f;
+                if(!m) break;
+            &#125;
+        &#125;
+        if(!flow) dis[u] = -1;
+        return flow;
+    &#125;
+    T dinic()
+    &#123;
+        T flow = 0;
+        while(bfs()) flow += dfs(s,numeric_limits<T>::max());
+        return flow;
+    &#125;
+    void init(int s_,int t_,int vtot_)
+    &#123;
+        s = s_;
+        t = t_;
+        vtot = vtot_;
+        etot = 0;
+        for(int i = 1;i <= vtot;++i) head[i] = -1;
+    &#125;
 
+&#125;;
+int n,m,s,t;
+FlowGraph<ll> g;
+int main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> n >> m >> s >> t;
+    g.init(s,t,n);
+    for(int i = 1,u,v,w;i <= m;++i)
+    &#123;
+        cin >> u >> v >> w;
+        g.addedge(u,v,w);
+    &#125;
+    cout << g.dinic() << "\n";
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="方案分配"><a href="#方案分配" class="headerlink" title="方案分配"></a>方案分配</h3><p>方案分配实际上我们可以思考他的<strong>流量</strong>和之前的关系，然后我们判断这个<strong>流量</strong>来输出方案</p>
 <p>题目条件可以是类似于这样子的，给定一些试题类型，其中再给定一些试题，我每个试题是属于不同的试题类型的，求是否可以分配，并且输出方案</p>
 <p>那么其实我们对应的解决方案是把相对应的东西放到一个$vector$中，然后去判断对应的边的流量即可</p>
-<h4 id="P2763"><a href="#P2763" class="headerlink" title="P2763"></a>P2763</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> V = <span class="number">1210</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> E = <span class="number">121000</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FlowGraph</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> s,t,vtot;</span><br><span class="line">	<span class="type">int</span> head[V],etot;</span><br><span class="line">	<span class="type">int</span> dis[V],cur[V];</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">edge</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v,nxt;</span><br><span class="line">		T f;</span><br><span class="line">	&#125;e[E * <span class="number">2</span>];</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">addedge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,T f)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		e[etot] = &#123;v,head[u],f&#125;; head[u] = etot++;</span><br><span class="line">		e[etot] = &#123;u,head[v],<span class="number">0</span>&#125;; head[v] = etot++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= vtot;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			dis[i] = <span class="number">0</span>;</span><br><span class="line">			cur[i] = head[i];</span><br><span class="line">		&#125;</span><br><span class="line">		queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">		q.<span class="built_in">push</span>(s);dis[s] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(!q.<span class="built_in">empty</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> u = q.<span class="built_in">front</span>();q.<span class="built_in">pop</span>();</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i = head[u];~i;i = e[i].nxt)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(e[i].f &amp;&amp; !dis[e[i].v])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="type">int</span> v = e[i].v;</span><br><span class="line">					dis[v] = dis[u] + <span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span>(v == t) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">					q.<span class="built_in">push</span>(v);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">dfs</span><span class="params">(<span class="type">int</span> u,T m)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(u == t) <span class="keyword">return</span> m;</span><br><span class="line">		T flow = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = cur[u];~i;cur[u] = i = e[i].nxt)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(e[i].f &amp;&amp; dis[e[i].v] == dis[u] + <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				T f = <span class="built_in">dfs</span>(e[i].v,<span class="built_in">min</span>(e[i].f,m));</span><br><span class="line">				e[i].f -= f;</span><br><span class="line">				e[i ^ <span class="number">1</span>].f += f;</span><br><span class="line">				m -= f;</span><br><span class="line">				flow += f;</span><br><span class="line">				<span class="keyword">if</span>(!m) <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!flow) dis[u] = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">return</span> flow;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">dinic</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T flow = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="built_in">bfs</span>()) flow += <span class="built_in">dfs</span>(s,numeric_limits&lt;T&gt;::<span class="built_in">max</span>());</span><br><span class="line">		<span class="keyword">return</span> flow;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> s_,<span class="type">int</span> t_,<span class="type">int</span> vtot_)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		s = s_;</span><br><span class="line">		t = t_;</span><br><span class="line">		vtot = vtot_;</span><br><span class="line">        etot = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= vtot;++i) head[i] = <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> n,k,s,t;</span><br><span class="line">FlowGraph&lt;ll&gt; g;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> st,num,id;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; prob[<span class="number">100</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; k &gt;&gt; n;</span><br><span class="line">	s = n + k + <span class="number">1</span>;</span><br><span class="line">	t = n + k + <span class="number">2</span>;</span><br><span class="line">	g.<span class="built_in">init</span>(s,t,t + <span class="number">10</span>);</span><br><span class="line">	<span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,x;i &lt;= k;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//1 -&gt; type</span></span><br><span class="line">		cin &gt;&gt; x;</span><br><span class="line">		sum += x;</span><br><span class="line">		g.<span class="built_in">addedge</span>(s,i,x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// cout &lt;&lt; &quot;sum -&gt; &quot; &lt;&lt; sum &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">	vector&lt;node&gt; used;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//type + 1 -&gt; type + n</span></span><br><span class="line">		<span class="type">int</span> num;</span><br><span class="line">		cin &gt;&gt; num;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>,bel;j &lt;= num;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; bel;</span><br><span class="line">			used.<span class="built_in">push_back</span>(&#123;bel,i,g.etot&#125;);</span><br><span class="line">			g.<span class="built_in">addedge</span>(bel,k + i,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		g.<span class="built_in">addedge</span>(k + i,t,<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// cout &lt;&lt; &quot;??\n&quot;;</span></span><br><span class="line">	ll namomo = g.<span class="built_in">dinic</span>();</span><br><span class="line">	<span class="keyword">if</span>(namomo != sum)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> now:used)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> idd = now.id;</span><br><span class="line">			<span class="keyword">if</span>(g.e[idd].f == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				prob[now.st].<span class="built_in">push_back</span>(now.num);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= k;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; i &lt;&lt; <span class="string">&quot;:&quot;</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">auto</span> to:prob[i])</span><br><span class="line">			&#123;</span><br><span class="line">				cout &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; to;</span><br><span class="line">			&#125;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">属于是最大流的方案分配问题，首先显而易见我们可以通过这一条边的流量去判断这个边是否被用过</span></span><br><span class="line"><span class="comment">来判断是否属于这一个方案当中</span></span><br><span class="line"><span class="comment">那么我们可以这样子，因为我们是把试题库和相对应的试题连接在一起</span></span><br><span class="line"><span class="comment">ok，那么这样子我们在建边的时候我们可以把相对应的边的号给放到一个vector里面</span></span><br><span class="line"><span class="comment">然后后续我们去检查这个边的流量是否为1即可</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="P2763"><a href="#P2763" class="headerlink" title="P2763"></a>P2763</h4><pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int V = 1210;
+const int E = 121000;
+template<typename T>
+struct FlowGraph
+&#123;
+    int s,t,vtot;
+    int head[V],etot;
+    int dis[V],cur[V];
+    struct edge
+    &#123;
+        int v,nxt;
+        T f;
+    &#125;e[E * 2];
+    void addedge(int u,int v,T f)
+    &#123;
+        e[etot] = &#123;v,head[u],f&#125;; head[u] = etot++;
+        e[etot] = &#123;u,head[v],0&#125;; head[v] = etot++;
+    &#125;
+    bool bfs()
+    &#123;
+        for(int i = 1;i <= vtot;++i)
+        &#123;
+            dis[i] = 0;
+            cur[i] = head[i];
+        &#125;
+        queue<int> q;
+        q.push(s);dis[s] = 1;
+        while(!q.empty())
+        &#123;
+            int u = q.front();q.pop();
+            for(int i = head[u];~i;i = e[i].nxt)
+            &#123;
+                if(e[i].f && !dis[e[i].v])
+                &#123;
+                    int v = e[i].v;
+                    dis[v] = dis[u] + 1;
+                    if(v == t) return true;
+                    q.push(v);
+                &#125;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+    T dfs(int u,T m)
+    &#123;
+        if(u == t) return m;
+        T flow = 0;
+        for(int i = cur[u];~i;cur[u] = i = e[i].nxt)
+        &#123;
+            if(e[i].f && dis[e[i].v] == dis[u] + 1)
+            &#123;
+                T f = dfs(e[i].v,min(e[i].f,m));
+                e[i].f -= f;
+                e[i ^ 1].f += f;
+                m -= f;
+                flow += f;
+                if(!m) break;
+            &#125;
+        &#125;
+        if(!flow) dis[u] = -1;
+        return flow;
+    &#125;
+    T dinic()
+    &#123;
+        T flow = 0;
+        while(bfs()) flow += dfs(s,numeric_limits<T>::max());
+        return flow;
+    &#125;
+    void init(int s_,int t_,int vtot_)
+    &#123;
+        s = s_;
+        t = t_;
+        vtot = vtot_;
+        etot = 0;
+        for(int i = 1;i <= vtot;++i) head[i] = -1;
+    &#125;
 
+&#125;;
+int n,k,s,t;
+FlowGraph<ll> g;
+struct node
+&#123;
+    int st,num,id;
+&#125;;
+vector<int> prob[100];
+int main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> k >> n;
+    s = n + k + 1;
+    t = n + k + 2;
+    g.init(s,t,t + 10);
+    int sum = 0;
+    for(int i = 1,x;i <= k;++i)
+    &#123;
+        //1 -> type
+        cin >> x;
+        sum += x;
+        g.addedge(s,i,x);
+    &#125;
+    // cout << "sum -> " << sum << "\n";
+    vector<node> used;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        //type + 1 -> type + n
+        int num;
+        cin >> num;
+        for(int j = 1,bel;j <= num;++j)
+        &#123;
+            cin >> bel;
+            used.push_back(&#123;bel,i,g.etot&#125;);
+            g.addedge(bel,k + i,1);
+        &#125;
+    &#125;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        g.addedge(k + i,t,1);
+    &#125;
+    // cout << "??\n";
+    ll namomo = g.dinic();
+    if(namomo != sum)
+    &#123;
+        cout << "\n";
+    &#125;
+    else
+    &#123;
+        for(auto now:used)
+        &#123;
+            int idd = now.id;
+            if(g.e[idd].f == 0)
+            &#123;
+                prob[now.st].push_back(now.num);
+            &#125;
+        &#125;
+        for(int i = 1;i <= k;++i)
+        &#123;
+            cout << i << ":";
+            for(auto to:prob[i])
+            &#123;
+                cout << " " << to;
+            &#125;
+            cout << "\n";
+        &#125;
+    &#125;
+    return 0;
+&#125;
+/*
+属于是最大流的方案分配问题，首先显而易见我们可以通过这一条边的流量去判断这个边是否被用过
+来判断是否属于这一个方案当中
+那么我们可以这样子，因为我们是把试题库和相对应的试题连接在一起
+ok，那么这样子我们在建边的时候我们可以把相对应的边的号给放到一个vector里面
+然后后续我们去检查这个边的流量是否为1即可
+
+*/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="路径模型"><a href="#路径模型" class="headerlink" title="路径模型"></a>路径模型</h3><p>比如说一个序列，如果可以从$a_i$ 到$a_j$有一条路径，实际上我们也可以映射到一张图上面去考虑，因为我们在做最大流的过程中实际上就是在走一些流的路径</p>
 <p>然后对于一些<strong>流量限制</strong>的情况下我们可以采用<strong>拆点</strong>的方法去限制流量</p>
-<h4 id="P2776"><a href="#P2776" class="headerlink" title="P2776"></a>P2776</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> V = <span class="number">101210</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> E = <span class="number">1210000</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">5e2</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">FlowGraph</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> s,t,vtot;</span><br><span class="line">	<span class="type">int</span> head[V],etot;</span><br><span class="line">	<span class="type">int</span> dis[V],cur[V];</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">edge</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v,nxt;</span><br><span class="line">		T f;</span><br><span class="line">	&#125;e[E * <span class="number">2</span>];</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">addedge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,T f)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		e[etot] = &#123;v,head[u],f&#125;; head[u] = etot++;</span><br><span class="line">		e[etot] = &#123;u,head[v],<span class="number">0</span>&#125;; head[v] = etot++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= vtot;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			dis[i] = <span class="number">0</span>;</span><br><span class="line">			cur[i] = head[i];</span><br><span class="line">		&#125;</span><br><span class="line">		queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">		q.<span class="built_in">push</span>(s);dis[s] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(!q.<span class="built_in">empty</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> u = q.<span class="built_in">front</span>();q.<span class="built_in">pop</span>();</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i = head[u];~i;i = e[i].nxt)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(e[i].f &amp;&amp; !dis[e[i].v])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="type">int</span> v = e[i].v;</span><br><span class="line">					dis[v] = dis[u] + <span class="number">1</span>;</span><br><span class="line">					<span class="keyword">if</span>(v == t) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">					q.<span class="built_in">push</span>(v);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">dfs</span><span class="params">(<span class="type">int</span> u,T m)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(u == t) <span class="keyword">return</span> m;</span><br><span class="line">		T flow = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = cur[u];~i;cur[u] = i = e[i].nxt)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(e[i].f &amp;&amp; dis[e[i].v] == dis[u] + <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				T f = <span class="built_in">dfs</span>(e[i].v,<span class="built_in">min</span>(e[i].f,m));</span><br><span class="line">				e[i].f -= f;</span><br><span class="line">				e[i ^ <span class="number">1</span>].f += f;</span><br><span class="line">				m -= f;</span><br><span class="line">				flow += f;</span><br><span class="line">				<span class="keyword">if</span>(!m) <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!flow) dis[u] = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">return</span> flow;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">dinic</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T flow = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="built_in">bfs</span>()) flow += <span class="built_in">dfs</span>(s,numeric_limits&lt;T&gt;::<span class="built_in">max</span>());</span><br><span class="line">		<span class="keyword">return</span> flow;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> s_,<span class="type">int</span> t_,<span class="type">int</span> vtot_)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		s = s_;</span><br><span class="line">		t = t_;</span><br><span class="line">		vtot = vtot_;</span><br><span class="line">		etot = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= vtot;++i) head[i] = <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> n,m,s,t;</span><br><span class="line"><span class="type">int</span> a[maxn],dp[maxn];</span><br><span class="line">FlowGraph&lt;ll&gt; g;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; a[i];</span><br><span class="line">		dp[i] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt; i;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i] &gt;= a[j])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i] = <span class="built_in">max</span>(dp[i],dp[j] + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ans = <span class="built_in">max</span>(ans,dp[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	s = <span class="number">2</span> * n + <span class="number">1</span>;</span><br><span class="line">	t = <span class="number">2</span> * n + <span class="number">2</span>;</span><br><span class="line">	g.<span class="built_in">init</span>(s,t,t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(dp[i] == <span class="number">1</span>) g.<span class="built_in">addedge</span>(s,i,n);<span class="comment">//添加流量为inf的边</span></span><br><span class="line">		<span class="keyword">if</span>(dp[i] == ans) g.<span class="built_in">addedge</span>(i + n,t,n);</span><br><span class="line">		g.<span class="built_in">addedge</span>(i,i + n,<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>;j &lt;= n;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[j] &gt;= a[i] &amp;&amp; dp[j] == dp[i] + <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				g.<span class="built_in">addedge</span>(i + n,j,<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	cout &lt;&lt; g.<span class="built_in">dinic</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">	g.<span class="built_in">init</span>(s,t,t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(dp[i] == <span class="number">1</span>) g.<span class="built_in">addedge</span>(s,i,n);<span class="comment">//添加流量为inf的边</span></span><br><span class="line">		<span class="keyword">if</span>(dp[i] == ans) g.<span class="built_in">addedge</span>(i + n,t,n);</span><br><span class="line">		<span class="keyword">if</span>(ans == <span class="number">1</span>) g.<span class="built_in">addedge</span>(i,i + n,<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">else</span> g.<span class="built_in">addedge</span>(i,i + n,n);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>;j &lt;= n;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[j] &gt;= a[i] &amp;&amp; dp[j] == dp[i] + <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				g.<span class="built_in">addedge</span>(i + n,j,<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; g.<span class="built_in">dinic</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目大意：给定一个序列，需要解决如下的三个问题</span></span><br><span class="line"><span class="comment">1.求这个序列的最长非递减子序列</span></span><br><span class="line"><span class="comment">2.每个元素只能使用一次的情况下序列的最长非递减子序列</span></span><br><span class="line"><span class="comment">3.每个元素使用多次的情况下序列的最长非递减子序列</span></span><br><span class="line"><span class="comment">建图思路:首先对于第一个问题来说我们直接dp即可</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">对于第二个问题，我们需要思考以下我们的建图方向</span></span><br><span class="line"><span class="comment">因为只需要求方案数目，那么我们可以进行这样子的建图，我们可以从s-&gt;dp = 1的值建一条边</span></span><br><span class="line"><span class="comment">我们也可以从dp = ans -&gt; t建一条边</span></span><br><span class="line"><span class="comment">因为在第一种情况我们只考虑每一个点使用一个那么我们可以使用拆点</span></span><br><span class="line"><span class="comment">拆点是为了加一个限制只能流一个1</span></span><br><span class="line"><span class="comment">然后因为我们要找第j个数字可能从哪个第i个数字转移过来 那么我们继续找重新建边即可</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">对于第三个问题 实际上我一个点可以使用多次了</span></span><br><span class="line"><span class="comment">那么我们先特判考虑最后答案是1的情况 其实实际上下面两个问题的答案就是n</span></span><br><span class="line"><span class="comment">然后我们再考虑一个可以使用多次 那么我们拆店的时候对于多个点建n就可以了</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="P2776"><a href="#P2776" class="headerlink" title="P2776"></a>P2776</h4><pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int V = 101210;
+const int E = 1210000;
+const int maxn = 5e2 + 10;
+template<typename T>
+struct FlowGraph
+&#123;
+    int s,t,vtot;
+    int head[V],etot;
+    int dis[V],cur[V];
+    struct edge
+    &#123;
+        int v,nxt;
+        T f;
+    &#125;e[E * 2];
+    void addedge(int u,int v,T f)
+    &#123;
+        e[etot] = &#123;v,head[u],f&#125;; head[u] = etot++;
+        e[etot] = &#123;u,head[v],0&#125;; head[v] = etot++;
+    &#125;
+    bool bfs()
+    &#123;
+        for(int i = 1;i <= vtot;++i)
+        &#123;
+            dis[i] = 0;
+            cur[i] = head[i];
+        &#125;
+        queue<int> q;
+        q.push(s);dis[s] = 1;
+        while(!q.empty())
+        &#123;
+            int u = q.front();q.pop();
+            for(int i = head[u];~i;i = e[i].nxt)
+            &#123;
+                if(e[i].f && !dis[e[i].v])
+                &#123;
+                    int v = e[i].v;
+                    dis[v] = dis[u] + 1;
+                    if(v == t) return true;
+                    q.push(v);
+                &#125;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+    T dfs(int u,T m)
+    &#123;
+        if(u == t) return m;
+        T flow = 0;
+        for(int i = cur[u];~i;cur[u] = i = e[i].nxt)
+        &#123;
+            if(e[i].f && dis[e[i].v] == dis[u] + 1)
+            &#123;
+                T f = dfs(e[i].v,min(e[i].f,m));
+                e[i].f -= f;
+                e[i ^ 1].f += f;
+                m -= f;
+                flow += f;
+                if(!m) break;
+            &#125;
+        &#125;
+        if(!flow) dis[u] = -1;
+        return flow;
+    &#125;
+    T dinic()
+    &#123;
+        T flow = 0;
+        while(bfs()) flow += dfs(s,numeric_limits<T>::max());
+        return flow;
+    &#125;
+    void init(int s_,int t_,int vtot_)
+    &#123;
+        s = s_;
+        t = t_;
+        vtot = vtot_;
+        etot = 0;
+        for(int i = 1;i <= vtot;++i) head[i] = -1;
+    &#125;
 
+&#125;;
+int n,m,s,t;
+int a[maxn],dp[maxn];
+FlowGraph<ll> g;
+int main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> n;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        cin >> a[i];
+        dp[i] = 1;
+    &#125;
+    int ans = 1;
+    for(int i = 2;i <= n;++i)
+    &#123;
+        for(int j = 1;j < i;++j)
+        &#123;
+            if(a[i] >= a[j])
+            &#123;
+                dp[i] = max(dp[i],dp[j] + 1);
+            &#125;
+        &#125;
+        ans = max(ans,dp[i]);
+    &#125;
+    cout << ans << "\n";
+    s = 2 * n + 1;
+    t = 2 * n + 2;
+    g.init(s,t,t);
+    for(int i = 1;i <= n;++i)
+    &#123;
+        if(dp[i] == 1) g.addedge(s,i,n);//添加流量为inf的边
+        if(dp[i] == ans) g.addedge(i + n,t,n);
+        g.addedge(i,i + n,1);
+    &#125;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        for(int j = i + 1;j <= n;++j)
+        &#123;
+            if(a[j] >= a[i] && dp[j] == dp[i] + 1)
+            &#123;
+                g.addedge(i + n,j,1);
+            &#125;
+        &#125;
+    &#125;
+    
+    cout << g.dinic() << "\n";
 
+    g.init(s,t,t);
+    for(int i = 1;i <= n;++i)
+    &#123;
+        if(dp[i] == 1) g.addedge(s,i,n);//添加流量为inf的边
+        if(dp[i] == ans) g.addedge(i + n,t,n);
+        if(ans == 1) g.addedge(i,i + n,1);
+        else g.addedge(i,i + n,n);
+    &#125;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        for(int j = i + 1;j <= n;++j)
+        &#123;
+            if(a[j] >= a[i] && dp[j] == dp[i] + 1)
+            &#123;
+                g.addedge(i + n,j,1);
+            &#125;
+        &#125;
+    &#125;
 
+    cout << g.dinic() << "\n";
+&#125;
+/*
+题目大意：给定一个序列，需要解决如下的三个问题
+1.求这个序列的最长非递减子序列
+2.每个元素只能使用一次的情况下序列的最长非递减子序列
+3.每个元素使用多次的情况下序列的最长非递减子序列
+建图思路:首先对于第一个问题来说我们直接dp即可
+
+对于第二个问题，我们需要思考以下我们的建图方向
+因为只需要求方案数目，那么我们可以进行这样子的建图，我们可以从s->dp = 1的值建一条边
+我们也可以从dp = ans -> t建一条边
+因为在第一种情况我们只考虑每一个点使用一个那么我们可以使用拆点
+拆点是为了加一个限制只能流一个1
+然后因为我们要找第j个数字可能从哪个第i个数字转移过来 那么我们继续找重新建边即可
+
+对于第三个问题 实际上我一个点可以使用多次了
+那么我们先特判考虑最后答案是1的情况 其实实际上下面两个问题的答案就是n
+然后我们再考虑一个可以使用多次 那么我们拆店的时候对于多个点建n就可以了
+
+*/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="最小割"><a href="#最小割" class="headerlink" title="最小割"></a>最小割</h2><p><strong>概念:</strong> 给定一张图，删除一些边使得$s$和$t$不连通</p>
 <p>那么其实就是对于每一个点，我去将点划分为两个集合，每一个点要么属于$s$集合，要么属于$t$集合</p>
 <p>那么对于这里割边来说，实际上就是找一条边，对于他的两个端点$u$和$v$，两个点分别属于一个集合</p>
@@ -429,8 +846,12 @@
 <p>接下来我们分析一下建边的过程</p>
 <p>对于无向图建立割边，实际上我们不仅要考虑正向边，我们也要考虑反向边，那么对于无向图的建图方式实际上就是建两条相同边权的边</p>
 <p>具体的建边方式如下图所示可以</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">addedge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,T f,T f2 = <span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	e[etot] = &#123;v,head[u],f&#125;; head[u] = etot++;</span><br><span class="line">	e[etot] = &#123;u,head[v],f2&#125;; head[v] = etot++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">void addedge(int u,int v,T f,T f2 = 0)
+&#123;
+    e[etot] = &#123;v,head[u],f&#125;; head[u] = etot++;
+    e[etot] = &#123;u,head[v],f2&#125;; head[v] = etot++;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>那么有向图的话实际上还是和之前的类似，我去建一条长度为$c$的边，另外一条是长度为$0$的边</p>
 <p>如何在实际题目中去思考到 <strong>最小割</strong> 这个东西呢？</p>
 <h3 id="最大权独立集"><a href="#最大权独立集" class="headerlink" title="最大权独立集"></a>最大权独立集</h3><p>首先我们可以考虑引入这样子的一个问题</p>
@@ -440,30 +861,385 @@
 <p>那么其实对应的如果是二维棋盘我们也可以通过这样子的操作</p>
 <h4 id="P2774"><a href="#P2774" class="headerlink" title="P2774"></a>P2774</h4><p>方格取数，每个方格有一定权值，可以取若干个方格，方格之间不能有相互重叠的边</p>
 <p>本质上也就是求一个最大权独立集的问题，行列相对应建边即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> ll inf = (<span class="number">1ll</span> &lt;&lt; <span class="number">60</span>);</span><br><span class="line"><span class="type">int</span> n,m,s,t,x;</span><br><span class="line">FlowGraph&lt;ll&gt; g;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	s = n * m + <span class="number">1</span>;</span><br><span class="line">	t = n * m + <span class="number">2</span>;</span><br><span class="line">	g.<span class="built_in">init</span>(s,t,t);</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= m;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; x;</span><br><span class="line">			ans += x;</span><br><span class="line">			<span class="type">int</span> id = (i - <span class="number">1</span>) * m + j;</span><br><span class="line">			<span class="keyword">if</span>((i + j) % <span class="number">2</span> == <span class="number">1</span>) </span><br><span class="line">			&#123;</span><br><span class="line">				g.<span class="built_in">addedge</span>(s,id,x);</span><br><span class="line">				<span class="keyword">if</span>(i - <span class="number">1</span> &gt;= <span class="number">1</span>) g.<span class="built_in">addedge</span>(id,id - m,inf);</span><br><span class="line">				<span class="keyword">if</span>(i + <span class="number">1</span> &lt;= n) g.<span class="built_in">addedge</span>(id,id + m,inf);</span><br><span class="line">				<span class="keyword">if</span>(j + <span class="number">1</span> &lt;= m) g.<span class="built_in">addedge</span>(id,id + <span class="number">1</span>,inf);</span><br><span class="line">				<span class="keyword">if</span>(j - <span class="number">1</span> &gt;= <span class="number">1</span>) g.<span class="built_in">addedge</span>(id,id - <span class="number">1</span>,inf);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> g.<span class="built_in">addedge</span>(id,t,x);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans - g.<span class="built_in">dinic</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">const ll inf = (1ll << 60);
+int n,m,s,t,x;
+FlowGraph<ll> g;
+int main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> n >> m;
+    s = n * m + 1;
+    t = n * m + 2;
+    g.init(s,t,t);
+    ll ans = 0;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        for(int j = 1;j <= m;++j)
+        &#123;
+            cin >> x;
+            ans += x;
+            int id = (i - 1) * m + j;
+            if((i + j) % 2 == 1) 
+            &#123;
+                g.addedge(s,id,x);
+                if(i - 1 >= 1) g.addedge(id,id - m,inf);
+                if(i + 1 <= n) g.addedge(id,id + m,inf);
+                if(j + 1 <= m) g.addedge(id,id + 1,inf);
+                if(j - 1 >= 1) g.addedge(id,id - 1,inf);
+            &#125;
+            else g.addedge(id,t,x);
+        &#125;
+    &#125;
+    cout << ans - g.dinic() << "\n";
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="最大权闭合子图"><a href="#最大权闭合子图" class="headerlink" title="最大权闭合子图"></a>最大权闭合子图</h3><p>最大权闭合子图的定义实际上就是我每个点有一定的点权，选定一些点需要使得点权和最大，然后如果我选了一个点我是必须需要选定其他后继点的，然后我们来求这张图最多获得多少的点权</p>
 <p>其实这个也是最小割的一种模型，那么实际上和最大权独立集的本质是一样的，我给$s$和$t$集合一定的意义，然后我去进行相应的连边。</p>
 <p>考虑这样的一件事情，因为我们在求最小割的过程中实际上是求在$S$集合中的最小割，那么实际上也就是我们把一些东西放到了$S$集合上面。</p>
 <p>那么之前我们说了边的方案如何选择，那么如何去进行选择点的方案呢？</p>
 <p>那么我们可以去看$dis$数组里面的东西，因为$dis$刚开始都是$0$的，对于放在$S$集合里面的东西我们都应该选择$dis$不为$0$的点即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n,m,s,t;</span><br><span class="line">FlowGraph&lt;ll&gt; g;</span><br><span class="line">string str;</span><br><span class="line"><span class="type">const</span> ll inf = (<span class="number">1ll</span> &lt;&lt; <span class="number">60</span>);</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; m &gt;&gt; n;</span><br><span class="line">	s = m + n + <span class="number">1</span>;</span><br><span class="line">	t = m + n + <span class="number">2</span>;</span><br><span class="line">	g.<span class="built_in">init</span>(s,t,t);</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">getline</span>(cin,str);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">getline</span>(cin,str);</span><br><span class="line">		stringstream ss;</span><br><span class="line">		ss &lt;&lt; str;</span><br><span class="line">		<span class="comment">// cout &lt;&lt; &quot;str -&gt; &quot; &lt;&lt; str &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">		<span class="type">int</span> x;</span><br><span class="line">		ss &gt;&gt; x;</span><br><span class="line">		g.<span class="built_in">addedge</span>(s,i,x);<span class="comment">//第i个实验的费用</span></span><br><span class="line">		ans += x;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span>(!ss.<span class="built_in">eof</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			ss &gt;&gt; x;</span><br><span class="line">			g.<span class="built_in">addedge</span>(i,x + m,inf);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> x;cin &gt;&gt; x;</span><br><span class="line">		g.<span class="built_in">addedge</span>(i + m,t,x);</span><br><span class="line">	&#125;</span><br><span class="line">	ans -= g.<span class="built_in">dinic</span>();</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; p1,p2;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(g.dis[i] &gt; <span class="number">0</span>) p1.<span class="built_in">push_back</span>(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(g.dis[i + m] &gt; <span class="number">0</span>) p2.<span class="built_in">push_back</span>(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> to:p1) cout &lt;&lt; to &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> to:p2) cout &lt;&lt; to &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">int n,m,s,t;
+FlowGraph<ll> g;
+string str;
+const ll inf = (1ll << 60);
+int main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> m >> n;
+    s = m + n + 1;
+    t = m + n + 2;
+    g.init(s,t,t);
+    ll ans = 0;
+    getline(cin,str);
+    for(int i = 1;i <= m;++i)
+    &#123;
+        getline(cin,str);
+        stringstream ss;
+        ss << str;
+        // cout << "str -> " << str << "\n";
+        int x;
+        ss >> x;
+        g.addedge(s,i,x);//第i个实验的费用
+        ans += x;
 
-<h2 id="最小费用最大流"><a href="#最小费用最大流" class="headerlink" title="最小费用最大流"></a>最小费用最大流</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> V = <span class="number">20100</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> E = <span class="number">201000</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MinCostGraph</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> s,t,vtot;</span><br><span class="line">	<span class="type">int</span> head[V],cur[V],etot;</span><br><span class="line">	T dis[V],flow,cost;</span><br><span class="line">	<span class="type">int</span> pre[V];</span><br><span class="line">	<span class="type">bool</span> vis[V];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">edge</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v,nxt;</span><br><span class="line">		T f,c;</span><br><span class="line">	&#125;e[E * <span class="number">2</span>];</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">addedge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v, T f, T c, T f2 = <span class="number">0</span>)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		e[etot] = &#123;v, head[u], f, c&#125;; head[u] = etot++;</span><br><span class="line">		e[etot] = &#123;u, head[v], f2, -c&#125;; head[v] = etot++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T inf = numeric_limits&lt;T&gt;::<span class="built_in">max</span>() / <span class="number">2</span>;<span class="comment">//防止溢出</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= vtot; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			dis[i] = inf;</span><br><span class="line">			vis[i] = <span class="literal">false</span>;</span><br><span class="line">			pre[i] = <span class="number">-1</span>; <span class="comment">//记录一下上一条边,方便增广</span></span><br><span class="line">		&#125;</span><br><span class="line">		dis[s] = <span class="number">0</span>;</span><br><span class="line">		vis[s] = <span class="literal">true</span>;</span><br><span class="line">		queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">		q.<span class="built_in">push</span>(s);</span><br><span class="line">		<span class="keyword">while</span>(!q.<span class="built_in">empty</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">auto</span> u = q.<span class="built_in">front</span>();</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i = head[u]; ~i; i = e[i].nxt)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">int</span> v = e[i].v;</span><br><span class="line">				<span class="keyword">if</span>(e[i].f &amp;&amp; dis[v] &gt; dis[u] + e[i].c)</span><br><span class="line">				&#123;</span><br><span class="line">					dis[v] = dis[u] + e[i].c;</span><br><span class="line">					pre[v] = i;</span><br><span class="line">					<span class="keyword">if</span>(!vis[v])</span><br><span class="line">					&#123;</span><br><span class="line">						vis[v] = <span class="number">1</span>;</span><br><span class="line">						q.<span class="built_in">push</span>(v);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			q.<span class="built_in">pop</span>();</span><br><span class="line">			vis[u] = <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> dis[t] != inf;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//增广</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">augment</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> u = t;</span><br><span class="line">		T f = numeric_limits&lt;T&gt;::<span class="built_in">max</span>();</span><br><span class="line">		<span class="keyword">while</span>(~pre[u])</span><br><span class="line">		&#123;</span><br><span class="line">			f = <span class="built_in">min</span>(f, e[pre[u]].f);</span><br><span class="line">			u = e[pre[u] ^ <span class="number">1</span>].v;</span><br><span class="line">		&#125;</span><br><span class="line">		flow += f;</span><br><span class="line">		cost += f * dis[t];</span><br><span class="line">		u = t;</span><br><span class="line">		<span class="keyword">while</span>(~pre[u])</span><br><span class="line">		&#123;</span><br><span class="line">			e[pre[u]].f -= f;</span><br><span class="line">			e[pre[u] ^ <span class="number">1</span>].f += f;</span><br><span class="line">			u = e[pre[u] ^ <span class="number">1</span>].v;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">pair&lt;T, T&gt; <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		flow = <span class="number">0</span>;</span><br><span class="line">		cost = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="built_in">spfa</span>()) <span class="built_in">augment</span>();</span><br><span class="line">		<span class="keyword">return</span> &#123;flow, cost&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> s_, <span class="type">int</span> t_, <span class="type">int</span> vtot_)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		s = s_;</span><br><span class="line">		t = t_;</span><br><span class="line">		vtot = vtot_;</span><br><span class="line">		etot = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= vtot; ++i) head[i] = <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">MinCostGraph&lt;<span class="type">int</span>&gt; g;</span><br><span class="line"><span class="type">int</span> n,m,s,t;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m &gt;&gt; s &gt;&gt; t;</span><br><span class="line">	g.<span class="built_in">init</span>(s,t,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,u,v,f,c;i &lt;= m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v &gt;&gt; f &gt;&gt; c;</span><br><span class="line">		g.<span class="built_in">addedge</span>(u,v,f,c);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">auto</span> ans = g.<span class="built_in">solve</span>();</span><br><span class="line">	cout &lt;&lt; ans.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ans.second &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        while(!ss.eof())
+        &#123;
+            ss >> x;
+            g.addedge(i,x + m,inf);
+        &#125;
+    &#125;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        int x;cin >> x;
+        g.addedge(i + m,t,x);
+    &#125;
+    ans -= g.dinic();
+    vector<int> p1,p2;
+    for(int i = 1;i <= m;++i)
+    &#123;
+        if(g.dis[i] > 0) p1.push_back(i);
+    &#125;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        if(g.dis[i + m] > 0) p2.push_back(i);
+    &#125;
+    for(auto to:p1) cout << to << " ";
+    cout << "\n";
+    for(auto to:p2) cout << to << " ";
+    cout << "\n";
+    cout << ans << "\n";
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="最小费用最大流"><a href="#最小费用最大流" class="headerlink" title="最小费用最大流"></a>最小费用最大流</h2><pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int V = 20100;
+const int E = 201000;
+template<typename T>
+struct MinCostGraph
+&#123;
+    int s,t,vtot;
+    int head[V],cur[V],etot;
+    T dis[V],flow,cost;
+    int pre[V];
+    bool vis[V];
 
+    struct edge
+    &#123;
+        int v,nxt;
+        T f,c;
+    &#125;e[E * 2];
+    void addedge(int u,int v, T f, T c, T f2 = 0)
+    &#123;
+        e[etot] = &#123;v, head[u], f, c&#125;; head[u] = etot++;
+        e[etot] = &#123;u, head[v], f2, -c&#125;; head[v] = etot++;
+    &#125;
 
+    bool spfa()
+    &#123;
+        T inf = numeric_limits<T>::max() / 2;//防止溢出
+        for(int i = 1; i <= vtot; ++i)
+        &#123;
+            dis[i] = inf;
+            vis[i] = false;
+            pre[i] = -1; //记录一下上一条边,方便增广
+        &#125;
+        dis[s] = 0;
+        vis[s] = true;
+        queue<int> q;
+        q.push(s);
+        while(!q.empty())
+        &#123;
+            auto u = q.front();
+            for(int i = head[u]; ~i; i = e[i].nxt)
+            &#123;
+                int v = e[i].v;
+                if(e[i].f && dis[v] > dis[u] + e[i].c)
+                &#123;
+                    dis[v] = dis[u] + e[i].c;
+                    pre[v] = i;
+                    if(!vis[v])
+                    &#123;
+                        vis[v] = 1;
+                        q.push(v);
+                    &#125;
+                &#125;
+            &#125;
+            q.pop();
+            vis[u] = false;
+        &#125;
+        return dis[t] != inf;
+    &#125;
+    //增广
+    void augment()
+    &#123;
+        int u = t;
+        T f = numeric_limits<T>::max();
+        while(~pre[u])
+        &#123;
+            f = min(f, e[pre[u]].f);
+            u = e[pre[u] ^ 1].v;
+        &#125;
+        flow += f;
+        cost += f * dis[t];
+        u = t;
+        while(~pre[u])
+        &#123;
+            e[pre[u]].f -= f;
+            e[pre[u] ^ 1].f += f;
+            u = e[pre[u] ^ 1].v;
+        &#125;
+    &#125;
 
+    pair<T, T> solve()
+    &#123;
+        flow = 0;
+        cost = 0;
+        while(spfa()) augment();
+        return &#123;flow, cost&#125;;
+    &#125;
+
+    void init(int s_, int t_, int vtot_)
+    &#123;
+        s = s_;
+        t = t_;
+        vtot = vtot_;
+        etot = 0;
+        for(int i = 1; i <= vtot; ++i) head[i] = -1;
+    &#125;
+&#125;;
+MinCostGraph<int> g;
+int n,m,s,t;
+int main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> n >> m >> s >> t;
+    g.init(s,t,n);
+    for(int i = 1,u,v,f,c;i <= m;++i)
+    &#123;
+        cin >> u >> v >> f >> c;
+        g.addedge(u,v,f,c);
+    &#125;
+    auto ans = g.solve();
+    cout << ans.first << " " << ans.second << "\n";
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="最大费用最大流"><a href="#最大费用最大流" class="headerlink" title="最大费用最大流"></a>最大费用最大流</h3><p>因为我们考虑这样子的一件事情，我们在求$MCMF$的时候实际上求的是最小的费用那么我们只需要建负边并且最终答案取反就可以了</p>
-<h4 id="P4015"><a href="#P4015" class="headerlink" title="P4015"></a>P4015</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">MinCostGraph&lt;ll&gt; g1,g2;</span><br><span class="line"><span class="type">int</span> n,m,s,t;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	s = n + m + <span class="number">1</span>;</span><br><span class="line">	t = n + m + <span class="number">2</span>;</span><br><span class="line">	g1.<span class="built_in">init</span>(s,t,t);</span><br><span class="line">	g2.<span class="built_in">init</span>(s,t,t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,x;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; x;</span><br><span class="line">		g1.<span class="built_in">addedge</span>(s,i,x,<span class="number">0</span>);</span><br><span class="line">		g2.<span class="built_in">addedge</span>(s,i,x,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,x;i &lt;= m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; x;</span><br><span class="line">		g1.<span class="built_in">addedge</span>(i + n,t,x,<span class="number">0</span>);</span><br><span class="line">		g2.<span class="built_in">addedge</span>(i + n,t,x,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= m;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> x;</span><br><span class="line">			cin &gt;&gt; x;</span><br><span class="line">			g1.<span class="built_in">addedge</span>(i,j + n,<span class="number">1</span> &lt;&lt; <span class="number">30</span>,x);</span><br><span class="line">			g2.<span class="built_in">addedge</span>(i,j + n,<span class="number">1</span> &lt;&lt; <span class="number">30</span>,-x);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">auto</span> ans1 = g1.<span class="built_in">solve</span>();</span><br><span class="line">	<span class="keyword">auto</span> ans2 = g2.<span class="built_in">solve</span>();</span><br><span class="line">	cout &lt;&lt; ans1.second &lt;&lt; <span class="string">&quot;\n&quot;</span> &lt;&lt; -ans2.second &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+<h4 id="P4015"><a href="#P4015" class="headerlink" title="P4015"></a>P4015</h4><pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">MinCostGraph<ll> g1,g2;
+int n,m,s,t;
+int main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> n >> m;
+    s = n + m + 1;
+    t = n + m + 2;
+    g1.init(s,t,t);
+    g2.init(s,t,t);
+    for(int i = 1,x;i <= n;++i)
+    &#123;
+        cin >> x;
+        g1.addedge(s,i,x,0);
+        g2.addedge(s,i,x,0);
+    &#125;
+    for(int i = 1,x;i <= m;++i)
+    &#123;
+        cin >> x;
+        g1.addedge(i + n,t,x,0);
+        g2.addedge(i + n,t,x,0);
+    &#125;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        for(int j = 1;j <= m;++j)
+        &#123;
+            int x;
+            cin >> x;
+            g1.addedge(i,j + n,1 << 30,x);
+            g2.addedge(i,j + n,1 << 30,-x);
+        &#125;
+    &#125;
+    auto ans1 = g1.solve();
+    auto ans2 = g2.solve();
+    cout << ans1.second << "\n" << -ans2.second << "\n";
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="优化建图"><a href="#优化建图" class="headerlink" title="优化建图"></a>优化建图</h3><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1525/D">Problem - 1525D - Codeforces</a></p>
 <p><strong>题意:</strong> 给定$n$个座位，每个座位刚开始有两个数字$1$和$0$，题目保证初始给定的$1$的数量少于$0$的数量，将一个$1$移动位置需要$abs(i - j)$的贡献，问让刚开始的$1$全部变成$0$最少需要多少贡献</p>
 <p><strong>解题思路:</strong> 其实刚开始看到题目就想着是裸的费用流，将两种点分在两边，中间连接相对应的边权即可，但是后面发现这样子写的话会有问题。但是考虑反正$1$只会往相邻的$0$移动，那么就相邻的两边建边即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> V = <span class="number">20100</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> E = <span class="number">521000</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MinCostGraph</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> s,t,vtot;</span><br><span class="line">	<span class="type">int</span> head[V],cur[V],etot;</span><br><span class="line">	T dis[V],flow,cost;</span><br><span class="line">	<span class="type">int</span> pre[V];</span><br><span class="line">	<span class="type">bool</span> vis[V];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">edge</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v,nxt;</span><br><span class="line">		T f,c;</span><br><span class="line">	&#125;e[E * <span class="number">2</span>];</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">addedge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v, T f, T c, T f2 = <span class="number">0</span>)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		e[etot] = &#123;v, head[u], f, c&#125;; head[u] = etot++;</span><br><span class="line">		e[etot] = &#123;u, head[v], f2, -c&#125;; head[v] = etot++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		T inf = numeric_limits&lt;T&gt;::<span class="built_in">max</span>() / <span class="number">2</span>;<span class="comment">//防止溢出</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= vtot; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			dis[i] = inf;</span><br><span class="line">			vis[i] = <span class="literal">false</span>;</span><br><span class="line">			pre[i] = <span class="number">-1</span>; <span class="comment">//记录一下上一条边,方便增广</span></span><br><span class="line">		&#125;</span><br><span class="line">		dis[s] = <span class="number">0</span>;</span><br><span class="line">		vis[s] = <span class="literal">true</span>;</span><br><span class="line">		queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">		q.<span class="built_in">push</span>(s);</span><br><span class="line">		<span class="keyword">while</span>(!q.<span class="built_in">empty</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">auto</span> u = q.<span class="built_in">front</span>();</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i = head[u]; ~i; i = e[i].nxt)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">int</span> v = e[i].v;</span><br><span class="line">				<span class="keyword">if</span>(e[i].f &amp;&amp; dis[v] &gt; dis[u] + e[i].c)</span><br><span class="line">				&#123;</span><br><span class="line">					dis[v] = dis[u] + e[i].c;</span><br><span class="line">					pre[v] = i;</span><br><span class="line">					<span class="keyword">if</span>(!vis[v])</span><br><span class="line">					&#123;</span><br><span class="line">						vis[v] = <span class="number">1</span>;</span><br><span class="line">						q.<span class="built_in">push</span>(v);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			q.<span class="built_in">pop</span>();</span><br><span class="line">			vis[u] = <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> dis[t] != inf;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//增广</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">augment</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> u = t;</span><br><span class="line">		T f = numeric_limits&lt;T&gt;::<span class="built_in">max</span>();</span><br><span class="line">		<span class="keyword">while</span>(~pre[u])</span><br><span class="line">		&#123;</span><br><span class="line">			f = <span class="built_in">min</span>(f, e[pre[u]].f);</span><br><span class="line">			u = e[pre[u] ^ <span class="number">1</span>].v;</span><br><span class="line">		&#125;</span><br><span class="line">		flow += f;</span><br><span class="line">		cost += f * dis[t];</span><br><span class="line">		u = t;</span><br><span class="line">		<span class="keyword">while</span>(~pre[u])</span><br><span class="line">		&#123;</span><br><span class="line">			e[pre[u]].f -= f;</span><br><span class="line">			e[pre[u] ^ <span class="number">1</span>].f += f;</span><br><span class="line">			u = e[pre[u] ^ <span class="number">1</span>].v;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">pair&lt;T, T&gt; <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		flow = <span class="number">0</span>;</span><br><span class="line">		cost = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="built_in">spfa</span>()) <span class="built_in">augment</span>();</span><br><span class="line">		<span class="keyword">return</span> &#123;flow, cost&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> s_, <span class="type">int</span> t_, <span class="type">int</span> vtot_)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		s = s_;</span><br><span class="line">		t = t_;</span><br><span class="line">		vtot = vtot_;</span><br><span class="line">		etot = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= vtot; ++i) head[i] = <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">MinCostGraph&lt;<span class="type">int</span>&gt; g;</span><br><span class="line"><span class="type">int</span> n,m,s,t;</span><br><span class="line"><span class="type">int</span> a[V];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	s = n + <span class="number">1</span>,t = n + <span class="number">2</span>;</span><br><span class="line">	g.<span class="built_in">init</span>(s,t,t);</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; pos0,pos1;</span><br><span class="line">	<span class="type">int</span> ct = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; a[i];</span><br><span class="line">		<span class="keyword">if</span>(a[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// ct++;</span></span><br><span class="line">			g.<span class="built_in">addedge</span>(s,i,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			g.<span class="built_in">addedge</span>(i,t,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n - <span class="number">1</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		g.<span class="built_in">addedge</span>(i,i + <span class="number">1</span>,<span class="number">1</span> &lt;&lt; <span class="number">30</span>,<span class="number">1</span>);</span><br><span class="line">		g.<span class="built_in">addedge</span>(i + <span class="number">1</span>,i,<span class="number">1</span> &lt;&lt; <span class="number">30</span>,<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">auto</span> [f,c] = g.<span class="built_in">solve</span>();</span><br><span class="line">	cout &lt;&lt; c &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int V = 20100;
+const int E = 521000;
+template<typename T>
+struct MinCostGraph
+&#123;
+    int s,t,vtot;
+    int head[V],cur[V],etot;
+    T dis[V],flow,cost;
+    int pre[V];
+    bool vis[V];
 
+    struct edge
+    &#123;
+        int v,nxt;
+        T f,c;
+    &#125;e[E * 2];
+    void addedge(int u,int v, T f, T c, T f2 = 0)
+    &#123;
+        e[etot] = &#123;v, head[u], f, c&#125;; head[u] = etot++;
+        e[etot] = &#123;u, head[v], f2, -c&#125;; head[v] = etot++;
+    &#125;
 
+    bool spfa()
+    &#123;
+        T inf = numeric_limits<T>::max() / 2;//防止溢出
+        for(int i = 1; i <= vtot; ++i)
+        &#123;
+            dis[i] = inf;
+            vis[i] = false;
+            pre[i] = -1; //记录一下上一条边,方便增广
+        &#125;
+        dis[s] = 0;
+        vis[s] = true;
+        queue<int> q;
+        q.push(s);
+        while(!q.empty())
+        &#123;
+            auto u = q.front();
+            for(int i = head[u]; ~i; i = e[i].nxt)
+            &#123;
+                int v = e[i].v;
+                if(e[i].f && dis[v] > dis[u] + e[i].c)
+                &#123;
+                    dis[v] = dis[u] + e[i].c;
+                    pre[v] = i;
+                    if(!vis[v])
+                    &#123;
+                        vis[v] = 1;
+                        q.push(v);
+                    &#125;
+                &#125;
+            &#125;
+            q.pop();
+            vis[u] = false;
+        &#125;
+        return dis[t] != inf;
+    &#125;
+    //增广
+    void augment()
+    &#123;
+        int u = t;
+        T f = numeric_limits<T>::max();
+        while(~pre[u])
+        &#123;
+            f = min(f, e[pre[u]].f);
+            u = e[pre[u] ^ 1].v;
+        &#125;
+        flow += f;
+        cost += f * dis[t];
+        u = t;
+        while(~pre[u])
+        &#123;
+            e[pre[u]].f -= f;
+            e[pre[u] ^ 1].f += f;
+            u = e[pre[u] ^ 1].v;
+        &#125;
+    &#125;
+
+    pair<T, T> solve()
+    &#123;
+        flow = 0;
+        cost = 0;
+        while(spfa()) augment();
+        return &#123;flow, cost&#125;;
+    &#125;
+
+    void init(int s_, int t_, int vtot_)
+    &#123;
+        s = s_;
+        t = t_;
+        vtot = vtot_;
+        etot = 0;
+        for(int i = 1; i <= vtot; ++i) head[i] = -1;
+    &#125;
+&#125;;
+MinCostGraph<int> g;
+int n,m,s,t;
+int a[V];
+int main()
+&#123;
+    cin >> n;
+    s = n + 1,t = n + 2;
+    g.init(s,t,t);
+    vector<int> pos0,pos1;
+    int ct = 0;
+    for(int i = 1;i <= n;++i)
+    &#123;
+        cin >> a[i];
+        if(a[i])
+        &#123;
+            // ct++;
+            g.addedge(s,i,1,0);
+        &#125;
+        else
+        &#123;
+            g.addedge(i,t,1,0);
+        &#125;
+    &#125;
+    for(int i = 1;i <= n - 1;++i)
+    &#123;
+        g.addedge(i,i + 1,1 << 30,1);
+        g.addedge(i + 1,i,1 << 30,1);
+    &#125;
+    auto [f,c] = g.solve();
+    cout << c << "\n";
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -873,7 +1649,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.4k</span>
+                        class="white-color">6.9k</span>
             
             
             

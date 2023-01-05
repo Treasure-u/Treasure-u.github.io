@@ -365,7 +365,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    137
                 </div>
                 
 
@@ -384,20 +384,137 @@
             <div id="articleContent">
                 <h1 id="Atcoder-Beginner-Contest-274-C-E"><a href="#Atcoder-Beginner-Contest-274-C-E" class="headerlink" title="Atcoder Beginner Contest 274 ( C - E )"></a>Atcoder Beginner Contest 274 ( C - E )</h1><h2 id="C-Ameba"><a href="#C-Ameba" class="headerlink" title="C - Ameba"></a>C - Ameba</h2><p><strong>题目大意:</strong> 刚开始有一个生物序号为$1$，有$n$次记录，在第$i$次记录中第$a_i$个生物消失会生成第$2i$和$2i+1$个生物，问对于生物从$1$到$2N+1$他们距离$1$有多少代</p>
 <p><strong>解题思路:</strong> 按照题意模拟即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) cin &gt;&gt; a[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> to1 = i * <span class="number">2</span>;</span><br><span class="line">		<span class="type">int</span> to2 = i * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">		dis[to1] = dis[to2] = dis[a[i]] + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">2</span> * n + <span class="number">1</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; dis[i] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> n;
+    for(int i = 1;i <= n;++i) cin >> a[i];
+    for(int i = 1;i <= n;++i)
+    &#123;
+        int to1 = i * 2;
+        int to2 = i * 2 + 1;
+        dis[to1] = dis[to2] = dis[a[i]] + 1;
+    &#125;
+    for(int i = 1;i <= 2 * n + 1;++i)
+    &#123;
+        cout << dis[i] << "\n";
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="D-Robot-Arms-2"><a href="#D-Robot-Arms-2" class="headerlink" title="D - Robot Arms 2"></a>D - Robot Arms 2</h2><p><strong>题目大意:</strong> 给定一个长度为$n$的序列以及$x,y$,问是否存在$n + 1$个点$p_1,p_2,…,p_n,p_{n + 1}$在二维坐标系中满足$p_1 &#x3D; (0,0),p_2 &#x3D; (a_1,0),p_{n + 1} &#x3D; (x,y)$相邻两个点距离是$a_i$并且是$90$度</p>
 <p><strong>解题思路:</strong> 分析后发现实际上$x$和$y$是相互不干扰的，那么我们可以分开来处理，注意到$a$的范围很小那么我们可以枚举遍历到的数值是多少</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmin</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmax</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="comment">// typedef long long ll;</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">4e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n,x,y;</span><br><span class="line"><span class="type">int</span> a[maxn],dis[maxn];</span><br><span class="line"><span class="type">int</span> dp[<span class="number">2</span>][maxn],pre[<span class="number">2</span>][maxn];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; x &gt;&gt; y;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) cin &gt;&gt; a[i];</span><br><span class="line">	<span class="type">int</span> midp = <span class="number">10000</span>;</span><br><span class="line">	pre[<span class="number">1</span>][midp + a[<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">	pre[<span class="number">0</span>][midp] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>;i &lt;= n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> now = i &amp; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt;= <span class="number">20000</span>;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(pre[now][j])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[now][j + a[i]] = <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">if</span>(j - a[i] &gt;= <span class="number">0</span>) dp[now][j - a[i]] = <span class="number">1</span>;</span><br><span class="line">				<span class="comment">// cout &lt;&lt; &quot;?? now-&gt; &quot; &lt;&lt; now &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt;= <span class="number">20000</span>;++j) pre[now][j] = dp[now][j],dp[now][j] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(pre[<span class="number">1</span>][midp + x] &amp;&amp; pre[<span class="number">0</span>][midp + y]) cout &lt;&lt; <span class="string">&quot;Yes\n&quot;</span>;</span><br><span class="line">	<span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
+template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+#define int long long
+// typedef long long ll;
+const int maxn = 4e5 + 10;
+int n,x,y;
+int a[maxn],dis[maxn];
+int dp[2][maxn],pre[2][maxn];
+signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> n >> x >> y;
+    for(int i = 1;i <= n;++i) cin >> a[i];
+    int midp = 10000;
+    pre[1][midp + a[1]] = 1;
+    pre[0][midp] = 1;
+    for(int i = 2;i <= n;++i)
+    &#123;
+        int now = i & 1;
+        for(int j = 0;j <= 20000;++j)
+        &#123;
+            if(pre[now][j])
+            &#123;
+                dp[now][j + a[i]] = 1;
+                if(j - a[i] >= 0) dp[now][j - a[i]] = 1;
+                // cout << "?? now-> " << now << " " << j << "\n";
+            &#125;
+        &#125;
+        for(int j = 0;j <= 20000;++j) pre[now][j] = dp[now][j],dp[now][j] = 0;
+    &#125;
+    if(pre[1][midp + x] && pre[0][midp + y]) cout << "Yes\n";
+    else cout << "No\n";
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="E-Booster"><a href="#E-Booster" class="headerlink" title="E - Booster"></a>E - Booster</h2><p><strong>题目大意:</strong> 给定一个二维平面其中有$n$个城镇和$m$个加速点$(1 \leq n + m \leq 17)$，初始点在$(0,0)$，问必须经理过所有城镇点需要的时间最短是多少，没必要经过所有加速点但是我们每经过一次加速点我们当前的速度就会翻倍</p>
 <p><strong>解题思路:</strong> 看到题目数据的时候我们就会自然而然的考虑到状态压缩，如何存在当前的状态呢？我们可以用$dp[i][j]$来表示$i$的二进制位状态表示经过了哪些点，然后末尾点是$j$</p>
 <p>那么我们思考转移的过程，假设我们当前位置$j$存在$1$,并且当前$k$也是$1$</p>
 <p>那么我们可以从$k$点转移到$j$点，那么相对应的方程就是$dp[i][j] &#x3D; min(dp[i][j],dp[i - (1 &lt;&lt; j)][k] + d &#x2F; v)$</p>
 <p>然后我们可以在最后枚举从哪个点最后来以及最后的状态获得答案</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmin</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmax</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="type">double</span> dp[<span class="number">1</span> &lt;&lt; <span class="number">18</span>][<span class="number">20</span>];</span><br><span class="line">pair&lt;<span class="type">double</span>,<span class="type">double</span>&gt; p[<span class="number">20</span>];</span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">getdis</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">sqrt</span>((p[i].first - p[j].first) * (p[i].first - p[j].first) + (p[i].second - p[j].second) * (p[i].second - p[j].second));</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">countx</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> now = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = n;i &lt; n + m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(x &gt;&gt; i &amp; <span class="number">1</span>) now++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> now;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	p[<span class="number">0</span>] = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">	n++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt; n + m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; p[i].first &gt;&gt; p[i].second;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; (<span class="number">1</span> &lt;&lt; (n + m));++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt; n + m;++j) dp[i][j] = <span class="number">1e18</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	dp[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	cout &lt;&lt; fixed &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">10</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; (<span class="number">1</span> &lt;&lt; (n + m));++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt; (n + m);++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i &gt;&gt; j &amp; <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>;k &lt; (n + m);++k)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>((i - (<span class="number">1</span> &lt;&lt; j)) &gt;&gt; k &amp; <span class="number">1</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="type">double</span> d = <span class="built_in">getdis</span>(j,k);</span><br><span class="line">						<span class="type">int</span> nowcnt = <span class="built_in">countx</span>(i - (<span class="number">1</span> &lt;&lt; j));</span><br><span class="line">						<span class="type">int</span> v = (<span class="number">1</span> &lt;&lt; nowcnt);</span><br><span class="line">						dp[i][j] = <span class="built_in">min</span>(dp[i][j],dp[i - (<span class="number">1</span> &lt;&lt; j)][k] + d / (<span class="number">1.0</span> * v));</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">double</span> ans = <span class="number">1e18</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>;i &lt; (<span class="number">1</span> &lt;&lt; (n + m));i += (<span class="number">1</span> &lt;&lt; n))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt; n + m;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">double</span> d = <span class="built_in">getdis</span>(<span class="number">0</span>,j);</span><br><span class="line">			<span class="type">int</span> v = <span class="number">1</span> &lt;&lt; <span class="built_in">countx</span>(i);</span><br><span class="line">			ans = <span class="built_in">min</span>(ans,dp[i][j] + d / (<span class="number">1.0</span> * v));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; fixed &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">10</span>) &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
+template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+double dp[1 << 18][20];
+pair<double,double> p[20];
+double getdis(int i,int j)
+&#123;
+    return sqrt((p[i].first - p[j].first) * (p[i].first - p[j].first) + (p[i].second - p[j].second) * (p[i].second - p[j].second));
+&#125;
+int n,m;
+int countx(int x)
+&#123;
+    int now = 0;
+    for(int i = n;i < n + m;++i)
+    &#123;
+        if(x >> i & 1) now++;
+    &#125;
+    return now;
+&#125;
+signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    cin >> n >> m;
+    p[0] = &#123;0,0&#125;;
+    n++;
+    for(int i = 1;i < n + m;++i)
+    &#123;
+        cin >> p[i].first >> p[i].second;
+    &#125;
+    for(int i = 0;i < (1 << (n + m));++i)
+    &#123;
+        for(int j = 0;j < n + m;++j) dp[i][j] = 1e18;
+    &#125;
+    dp[1][0] = 0;
+    cout << fixed << setprecision(10);
+    for(int i = 0;i < (1 << (n + m));++i)
+    &#123;
+        for(int j = 0;j < (n + m);++j)
+        &#123;
+            if(i >> j & 1)
+            &#123;
+                for(int k = 0;k < (n + m);++k)
+                &#123;
+                    if((i - (1 << j)) >> k & 1)
+                    &#123;
+                        double d = getdis(j,k);
+                        int nowcnt = countx(i - (1 << j));
+                        int v = (1 << nowcnt);
+                        dp[i][j] = min(dp[i][j],dp[i - (1 << j)][k] + d / (1.0 * v));
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    double ans = 1e18;
+    for(int i = (1 << n) - 1;i < (1 << (n + m));i += (1 << n))
+    &#123;
+        for(int j = 0;j < n + m;++j)
+        &#123;
+            double d = getdis(0,j);
+            int v = 1 << countx(i);
+            ans = min(ans,dp[i][j] + d / (1.0 * v));
+        &#125;
+    &#125;
+    cout << fixed << setprecision(10) << ans << "\n";
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -794,7 +911,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.4k</span>
+                        class="white-color">6.9k</span>
             
             
             

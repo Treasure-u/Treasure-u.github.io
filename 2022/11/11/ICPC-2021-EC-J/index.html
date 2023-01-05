@@ -370,7 +370,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    802
                 </div>
                 
 
@@ -395,9 +395,126 @@
 <p>最后我们来分析$A &gt; B$的情况，因为$A &gt; B$，所以我们的战力值是在不断增加的。在不断增加的时候我们实际上是可以开放很多点的，那么对于原来的跑图来说我们处理的要么是本身可以到达的，要么是处理因为一些条件不能到达的，因此对于这一张新图来说我们先跑一遍最短路来处理什么点在这种情况下可以先到达。</p>
 <p>对于处理这一张新图来说我们首先先把$1$号节点给放进去，然后我们再跑$dij$，优先队列里面放的是当前点的权值和这个点，维护一个小数字在前面的队列。因为小数字在前面，那么我们可以不断增加自己的战力值，因此最后有可能达到一些权值更大的情况。</p>
 <p>然后在跑实际天数的时候我们可以直接跑$dij$，但是这里的话使用的是从$1$号节点到当前这个$now$节点所需要的天数,然后对当前的值进行分析，如果比转移点要小的话直接$+1$即可，否则计算以下从$1$号节点转移过来的权值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">2e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> ll inf = <span class="number">1e18</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; edge[maxn];</span><br><span class="line">ll n,m,A,B;</span><br><span class="line">ll dis[maxn],vis[maxn],val[maxn];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> Case = <span class="number">1</span>;Case &lt;= T;++Case)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n &gt;&gt; m &gt;&gt; A &gt;&gt; B;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			edge[i].<span class="built_in">clear</span>();</span><br><span class="line">			dis[i] = inf;</span><br><span class="line">			vis[i] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,u,v;i &lt;= m;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">			edge[u].<span class="built_in">push_back</span>(v);</span><br><span class="line">			edge[v].<span class="built_in">push_back</span>(u);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) cin &gt;&gt; val[i],val[i] += B;</span><br><span class="line">		val[<span class="number">1</span>] -= B;</span><br><span class="line">		<span class="keyword">if</span>(A == B)</span><br><span class="line">		&#123;</span><br><span class="line">			queue&lt;<span class="type">int</span>&gt; que;</span><br><span class="line">			que.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line">			dis[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(!que.<span class="built_in">empty</span>())</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">auto</span> now = que.<span class="built_in">front</span>();</span><br><span class="line">				que.<span class="built_in">pop</span>();</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">auto</span> to:edge[now])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(val[to] &lt; val[<span class="number">1</span>] &amp;&amp; dis[to] &gt; dis[now])</span><br><span class="line">					&#123;</span><br><span class="line">						que.<span class="built_in">push</span>(to);</span><br><span class="line">						dis[to] = dis[now] + <span class="number">1</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			cout &lt;&lt; (dis[n] == inf ? <span class="number">-1</span> : dis[n]) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(A &lt; B)</span><br><span class="line">		&#123;</span><br><span class="line">			queue&lt;<span class="type">int</span>&gt; que;</span><br><span class="line">			que.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line">			dis[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(!que.<span class="built_in">empty</span>())</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">auto</span> now = que.<span class="built_in">front</span>();</span><br><span class="line">				que.<span class="built_in">pop</span>();</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">auto</span> to:edge[now])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(<span class="number">1ll</span> * val[to] + dis[now] * (B - A) * <span class="number">1ll</span> &lt; val[<span class="number">1</span>] &amp;&amp; dis[to] &gt; dis[now])</span><br><span class="line">					&#123;</span><br><span class="line">						dis[to] = dis[now] + <span class="number">1</span>;</span><br><span class="line">						que.<span class="built_in">push</span>(to);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			cout &lt;&lt; (dis[n] == inf ? <span class="number">-1</span> : dis[n]) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			priority_queue&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;,vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt;,greater&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt;&gt; que;</span><br><span class="line">			<span class="type">int</span> day = <span class="number">-1</span>;</span><br><span class="line">			que.<span class="built_in">push</span>(&#123;<span class="number">0</span>,<span class="number">1</span>&#125;);</span><br><span class="line">			<span class="keyword">while</span>(!que.<span class="built_in">empty</span>())</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">auto</span> [nowd,now] = que.<span class="built_in">top</span>();</span><br><span class="line">				que.<span class="built_in">pop</span>();</span><br><span class="line">				<span class="keyword">if</span>(vis[now]) <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span>(day != <span class="number">-1</span> &amp;&amp; val[now] &gt;= val[<span class="number">1</span>] + (A - B) * day)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				vis[now] = <span class="number">1</span>;</span><br><span class="line">				day++;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">auto</span> to:edge[now])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(!vis[to]) que.<span class="built_in">push</span>(&#123;val[to],to&#125;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			dis[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(!que.<span class="built_in">empty</span>()) que.<span class="built_in">pop</span>();</span><br><span class="line">			que.<span class="built_in">push</span>(&#123;dis[<span class="number">1</span>],<span class="number">1</span>&#125;);</span><br><span class="line">			<span class="keyword">while</span>(!que.<span class="built_in">empty</span>())</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">auto</span> [nowd,now] = que.<span class="built_in">top</span>();</span><br><span class="line">				que.<span class="built_in">pop</span>();</span><br><span class="line">				<span class="keyword">if</span>(nowd &gt; dis[now]) <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">auto</span> to:edge[now])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(!vis[to]) <span class="keyword">continue</span>;</span><br><span class="line">					<span class="keyword">if</span>(val[to] &lt; val[now] &amp;&amp; dis[to] &gt; nowd + <span class="number">1</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						dis[to] = nowd + <span class="number">1</span>;</span><br><span class="line">						que.<span class="built_in">push</span>(&#123;dis[to],to&#125;);</span><br><span class="line">						<span class="keyword">continue</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span>(dis[to] &gt; <span class="built_in">max</span>(nowd + <span class="number">1ll</span>,(val[to] - val[<span class="number">1</span>]) / (A - B) + <span class="number">2</span>))</span><br><span class="line">					&#123;</span><br><span class="line">						dis[to] = <span class="built_in">max</span>(nowd + <span class="number">1ll</span>,(val[to] - val[<span class="number">1</span>]) / (A - B) + <span class="number">2</span>);</span><br><span class="line">						que.<span class="built_in">push</span>(&#123;dis[to],to&#125;);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			cout &lt;&lt; (dis[n] == inf ? <span class="number">-1</span> : dis[n]) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int maxn = 2e5 + 10;
+const ll inf = 1e18;
+vector<int> edge[maxn];
+ll n,m,A,B;
+ll dis[maxn],vis[maxn],val[maxn];
+signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    int T;
+    cin >> T;
+    for(int Case = 1;Case <= T;++Case)
+    &#123;
+        cin >> n >> m >> A >> B;
+        for(int i = 1;i <= n;++i)
+        &#123;
+            edge[i].clear();
+            dis[i] = inf;
+            vis[i] = 0;
+        &#125;
+        for(int i = 1,u,v;i <= m;++i)
+        &#123;
+            cin >> u >> v;
+            edge[u].push_back(v);
+            edge[v].push_back(u);
+        &#125;
+        for(int i = 1;i <= n;++i) cin >> val[i],val[i] += B;
+        val[1] -= B;
+        if(A == B)
+        &#123;
+            queue<int> que;
+            que.push(1);
+            dis[1] = 0;
+            while(!que.empty())
+            &#123;
+                auto now = que.front();
+                que.pop();
+                for(auto to:edge[now])
+                &#123;
+                    if(val[to] < val[1] && dis[to] > dis[now])
+                    &#123;
+                        que.push(to);
+                        dis[to] = dis[now] + 1;
+                    &#125;
+                &#125;
+            &#125;
+            cout << (dis[n] == inf ? -1 : dis[n]) << "\n";
+        &#125;
+        else if(A < B)
+        &#123;
+            queue<int> que;
+            que.push(1);
+            dis[1] = 0;
+            while(!que.empty())
+            &#123;
+                auto now = que.front();
+                que.pop();
+                for(auto to:edge[now])
+                &#123;
+                    if(1ll * val[to] + dis[now] * (B - A) * 1ll < val[1] && dis[to] > dis[now])
+                    &#123;
+                        dis[to] = dis[now] + 1;
+                        que.push(to);
+                    &#125;
+                &#125;
+            &#125;
+            cout << (dis[n] == inf ? -1 : dis[n]) << "\n";
+        &#125;
+        else
+        &#123;
+            priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> que;
+            int day = -1;
+            que.push(&#123;0,1&#125;);
+            while(!que.empty())
+            &#123;
+                auto [nowd,now] = que.top();
+                que.pop();
+                if(vis[now]) continue;
+                if(day != -1 && val[now] >= val[1] + (A - B) * day)
+                &#123;
+                    break;
+                &#125;
+                vis[now] = 1;
+                day++;
+                for(auto to:edge[now])
+                &#123;
+                    if(!vis[to]) que.push(&#123;val[to],to&#125;);
+                &#125;
+            &#125;
+            dis[1] = 0;
+            while(!que.empty()) que.pop();
+            que.push(&#123;dis[1],1&#125;);
+            while(!que.empty())
+            &#123;
+                auto [nowd,now] = que.top();
+                que.pop();
+                if(nowd > dis[now]) continue;
+                for(auto to:edge[now])
+                &#123;
+                    if(!vis[to]) continue;
+                    if(val[to] < val[now] && dis[to] > nowd + 1)
+                    &#123;
+                        dis[to] = nowd + 1;
+                        que.push(&#123;dis[to],to&#125;);
+                        continue;
+                    &#125;
+                    if(dis[to] > max(nowd + 1ll,(val[to] - val[1]) / (A - B) + 2))
+                    &#123;
+                        dis[to] = max(nowd + 1ll,(val[to] - val[1]) / (A - B) + 2);
+                        que.push(&#123;dis[to],to&#125;);
+                    &#125;
+                &#125;
+            &#125;
+            cout << (dis[n] == inf ? -1 : dis[n]) << "\n";
+        &#125;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -798,7 +915,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.4k</span>
+                        class="white-color">6.9k</span>
             
             
             

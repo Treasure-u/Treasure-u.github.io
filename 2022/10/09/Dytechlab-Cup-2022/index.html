@@ -369,7 +369,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    353
                 </div>
                 
 
@@ -388,17 +388,179 @@
             <div id="articleContent">
                 <h1 id="Dytechlab-Cup-2022"><a href="#Dytechlab-Cup-2022" class="headerlink" title="Dytechlab Cup 2022"></a>Dytechlab Cup 2022</h1><h2 id="A-Ela-Sorting-Books"><a href="#A-Ela-Sorting-Books" class="headerlink" title="A. Ela Sorting Books"></a>A. Ela Sorting Books</h2><p><strong>题目大意:</strong>  给定$n(1 \leq n \leq 200)$本书,每本书有一个首字符，要把这$n$本书放到$k$个书架上，每个书架上面按照字典序第一个没有出现过的字符加入集合中，问这个集合最大能够构成的字符是什么</p>
 <p><strong>解题思路:</strong> 模拟样例可以发现一件事情，假设我们当前还有若干个字符，那么从第一个字符按顺序放到最后一个可以连续放置的字符肯定是最优秀的放置方法。那么我们怎么写呢？我们可以枚举每个书架可以最终放入集合的字符是多少，然后$check$即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmin</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmax</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> a[maxn],n,k;</span><br><span class="line">string str;</span><br><span class="line">map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; mp;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x &gt; n / k) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt;= x - <span class="number">1</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(mp[i] &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt;= x - <span class="number">1</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		mp[i]--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">		cin &gt;&gt; str;</span><br><span class="line">		mp.<span class="built_in">clear</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> to:str)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> id = to - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">			mp[id]++;</span><br><span class="line">		&#125;</span><br><span class="line">		vector&lt;<span class="type">char</span>&gt; ans;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= k;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">25</span>;j &gt;= <span class="number">0</span>;--j)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">check</span>(j))</span><br><span class="line">				&#123;</span><br><span class="line">					ans.<span class="built_in">push_back</span>(<span class="string">&#x27;a&#x27;</span> + j);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">sort</span>(ans.<span class="built_in">begin</span>(),ans.<span class="built_in">end</span>());</span><br><span class="line">		<span class="built_in">reverse</span>(ans.<span class="built_in">begin</span>(),ans.<span class="built_in">end</span>());</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> to:ans)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; to;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
+template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+#define int long long
+typedef long long ll;
+const int maxn = 1e6 + 10;
+int a[maxn],n,k;
+string str;
+map<int,int> mp;
+int check(int x)
+&#123;
+    if(x > n / k) return 0;
+    for(int i = 0;i <= x - 1;++i)
+    &#123;
+        if(mp[i] <= 0) return 0; 
+    &#125;
+    for(int i = 0;i <= x - 1;++i)
+    &#123;
+        mp[i]--;
+    &#125;
+    return 1;
+&#125;
+signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    int T;
+    cin >> T;
+    while(T--)
+    &#123;
+        cin >> n >> k;
+        cin >> str;
+        mp.clear();
+        for(auto to:str)
+        &#123;
+            int id = to - 'a';
+            mp[id]++;
+        &#125;
+        vector<char> ans;
+        for(int i = 1;i <= k;++i)
+        &#123;
+            for(int j = 25;j >= 0;--j)
+            &#123;
+                if(check(j))
+                &#123;
+                    ans.push_back('a' + j);
+                    break;
+                &#125;
+            &#125;
+        &#125;
+        sort(ans.begin(),ans.end());
+        reverse(ans.begin(),ans.end());
+        for(auto to:ans)
+        &#123;
+            cout << to;
+        &#125;
+        cout << "\n";
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="B-Ela’s-Fitness-and-the-Luxury-Number"><a href="#B-Ela’s-Fitness-and-the-Luxury-Number" class="headerlink" title="B. Ela’s Fitness and the Luxury Number"></a>B. Ela’s Fitness and the Luxury Number</h2><p><strong>题目大意:</strong> 给定$T (1 \leq T \leq 2e5)$组样例，每组两个数字分别是$l$ 以及$r(1 \leq l,r \leq 1e18)$ ，问在这个区间中美丽数字的个数是多少。美丽数字的定义是$x$可以被$x $  $mod$ $\lfloor\sqrt{x}\rfloor$ $ &#x3D; 0$</p>
 <p><strong>解题思路:</strong> 发现数据范围实际上很大，然后我打了一下表发现了一个规律，就是根据每一个平方数去划分，可以以每个平方数划分成一个块，假设当前的平方数是$x$，当前的平方根是$y$，那么在这一个块中存在的数字分别是$x,x + y,x + 2 * y$</p>
 <p>特别需要注意的是，$floor$存在的一定精度误差，因此在取的时候可以采取一些操作比如$–$来优化</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmin</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmax</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> a[maxn],n,k;</span><br><span class="line">string str;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">20</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> div = <span class="built_in">floor</span>(<span class="built_in">sqrt</span>(<span class="number">1.0</span> * i));</span><br><span class="line">		<span class="keyword">if</span>(i % div == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;i -&gt; &quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getans</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> rd = (<span class="built_in">sqrt</span>(<span class="number">1.0</span> * x));</span><br><span class="line">	<span class="keyword">if</span>(rd * rd &gt; x) rd--;</span><br><span class="line">	<span class="type">int</span> haha = rd * rd;</span><br><span class="line">	<span class="type">int</span> ans = (rd - <span class="number">1</span>) * <span class="number">3</span>;</span><br><span class="line">	<span class="keyword">if</span>(x &gt;= haha)</span><br><span class="line">	&#123;</span><br><span class="line">		ans++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x &gt;= haha + rd)</span><br><span class="line">	&#123;</span><br><span class="line">		ans++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x &gt;= haha + rd * <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		ans++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> l,r;</span><br><span class="line">		cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">		<span class="comment">// cout &lt;&lt; getans(l - 1) &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">		<span class="comment">// cout &lt;&lt; l &lt;&lt; &quot; &quot; &lt;&lt; getans(l - 1) &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot; &quot; &lt;&lt; getans(r) &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">		cout &lt;&lt; <span class="built_in">getans</span>(r) - <span class="built_in">getans</span>(l - <span class="number">1</span>) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
+template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+#define int long long
+typedef long long ll;
+const int maxn = 1e6 + 10;
+int a[maxn],n,k;
+string str;
+void get()
+&#123;
+    for(int i = 1;i <= 20;++i)
+    &#123;
+        int div = floor(sqrt(1.0 * i));
+        if(i % div == 0)
+        &#123;
+            cout << "i -> " << i << "\n";
+        &#125;
+    &#125;
+&#125;
+int getans(int x)
+&#123;
+    if(x == 0) return 0;
+    int rd = (sqrt(1.0 * x));
+    if(rd * rd > x) rd--;
+    int haha = rd * rd;
+    int ans = (rd - 1) * 3;
+    if(x >= haha)
+    &#123;
+        ans++;
+    &#125;
+    if(x >= haha + rd)
+    &#123;
+        ans++;
+    &#125;
+    if(x >= haha + rd * 2)
+    &#123;
+        ans++;
+    &#125;
+    return ans;
+&#125;
+signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    int T;
+    cin >> T;
+    while(T--)
+    &#123;
+        int l,r;
+        cin >> l >> r;
+        // cout << getans(l - 1) << "\n";
+        // cout << l << " " << getans(l - 1) << " " << r << " " << getans(r) << "\n";
+        cout << getans(r) - getans(l - 1) << "\n";
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="C-Ela-and-Crickets"><a href="#C-Ela-and-Crickets" class="headerlink" title="C. Ela and Crickets"></a>C. Ela and Crickets</h2><p><strong>题目大意:</strong> 给定一个无限大的棋盘，给定一个$L$形状的棋子以及这个棋子刚开始的坐标，给定一个目标坐标，问这个棋子通过跳跃的方式能否到达这个目标点</p>
 <p><strong>解题思路:</strong> 既然在一个棋盘上面，我们可以先考虑本身这个棋盘所带来的性质，也就是考虑存在的$L$形状的奇偶性带来的影响。我们可以模拟样例，发现对于一个$L$形状来说，和那个空着的格子的横纵坐标奇偶性都一样的那么我们是不可达的；然后我们考虑特殊情况，如果那个小角在边缘的话，那么不管怎么样子也只能再这个边缘移动，然后这样子判断即可</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmin</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="type">bool</span> <span class="title">chkmax</span><span class="params">(T &amp;a, <span class="type">const</span> T &amp;b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e2</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> r[maxn],n,k,c[maxn],x,y,sx,sy;</span><br><span class="line">string str;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; mpx,mpy;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">3</span>;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; r[i] &gt;&gt; c[i];</span><br><span class="line">			mpx[r[i]]++;</span><br><span class="line">			mpy[c[i]]++;</span><br><span class="line">		&#125;</span><br><span class="line">		cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		sx = sy = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> [to,cs]:mpx)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(cs == <span class="number">2</span>) sx = to;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> [to,cs]:mpy)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(cs == <span class="number">2</span>) sy = to;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//边缘</span></span><br><span class="line">		<span class="keyword">if</span>((sx == <span class="number">1</span> || sx == n) &amp;&amp; (sy == <span class="number">1</span> || sy == n))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(sx == x || sy == y) cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">			<span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>((sx - x + sy - y) % <span class="number">2</span> == <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>((sx - x) % <span class="number">2</span> == <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>((sy - y) % <span class="number">2</span> == <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">		<span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-line-numbers language-c++"><code class="language-line-numbers language-c++">#include <bits/stdc++.h>
+using namespace std;
+template<typename T> inline bool chkmin(T &a, const T &b) &#123; return a > b ? a = b, 1 : 0; &#125;
+template<typename T> inline bool chkmax(T &a, const T &b) &#123; return a < b ? a = b, 1 : 0; &#125;
+#define int long long
+typedef long long ll;
+const int maxn = 1e2 + 10;
+int r[maxn],n,k,c[maxn],x,y,sx,sy;
+string str;
+signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    int T;
+    cin >> T;
+    while(T--)
+    &#123;
+        cin >> n;
+        map<int,int> mpx,mpy;
+        for(int i = 1;i <= 3;++i)
+        &#123;
+            cin >> r[i] >> c[i];
+            mpx[r[i]]++;
+            mpy[c[i]]++;
+        &#125;
+        cin >> x >> y;
+        sx = sy = 0;
+        for(auto [to,cs]:mpx)
+        &#123;
+            if(cs == 2) sx = to;
+        &#125;
+        for(auto [to,cs]:mpy)
+        &#123;
+            if(cs == 2) sy = to;
+        &#125;
+        //边缘
+        if((sx == 1 || sx == n) && (sy == 1 || sy == n))
+        &#123;
+            if(sx == x || sy == y) cout << "YES\n";
+            else cout << "NO\n";
+            continue;
+        &#125;
+        if((sx - x + sy - y) % 2 == 1)
+        &#123;
+            cout << "YES\n";
+            continue;
+        &#125;
+        if((sx - x) % 2 == 0) cout << "YES\n";
+        else if((sy - y) % 2 == 0) cout << "YES\n";
+        else cout << "NO\n";
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="D-Ela-and-the-Wiring-Wizard"><a href="#D-Ela-and-the-Wiring-Wizard" class="headerlink" title="D. Ela and the Wiring Wizard"></a>D. Ela and the Wiring Wizard</h2><p><strong>题目大意:</strong> 给定一张图，图有$n$个点$m$条边$(2 \leq n \leq 500,n - 1\leq m \leq 100000)$每次可以进行若干次操作，操作如下所示</p>
 <p>选择两条边$(u,v)$和$(v,w)$删除$(u,v)$然后连接$(u,w)$，代价是$(u,v)$的边权</p>
 <p>问从节点$1$到节点$n$最少需要多少次</p>
@@ -416,9 +578,58 @@
 <p>我们可以把自环看成是一个点，设自环点是$x$,那么我们额外花费一个贡献连接$x$,从$1$到$x$再从$x$到$n$的距离相加然后乘贡献，这个$x$相当于中间的一个断点去更新整张图，因此实际上最多也就只有一个</p>
 <p>那么对于这一种题目来说，分析完整道题目我们发现都是对<strong>边</strong> 这一个元素进行考虑</p>
 <p>因为从一开始我们就在思考，从得出结论开始，再到实际上我去取哪条边最优</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e3</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> inf = <span class="number">1e9</span>;</span><br><span class="line"><span class="type">int</span> dis[maxn][maxn],n,m;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">		vector&lt;array&lt;<span class="type">int</span>,3&gt;&gt; edge;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= n;++j)</span><br><span class="line">			&#123;</span><br><span class="line">				dis[i][j] = inf;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i) dis[i][i] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>,u,v,w;i &lt;= m;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">			edge.<span class="built_in">push_back</span>(&#123;u,v,w&#125;);</span><br><span class="line">			dis[u][v] = dis[v][u] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">1</span>;k &lt;= n;++k)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= n;++j)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">chkmin</span>(dis[i][j],dis[i][k] + dis[k][j]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> ans = <span class="number">1e18</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> [u,v,w]:edge)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">chkmin</span>(ans,(dis[<span class="number">1</span>][u] + <span class="number">1</span> + dis[v][n]) * w);</span><br><span class="line">			<span class="built_in">chkmin</span>(ans,(dis[<span class="number">1</span>][v] + dis[u][n] + <span class="number">1</span>) * w);</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> x = <span class="number">1</span>;x &lt;= n;++x)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">chkmin</span>(ans,(<span class="built_in">min</span>(dis[u][x],dis[v][x]) + dis[<span class="number">1</span>][x] + dis[x][n] + <span class="number">2</span>) * w);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<pre class="line-numbers language-line-numbers language-C++"><code class="language-line-numbers language-C++">#define int long long
+typedef long long ll;
+const int maxn = 1e3 + 10;
+const int inf = 1e9;
+int dis[maxn][maxn],n,m;
+signed main()
+&#123;
+    ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+    int T;
+    cin >> T;
+    while(T--)
+    &#123;
+        cin >> n >> m;
+        vector<array<int,3>> edge;
+        for(int i = 1;i <= n;++i)
+        &#123;
+            for(int j = 1;j <= n;++j)
+            &#123;
+                dis[i][j] = inf;
+            &#125;
+        &#125;
+        for(int i = 1;i <= n;++i) dis[i][i] = 0;
+        for(int i = 1,u,v,w;i <= m;++i)
+        &#123;
+            cin >> u >> v >> w;
+            edge.push_back(&#123;u,v,w&#125;);
+            dis[u][v] = dis[v][u] = 1;
+        &#125;
+        for(int k = 1;k <= n;++k)
+        &#123;
+            for(int i = 1;i <= n;++i)
+            &#123;
+                for(int j = 1;j <= n;++j)
+                &#123;
+                    chkmin(dis[i][j],dis[i][k] + dis[k][j]);
+                &#125;
+            &#125;
+        &#125;
+        int ans = 1e18;
+        for(auto [u,v,w]:edge)
+        &#123;
+            chkmin(ans,(dis[1][u] + 1 + dis[v][n]) * w);
+            chkmin(ans,(dis[1][v] + dis[u][n] + 1) * w);
+            for(int x = 1;x <= n;++x)
+            &#123;
+                chkmin(ans,(min(dis[u][x],dis[v][x]) + dis[1][x] + dis[x][n] + 2) * w);
+            &#125;
+        &#125;
+        cout << ans << "\n";
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -815,7 +1026,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.4k</span>
+                        class="white-color">6.9k</span>
             
             
             
