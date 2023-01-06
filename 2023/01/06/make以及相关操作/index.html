@@ -4,11 +4,9 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="并查集&amp;最小生成树部分题解及代码, Hexo">
-    <meta name="description" content="并查集&amp;amp;最小生成树题解A解题思路: 计算几个连通块，并查集一下即可
-B解题思路: 计算这片连通森林还需要几条边变成一个连通块，那么需要数量就是连通块数量减去$1$
-C解题思路: 最小生成树模板题
-D解题思路: $MST$模板题，先加">
+    <meta name="keywords" content="make以及相关操作, Hexo">
+    <meta name="description" content="Make命令部分转载于:https://mooc.hznu.edu.cn/#/mooc/Server
+Make概念$Make$英文意思为制作，$Make$命令直接使用了这个意思，也就是要做出某个文件，比如我现在要去新建一个文件$a.txt$">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +18,7 @@ D解题思路: $MST$模板题，先加">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>并查集&amp;最小生成树部分题解及代码 | Hexo</title>
+    <title>make以及相关操作 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -314,12 +312,12 @@ D解题思路: $MST$模板题，先加">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">并查集&amp;最小生成树部分题解及代码</h1>
+                    <h1 class="description center-align post-title">make以及相关操作</h1>
                 </div>
             </div>
         </div>
@@ -343,12 +341,12 @@ D解题思路: $MST$模板题，先加">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/dsu/">
-                                <span class="chip bg-color">dsu</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
-                            <a href="/tags/mst/">
-                                <span class="chip bg-color">mst</span>
+                            <a href="/tags/make/">
+                                <span class="chip bg-color">make</span>
                             </a>
                         
                     </div>
@@ -363,7 +361,7 @@ D解题思路: $MST$模板题，先加">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-05
+                    2023-01-06
                 </div>
                 
 
@@ -372,7 +370,7 @@ D解题思路: $MST$模板题，先加">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    2.1k
                 </div>
                 
 
@@ -392,485 +390,157 @@ D解题思路: $MST$模板题，先加">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="并查集-amp-最小生成树题解"><a href="#并查集-amp-最小生成树题解" class="headerlink" title="并查集&amp;最小生成树题解"></a>并查集&amp;最小生成树题解</h1><h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p><strong>解题思路:</strong> 计算几个连通块，并查集一下即可</p>
-<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p><strong>解题思路:</strong> 计算这片连通森林还需要几条边变成一个连通块，那么需要数量就是连通块数量减去$1$</p>
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p><strong>解题思路:</strong> 最小生成树模板题</p>
-<h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p><strong>解题思路:</strong> $MST$模板题，先加上已经选择的边，再加上没有选择的边即可</p>
-<h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p><strong>解题思路:</strong> 判断是否只有一个$MST$，那么我们可以先找到一棵$MST$，记录这一棵$MST$的边，然后我们暴力去枚举去掉这条边之后是否还存在一棵和之前权值一样的$MST$</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxn &#x3D; 1e5 + 10;
-struct node
-&#123;
-	int x,y,r;
-&#125;a[maxn];
-int flag[maxn],n,m;
-struct DSU
-&#123;
-	int f[maxn],num;
-	int getf(int x)
-	&#123;
-		return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-	&#125;
-	int merge(int x,int y)
-	&#123;
-		int fx &#x3D; getf(x);
-		int fy &#x3D; getf(y);
-		f[fx] &#x3D; fy;
-		if(fx !&#x3D; fy)
-		&#123;
-			num++;
-			return 1;
-		&#125;
-		else return 0;
-	&#125;
-	void init()
-	&#123;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i;
-		num &#x3D; 0;
-	&#125;
-&#125;dsu;
-struct kruskal
-&#123;
-	DSU now;
-	int nowres;
-	void init()
-	&#123;
-		now.init();
-		nowres &#x3D; 0;
-	&#125;
-&#125;kru;
-int cmp(node A,node B)
-&#123;
-	return A.r &lt; B.r;
-&#125;
-int main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n &gt;&gt; m;
-		dsu.init();
-		for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-		&#123;
-			cin &gt;&gt; a[i].x &gt;&gt; a[i].y &gt;&gt; a[i].r;
-			flag[i] &#x3D; 0;
-		&#125;
-		sort(a + 1,a + 1 + m,cmp);
-		int ans &#x3D; 0;
-		for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-		&#123;
-			if(dsu.merge(a[i].x,a[i].y))
-			&#123;
-				ans +&#x3D; a[i].r;
-				flag[i] &#x3D; 1;
-			&#125;
-		&#125;
-		int f &#x3D; 1;
-		for(int i &#x3D; 1;i &lt;&#x3D; m;++i)
-		&#123;
-			if(!flag[i]) continue;
-			kru.init();
-			for(int j &#x3D; 1;j &lt;&#x3D; m;++j)
-			&#123;
-				if(j &#x3D;&#x3D; i) continue;
-				if(kru.now.merge(a[j].x,a[j].y))
-				&#123;
-					kru.nowres +&#x3D; a[j].r;
-				&#125;
-			&#125;
-			if(kru.nowres &#x3D;&#x3D; ans &amp;&amp; kru.now.num &#x3D;&#x3D; n - 1) f &#x3D; 0;
-		&#125;
-		if(f) cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-		else cout &lt;&lt; &quot;Not Unique!\n&quot;;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="Make命令"><a href="#Make命令" class="headerlink" title="Make命令"></a>Make命令</h1><p>部分转载于:<a target="_blank" rel="noopener" href="https://mooc.hznu.edu.cn/#/mooc/Server">https://mooc.hznu.edu.cn/#/mooc/Server</a></p>
+<h2 id="Make概念"><a href="#Make概念" class="headerlink" title="Make概念"></a>Make概念</h2><p>$Make$英文意思为制作，$Make$命令直接使用了这个意思，也就是要做出某个文件，比如我现在要去新建一个文件$a.txt$那么我可以采用以下的命令</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">make a.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>但是由于$make$本身并不知道如何做出$a.txt$，那么我们需要给$make$设置相关的命令才能使他完成这个目标</p>
+<p>假设文件$a.txt$依赖于$b.txt$和$c.txt$，是后面两个文件连接的产物，那么make需要知道以下规则</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">a.txt: b.txt c.txt
+    cat b.txt c.txt > a.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p>对于这一条命令我们实际上是可以分成两步骤，第一步确定$b.txt$和$c.txt$，第二部使用$cat$命令将这两个文件合并并且输出为新文件。这样的规则都写在一个叫$makefile$的文件里面</p>
+<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><p>$Makefile$文件由一系列规则组成。每条规则的形式如下:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>target<span class="token operator">></span> <span class="token builtin class-name">:</span> <span class="token operator">&lt;</span>prerequisites<span class="token operator">></span> 
+<span class="token punctuation">[</span>tab<span class="token punctuation">]</span>  <span class="token operator">&lt;</span>commands<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><p><strong>解题思路:</strong> 首先先把免费的边连接起来，然后对$n$个点建立点对，排序之后求最小生成树，直接用$Kruskal$记录边即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-const int maxn &#x3D; 1e6 + 10;
-int p[maxn][2],tot,n,m;
-struct node
-&#123;
-	int x,y;
-	double r;
-	node()&#123;&#125;;
-	node(int _x,int _y,double _r): x(_x),y(_y),r(_r)&#123;&#125;
-&#125;a[maxn];
-struct DSU
-&#123;
-	int f[maxn];
-	int getf(int x)
-	&#123;
-		return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-	&#125;
-	void merge(int x,int y,int op)
-	&#123;
-		int fx &#x3D; getf(x);
-		int fy &#x3D; getf(y);
-		if(fx !&#x3D; fy)
-		&#123;
-			f[fx] &#x3D; fy;
-			if(op) cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
-		&#125;
-	&#125;
-	void init()
-	&#123;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i;
-	&#125;
-&#125;dsu;
-int pow2(int x)
-&#123;
-	return x * x;
-&#125;
-double cal(int i,int j)
-&#123;
-	return sqrt(1.0 * pow2(p[i][0] - p[j][0]) + 1.0 * pow2(p[i][1] - p[j][1]));
-&#125;
-int cmp(node A,node B)
-&#123;
-	return A.r &lt; B.r;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	cin &gt;&gt; n;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		cin &gt;&gt; p[i][0] &gt;&gt; p[i][1];
-	&#125;
-	cin &gt;&gt; m;
-	dsu.init();
-	for(int i &#x3D; 1,u,v;i &lt;&#x3D; m;++i)
-	&#123;
-		cin &gt;&gt; u &gt;&gt; v;
-		dsu.merge(u,v,0);
-	&#125;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		for(int j &#x3D; i + 1;j &lt;&#x3D; n;++j)
-		&#123;
-			double dis &#x3D; cal(i,j);
-			a[++tot] &#x3D; node(i,j,dis);
-		&#125;
-	&#125;
-	sort(a + 1,a + 1 + tot,cmp);
-	for(int i &#x3D; 1;i &lt;&#x3D; tot;++i)
-	&#123;
-		dsu.merge(a[i].x,a[i].y,1);
-	&#125;
-	return 0;
-	
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面第一行冒号前面的部分，叫做”目标”（$target$），冒号后面的部分叫做”前置条件”（$prerequisites$）；第二行必须由一个tab键起首，后面跟着”命令”（$commands$）。</p>
+<p>“目标”是必需的，不可省略；”前置条件”和”命令”都是可选的，但是两者之中必须至少存在一个。 每条规则就明确两件事：构建目标的前置条件是什么，以及如何构建。 </p>
+<h3 id="目标（target）"><a href="#目标（target）" class="headerlink" title="目标（target）"></a>目标（target）</h3><ol>
+<li><p>一个目标（$target$）就构成一条规则。 目标通常是文件名，指明Make命令所要构建的对象，比如上文的 $a.txt$ 。目标可以是一个文件名，也可以是多个文件名，之间用空格分隔。</p>
+</li>
+<li><p>除了文件名，目标还可以是某个操作的名字，这称为”伪目标”（$phony target$）。</p>
+<pre class="line-numbers language-none"><code class="language-none">clean:
+      rm *.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p>上面代码的目标是$clean$，它不是文件名，而是一个操作的名字，属于”伪目标 “，作用是删除对象文件。</p>
+<pre class="line-numbers language-none"><code class="language-none">make  clean<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>声明伪目标 但是，如果当前目录中，正好有一个文件叫做$clean$，那么这个命令不会执行。因为$Make$发现$clean$文件已经存在，就认为没有必要重新构建了，就不会执行指定的$rm$命令。为了避免这种情况，可以明确声明$clean$是”伪目标”，写法如下:</p>
+<pre class="line-numbers language-none"><code class="language-none">.PHONY: clean
+clean:
+        rm *.o temp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>如果$Make$命令运行时没有指定目标，默认会执行$Makefile$文件的第一个目标。</p>
+<pre class="line-numbers language-none"><code class="language-none">make<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<h3 id="前置条件（prerequisites）"><a href="#前置条件（prerequisites）" class="headerlink" title="前置条件（prerequisites）"></a>前置条件（prerequisites）</h3><h1 id="Make"><a href="#Make" class="headerlink" title="Make"></a>Make</h1><p>Make是最常用的构建工具，诞生于1977年，主要用于C语言的项目。但是实际上 ，任何只要某个文件有变化，就要重新构建的项目，都可以用Make构建。</p>
+<h1 id="Make的概念"><a href="#Make的概念" class="headerlink" title="Make的概念"></a>Make的概念</h1><p>Make这个词，英语的意思是”制作”。Make命令直接用了这个意思，就是要做出某个文件。比如，要做出文件a.txt，就可以执行下面的命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">make</span> a.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>但是如果你真的输入这条命令，它并不会起作用。因为Make命令本身并不知道，如何做出a.txt，需要有人告诉它，如何调用其他命令完成这个目标。</p>
+<p>比如，假设文件 <code>a.txt</code> 依赖于 <code>b.txt</code> 和 <code>c.txt</code>，是后面两个文件连接（cat命令）的产物。那么，make 需要知道下面的规则。</p>
+<pre class="line-numbers language-none"><code class="language-none">a.txt: b.txt c.txt
+    cat b.txt c.txt &gt; a.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="G"><a href="#G" class="headerlink" title="G"></a>G</h2><p><strong>解题思路:</strong> 和上课讲的基本类似，同时需要注意的是这里存在位置固定的问题，如果位置固定的话那么对于他所存在的连通块只会带来$1$的贡献</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-#define int long long
-const int maxn &#x3D; 5e5 + 10;
-const int mod &#x3D; 1e9 + 7;
-int a[maxn],b[maxn],c[maxn],n;
-struct DSU
-&#123;
-	int f[maxn],sz[maxn];
-	int getf(int x)
-	&#123;
-		return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-	&#125;
-	void merge(int x,int y)
-	&#123;
-		int fx &#x3D; getf(x);
-		int fy &#x3D; getf(y);
-		if(fx !&#x3D; fy)
-		&#123;
-			f[fy] &#x3D; fx;
-			sz[fx] +&#x3D; sz[fy];
-		&#125;
-	&#125;
-	void init()
-	&#123;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) f[i] &#x3D; i,sz[i] &#x3D; 1;
-	&#125;
-&#125;dsu;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; b[i];
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; c[i];
-		dsu.init();
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			dsu.merge(a[i],b[i]);
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			if(c[i])
-			&#123;
-				dsu.sz[dsu.getf(c[i])] &#x3D; 0;
-			&#125;
-		&#125;
-		int ans &#x3D; 1;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			if(dsu.f[i] &#x3D;&#x3D; i)
-			&#123;
-				if(dsu.sz[i] &gt;&#x3D; 2) ans &#x3D; ans * 2 % mod;
-			&#125;
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>也就是说，<code>make a.txt</code> 这条命令的背后，实际上分成两步：第一步，确认 <code>b.txt</code> 和 <code>c.txt</code> 必须已经存在，第二步使用 <code>cat</code> 命令 将这个两个文件合并，输出为新文件。 像这样的规则，都写在一个叫做<code>Makefile</code>的文件中，<code>Make</code>命令依赖这个文件进行构建。<code>Makefile</code>文件也可以写为<code>makefile</code>， 或者用命令行参数指定为其他文件名。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">make</span> <span class="token parameter variable">-f</span> rules.txt
+<span class="token comment"># 或者</span>
+$ <span class="token function">make</span> <span class="token parameter variable">--file</span><span class="token operator">=</span>rules.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<p>上面代码指定<code>make</code>命令依<code>据rules.txt</code>文件中的规则，进行构建。 总之，<code>make</code>只是一个根据指定的Shell命令进行构建的工具。它的规则很简单，你规定要构建哪个文件、它依赖哪些源文件，当那些文件有变动时，如何重新构建它。</p>
+<h1 id="Makefile格式"><a href="#Makefile格式" class="headerlink" title="Makefile格式"></a>Makefile格式</h1><p>make命令的构建规则都写在Makefile文件里面，要学会如何Make命令，就必须学会如何编写Makefile文件。</p>
+<h1 id="Makefile基本规则"><a href="#Makefile基本规则" class="headerlink" title="Makefile基本规则"></a>Makefile基本规则</h1><p>Makefile文件由一系列规则（rules）构成。每条规则的形式如下。</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;target&gt; : &lt;prerequisites&gt; 
+[tab]  &lt;commands&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p>上面第一行冒号前面的部分，叫做”目标”（target），冒号后面的部分叫做”前置条件”（prerequisites）；第二行必须由一个tab键起首，后面跟着”命令”（commands）。</p>
+<p>“目标”是必需的，不可省略；”前置条件”和”命令”都是可选的，但是两者之中必须至少存在一个。 每条规则就明确两件事：构建目标的前置条件是什么，以及如何构建。 下面就详细讲解，每条规则的这三个组成部分。</p>
+<p>目标（target） 1 . 一个目标（target）就构成一条规则。 目标通常是文件名，指明Make命令所要构建的对象，比如上文的 a.txt 。目标可以是一个文件名，也可以是多个文件名，之间用空格分隔。</p>
+<p>2 . 除了文件名，目标还可以是某个操作的名字，这称为”伪目标”（phony target）。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">clean</span><span class="token punctuation">:</span>
+      rm *.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="H"><a href="#H" class="headerlink" title="H"></a>H</h2><p><strong>解题思路:</strong> 种族并查集，首先我们先思考如何解决多个种族之间的事情，首先我们先考虑$A$这个位置，因为它可以吃$B$,但是被$C$吃，因此在这里的关系存在的是三种：自己(同族)，食物，敌人。所以我们再开空间的时候可以开$3$倍的空间。</p>
-<p>然后我们考虑这样一件事情，假设$a$可以吃$b,c$，那么$b,c$实际上是同族；同理如果$b,c$可以吃$a$，那么$b,c$也是同族。那么也就是说 <strong>敌人的敌人是朋友</strong></p>
-<p>那么接下来考虑什么时候不合法，首先是在$x$和$y$合并的时候，如果$x$是$y$的敌人或者$y$是$x$的敌人就不行</p>
-<p>然后考虑$x$可以吃$y$的情况下，首先是题目告诉如果相同就不行，然后是如果$x$是$y$的同族或者$y$可以吃$x$不行</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int maxn &#x3D; 1e5 + 10;
-&#x2F;&#x2F; const int inf &#x3D; 1e18;
-int f[maxn * 3],n,m,ans;
-int getf(int x)
-&#123;
-	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-&#125;
-void merge(int x,int y)
-&#123;
-	int fx &#x3D; getf(x);
-	int fy &#x3D; getf(y);
-	f[fx] &#x3D; fy;
-&#125;
-signed main()
-&#123;
-	&#x2F;&#x2F; ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	&#x2F;&#x2F; cin &gt;&gt; n &gt;&gt; m;
-	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-	for(int i &#x3D; 1;i &lt;&#x3D; 3 * n;++i) f[i] &#x3D; i;
-	&#x2F;&#x2F;A -&gt; B -&gt; C -&gt; A
-	for(int i &#x3D; 1,op,x,y;i &lt;&#x3D; m;++i)
-	&#123;
-		scanf(&quot;%d %d %d&quot;,&amp;op,&amp;x,&amp;y);
-		if(x &gt; n || y &gt; n)
-		&#123;
-			ans++;
-			continue;
-		&#125;
-		if(op &#x3D;&#x3D; 1)
-		&#123;
-			if(getf(x) &#x3D;&#x3D; getf(y + 2 * n) || getf(x + 2 * n) &#x3D;&#x3D; getf(y))
-			&#123;
-				ans++;
-			&#125;
-			else
-			&#123;
-				merge(x,y);
-				merge(x + n,y + n);
-				merge(x + 2 * n,y + 2 * n);
-			&#125;
-		&#125;
-		else
-		&#123;
-			if(x &#x3D;&#x3D; y)
-			&#123;
-				ans++;
-			&#125;
-			else if(getf(x) &#x3D;&#x3D; getf(y) || getf(x + 2 * n) &#x3D;&#x3D; getf(y))
-			&#123;
-				ans++;
-			&#125;
-			else
-			&#123;
-				merge(x,y + 2 * n);
-				merge(x + n,y);
-				merge(x + 2 * n,y + n);
-			&#125;
+<p>上面代码的目标是clean，它不是文件名，而是一个操作的名字，属于”伪目标 “，作用是删除对象文件。</p>
+<pre class="line-numbers language-none"><code class="language-none">make  clean<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-		&#125;
-	&#125;
-	printf(&quot;%d\n&quot;,ans);
-	return 0;
-	
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3 . 声明伪目标 但是，如果当前目录中，正好有一个文件叫做clean，那么这个命令不会执行。因为Make发现clean文件已经存在，就认为没有必要重新构建了，就不会执行指定的rm命令。为了避免这种情况，可以明确声明clean是”伪目标”，写法如下。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token builtin-target builtin">.PHONY</span><span class="token punctuation">:</span> clean
+<span class="token target symbol">clean</span><span class="token punctuation">:</span>
+        rm *.o temp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<p>声明clean是”伪目标”之后，make就不会去检查是否存在一个叫做clean的文件，而是每次运行都执行对应的命令。</p>
+<p>4 . 如果Make命令运行时没有指定目标，默认会执行Makefile文件的第一个目标。</p>
+<pre class="line-numbers language-none"><code class="language-none">make<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>上面代码执行Makefile文件的第一个目标。</p>
+<h1 id="前置条件（prerequisites）-1"><a href="#前置条件（prerequisites）-1" class="headerlink" title="前置条件（prerequisites）"></a>前置条件（prerequisites）</h1><p>前置条件通常是一组文件名，之间用空格分隔。它指定了”目标”是否重新构建的判断标准：只要有一个前置文件不存在，或者有过更新（前置文件的last-modification时间戳比目标的时间戳新），”目标”就需要重新构建。</p>
+<p>1 . 下列代码中，构建 result.txt 的前置条件是 source.txt 。如果当前目录中，source.txt已经存在，那么make result.txt可以正常运行，否则必须再写一条规则，来生成source.txt。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">result.txt</span><span class="token punctuation">:</span> source.txt
+    cp source.txt result.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="I"><a href="#I" class="headerlink" title="I"></a>I</h2><p><strong>解题思路:</strong> 求一个连通块最大是多少，但是由于标号很大所以我们先需要离散化再进行并查集查找即可</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 1e6 + 10;
-int ans,n;
-struct DSU
-&#123;
-	unordered_map&lt;int,int&gt; f;
-	unordered_map&lt;int,int&gt; sz;
-	int getf(int x)
-	&#123;
-		return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-	&#125;
-	void merge(int x,int y)
-	&#123;
-		int fx &#x3D; getf(x);
-		int fy &#x3D; getf(y);
-		if(fx !&#x3D; fy)
-		&#123;
-			f[fx] &#x3D; fy;
-			sz[fy] +&#x3D; sz[fx];
-			ans &#x3D; max(ans,sz[fy]);
-		&#125;
-	&#125;
-	void init()
-	&#123;
-		f.clear();
-		sz.clear();
-		ans &#x3D; 0;
-	&#125;
-&#125;dsu;
-array&lt;int,2&gt; p[maxn];
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		dsu.init();
-		cin &gt;&gt; n;
-		for(int i &#x3D; 1,u,v;i &lt;&#x3D; n;++i)
-		&#123;
-			cin &gt;&gt; u &gt;&gt; v;
-			p[i] &#x3D; &#123;u,v&#125;;
-			dsu.f[u] &#x3D; u,dsu.sz[u] &#x3D; 1;
-			dsu.f[v] &#x3D; v,dsu.sz[v] &#x3D; 1;
-		&#125;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			auto [u,v] &#x3D; p[i];
-			dsu.merge(u,v);
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2 . 下列代码中，source.txt后面没有前置条件，就意味着它跟其他文件都无关，只要这个文件还不存在，每次调用make source.txt，它都会生成。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">source.txt</span><span class="token punctuation">:</span>
+    echo <span class="token string">"this is the source"</span> > source.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p>3 . 下列命令连续执行两次make result.txt。第一次执行会先新建 source.txt，然后再新建 result.txt。第二次执行，Make发现 source.txt 没有变动（时间戳晚于 result.txt），就不会执行任何操作，result.txt 也不会重新生成。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> result.txt
+<span class="token function">make</span> result.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p>4 . 如果需要生成多个文件，往往采用下面的写法。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">source</span><span class="token punctuation">:</span> file1 file2 file3
 
-<h2 id="J"><a href="#J" class="headerlink" title="J"></a>J</h2><p><strong>题目大意:</strong> 有三个长度为$n$的序列$a,b,c$</p>
-<p>$Alice$和$Bob$玩游戏，一共进行$n$个回合，游戏规则如下：</p>
-<ul>
-<li>选定$a_i,b_i,c_i$</li>
-<li>$Alice$从这三个数字选择一个数字删掉</li>
-<li>$Bob$从这三个数字选择一个数字</li>
-</ul>
-<p>我们让$Bob$每回合选择的数字是$d_i$,如果序列$d$是一个排列那么$Alice$获胜否则$Bob$获胜</p>
-<p>现在给定$a,b$两个数组，问有多少个$c$数组可以使得$Bob$获胜，结果对$998244353$取模</p>
-<p><strong>解题思路:</strong> 首先我们先考虑$Alice$会选择什么数字删掉，假设对于第$i$次操作来说，$a_i &#x3D; b_i$,那么我们可以选择任意的$c_i$并且最终把$c_i$删掉，这样子$Bob$一定取到的是$a_i$这个数字表示的值(因为$a_i &#x3D; b_i$)</p>
-<p>然后我们考虑如果$a_i \neq b_i$那么我们选择的$c_i$就非常重要，因为$c_i$决定着我们可以选择$a_i$或者$b_i$中的哪个数字，只需要让$c_i &#x3D; a_i \ or \ c_i &#x3D; b_i$即可</p>
-<p>那么选择某一个位置的思路就很清晰了，我们只需要考虑构造大于等于两个相同的并且把其中一个不需要的值删掉即可</p>
-<p>接下来我们再考虑位置之间带来的因素</p>
-<p>假设我们没有$a_i &#x3D; b_i$的情况，那么我们现在的问题可以转换为给定两个序列分别是$a,b$，每个位置上面取一个看是否可以构成一个排序</p>
-<p>对于这一个问题来说，因为每一个位置做一个选择，同时也相同与每一个位置的两个数字相互制衡，那么我们可以用图论的语言来表达，在他们之间建一条边</p>
-<p>我们可以发现只有基环树的形式是可以的，而基环树的形式实际上就是点数等于边数</p>
-<p>那么我们最终只需要使用并查集取维护每个环中存在点数和边数即可</p>
-<p>那么最后再思考答案贡献，对于一个基环树来说，如果这个树里面没有自环，那么贡献就是$2$，因为考虑每条边有两个选择，如果里面有自环的话，贡献就是$n$</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-template&lt;typename T&gt; inline bool chkmin(T &amp;a, const T &amp;b) &#123; return a &gt; b ? a &#x3D; b, 1 : 0; &#125;
-template&lt;typename T&gt; inline bool chkmax(T &amp;a, const T &amp;b) &#123; return a &lt; b ? a &#x3D; b, 1 : 0; &#125;
-#define int long long
-const int maxn &#x3D; 1e6 + 10;
-const int mod &#x3D; 998244353;
-int n,m,a[maxn],b[maxn];
-int f[maxn],szv[maxn],sze[maxn],loop[maxn];
-void init()
-&#123;
-	for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-	&#123;
-		f[i] &#x3D; i;
-		szv[i] &#x3D; 1;
-		sze[i] &#x3D; 0;
-		loop[i] &#x3D; 0;
-	&#125;
-&#125;
-int getf(int x)
-&#123;
-	return x &#x3D;&#x3D; f[x] ? x : f[x] &#x3D; getf(f[x]);
-&#125;
-void merge(int x,int y)
-&#123;
-	int fx &#x3D; getf(x);
-	int fy &#x3D; getf(y);
-	if(fx !&#x3D; fy)
-	&#123;
-		f[fy] &#x3D; fx;
-		sze[fx] +&#x3D; sze[fy];
-		szv[fx] +&#x3D; szv[fy];
-		loop[fx] +&#x3D; loop[fy];
-	&#125;
-&#125;
-signed main()
-&#123;
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	int T;
-	cin &gt;&gt; T;
-	while(T--)
-	&#123;
-		cin &gt;&gt; n;
-		init();
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; a[i];
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i) cin &gt;&gt; b[i];
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			merge(a[i],b[i]);
-			sze[getf(a[i])]++;
-			if(a[i] &#x3D;&#x3D; b[i]) loop[getf(a[i])]++;
-		&#125;
-		int ans &#x3D; 1;
-		for(int i &#x3D; 1;i &lt;&#x3D; n;++i)
-		&#123;
-			if(i &#x3D;&#x3D; getf(i))
-			&#123;
-				if(sze[i] !&#x3D; szv[i]) ans &#x3D; 0;
+<span class="token target symbol">file1</span><span class="token punctuation">:</span>
+        echo <span class="token string">"this is file1"</span> > file1
+<span class="token target symbol">file2</span><span class="token punctuation">:</span>
+        echo <span class="token string">"this is file2"</span> > file2
+<span class="token target symbol">file3</span><span class="token punctuation">:</span>
+        echo <span class="token string">"this is file3"</span> > file3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-                else ans &#x3D; ans * 2 % mod;
-			&#125;
-		&#125;
-		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	&#125;
-	return 0;
-	
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后直接命令进行$make$即可</p>
+<h2 id="makefile范例1"><a href="#makefile范例1" class="headerlink" title="makefile范例1"></a>makefile范例1</h2><p>假设我们现在有一个$ex5$文件夹，我们先$tree$看一下这个文件夹的结构</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">ex5
+├── makefile
+└── src
+    ├── client
+    │   └── ex5_client_server.c
+    └── socket_server
+        └── ex5_socket_server.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们的目标是使用$makefile$让里面的$cilent$可以连接上$server$</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">SRCPATH <span class="token operator">=</span> src
+CLIENT_SRCFILE <span class="token operator">=</span> client/ex5_client_server.c
+SERVER_SRCFILE <span class="token operator">=</span> socket_server/ex5_socket_server.c
+CLIENT_OBJFILE <span class="token operator">=</span> ex5_client_server.o
+SERVER_OBJFILE <span class="token operator">=</span> ex5_socket_server.o
+CLIENT_TARGET <span class="token operator">=</span> client
+SERVER_TARGET <span class="token operator">=</span> server
+
+<span class="token target symbol">build</span><span class="token punctuation">:</span>build-client build-server
+
+<span class="token target symbol">build-client</span><span class="token punctuation">:</span><span class="token variable">$</span><span class="token punctuation">(</span>CLIENT_OBJFILE<span class="token punctuation">)</span>
+	gcc <span class="token variable">$</span><span class="token punctuation">(</span>CLIENT_OBJFILE<span class="token punctuation">)</span> -o <span class="token variable">$</span><span class="token punctuation">(</span>CLIENT_TARGET<span class="token punctuation">)</span>
+
+<span class="token target symbol"><span class="token variable">$</span>(CLIENT_OBJFILE)</span><span class="token punctuation">:</span>
+	gcc -c <span class="token variable">$</span><span class="token punctuation">(</span>SRCPATH<span class="token punctuation">)</span>/<span class="token variable">$</span><span class="token punctuation">(</span>CLIENT_SRCFILE<span class="token punctuation">)</span>
+
+<span class="token target symbol">build-server</span><span class="token punctuation">:</span><span class="token variable">$</span><span class="token punctuation">(</span>SERVER_OBJFILE<span class="token punctuation">)</span>
+	gcc <span class="token variable">$</span><span class="token punctuation">(</span>SERVER_OBJFILE<span class="token punctuation">)</span> -o <span class="token variable">$</span><span class="token punctuation">(</span>SERVER_TARGET<span class="token punctuation">)</span>
+
+<span class="token target symbol"><span class="token variable">$</span>(SERVER_OBJFILE)</span><span class="token punctuation">:</span>
+	gcc -c <span class="token variable">$</span><span class="token punctuation">(</span>SRCPATH<span class="token punctuation">)</span>/<span class="token variable">$</span><span class="token punctuation">(</span>SERVER_SRCFILE<span class="token punctuation">)</span>
+
+<span class="token target symbol">clean</span><span class="token punctuation">:</span>
+	rm <span class="token variable">$</span><span class="token punctuation">(</span>CLIENT_TARGET<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>SERVER_TARGET<span class="token punctuation">)</span> *.o
+
+<span class="token target symbol">run-client</span><span class="token punctuation">:</span>
+	./<span class="token variable">$</span><span class="token punctuation">(</span>CLIENT_TARGET<span class="token punctuation">)</span>
+
+<span class="token target symbol">run-server</span><span class="token punctuation">:</span>
+	./<span class="token variable">$</span><span class="token punctuation">(</span>SERVER_TARGET<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="makefile范例2"><a href="#makefile范例2" class="headerlink" title="makefile范例2"></a>makefile范例2</h2><p>对于一个$cpp$文件生成所需要的可执行文件</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">build</span><span class="token punctuation">:</span>a.o
+	g++ a.o -o a
+
+<span class="token target symbol">a.o</span><span class="token punctuation">:</span>a.cpp
+	g++ -c a.cpp
+
+<span class="token target symbol">clean</span><span class="token punctuation">:</span>
+	rm a *.o
+
+<span class="token target symbol">run</span><span class="token punctuation">:</span>
+	./a <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -899,7 +569,7 @@ signed main()
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/01/05/%E5%B9%B6%E6%9F%A5%E9%9B%86-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%83%A8%E5%88%86%E9%A2%98%E8%A7%A3%E5%8F%8A%E4%BB%A3%E7%A0%81/">http://example.com/2023/01/05/%E5%B9%B6%E6%9F%A5%E9%9B%86-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%83%A8%E5%88%86%E9%A2%98%E8%A7%A3%E5%8F%8A%E4%BB%A3%E7%A0%81/</a>
+                    <a href="http://example.com/2023/01/06/make%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/">http://example.com/2023/01/06/make%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -937,12 +607,12 @@ signed main()
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/dsu/">
-                                    <span class="chip bg-color">dsu</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
-                                <a href="/tags/mst/">
-                                    <span class="chip bg-color">mst</span>
+                                <a href="/tags/make/">
+                                    <span class="chip bg-color">make</span>
                                 </a>
                             
                         </div>
@@ -988,9 +658,10 @@ signed main()
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/01/06/make%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/">
                     <div class="card-image">
@@ -1008,9 +679,9 @@ signed main()
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1019,6 +690,7 @@ signed main()
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1041,13 +713,13 @@ signed main()
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/03/pythonbasic/">
+                <a href="/2023/01/05/%E5%B9%B6%E6%9F%A5%E9%9B%86-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%83%A8%E5%88%86%E9%A2%98%E8%A7%A3%E5%8F%8A%E4%BB%A3%E7%A0%81/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="pythonbasic">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="并查集&amp;最小生成树部分题解及代码">
                         
-                        <span class="card-title">pythonbasic</span>
+                        <span class="card-title">并查集&amp;最小生成树部分题解及代码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1058,7 +730,7 @@ signed main()
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-05
                             </span>
                         <span class="publish-author">
                             
@@ -1071,8 +743,12 @@ signed main()
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/dsu/">
+                        <span class="chip bg-color">dsu</span>
+                    </a>
+                    
+                    <a href="/tags/mst/">
+                        <span class="chip bg-color">mst</span>
                     </a>
                     
                 </div>
